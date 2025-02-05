@@ -1,35 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+// import { AxiosClientProvider } from "./providers/AxiosClientProvider";
+// import { RouteAuthGuard } from "./providers/RouteAuthGuard";
+// import { PageType } from "./types/PageTypes";
+import {
+  ChakraProvider,
+  extendTheme
 
-function App() {
-  const [count, setCount] = useState(0)
+} from '@chakra-ui/react';
+import Login from "./routes/Login";
+// import Dashboard from './routes/Dashboard';
+
+const theme = extendTheme({
+  colors: {
+    brand: {
+      100: "#f7fafc",
+      // ...
+      900: "#1a202c",
+    },
+  },
+})
+const App: React.FC = () => {
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <ChakraProvider theme={theme}>
+
+      <BrowserRouter>
+        {/* <AxiosClientProvider> */}
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          {/* <Route path="/dashboard" element={} /> */}
+          <Route path="/" element={<Navigate to="/login" />} />
+          {/* <Route path="/*" element={<NotFound />} /> */}
+
+        </Routes>
+        {/* </AxiosClientProvider> */}
+      </BrowserRouter>
+    </ChakraProvider>
   )
 }
 
-export default App
+export default App;
