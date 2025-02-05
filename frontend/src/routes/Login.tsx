@@ -8,9 +8,9 @@ import {
     Heading,
     Input,
     Flex,
-    Stack,
-    Text,
     VStack,
+    Text,
+    Image,
 } from "@chakra-ui/react";
 
 const Login = () => {
@@ -22,23 +22,33 @@ const Login = () => {
         if (username === "user" && password === "password") {
             alert("ログイン成功！🎉");
         } else {
-            setError("ユーザー名またはパスワードが違います。");
+            setError("We don't recognize this user ID or password");
+        }
+    };
+
+    /** 🔹 Enterキーを押したらログインボタンを押す */
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === "Enter") {
+            handleLogin();
         }
     };
 
     return (
-        <Flex w="100vw" h="100vh" align="center" justify="center">
-            <Container maxW="lg" py="12" px="6" bg="white" boxShadow="md" borderRadius="md">
-                <Box
-                    p="8"
-                    borderWidth="1px"
-                    borderRadius="lg"
-                    boxShadow="lg"
-                    bg="white"
-                >
+        <Flex h="100vh" align="center" justify="center">
+            {/* 左上のロゴとテキスト */}
+            <Box position="absolute" top="10px" left="10px">
+                <Image src="../../img/funalab.png" alt="funalab logo" boxSize="100px" />
+                {/* <Text fontSize="sm" fontStyle="italic" mt="2">
+                    Judge Server for Education with Git
+                </Text> */}
+            </Box>
+
+            {/* ログインフォーム */}
+            <Container maxW="xl" py={{ base: "10", lg: "12" }} px={{ base: "0", lg: "10" }} bg="white" boxShadow="md" borderRadius="md">
+                <Box p="20" borderWidth="1px" borderRadius="lg" boxShadow="md" bg="white">
                     <VStack spacing="6">
                         <Heading size="lg" textAlign="center">
-                            ログイン
+                            Login
                         </Heading>
 
                         <FormControl>
@@ -56,6 +66,7 @@ const Login = () => {
                                 type="password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
+                                onKeyDown={handleKeyDown} /** enterキーが押された時にログインボタンが押される*/
                             />
                         </FormControl>
 
@@ -72,7 +83,7 @@ const Login = () => {
                         </Button>
                     </VStack>
                 </Box>
-            </Container >
+            </Container>
         </Flex>
     );
 };
