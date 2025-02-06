@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import {
     Box,
@@ -20,16 +20,26 @@ const Login = () => {
     const [error, setError] = useState("");
     const navigate = useNavigate();
 
+    // 🔹 パスワード入力欄の参照を作成
+    const passwordRef = useRef<HTMLInputElement>(null);
+
     const handleLogin = () => {
         if (username === "a" && password === "a") {
-            navigate(`/dashboard`, { replace: true })
+            navigate(`/dashboard`, { replace: true });
         } else {
             setError("We don't recognize this user ID or password");
         }
     };
 
+    /** 🔹 Enterキーを押したらパスワード入力欄にフォーカス */
+    const handleKeyDownUserName = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === "Enter") {
+            passwordRef.current?.focus(); // パスワード入力欄にフォーカスを移動
+        }
+    };
+
     /** 🔹 Enterキーを押したらログインボタンを押す */
-    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const handleKeyDownPassword = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Enter") {
             handleLogin();
         }
@@ -40,9 +50,6 @@ const Login = () => {
             {/* 左上のロゴとテキスト */}
             <Box position="absolute" top="10px" left="10px">
                 <Image src="../../img/funalab.png" alt="funalab logo" boxSize="100px" />
-                {/* <Text fontSize="sm" fontStyle="italic" mt="2">
-                    Judge Server for Education with Git
-                </Text> */}
             </Box>
 
             {/* ログインフォーム */}
@@ -59,6 +66,7 @@ const Login = () => {
                                 type="text"
                                 value={username}
                                 onChange={(e) => setUsername(e.target.value)}
+                                onKeyDown={handleKeyDownUserName} // ⬅ Enter でパスワード欄にフォーカス
                             />
                         </FormControl>
 
@@ -68,7 +76,8 @@ const Login = () => {
                                 type="password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                onKeyDown={handleKeyDown} /** enterキーが押された時にログインボタンが押される*/
+                                onKeyDown={handleKeyDownPassword} // ⬅ Enter でログイン
+                                ref={passwordRef} // ⬅ パスワード欄の参照をセット
                             />
                         </FormControl>
 

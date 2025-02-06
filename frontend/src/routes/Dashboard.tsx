@@ -1,14 +1,11 @@
-import {
-    Box,
-    Container,
-    Grid,
-    GridItem,
-    Image
-} from "@chakra-ui/react";
+import { Grid, GridItem } from "@chakra-ui/react";
 import { DefaultLayout } from "../components/DefaultLayout";
-import { CardList } from "../components/CardList"
+import { CardList } from "../components/CardList";
+import { useNavigate } from "react-router-dom";
 
 const DashboardPage = () => {
+    const navigate = useNavigate();
+
     // ランダムな色を取得する関数
     const getRandomColor = () => {
         const colors = ["red.300", "blue.300", "green.300", "yellow.300", "purple.300"];
@@ -17,16 +14,11 @@ const DashboardPage = () => {
 
     // カードクリック時の処理
     const handleCardClick = (index: number) => {
-        alert(`Card ${index + 1} clicked! 🚀`);
+        navigate(`/Submission`, { replace: true });
     };
 
     return (
         <DefaultLayout>
-            {/* 左上のロゴとテキスト */}
-            <Box position="absolute" top="10px" left="10px">
-                <Image src="../../img/funalab.png" alt="funalab logo" boxSize="100px" />
-            </Box>
-
             <Grid templateColumns="repeat(3, 1fr)" gap={6}>
                 {Array.from({ length: 40 }).map((_, index) => (
                     <GridItem key={index}>

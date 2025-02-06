@@ -34,9 +34,10 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/submission" element={<Submission />} />
           <Route path="/" element={<Navigate to="/login" />} />
           {/* <Route path="/*" element={<NotFound />} /> */}
-          <Route path="/submission" element={<Submission />} />
+
 
         </Routes>
         {/* </AxiosClientProvider> */}

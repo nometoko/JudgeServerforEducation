@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import DefaultLayout from "@/components/DefaultLayout";
 
 const FileUpload: React.FC = () => {
     const [files, setFiles] = useState<FileList | null>(null);
@@ -39,14 +40,17 @@ const FileUpload: React.FC = () => {
     };
 
     return (
-        <div>
-            <h2>複数ファイルアップロード</h2>
-            <input type="file" multiple onChange={handleFileChange} />
-            <button onClick={handleUpload} disabled={uploading}>
-                {uploading ? "アップロード中..." : "アップロード"}
-            </button>
-            {message && <p>{message}</p>}
-        </div>
+        <DefaultLayout>
+            <div>
+                <h2>複数ファイルアップロード</h2>
+                <input type="file" multiple onChange={handleFileChange} />
+                <button onClick={handleUpload} disabled={uploading}>
+                    {uploading ? "アップロード中..." : "アップロード"}
+                </button>
+                {message && <p>{message}</p>}
+            </div>
+        </DefaultLayout>
+
     );
 };
 
