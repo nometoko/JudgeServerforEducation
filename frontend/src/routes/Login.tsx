@@ -13,7 +13,11 @@ import {
     VStack,
 } from "@chakra-ui/react";
 
-const Login = () => {
+interface LoginProps {
+    message: string;
+  }
+
+const Login = ({message}) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
@@ -22,7 +26,8 @@ const Login = () => {
         if (username === "user" && password === "password") {
             alert("ログイン成功！🎉");
         } else {
-            setError("ユーザー名またはパスワードが違います。");
+            //setError("ユーザー名またはパスワードが違います。");
+            setError(message);
         }
     };
 
