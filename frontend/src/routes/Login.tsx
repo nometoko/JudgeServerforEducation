@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
     Box,
     Button,
@@ -17,10 +18,11 @@ const Login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    const navigate = useNavigate();
 
     const handleLogin = () => {
-        if (username === "user" && password === "password") {
-            alert("ログイン成功！🎉");
+        if (username === "a" && password === "a") {
+            navigate(`/dashboard`, { replace: true })
         } else {
             setError("We don't recognize this user ID or password");
         }
