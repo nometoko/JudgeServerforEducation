@@ -11,7 +11,8 @@ import {
 import Login from "./routes/Login";
 
 import DashboardPage from "./routes/Dashboard";
-import Submission from "./routes/Submission"
+import Submission from "./routes/Problem"
+import Problem from './routes/Problem';
 
 // import Dashboard from './routes/Dashboard';
 
@@ -25,7 +26,7 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<DashboardPage />} />
-          <Route path="/submission/:problemId" element={<Submission />} />
+          <Route path="/problem/:problemId" element={<Problem />} />
           <Route path="/test" />
           <Route path="/" element={<Navigate to="/login" />} />
           {/* <Route path="/*" element={<NotFound />} /> */}
