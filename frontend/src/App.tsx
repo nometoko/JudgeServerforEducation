@@ -12,29 +12,21 @@ import Login from "./routes/Login";
 
 import DashboardPage from "./routes/Dashboard";
 import Submission from "./routes/Submission"
+
 // import Dashboard from './routes/Dashboard';
 
-
-const theme = extendTheme({
-  colors: {
-    brand: {
-      100: "#f7fafc",
-      // ...
-      900: "#1a202c",
-    },
-  },
-})
 const App: React.FC = () => {
 
   return (
-    <ChakraProvider theme={theme}>
+    <ChakraProvider >
 
       <BrowserRouter>
         {/* <AxiosClientProvider> */}
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<DashboardPage />} />
-          <Route path="/submission" element={<Submission />} />
+          <Route path="/submission/:problemId" element={<Submission />} />
+          <Route path="/test" />
           <Route path="/" element={<Navigate to="/login" />} />
           {/* <Route path="/*" element={<NotFound />} /> */}
 
