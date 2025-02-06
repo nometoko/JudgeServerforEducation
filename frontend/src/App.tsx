@@ -9,7 +9,7 @@ import {
 
 } from '@chakra-ui/react';
 import Login from "./routes/Login";
-// import Dashboard from './routes/Dashboard';
+import DashboardPage from "./routes/Dashboard";
 
 const theme = extendTheme({
   colors: {
@@ -29,7 +29,7 @@ const App: React.FC = () => {
         {/* <AxiosClientProvider> */}
         <Routes>
           <Route path="/login" element={<Login />} />
-          {/* <Route path="/dashboard" element={} /> */}
+          <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/" element={<Navigate to="/login" />} />
           {/* <Route path="/*" element={<NotFound />} /> */}
 
