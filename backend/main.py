@@ -3,6 +3,12 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 import dotenv
 import uvicorn
+from fastapi import FastAPI
+from fastapi import APIRouter
+from handlers import get_problem
+
+app = FastAPI()
+app.include_router(get_problem.router)
 
 # 環境変数を読み込む
 dotenv.load_dotenv("../frontend/.env")
@@ -18,13 +24,11 @@ dotenv.load_dotenv("../frontend/.env")
 #    raise EnvironmentError(f"Missing environment variables: {', '.join(missing_env_vars)}")
 #####
 
+# debug用
 print(os.getenv("PUBLIC_SERVER_IP"))
 print(os.getenv("FRONTEND_PORT"))
 print(os.getenv("PRIVATE_SERVER_IP"))
 print(os.getenv("BACKEND_PORT"))
-
-# Initialize FastAPI
-app = FastAPI()
 
 # CORS
 # 許可するオリジンを指定 (すなわちフロントエンドのURL)
@@ -38,8 +42,8 @@ app.add_middleware(
     allow_origins=origins, 
 	allow_credentials=True, # Cookieを使う場合はTrue
 	allow_methods=["*"], # 全てのHTTPメソッド (GETとか)を許可
-	#allow_headers=["*"] # 全てのHTTPヘッダを許可、わかってないです
-	allow_headers=["Content-Type", "Authorization"],  # 必要なヘッダーのみ許可、他が必要かは検証
+	allow_headers=["*"] # 全てのHTTPヘッダを許可、わかってないです
+	#allow_headers=["Content-Type", "Authorization"],  # 必要なヘッダーのみ許可、他が必要かは検証
 )
 
 # データベース接続 (未実装)
@@ -57,6 +61,10 @@ async def get_submission_list(user_name: str):
 @app.get("/")
 async def hello():
     return {"message" : "Hello,World"}
+
+@app.get("/tmp")
+async def tmp():
+    return {"message" : "Happy"}
 
 # サーバー開始
 if __name__ == "__main__":
