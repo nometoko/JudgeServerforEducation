@@ -1,17 +1,23 @@
+import dotenv
+# 環境変数を読み込む
+dotenv.load_dotenv("../frontend/.env")
 import os
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-import dotenv
+#import dotenv
 import uvicorn
 from fastapi import FastAPI
 from fastapi import APIRouter
 from handlers import get_problem
+from auth import login
+from pydantic import BaseModel
 
 app = FastAPI()
 app.include_router(get_problem.router)
+app.include_router(login.router)
+#app.include_router(protected_router, prefix="/protected")
 
-# 環境変数を読み込む
-dotenv.load_dotenv("../frontend/.env")
+
 
 ##### 以下は本番環境想定
 ## Check required environment variables
@@ -29,6 +35,7 @@ print(os.getenv("PUBLIC_SERVER_IP"))
 print(os.getenv("FRONTEND_PORT"))
 print(os.getenv("PRIVATE_SERVER_IP"))
 print(os.getenv("BACKEND_PORT"))
+print(os.getenv("SECRET_KEY"))
 
 # CORS
 # 許可するオリジンを指定 (すなわちフロントエンドのURL)
