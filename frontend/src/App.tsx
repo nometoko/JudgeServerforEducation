@@ -34,14 +34,47 @@ const App: React.FC = () => {
 
   const [message, setMessage] = useState("");
 
-  useEffect(() => {
-    axios.get(`${API_BASE_URL}/getProblemList`)
-    .then((response) => {
-      setMessage(response.data.message)
-      console.log("response:", response)
-    })    
-    .catch(() => setMessage("Error fetching data"));
-  }, []);
+  //useEffect(() => {
+  //  axios.post(`${API_BASE_URL}/login`, {
+  //    username: "test",
+  //    password: "test"
+  //  })
+  //  .then((response) => {
+  //    // レスポンスは { access_token, token_type } の形式になるはずです
+  //    setMessage("ログイン成功！");
+  //    console.log("Login response:", response.data);
+  //  })
+  //  .catch((error) => {
+  //    setMessage("ログインエラー");
+  //    console.error("Error during login:", error);
+  //  });
+  //}, []);
+
+  //// axios を使って x-www-form-urlencoded 形式で送信する例
+  //  axios.post(`${API_BASE_URL}/login`, qs.stringify({
+  //    username: "test",
+  //    password: "test"
+  //  }), {
+  //    headers: {
+  //      "Content-Type": "application/x-www-form-urlencoded"
+  //    }
+  //  })
+  //  .then((response) => {
+  //    console.log("Login response:", response.data);
+  //  })
+  //  .catch((error) => {
+  //    console.error("Error during login:", error);
+  //  });
+
+
+  //useEffect(() => {
+  //  axios.get(`${API_BASE_URL}/tmp`)
+  //  .then((response) => {
+  //    setMessage(response.data.message)
+  //    console.log("response:", response)
+  //  })    
+  //  .catch(() => setMessage("Error fetching data"));
+  //}, []);
 
   //useEffect(() => {
   //  fetch(`${API_BASE_URL}`)
