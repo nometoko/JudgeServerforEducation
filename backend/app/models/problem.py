@@ -1,3 +1,5 @@
+# backend/app/models/problem.py
+
 from datetime import datetime
 from sqlalchemy import Column, Integer, String, Boolean, DateTime, Text
 from sqlalchemy.orm import relationship
@@ -5,6 +7,7 @@ from app.db.base_class import Base
 
 class Problem(Base):
     __tablename__ = "problems"
+
     problem_id = Column(Integer, primary_key=True, index=True)
     is_petit_coder = Column(Boolean, default=False)
     name = Column(String, nullable=False)
