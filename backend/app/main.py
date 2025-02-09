@@ -1,3 +1,4 @@
+
 import os
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -5,13 +6,13 @@ import dotenv
 import uvicorn
 from fastapi import FastAPI
 from fastapi import APIRouter
-from handlers import get_problem
+from .handlers import get_problem
 
 app = FastAPI()
 app.include_router(get_problem.router)
 
 # 環境変数を読み込む
-dotenv.load_dotenv("../frontend/.env")
+dotenv.load_dotenv("../.env")
 
 ##### 以下は本番環境想定
 ## Check required environment variables
@@ -38,8 +39,8 @@ origins = [
 print(origins)
 
 app.add_middleware(
-    CORSMiddleware, 
-    allow_origins=origins, 
+    CORSMiddleware,
+    allow_origins=origins,
 	allow_credentials=True, # Cookieを使う場合はTrue
 	allow_methods=["*"], # 全てのHTTPメソッド (GETとか)を許可
 	allow_headers=["*"] # 全てのHTTPヘッダを許可、わかってないです
