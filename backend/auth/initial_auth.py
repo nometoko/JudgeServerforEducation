@@ -12,7 +12,8 @@ ACCESS_TOKEN_EXPIRE_MINUTES = 30 # min
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/login") # ドキュメントに記載されるエンドポイント
 
 class Settings(BaseModel):
-    SECRET_KEY: str = os.getenv("SECRET_KEY")
+    SECRET_KEY: str = os.getenv("SECRET_KEY") # 運用時には再作成する: % openssl rand -base64 32
+    PEPPER: str = os.getenv("PEPPER") 
     
 class TokenData(BaseModel):
     username: str | None = None
@@ -27,7 +28,7 @@ async def get_current_user(token: str = Depends(oauth2_scheme)):
     settings = Settings()
     try:
         payload = jwt.decode(token, settings.SECRET_KEY, algorithms=[SIG_ALGORITHM])
-        username: str = payload.get("sub")
+        username: str = payload.get("user")
         if username is None:
             raise credentials_exception
         token_data = TokenData(username=username)

@@ -4,6 +4,7 @@ import './App.css'
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Myaxios_provider } from './providers/axios_client';
 
 //const API_BASE_URL = `http://${process.env.REACT_APP_PUBLIC_SERVER_IP}:${process.env.REACT_APP_BACKEND_PORT}`;
 const API_BASE_URL = `http://${import.meta.env.VITE_PUBLIC_SERVER_IP}:${import.meta.env.VITE_BACKEND_PORT}`;
@@ -90,6 +91,7 @@ const App: React.FC = () => {
 
       <BrowserRouter>
         {/* <AxiosClientProvider> */}
+        <Myaxios_provider>
         <Routes>
           <Route path="/login" element={<Login message={message} />} />
           {/* <Route path="/dashboard" element={} /> */}
@@ -97,6 +99,7 @@ const App: React.FC = () => {
           {/* <Route path="/*" element={<NotFound />} /> */}
 
         </Routes>
+        </Myaxios_provider>
         {/* </AxiosClientProvider> */}
       </BrowserRouter>
     </ChakraProvider>
