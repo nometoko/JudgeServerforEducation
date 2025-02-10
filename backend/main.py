@@ -9,12 +9,13 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi import APIRouter
 from handlers import get_problem
-from auth import login
+from auth import login, create_new_user
 from pydantic import BaseModel
 
 app = FastAPI()
 app.include_router(get_problem.router)
 app.include_router(login.router)
+app.include_router(create_new_user.router)
 #app.include_router(protected_router, prefix="/protected")
 
 

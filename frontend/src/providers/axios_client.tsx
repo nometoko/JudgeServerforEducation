@@ -17,7 +17,7 @@ myaxios.defaults.withCredentials = true;
 export default myaxios;
 
 // useeffectがあるから、インターセプターの設定と削除ができる
-export function myaxios_provider({ children }: { children: React.ReactElement }) { // 横取りして割り込み処理を挟むインターセプター
+export function Myaxios_provider({ children }: { children: React.ReactElement }) { // 横取りして割り込み処理を挟むインターセプター
   const navigate = useNavigate() // 遷移するための関数
 
   // コンポーネントがマウントされたとき、アンマウントされたとき、指定した値が変更されたときに実行される関数を登録
@@ -35,13 +35,14 @@ export function myaxios_provider({ children }: { children: React.ReactElement })
         //}
 		if (response.status === HttpStatusCode.Ok) {
 			     const handle_refresh_token = async () => {
-			        await axios.post("/refresh", { 
+			        await axios.post("/refresh_token", { 
 			          refresh_token: localStorage.getItem("refresh_token") // 例：localStorageから取得
 			        }).catch(refreshError => {
 			          console.error(refreshError.response?.error);
 			        });
 			      };
 			      handle_refresh_token();
+				  console.log("response", response);
 			    }
         return response
       },

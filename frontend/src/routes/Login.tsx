@@ -17,6 +17,7 @@ import {
 } from "@chakra-ui/react";
 //import { AxiosClientProvider } from "./providers/axios_client";
 import myaxios from  "../providers/axios_client";
+import { Myaxios_provider } from '../providers/axios_client';
 
 export interface MyJwtPayload {
     exp: number,
@@ -55,6 +56,7 @@ const Login = ({message}) => {
               if (location.state) { // ログイン画面に遷移する前のページが存在する場合
                 navigate(location.state, { replace: true }) // ブラウザの履歴が置き換えられ、戻るボタンで前の状態に戻らないようにしています。
               } else {
+                // console.log("token", response.data.access_token);　一致を確認、これはログイン時に生成されるトークン
                 navigate('/dashboard', { replace: true })
               }
             } else {

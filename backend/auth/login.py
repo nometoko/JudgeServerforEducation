@@ -1,5 +1,5 @@
 import os
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Response
 from fastapi import APIRouter
 #from fastapi_jwt_auth import AuthJWT
 #from fastapi_jwt_auth.exceptions import AuthJWTException
@@ -9,6 +9,7 @@ from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from datetime import datetime, timedelta
 from fastapi import Depends, status
 from .initial_auth import TokenData, oauth2_scheme, Settings, SIG_ALGORITHM, get_current_user
+from .hash import hash_password, check_password_hash
 #from config import SECRET_KEY
 
 router = APIRouter()
@@ -62,8 +63,15 @@ class UserLogin(BaseModel):
 
 #oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/login") # ドキュメントに記載されるエンドポイント
 
-def authenticate_user(username: str, password: str): # ハッシュ化とかいったん置いておく
-    if username == "test" and password == "test":
+tmp = ["test", "$2b$08$GF7LS6nEsKamuDOrDyxlReTjgL1kaqtsP9yGS7Rg/AJ7KyadZXip2"]
+
+def authenticate_user(username: str, password: str):
+    #if username == "test" and password == "test":
+    #    return User(username=username)
+    #hash_pw = test[]
+    # print(password)
+    # print(hash_password(password))
+    if check_password_hash(password, tmp[1]): # tmp[1]を、DBから取得したハッシュ値に置き換える
         return User(username=username)
     return None
 
@@ -101,9 +109,8 @@ def create_access_token(data: dict, expires_delta: timedelta | None = None):
 # クライアントは、このトークンを今後のリクエストの際にHTTPヘッダー（例: Authorization: Bearer <access_token>) に付与して送信し、
 # 認証済みであることを証明
 
-
 @router.post("/login", response_model=Token)
-async def login(form_data: UserLogin):
+async def login(response: Response, form_data: UserLogin):
     user = authenticate_user(form_data.username, form_data.password)
     # print(user)
     if not user:
@@ -119,7 +126,16 @@ async def login(form_data: UserLogin):
         expires_delta=access_token_expires
     )
     # print("Hare")
-    # print(access_token)
+    print(access_token)
+    # response.set_cookie(key="sample_cookie", value="COOKIE_FROM_FASTAPI")
+    response.set_cookie(
+        key="token",
+        value=access_token,
+        httponly=True,  # JavaScript からアクセス不可
+        secure=True,  # HTTPS のみ
+        samesite="Strict",  # CSRF 対策
+        max_age=ACCESS_TOKEN_EXPIRE_MINUTES * 60
+    )
     return {"access_token": access_token, "token_type": "bearer"}
 
 def create_refresh_token(data: dict, expires_delta: timedelta | None = None):
@@ -162,7 +178,7 @@ async def refresh_token_endpoint(refresh_request: RefreshTokenRequest):
     # 新たなアクセストークンを生成
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     new_access_token = create_access_token(
-        data={"sub": username},
+        data={"user": username},
         expires_delta=access_token_expires
     )
     return {"access_token": new_access_token, "token_type": "bearer"}
