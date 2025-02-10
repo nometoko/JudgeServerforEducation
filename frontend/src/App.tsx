@@ -14,23 +14,20 @@ console.log("API_BASE_URL:", API_BASE_URL);
 // import { AxiosClientProvider } from "./providers/AxiosClientProvider";
 // import { RouteAuthGuard } from "./providers/RouteAuthGuard";
 // import { PageType } from "./types/PageTypes";
-import {
-  ChakraProvider,
-  extendTheme
-
-} from '@chakra-ui/react';
+import { ChakraProvider } from '@chakra-ui/react';
 import Login from "./routes/Login";
+import React from 'react';
+
+import DashboardPage from "./routes/Dashboard";
+import Problem from './routes/Problem';
+import Account from './routes/Account';
+import NotFound from './routes/NotFound';
+
+
 // import Dashboard from './routes/Dashboard';
 
-const theme = extendTheme({
-  colors: {
-    brand: {
-      100: "#f7fafc",
-      // ...
-      900: "#1a202c",
-    },
-  },
-})
+import Submission from './routes/Submission';
+
 const App: React.FC = () => {
 
   const [message, setMessage] = useState("");
@@ -87,16 +84,21 @@ const App: React.FC = () => {
   console.log("message:", message);
 
   return (
-    <ChakraProvider theme={theme}>
+    <ChakraProvider >
 
       <BrowserRouter>
         {/* <AxiosClientProvider> */}
         <Myaxios_provider>
         <Routes>
-          <Route path="/login" element={<Login message={message} />} />
-          {/* <Route path="/dashboard" element={} /> */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/problem/:problemId" element={<Problem />} />
+          <Route path="/submission" element={<Submission />} />
+          <Route path="/test" />
+          <Route path="/account" element={<Account />} />
           <Route path="/" element={<Navigate to="/login" />} />
-          {/* <Route path="/*" element={<NotFound />} /> */}
+          <Route path="/*" element={<NotFound />} />
+
 
         </Routes>
         </Myaxios_provider>
