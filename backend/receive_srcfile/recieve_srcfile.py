@@ -1,7 +1,8 @@
 import os, sys, shutil
-from fastapi import FastAPI, File, UploadFile
+from fastapi import FastAPI, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List
+import pydantic
 
 app = FastAPI()
 
@@ -35,6 +36,21 @@ async def upload_file(files: List[UploadFile], save_dir: str = os.path.join(ROOT
             shutil.copyfileobj(file.file, f)
 
     return [f.filename for f in files]
+
+class FileListResponse(pydantic.BaseModel):
+    filename: str
+    content: str
+
+@app.get("/getfilelist", response_model=List[FileListResponse])
+async def get_file_list(dir_path: str = os.path.join(ROOT_DIR, "compile_resource")) -> List[FileListResponse]:
+    files = [filename for filename in os.listdir(dir_path) if not filename.startswith('.') and filename != "Makefile"]
+    print(files)
+    submitted_files = []
+    for file in files:
+        with open(os.path.join(dir_path, file), "r") as f:
+            content = f.read()
+            submitted_files.append(FileListResponse(filename=file, content=content.strip()))
+    return submitted_files
 
 if __name__ == "__main__":
     import uvicorn
