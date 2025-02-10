@@ -1,7 +1,8 @@
-import { useState, FormEvent, FC } from 'react';
+import { FormEvent, FC } from 'react';
 import { HttpStatusCode } from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { jwtDecode } from "jwt-decode";
+import { useState, useRef } from "react";
 import {
     Box,
     Button,
@@ -11,9 +12,9 @@ import {
     Heading,
     Input,
     Flex,
-    Stack,
-    Text,
     VStack,
+    Text,
+    Image,
 } from "@chakra-ui/react";
 //import { AxiosClientProvider } from "./providers/axios_client";
 import myaxios from  "../providers/axios_client";
@@ -26,7 +27,7 @@ export interface MyJwtPayload {
     user: string,
   }
 
-const Login = ({message}) => {
+const Login = ({}) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
@@ -37,12 +38,15 @@ const Login = ({message}) => {
     const navigate = useNavigate();
     const location = useLocation();
 
+    // パスワード入力欄への参照を定義
+    const passwordRef = useRef<HTMLInputElement>(null);
+
     // 前の情報を削除
     //localStorage.removeItem("authUserName");
     //localStorage.removeItem("authJoinedDate");
     //localStorage.removeItem("authUserExp");
 
-    const handle_login = (event: FormEvent) => {
+    const handleLogin = (event: FormEvent) => {
         event.preventDefault();
         console.log("フォーム送信時の入力値:", { username, password });
     
@@ -97,74 +101,105 @@ const Login = ({message}) => {
         }
       };
 
-      return (
-        <Flex w="100vw" h="100vh" align="center" justify="center">
-            <Container maxW="lg" py="12" px="6" bg="white" boxShadow="md" borderRadius="md">
-                <Box p="8" borderWidth="1px" borderRadius="lg" boxShadow="lg" bg="white">
-                    <form onSubmit={handle_login}>
-                        <VStack spacing="6">
-                            <Heading size="lg" textAlign="center">
-                                ログイン
-                            </Heading>
 
-                            {/* 受け取ったメッセージ（プロパティから）を表示 */}
-                            {message && <Text color="blue.500">{message}</Text>}
+    /** 🔹 Enterキーを押したらパスワード入力欄にフォーカス */
+    const handleKeyDownUserName = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === "Enter") {
+            passwordRef.current?.focus(); // パスワード入力欄にフォーカスを移動
+        }
+    };
 
-                            <FormControl>
-                                <FormLabel>UserName</FormLabel>
-                                <Input
-                                    type="text"
-                                    value={username}
-                                    onChange={(e) => setUsername(e.target.value)}
-                                />
-                            </FormControl>
+    /** 🔹 Enterキーを押したらログインボタンを押す */
+    const handleKeyDownPassword = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === "Enter") {
+            handleLogin();
+        }
+    };
 
-                            <FormControl>
-                                <FormLabel>Password</FormLabel>
-                                <Input
-                                    type="password"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                />
-                            </FormControl>
-
-                            {error && <Text color="red.500">{error}</Text>}
-
-                            <Button
-                                type="submit"
-                                bg="#81E6D9"
-                                width="full"
-                                shadow="md"
-                                _hover={{ bg: "#38B2AC" }}
-                            >
-                                ログイン
-                            </Button>
-                        </VStack>
-                    </form>
-                    {/* デバッグ用に、問題リスト取得用のボタンを追加 */}
-                    <Box mt={4}>
-                        <Button onClick={fetchProblems} bg="gray.300" _hover={{ bg: "gray.400" }}>
-                            Problem List (Debug)
-                        </Button>
-                    </Box>
-                </Box>
-                {/* 取得したデバッグメッセージと問題リストの表示 */}
-                <Box mt={4} p={4} borderWidth="1px" borderRadius="md" bg="gray.100">
-                    <Heading size="md">Debug Information</Heading>
-                    <Text>{debug}</Text>
-                    {problems.length > 0 && (
-                      <VStack align="start" mt={2}>
-                        {problems.map((problem) => (
-                          <Text key={problem.id}>
-                            {problem.id}: {problem.title} ({problem.difficulty})
-                          </Text>
-                        ))}
-                      </VStack>
-                    )}
-                </Box>
-            </Container>
+ 
+    return (
+        <Flex h="100vh" align="center" justify="center">
+          {/* 左上のロゴ */}
+          <Box position="absolute" top="10px" left="10px">
+            <Image src="../../img/funalab.png" alt="funalab logo" boxSize="100px" />
+          </Box>
+    
+          <Container
+            maxW="xl"
+            py={{ base: "10", lg: "12" }}
+            px={{ base: "0", lg: "10" }}
+            bg="white"
+            boxShadow="md"
+            borderRadius="md"
+          >
+            <Box p="20" borderWidth="1px" borderRadius="lg" boxShadow="md" bg="white">
+              {/* form タグで囲むことで Enter キーでの送信も有効に */}
+              <form onSubmit={handleLogin}>
+                <VStack spacing="6">
+                  <Heading size="lg" textAlign="center">
+                    Login
+                  </Heading>
+    
+                  <FormControl>
+                    <FormLabel>UserName</FormLabel>
+                    <Input
+                      type="text"
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
+                      onKeyDown={handleKeyDownUserName} // Enterでパスワード欄へ
+                    />
+                  </FormControl>
+    
+                  <FormControl>
+                    <FormLabel>Password</FormLabel>
+                    <Input
+                      type="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      onKeyDown={handleKeyDownPassword} // Enterで送信
+                      ref={passwordRef}
+                    />
+                  </FormControl>
+    
+                  {error && <Text color="red.500">{error}</Text>}
+    
+                  <Button
+                    type="submit"
+                    bg="#81E6D9"
+                    width="full"
+                    shadow="md"
+                    _hover={{ bg: "#38B2AC" }}
+                  >
+                    ログイン
+                  </Button>
+                </VStack>
+              </form>
+    
+              {/* デバッグ用：問題リスト取得 */}
+              <Box mt={4}>
+                <Button onClick={fetchProblems} bg="gray.300" _hover={{ bg: "gray.400" }}>
+                  Problem List (Debug)
+                </Button>
+              </Box>
+            </Box>
+    
+            {/* 取得したデバッグ情報の表示 */}
+            <Box mt={4} p={4} borderWidth="1px" borderRadius="md" bg="gray.100">
+              <Heading size="md">Debug Information</Heading>
+              <Text>{debug}</Text>
+              {problems.length > 0 && (
+                <VStack align="start" mt={2}>
+                  {problems.map((problem) => (
+                    <Text key={problem.id}>
+                      {problem.id}: {problem.title} ({problem.difficulty})
+                    </Text>
+                  ))}
+                </VStack>
+              )}
+            </Box>
+          </Container>
         </Flex>
-    );
-};
-
-export default Login;
+      );
+    };
+    
+ export default Login;
