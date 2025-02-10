@@ -120,11 +120,13 @@ async def login(response: Response, form_data: UserLogin):
             headers={"WWW-Authenticate": "Bearer"}, # レスポンスヘッダー
         )
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    refresh_token_expires = timedelta(days=REFRESH_TOKEN_EXPIRE_DAYS)
     # print("Hello")
     access_token = create_access_token(
         data={"user": user.username},
         expires_delta=access_token_expires
     )
+    refresh_token = create_refresh_token(data={"user": user.username}, expires_delta=refresh_token_expires)
     # print("Hare")
     print(access_token)
     # response.set_cookie(key="sample_cookie", value="COOKIE_FROM_FASTAPI")
@@ -135,6 +137,14 @@ async def login(response: Response, form_data: UserLogin):
         secure=True,  # HTTPS のみ
         samesite="Strict",  # CSRF 対策
         max_age=ACCESS_TOKEN_EXPIRE_MINUTES * 60
+    )
+    response.set_cookie(
+        key="refresh_token",
+        value=refresh_token,
+        httponly=True,
+        secure=True,
+        samesite="Strict",
+        max_age=REFRESH_TOKEN_EXPIRE_DAYS * 24 * 60 * 60
     )
     return {"access_token": access_token, "token_type": "bearer"}
 
@@ -151,11 +161,17 @@ def create_refresh_token(data: dict, expires_delta: timedelta | None = None):
     return encoded_jwt
 
 @router.post("/refresh", response_model=Token)
-async def refresh_token_endpoint(refresh_request: RefreshTokenRequest):
+async def refresh_token_endpoint(response: Response, refresh_request: RefreshTokenRequest):
     """
     リフレッシュトークンを受け取り、そのトークンが有効であれば新たなアクセストークンを発行するエンドポイント
     """
     settings = Settings()
+    refresh_token = request.cookies.get("refresh_token")
+    if not refresh_token:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="リフレッシュトークンがありません",
+        )
     try:
         payload = jwt.decode(
             refresh_request.refresh_token, 
@@ -175,12 +191,23 @@ async def refresh_token_endpoint(refresh_request: RefreshTokenRequest):
             detail="リフレッシュトークンが無効です",
             headers={"WWW-Authenticate": "Bearer"},
         )
+    
     # 新たなアクセストークンを生成
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     new_access_token = create_access_token(
         data={"user": username},
         expires_delta=access_token_expires
     )
+
+    response.set_cookie(
+            key="reflesh_token",
+            value=new_access_token,
+            httponly=True,
+            secure=True,
+            samesite="Strict",
+            max_age=ACCESS_TOKEN_EXPIRE_MINUTES * 60
+        )
+    
     return {"access_token": new_access_token, "token_type": "bearer"}
 
 

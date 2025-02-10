@@ -30,6 +30,9 @@ const Login = ({message}) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    const [debug, setDebug] = useState("");
+    const [problems, setProblems] = useState<any[]>([]);
+    const authUserName = localStorage.getItem("authUserName");
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -75,15 +78,26 @@ const Login = ({message}) => {
           });
       };
 
-    //const handleLogin = () => {
-    //    if (username === "user" && password === "password") {
-    //        alert("ログイン成功！🎉");
-    //    } else {
-    //        setError("ユーザー名またはパスワードが違います。");
-    //    }
-    //};
+      const fetchProblems = async () => {
+        try {
+          const response = await myaxios.get(`/getProblemList/${authUserName}`);
+          // 成功時は問題リストとメッセージを更新
+          setProblems(response.data.problems);
+          setDebug(response.data.message);
+          setError("");
+        } catch (err: any) {
+          // エラーがあればエラーメッセージを表示
+          if (err.response && err.response.status === 404) {
+            setError("User not found");
+          } else {
+            setError("Error fetching problems");
+          }
+          setProblems([]);
+          setDebug("");
+        }
+      };
 
-    return (
+      return (
         <Flex w="100vw" h="100vh" align="center" justify="center">
             <Container maxW="lg" py="12" px="6" bg="white" boxShadow="md" borderRadius="md">
                 <Box p="8" borderWidth="1px" borderRadius="lg" boxShadow="lg" bg="white">
@@ -93,7 +107,7 @@ const Login = ({message}) => {
                                 ログイン
                             </Heading>
 
-                            {/* メッセージ表示 */}
+                            {/* 受け取ったメッセージ（プロパティから）を表示 */}
                             {message && <Text color="blue.500">{message}</Text>}
 
                             <FormControl>
@@ -116,7 +130,6 @@ const Login = ({message}) => {
 
                             {error && <Text color="red.500">{error}</Text>}
 
-                            {/* ボタンの type を "submit" にする */}
                             <Button
                                 type="submit"
                                 bg="#81E6D9"
@@ -128,6 +141,26 @@ const Login = ({message}) => {
                             </Button>
                         </VStack>
                     </form>
+                    {/* デバッグ用に、問題リスト取得用のボタンを追加 */}
+                    <Box mt={4}>
+                        <Button onClick={fetchProblems} bg="gray.300" _hover={{ bg: "gray.400" }}>
+                            Problem List (Debug)
+                        </Button>
+                    </Box>
+                </Box>
+                {/* 取得したデバッグメッセージと問題リストの表示 */}
+                <Box mt={4} p={4} borderWidth="1px" borderRadius="md" bg="gray.100">
+                    <Heading size="md">Debug Information</Heading>
+                    <Text>{debug}</Text>
+                    {problems.length > 0 && (
+                      <VStack align="start" mt={2}>
+                        {problems.map((problem) => (
+                          <Text key={problem.id}>
+                            {problem.id}: {problem.title} ({problem.difficulty})
+                          </Text>
+                        ))}
+                      </VStack>
+                    )}
                 </Box>
             </Container>
         </Flex>
