@@ -1,16 +1,19 @@
-import dotenv
-# 環境変数を読み込む
-dotenv.load_dotenv("../frontend/.env")
-import os
+import os, sys
+sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
+
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 #import dotenv
 import uvicorn
 from fastapi import FastAPI
 from fastapi import APIRouter
+
 from handlers import get_problem
 from auth import login, create_new_user
 from pydantic import BaseModel
+import dotenv
+
+# from .handlers import get_problem
 
 app = FastAPI()
 app.include_router(get_problem.router)
@@ -18,7 +21,8 @@ app.include_router(login.router)
 app.include_router(create_new_user.router)
 #app.include_router(protected_router, prefix="/protected")
 
-
+# 環境変数を読み込む
+dotenv.load_dotenv("../.env")
 
 ##### 以下は本番環境想定
 ## Check required environment variables
@@ -46,8 +50,8 @@ origins = [
 print(origins)
 
 app.add_middleware(
-    CORSMiddleware, 
-    allow_origins=origins, 
+    CORSMiddleware,
+    allow_origins=origins,
 	allow_credentials=True, # Cookieを使う場合はTrue
 	allow_methods=["*"], # 全てのHTTPメソッド (GETとか)を許可
 	allow_headers=["*"] # 全てのHTTPヘッダを許可、わかってないです
