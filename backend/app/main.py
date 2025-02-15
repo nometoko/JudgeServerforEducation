@@ -22,7 +22,7 @@ app.include_router(create_new_user.router)
 #app.include_router(protected_router, prefix="/protected")
 
 # 環境変数を読み込む
-dotenv.load_dotenv("../.env")
+dotenv.load_dotenv("../../frontend/.env")
 
 ##### 以下は本番環境想定
 ## Check required environment variables
@@ -40,7 +40,7 @@ print(os.getenv("PUBLIC_SERVER_IP"))
 print(os.getenv("FRONTEND_PORT"))
 print(os.getenv("PRIVATE_SERVER_IP"))
 print(os.getenv("BACKEND_PORT"))
-print(os.getenv("SECRET_KEY"))
+print(os.getenv("PEPPER"))
 
 # CORS
 # 許可するオリジンを指定 (すなわちフロントエンドのURL)
