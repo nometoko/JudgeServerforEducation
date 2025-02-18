@@ -19,7 +19,7 @@ class receive_file_response(BaseModel):
 
 router = APIRouter()
 
-@router.post("/receivefiles/")
+@router.post("/", response_model=receive_file_response)
 async def receive_file(files: List[UploadFile], submission_id: str = Form(...), save_dir: str = os.path.join(ROOT_DIR, "compile_resource")) -> receive_file_response:
     save_dir = os.path.join(save_dir, submission_id)
     os.makedirs(save_dir, exist_ok=True)
