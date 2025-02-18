@@ -5,23 +5,20 @@ from fastapi.responses import JSONResponse
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 
-from handlers import get_problem, receive_srcfile
 from auth import login, create_new_user
 from utils.get_root_dir import get_root_dir
 import dotenv
 
-# from .handlers import get_problem
-from app.api.api_v1.api_router import router
 from app.core.config import settings
+from app.api.api_v1.api_router import router as api_router
+from handlers.handler_router import router as handler_router
 
 app = FastAPI(title=settings.PROJECT_NAME, openapi_url=f"{settings.API_V1_STR}/openapi.json")
-app.include_router(router, prefix=settings.API_V1_STR)
-app.include_router(get_problem.router)
+app.include_router(api_router, prefix=settings.API_V1_STR)
 app.include_router(login.router)
 app.include_router(create_new_user.router)
-app.include_router(receive_srcfile.router)
+app.include_router(handler_router, prefix="/handler")
 # app.include_router(protected_router, prefix="/protected")
-
 
 @app.exception_handler(RequestValidationError)
 async def handler(request:Request, exc:RequestValidationError):
@@ -62,14 +59,6 @@ app.add_middleware(
 # ログイン (未実装)
 
 # APIの定義 (適宜追加すること)
-@app.get("/getProblemList/{user_name}")
-async def get_problem_list(user_name: str):
-    return {"user": user_name, "problems": []}
-
-@app.get("/getSubmissionList/{user_name}")
-async def get_submission_list(user_name: str):
-    return {"user": user_name, "submissions": []}
-
 @app.get("/")
 async def hello():
     return {"message": "Hello,World"}
