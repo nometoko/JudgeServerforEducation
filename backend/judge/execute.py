@@ -22,7 +22,7 @@ def compile(exec_dir: str, compile_delay: int) -> bool:
     command: str = f"make -C {exec_dir}"
     print(command)
     try:
-        result = subprocess.run(command, shell=True, timeout=compile_delay)
+        subprocess.run(command, shell=True, timeout=compile_delay)
     except subprocess.TimeoutExpired:
         print("Compile Timeout")
         return False
@@ -31,7 +31,7 @@ def compile(exec_dir: str, compile_delay: int) -> bool:
         return False
     return True
 
-def execute_executable(command: str, execute_delay: int) -> str:
+def execute_command(command: str, execute_delay: int) -> str:
     timeout: float = execute_delay / 1000
     try:
         result = subprocess.run(command, shell=True, timeout=timeout, capture_output=True, text=True)
