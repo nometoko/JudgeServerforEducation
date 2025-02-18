@@ -19,9 +19,6 @@ const SubmitForm: React.FC = () => {
     };
 
     const handleUpload = async () => {
-        // const [pwt, setPwt] = useState<problemWithStatus>()
-
-
         if (!files || files.length === 0) {
             setMessage("ファイルを選択してください。");
             return;
@@ -32,14 +29,21 @@ const SubmitForm: React.FC = () => {
             formData.append("files", files[i]);  // "files" はFastAPIの引数と一致
         }
 
+
         setUploading(true);
         setMessage("");
 
         try {
-            const response = await axios.post("http://localhost:8000/uploadfiles/", formData, {
-                headers: { "Content-Type": "multipart/form-data" }
+            const test = await axios.post("http://localhost:8000/api/v1/submission/", {
+                user_name: "user",
+                problem_id: 1
             });
-            setMessage(`アップロード成功: ${response.data}`);
+            const submissionId = test.data.submission_id;
+            formData.append("submission_id", String(submissionId));
+            console.log(formData);
+
+            const response = await axios.post("http://localhost:8000/receivefiles/", formData);
+            setMessage(`アップロード成功: ${response.data.msg}`);
         } catch (error) {
             console.error("Upload error:", error);
             setMessage("アップロードに失敗しました。");
@@ -63,7 +67,7 @@ const SubmitForm: React.FC = () => {
     return (
         <div>
             <h2>複数ファイルアップロード</h2>
-            <input type="file" accept=".c,.h" multiple onChange={handleFileChange} />
+            <input type="file" accept="text/**" multiple onChange={handleFileChange} />
             <button onClick={handleUpload} disabled={uploading}>
                 {uploading ? "アップロード中..." : "アップロード"}
             </button>
