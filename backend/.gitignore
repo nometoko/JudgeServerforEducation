@@ -1,10 +1,6 @@
 .env
 *.log
-<<<<<<< HEAD
 venv/
-=======
-
 **/__pycache__/**
-**/.vscode/**
 
->>>>>>> origin/feature/frontendHasegawa
+app/db/postgres*
