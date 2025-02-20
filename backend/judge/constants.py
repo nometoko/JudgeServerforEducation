@@ -1,4 +1,3 @@
-import os
 from enum import Enum
 
 PROG: str = "PROG"
