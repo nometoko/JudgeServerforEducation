@@ -1,9 +1,5 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
 import DefaultLayout from "@/components/DefaultLayout";
 import SubmitForm from "@/components/SubmitForm";
-import { problemWithStatus } from "./TestProblems";
-import { ProblemWithTestcase, Testcase } from "../types/DbTypes";
 import { Heading, Stack, Text, Divider } from '@chakra-ui/react';
 
 const Problem: React.FC = () => {
