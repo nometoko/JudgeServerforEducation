@@ -7,15 +7,15 @@ from app.db.base_class import Base
 class Submission(Base):
     __tablename__ = "submission"
 
-    submission_id = Column(String, primary_key=True, index=True, default=lambda: str(uuid.uuid4()))
-    user_name = Column(String, nullable=False)
-    problem_id = Column(Integer, nullable=False)
-    submitted_date = Column(DateTime)
+    submission_id = Column(String, primary_key=True, default=lambda: str(uuid.uuid4()))
+    user_name = Column(String, ForeignKey("users.user_name"), nullable=False, index=True)
+    problem_id = Column(Integer, ForeignKey("problems.problem_id"), nullable=False)
+    submitted_date = Column(String, nullable=False)
     status = Column(String, nullable=False)
 
     # リレーションシップ
-    # user = relationship("User", back_populates="submissions")
-    # problem = relationship("Problem", back_populates="submissions")
-    # results = relationship("Result", back_populates="submission")
-    # submitted_files = relationship("SubmittedFile", back_populates="submission")
-    # submission_with_problem_name = relationship("SubmissionWithProblemName", back_populates="submission", uselist=False)
+    user = relationship("User", back_populates="submissions")
+    problem = relationship("Problem", back_populates="submissions")
+    results = relationship("Result", back_populates="submission")
+    submitted_files = relationship("SubmittedFile", back_populates="submission")
+    submission_with_problem_name = relationship("SubmissionWithProblemName", back_populates="submission", uselist=False)

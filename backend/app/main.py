@@ -12,22 +12,32 @@ import dotenv
 from app.core.config import settings
 from app.api.api_v1.api_router import router as api_router
 from handlers.handler_router import router as handler_router
+import seed
 
-app = FastAPI(title=settings.PROJECT_NAME, openapi_url=f"{settings.API_V1_STR}/openapi.json")
+app = FastAPI(
+    title=settings.PROJECT_NAME, openapi_url=f"{settings.API_V1_STR}/openapi.json"
+)
 app.include_router(api_router, prefix=settings.API_V1_STR)
 app.include_router(login.router)
 app.include_router(create_new_user.router)
 app.include_router(handler_router, prefix="/handler")
 # app.include_router(protected_router, prefix="/protected")
+print(app.routes)
+
 
 @app.exception_handler(RequestValidationError)
-async def handler(request:Request, exc:RequestValidationError):
+async def handler(request: Request, exc: RequestValidationError) -> JSONResponse:
     print(exc)
     return JSONResponse(content={}, status_code=status.HTTP_422_UNPROCESSABLE_ENTITY)
+
 
 # 環境変数を読み込む
 ROOT_DIR = get_root_dir()
 dotenv.load_dotenv(f"{ROOT_DIR}/frontend/.env")
+
+seed.initialize_problem_info(f"{ROOT_DIR}/static/seed_data/problems_snake_case.json")
+seed.initialize_user_info(f"{ROOT_DIR}/static/seed_data/users_2024.json")
+
 
 ##### 以下は本番環境想定
 ## Check required environment variables
@@ -58,14 +68,17 @@ app.add_middleware(
 # データベース接続 (未実装)
 # ログイン (未実装)
 
+
 # APIの定義 (適宜追加すること)
 @app.get("/")
 async def hello():
     return {"message": "Hello,World"}
 
+
 @app.get("/tmp")
 async def tmp():
     return {"message": "Happy"}
+
 
 # サーバー開始
 if __name__ == "__main__":

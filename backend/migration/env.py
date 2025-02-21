@@ -23,7 +23,6 @@ if config.config_file_name is not None:
 from app.models.user import User  # noqa
 from app.models.problem import Problem  # noqa
 from app.models.testcase_with_path import TestcaseWithPath  # noqa
-from app.models.problem_with_testcase import ProblemWithTestcase  # noqa
 from app.models.testcase import Testcase  # noqa
 from app.models.input_file_content import InputFileContent  # noqa
 from app.models.submission import Submission  # noqa

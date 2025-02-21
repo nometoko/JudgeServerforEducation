@@ -1,26 +1,40 @@
 import os, shutil, magic
-from fastapi import APIRouter, UploadFile, Form
+from fastapi import APIRouter, UploadFile, Form, Depends, HTTPException
+from sqlalchemy.orm import Session
 from typing import List
 from pydantic import BaseModel
 
+from app import schemas
+from app.api import deps
+from app.api.api_v1 import endpoints
 from utils.get_root_dir import get_root_dir
 ROOT_DIR = get_root_dir()
-
-def check_file_type(file_name: str):
-    mime = magic.Magic(mime=True)
-    mime_type = mime.from_file(file_name)
-    if mime_type == "text/x-c" or mime_type == "text/makefile":
-        return True, ""
-    return False, mime_type
 
 class receive_file_response(BaseModel):
     success: bool
     msg: str
 
+def check_file_type(file_name: str):
+    mime = magic.Magic(mime=True)
+    mime_type = mime.from_file(file_name)
+    acceptable_mime_types = ["text/x-c", "text/makefile", "text/plain"]
+    if mime_type not in acceptable_mime_types:
+        raise HTTPException(status_code=400, detail=f"Invalid file type in {file_name}: {mime_type}")
+    return receive_file_response(success=True, msg="File received")
+
 router = APIRouter()
 
 @router.post("/", response_model=receive_file_response)
-async def receive_file(files: List[UploadFile], submission_id: str = Form(...), save_dir: str = os.path.join(ROOT_DIR, "compile_resource")) -> receive_file_response:
+async def receive_file(
+    files: List[UploadFile],
+    save_dir: str = os.path.join(ROOT_DIR, "compile_resource"),
+    db: Session = Depends(deps.get_db)) -> receive_file_response:
+
+    submission = schemas.SubmissionCreate(user_name="test", problem_id=1)
+    result = await endpoints.create_submission_endpoint(submission, db)
+
+    submission_id = result.submission_id    
+
     save_dir = os.path.join(save_dir, submission_id)
     os.makedirs(save_dir, exist_ok=True)
 
@@ -36,22 +50,7 @@ async def receive_file(files: List[UploadFile], submission_id: str = Form(...), 
             shutil.copyfileobj(file.file, f)
         
         result = check_file_type(file_path)
-        if not result[0]:
+        if not result.success:
             os.remove(file_path)
-            return receive_file_response(success=False, msg=f"Invalid file type: {result[1]}")
-    return receive_file_response(success=True, msg="Success")
-
-class FileListResponse(BaseModel):
-    filename: str
-    content: str
-
-@router.get("/getfilelist", response_model=List[FileListResponse])
-async def get_file_list(dir_path: str = os.path.join(ROOT_DIR, "compile_resource")) -> List[FileListResponse]:
-    files = [filename for filename in os.listdir(dir_path) if not filename.startswith('.') and filename != "Makefile"]
-    print(files)
-    submitted_files = []
-    for file in files:
-        with open(os.path.join(dir_path, file), "r") as f:
-            content = f.read()
-            submitted_files.append(FileListResponse(filename=file, content=content.strip()))
-    return submitted_files
+            return result
+    return result

@@ -9,7 +9,6 @@ type SubmittedFile = {
     filename: string;
 }
 
-
 const SubmitContent: React.FC = () => {
     const [files, setFiles] = React.useState<SubmittedFile[]>([]);
     const [selectedFileContent, setSelectedFileContent] = React.useState<string>('');
@@ -45,7 +44,7 @@ const SubmitContent: React.FC = () => {
     }
 
     useEffect(() => {
-        fetch("http://localhost:8000/getfilelist")
+        fetch("http://localhost:8000/handler/getSubmittedFiles")
             .then((response) => response.json())
             .then(
                 (data) => {

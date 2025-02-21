@@ -7,7 +7,7 @@ from app.db.base_class import Base
 class InputFileContent(Base):
     __tablename__ = "input_file_content"
 
-    test_case_id = Column(Integer, ForeignKey("testcase.test_case_id"), primary_key=True)
+    testcase_id = Column(String, ForeignKey("testcase.testcase_id"), primary_key=True)
     file_name = Column(String, primary_key=True)
     content = Column(Text, nullable=False)
 
