@@ -7,9 +7,10 @@ from app.db.base_class import Base
 class InputFileContent(Base):
     __tablename__ = "input_file_content"
 
-    testcase_id = Column(String, ForeignKey("testcase.testcase_id"), primary_key=True)
-    file_name = Column(String, primary_key=True)
+    testcase_id = Column(String, ForeignKey("testcase_with_path.testcase_id"), primary_key=True)
+    file_name = Column(String, nullable=False)
     content = Column(Text, nullable=False)
 
     # リレーションシップ
-    testcase = relationship("Testcase", back_populates="input_file_contents")
+    testcase_with_path = relationship("TestcaseWithPath", back_populates="input_file_contents")
+    problem = relationship("Problem", back_populates="input_file_contents")

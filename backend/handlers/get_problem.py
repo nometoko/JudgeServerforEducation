@@ -1,7 +1,10 @@
 import os
-from fastapi import FastAPI, HTTPException
-### 別ファイルをimportするための記述。@routerにすることに注意 
-from fastapi import APIRouter
+from typing import List
+from fastapi import FastAPI, HTTPException, APIRouter, Depends
+from sqlalchemy.orm import Session
+
+from app import crud, schemas
+from app.api import deps
 
 router = APIRouter()
 ###
@@ -92,3 +95,10 @@ async def get_problem_handler(user_name: str):
     
     # ユーザーが存在する場合、問題リストを返す
     return {"problems": dummy_data[user_name], "message": "Success"}
+
+@router.get("/")
+async def get_all_problems_handler(db: Session = Depends(deps.get_db)) -> List[schemas.ProblemResponse]:
+    print("getAllProblems called")
+    problems = crud.get_all_problems(db)
+    print(problems)
+    return problems

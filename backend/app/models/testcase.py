@@ -16,4 +16,4 @@ class Testcase(Base):
 
     # リレーションシップ
     problem = relationship("Problem", back_populates="testcases")
-    input_file_contents = relationship("InputFileContent", back_populates="testcase")
+    testcase_with_path = relationship("TestcaseWithPath", back_populates="testcases")

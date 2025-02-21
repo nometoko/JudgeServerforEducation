@@ -16,6 +16,6 @@ class Submission(Base):
     # リレーションシップ
     user = relationship("User", back_populates="submissions")
     problem = relationship("Problem", back_populates="submissions")
-    results = relationship("Result", back_populates="submission")
+    results = relationship("SubmissionResult", back_populates="submission")
     submitted_files = relationship("SubmittedFile", back_populates="submission")
     submission_with_problem_name = relationship("SubmissionWithProblemName", back_populates="submission", uselist=False)
