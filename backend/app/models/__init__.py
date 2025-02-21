@@ -1,9 +1,38 @@
-from app.models.user import *
-from app.models.problem import *
-from app.models.testcase_with_path import *
-from app.models.input_file_content import *
-from app.models.submission_result import *
-from app.models.testcase import *
-from app.models.submission import *
-from app.models.submitted_file import *
-from app.models.submission_with_problem_name import *
+# backend/app/models/__init__.py
+
+"""
+このモジュールは、全モデルを一括でインポートするためのものです。
+各モデルが Base.metadata に登録されるようにすることで、
+Alembic の autogenerate 機能が全モデルの変更を検出できるようになります。
+
+また、各モデル間で相互にリレーションシップを組む際の循環参照の問題を回避するためにも、
+ここで一度すべてのモデルを読み込むようにしておくのが一般的なパターンです。
+"""
+
+from app.db.base_class import Base  # Base を明示的にインポート
+
+# 各モデルのインポート（各ファイルで定義されているクラス名をそのまま利用）
+from .user import User
+from .problem import Problem
+from .testcase_with_path import TestcaseWithPath
+from .problem_with_testcase import ProblemWithTestcase
+from .testcase import Testcase
+from .input_file_content import InputFileContent
+from .submission import Submission
+from .result import Result
+from .submitted_file import SubmittedFile
+from .submission_with_problem_name import SubmissionWithProblemName
+
+# __all__ に登録しておくと、from app.models import * などの形でも全モデルが取り込まれる
+__all__ = [
+    "User",
+    "Problem",
+    "TestcaseWithPath",
+    "ProblemWithTestcase",
+    "Testcase",
+    "InputFileContent",
+    "Submission",
+    "Result",
+    "SubmittedFile",
+    "SubmissionWithProblemName",
+]
