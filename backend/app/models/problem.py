@@ -24,3 +24,5 @@ class Problem(Base):
     # リレーションシップ
     submissions = relationship("Submission", back_populates="problem")
     testcase_with_paths = relationship("TestcaseWithPath", back_populates="problem")
+    testcases = relationship("Testcase", back_populates="problem")
+    input_file_contents = relationship("InputFileContent", back_populates="problem")

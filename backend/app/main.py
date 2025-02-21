@@ -35,8 +35,14 @@ async def handler(request: Request, exc: RequestValidationError) -> JSONResponse
 ROOT_DIR = get_root_dir()
 dotenv.load_dotenv(f"{ROOT_DIR}/frontend/.env")
 
-seed.initialize_problem_info(f"{ROOT_DIR}/static/seed_data/problems_snake_case.json")
+from app.db.session import engine
+from app.db.base_class import Base
+
+Base.metadata.create_all(bind=engine)
+
+seed.initialize_problem_info(f"{ROOT_DIR}/static", "seed_data/problems.json")
 seed.initialize_user_info(f"{ROOT_DIR}/static/seed_data/users_2024.json")
+
 
 
 ##### 以下は本番環境想定

@@ -26,9 +26,10 @@ from app.models.testcase_with_path import TestcaseWithPath  # noqa
 from app.models.testcase import Testcase  # noqa
 from app.models.input_file_content import InputFileContent  # noqa
 from app.models.submission import Submission  # noqa
-from app.models.result import Result  # noqa
+from app.models.submission_result import SubmissionResult  # noqa
 from app.models.submitted_file import SubmittedFile  # noqa
 from app.models.submission_with_problem_name import SubmissionWithProblemName  # noqa
+
 target_metadata = Base.metadata
 
 # other values from the config, defined by the needs of env.py,
@@ -36,6 +37,7 @@ target_metadata = Base.metadata
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
 config.set_section_option("alembic", "DB_URL", settings.SQLALCHEMY_DATABASE_URI)
+
 
 def run_migrations_offline() -> None:
     """Run migrations in 'offline' mode.
@@ -75,9 +77,7 @@ def run_migrations_online() -> None:
     )
 
     with connectable.connect() as connection:
-        context.configure(
-            connection=connection, target_metadata=target_metadata
-        )
+        context.configure(connection=connection, target_metadata=target_metadata)
 
         with context.begin_transaction():
             context.run_migrations()

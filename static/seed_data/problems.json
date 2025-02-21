@@ -1,1987 +1,2033 @@
 [
   {
-    "id": 1,
-    "isPetitCoder": false,
+    "problem_id": 1,
+    "is_petit_coder": false,
     "name": "My Alpha",
     "statement": "キーボード (標準入力)から文字を受け取り、その文字がアルファベットなら、次の処理を実行するプログラムを作成してください。\n入力が大文字なら小文字に、小文字なら大文字に変換する。\nただし入力はEOF (Ctrl + D)を受け取るまで繰り返されます。",
     "constraints": "入力はあらゆる文字\n",
-    "executionTime": 1,
-    "memoryLimit": 1024,
-    "inputFmt": "",
-    "outputFmt": "",
-    "openDate": "2024-03-05T00:00:00+09:00",
-    "closeDate": "2024-03-06T23:59:59+09:00",
-    "borderScore": 13,
-    "testcaseWithPaths": [
+    "execution_time": 1,
+    "memory_limit": 1024,
+    "input_format": "",
+    "output_format": "",
+    "open_date": "2024-03-05T00:00:00+09:00",
+    "close_date": "2024-03-06T23:59:59+09:00",
+    "border_score": 13,
+    "testcase_with_paths": [
       {
-        "testcaseId": 1,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c1/1/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c1/1/output.txt"
+        "testcase_id": 1,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c1/1/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c1/1/output.txt"
       },
       {
-        "testcaseId": 2,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c1/2/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c1/2/output.txt"
+        "testcase_id": 2,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c1/2/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c1/2/output.txt"
       },
       {
-        "testcaseId": 3,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c1/3/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c1/3/output.txt"
+        "testcase_id": 3,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c1/3/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c1/3/output.txt"
       },
       {
-        "testcaseId": 4,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c1/4/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c1/4/output.txt"
+        "testcase_id": 4,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c1/4/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c1/4/output.txt"
       },
       {
-        "testcaseId": 5,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c1/5/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c1/5/output.txt"
+        "testcase_id": 5,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c1/5/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c1/5/output.txt"
       },
       {
-        "testcaseId": 6,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c1/6/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c1/6/output.txt"
+        "testcase_id": 6,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c1/6/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c1/6/output.txt"
       },
       {
-        "testcaseId": 7,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c1/7/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c1/7/output.txt"
+        "testcase_id": 7,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c1/7/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c1/7/output.txt"
       },
       {
-        "testcaseId": 8,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c1/8/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c1/8/output.txt"
+        "testcase_id": 8,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c1/8/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c1/8/output.txt"
       },
       {
-        "testcaseId": 9,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c1/9/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c1/9/output.txt"
+        "testcase_id": 9,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c1/9/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c1/9/output.txt"
       },
       {
-        "testcaseId": 10,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c1/10/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c1/10/output.txt"
+        "testcase_id": 10,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c1/10/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c1/10/output.txt"
       },
       {
-        "testcaseId": 11,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c1/11/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c1/11/output.txt"
+        "testcase_id": 11,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c1/11/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c1/11/output.txt"
       },
       {
-        "testcaseId": 12,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c1/12/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c1/12/output.txt"
+        "testcase_id": 12,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c1/12/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c1/12/output.txt"
       },
       {
-        "testcaseId": 13,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c1/13/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c1/13/output.txt"
+        "testcase_id": 13,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c1/13/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c1/13/output.txt"
       }
     ]
   },
   {
-    "id": 2,
-    "isPetitCoder": false,
+    "problem_id": 2,
+    "is_petit_coder": false,
     "name": "My Cat",
     "statement": "EOF (Ctrl + D)を受け取るまで標準入力から文字列を受け取り、標準出力するmain関数を実装してください。",
     "constraints": "入力はあらゆる文字列\n",
-    "executionTime": 1,
-    "memoryLimit": 1024,
-    "inputFmt": "",
-    "outputFmt": "",
-    "openDate": "2024-03-05T00:00:00+09:00",
-    "closeDate": "2024-03-06T23:59:59+09:00",
-    "borderScore": 15,
-    "testcaseWithPaths": [
+    "execution_time": 1,
+    "memory_limit": 1024,
+    "input_format": "",
+    "output_format": "",
+    "open_date": "2024-03-05T00:00:00+09:00",
+    "close_date": "2024-03-06T23:59:59+09:00",
+    "border_score": 15,
+    "testcase_with_paths": [
       {
-        "testcaseId": 1,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c2_1/1/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c2_1/1/output.txt"
+        "testcase_id": 1,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c2_1/1/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c2_1/1/output.txt"
       },
       {
-        "testcaseId": 2,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c2_1/2/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c2_1/2/output.txt"
+        "testcase_id": 2,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c2_1/2/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c2_1/2/output.txt"
       },
       {
-        "testcaseId": 3,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c2_1/3/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c2_1/3/output.txt"
+        "testcase_id": 3,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c2_1/3/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c2_1/3/output.txt"
       },
       {
-        "testcaseId": 4,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c2_1/4/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c2_1/4/output.txt"
+        "testcase_id": 4,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c2_1/4/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c2_1/4/output.txt"
       },
       {
-        "testcaseId": 5,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c2_1/5/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c2_1/5/output.txt"
+        "testcase_id": 5,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c2_1/5/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c2_1/5/output.txt"
       },
       {
-        "testcaseId": 6,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c2_1/6/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c2_1/6/output.txt"
+        "testcase_id": 6,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c2_1/6/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c2_1/6/output.txt"
       },
       {
-        "testcaseId": 7,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c2_1/7/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c2_1/7/output.txt"
+        "testcase_id": 7,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c2_1/7/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c2_1/7/output.txt"
       },
       {
-        "testcaseId": 8,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c2_1/8/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c2_1/8/output.txt"
+        "testcase_id": 8,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c2_1/8/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c2_1/8/output.txt"
       },
       {
-        "testcaseId": 9,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c2_1/9/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c2_1/9/output.txt"
+        "testcase_id": 9,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c2_1/9/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c2_1/9/output.txt"
       },
       {
-        "testcaseId": 10,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c2_1/10/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c2_1/10/output.txt"
+        "testcase_id": 10,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c2_1/10/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c2_1/10/output.txt"
       },
       {
-        "testcaseId": 11,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c2_1/11/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c2_1/11/output.txt"
+        "testcase_id": 11,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c2_1/11/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c2_1/11/output.txt"
       },
       {
-        "testcaseId": 12,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c2_1/12/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c2_1/12/output.txt"
+        "testcase_id": 12,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c2_1/12/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c2_1/12/output.txt"
       },
       {
-        "testcaseId": 13,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c2_1/13/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c2_1/13/output.txt"
+        "testcase_id": 13,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c2_1/13/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c2_1/13/output.txt"
       },
       {
-        "testcaseId": 14,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c2_1/14/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c2_1/14/output.txt"
+        "testcase_id": 14,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c2_1/14/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c2_1/14/output.txt"
       },
       {
-        "testcaseId": 15,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c2_1/15/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c2_1/15/output.txt"
+        "testcase_id": 15,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c2_1/15/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c2_1/15/output.txt"
       }
     ]
   },
   {
-    "id": 3,
-    "isPetitCoder": false,
+    "problem_id": 3,
+    "is_petit_coder": false,
     "name": "My Average",
     "statement": "EOFを受け取るまで標準入力に与えられた数値の平均と合計を標準出力するプログラムaverage.cを実装し、実行しましょう。",
     "constraints": "与えられる値  はすべて実数\n入力は空白区切りで与えられる\n 小数点以下6桁まで出力する\n",
-    "executionTime": 1,
-    "memoryLimit": 1024,
-    "inputFmt": "",
-    "outputFmt": "",
-    "openDate": "2024-03-05T00:00:00+09:00",
-    "closeDate": "2024-03-06T23:59:59+09:00",
-    "borderScore": 20,
-    "testcaseWithPaths": [
+    "execution_time": 1,
+    "memory_limit": 1024,
+    "input_format": "",
+    "output_format": "",
+    "open_date": "2024-03-05T00:00:00+09:00",
+    "close_date": "2024-03-06T23:59:59+09:00",
+    "border_score": 20,
+    "testcase_with_paths": [
       {
-        "testcaseId": 1,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c2_2/1/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c2_2/1/output.txt"
+        "testcase_id": 1,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c2_2/1/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c2_2/1/output.txt"
       },
       {
-        "testcaseId": 2,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c2_2/2/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c2_2/2/output.txt"
+        "testcase_id": 2,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c2_2/2/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c2_2/2/output.txt"
       },
       {
-        "testcaseId": 3,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c2_2/3/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c2_2/3/output.txt"
+        "testcase_id": 3,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c2_2/3/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c2_2/3/output.txt"
       },
       {
-        "testcaseId": 4,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c2_2/4/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c2_2/4/output.txt"
+        "testcase_id": 4,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c2_2/4/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c2_2/4/output.txt"
       },
       {
-        "testcaseId": 5,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c2_2/5/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c2_2/5/output.txt"
+        "testcase_id": 5,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c2_2/5/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c2_2/5/output.txt"
       },
       {
-        "testcaseId": 6,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c2_2/6/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c2_2/6/output.txt"
+        "testcase_id": 6,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c2_2/6/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c2_2/6/output.txt"
       },
       {
-        "testcaseId": 7,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c2_2/7/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c2_2/7/output.txt"
+        "testcase_id": 7,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c2_2/7/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c2_2/7/output.txt"
       },
       {
-        "testcaseId": 8,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c2_2/8/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c2_2/8/output.txt"
+        "testcase_id": 8,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c2_2/8/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c2_2/8/output.txt"
       },
       {
-        "testcaseId": 9,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c2_2/9/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c2_2/9/output.txt"
+        "testcase_id": 9,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c2_2/9/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c2_2/9/output.txt"
       },
       {
-        "testcaseId": 10,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c2_2/10/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c2_2/10/output.txt"
+        "testcase_id": 10,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c2_2/10/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c2_2/10/output.txt"
       },
       {
-        "testcaseId": 11,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c2_2/11/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c2_2/11/output.txt"
+        "testcase_id": 11,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c2_2/11/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c2_2/11/output.txt"
       },
       {
-        "testcaseId": 12,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c2_2/12/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c2_2/12/output.txt"
+        "testcase_id": 12,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c2_2/12/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c2_2/12/output.txt"
       },
       {
-        "testcaseId": 13,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c2_2/13/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c2_2/13/output.txt"
+        "testcase_id": 13,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c2_2/13/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c2_2/13/output.txt"
       },
       {
-        "testcaseId": 14,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c2_2/14/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c2_2/14/output.txt"
+        "testcase_id": 14,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c2_2/14/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c2_2/14/output.txt"
       },
       {
-        "testcaseId": 15,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c2_2/15/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c2_2/15/output.txt"
+        "testcase_id": 15,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c2_2/15/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c2_2/15/output.txt"
       },
       {
-        "testcaseId": 16,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c2_2/16/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c2_2/16/output.txt"
+        "testcase_id": 16,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c2_2/16/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c2_2/16/output.txt"
       },
       {
-        "testcaseId": 17,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c2_2/17/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c2_2/17/output.txt"
+        "testcase_id": 17,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c2_2/17/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c2_2/17/output.txt"
       },
       {
-        "testcaseId": 18,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c2_2/18/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c2_2/18/output.txt"
+        "testcase_id": 18,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c2_2/18/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c2_2/18/output.txt"
       },
       {
-        "testcaseId": 19,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c2_2/19/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c2_2/19/output.txt"
+        "testcase_id": 19,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c2_2/19/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c2_2/19/output.txt"
       },
       {
-        "testcaseId": 20,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c2_2/20/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c2_2/20/output.txt"
+        "testcase_id": 20,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c2_2/20/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c2_2/20/output.txt"
       }
     ]
   },
   {
-    "id": 4,
-    "isPetitCoder": false,
+    "problem_id": 4,
+    "is_petit_coder": false,
     "name": "Greatest Common Divisor (GCD)",
     "statement": "標準入力により与えた2つの正の整数の最大公約数を出力する関数gcd.cを作成し、main.cでgcd.cを呼び出し実行する。",
     "constraints": "再帰関数を用いて、最大公約数を求める関数を作成する。\n ヘッダファイルmyheader.hに関数の宣言を行い、これをmain関数を含むファイルで#includeする。",
-    "executionTime": 1,
-    "memoryLimit": 1024,
-    "inputFmt": "",
-    "outputFmt": "",
-    "openDate": "2024-03-06T00:00:00+09:00",
-    "closeDate": "2024-03-11T23:59:59+09:00",
-    "borderScore": 20,
-    "testcaseWithPaths": [
+    "execution_time": 1,
+    "memory_limit": 1024,
+    "input_format": "",
+    "output_format": "",
+    "open_date": "2024-03-06T00:00:00+09:00",
+    "close_date": "2024-03-11T23:59:59+09:00",
+    "border_score": 20,
+    "testcase_with_paths": [
       {
-        "testcaseId": 1,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c5/1/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c5/1/output.txt"
+        "testcase_id": 1,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c5/1/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c5/1/output.txt"
       },
       {
-        "testcaseId": 2,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c5/2/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c5/2/output.txt"
+        "testcase_id": 2,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c5/2/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c5/2/output.txt"
       },
       {
-        "testcaseId": 3,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c5/3/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c5/3/output.txt"
+        "testcase_id": 3,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c5/3/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c5/3/output.txt"
       },
       {
-        "testcaseId": 4,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c5/4/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c5/4/output.txt"
+        "testcase_id": 4,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c5/4/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c5/4/output.txt"
       },
       {
-        "testcaseId": 5,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c5/5/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c5/5/output.txt"
+        "testcase_id": 5,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c5/5/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c5/5/output.txt"
       },
       {
-        "testcaseId": 6,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c5/6/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c5/6/output.txt"
+        "testcase_id": 6,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c5/6/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c5/6/output.txt"
       },
       {
-        "testcaseId": 7,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c5/7/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c5/7/output.txt"
+        "testcase_id": 7,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c5/7/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c5/7/output.txt"
       },
       {
-        "testcaseId": 8,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c5/8/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c5/8/output.txt"
+        "testcase_id": 8,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c5/8/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c5/8/output.txt"
       },
       {
-        "testcaseId": 9,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c5/9/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c5/9/output.txt"
+        "testcase_id": 9,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c5/9/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c5/9/output.txt"
       },
       {
-        "testcaseId": 10,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c5/10/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c5/10/output.txt"
+        "testcase_id": 10,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c5/10/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c5/10/output.txt"
       },
       {
-        "testcaseId": 11,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c5/11/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c5/11/output.txt"
+        "testcase_id": 11,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c5/11/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c5/11/output.txt"
       },
       {
-        "testcaseId": 12,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c5/12/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c5/12/output.txt"
+        "testcase_id": 12,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c5/12/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c5/12/output.txt"
       },
       {
-        "testcaseId": 13,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c5/13/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c5/13/output.txt"
+        "testcase_id": 13,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c5/13/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c5/13/output.txt"
       },
       {
-        "testcaseId": 14,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c5/14/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c5/14/output.txt"
+        "testcase_id": 14,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c5/14/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c5/14/output.txt"
       },
       {
-        "testcaseId": 15,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c5/15/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c5/15/output.txt"
+        "testcase_id": 15,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c5/15/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c5/15/output.txt"
       },
       {
-        "testcaseId": 16,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c5/16/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c5/16/output.txt"
+        "testcase_id": 16,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c5/16/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c5/16/output.txt"
       },
       {
-        "testcaseId": 17,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c5/17/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c5/17/output.txt"
+        "testcase_id": 17,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c5/17/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c5/17/output.txt"
       },
       {
-        "testcaseId": 18,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c5/18/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c5/18/output.txt"
+        "testcase_id": 18,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c5/18/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c5/18/output.txt"
       },
       {
-        "testcaseId": 19,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c5/19/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c5/19/output.txt"
+        "testcase_id": 19,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c5/19/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c5/19/output.txt"
       },
       {
-        "testcaseId": 20,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c5/20/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c5/20/output.txt"
+        "testcase_id": 20,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c5/20/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c5/20/output.txt"
       }
     ]
   },
   {
-    "id": 5,
-    "isPetitCoder": false,
+    "problem_id": 5,
+    "is_petit_coder": false,
     "name": "main_mystrlen",
     "statement": "標準入力で与えられた文字列の長さを標準出力する関数main_mystrlen.cを実装し、実行しましょう。",
     "constraints": "改行文字は文字列の長さに含まれない。\n標準入力にscanf()を使用してはいけない。\n 課題においては、'string.h'の関数strlen()の使用は禁止。\n",
-    "executionTime": 1,
-    "memoryLimit": 1024,
-    "inputFmt": "",
-    "outputFmt": "",
-    "openDate": "2024-03-06T00:00:00+09:00",
-    "closeDate": "2024-03-11T23:59:59+09:00",
-    "borderScore": 20,
-    "testcaseWithPaths": [
+    "execution_time": 1,
+    "memory_limit": 1024,
+    "input_format": "",
+    "output_format": "",
+    "open_date": "2024-03-06T00:00:00+09:00",
+    "close_date": "2024-03-11T23:59:59+09:00",
+    "border_score": 20,
+    "testcase_with_paths": [
       {
-        "testcaseId": 1,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c6_1/1/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c6_1/1/output.txt"
+        "testcase_id": 1,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c6_1/1/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c6_1/1/output.txt"
       },
       {
-        "testcaseId": 2,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c6_1/2/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c6_1/2/output.txt"
+        "testcase_id": 2,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c6_1/2/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c6_1/2/output.txt"
       },
       {
-        "testcaseId": 3,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c6_1/3/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c6_1/3/output.txt"
+        "testcase_id": 3,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c6_1/3/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c6_1/3/output.txt"
       },
       {
-        "testcaseId": 4,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c6_1/4/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c6_1/4/output.txt"
+        "testcase_id": 4,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c6_1/4/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c6_1/4/output.txt"
       },
       {
-        "testcaseId": 5,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c6_1/5/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c6_1/5/output.txt"
+        "testcase_id": 5,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c6_1/5/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c6_1/5/output.txt"
       },
       {
-        "testcaseId": 6,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c6_1/6/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c6_1/6/output.txt"
+        "testcase_id": 6,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c6_1/6/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c6_1/6/output.txt"
       },
       {
-        "testcaseId": 7,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c6_1/7/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c6_1/7/output.txt"
+        "testcase_id": 7,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c6_1/7/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c6_1/7/output.txt"
       },
       {
-        "testcaseId": 8,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c6_1/8/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c6_1/8/output.txt"
+        "testcase_id": 8,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c6_1/8/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c6_1/8/output.txt"
       },
       {
-        "testcaseId": 9,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c6_1/9/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c6_1/9/output.txt"
+        "testcase_id": 9,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c6_1/9/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c6_1/9/output.txt"
       },
       {
-        "testcaseId": 10,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c6_1/10/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c6_1/10/output.txt"
+        "testcase_id": 10,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c6_1/10/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c6_1/10/output.txt"
       },
       {
-        "testcaseId": 11,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c6_1/11/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c6_1/11/output.txt"
+        "testcase_id": 11,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c6_1/11/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c6_1/11/output.txt"
       },
       {
-        "testcaseId": 12,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c6_1/12/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c6_1/12/output.txt"
+        "testcase_id": 12,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c6_1/12/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c6_1/12/output.txt"
       },
       {
-        "testcaseId": 13,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c6_1/13/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c6_1/13/output.txt"
+        "testcase_id": 13,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c6_1/13/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c6_1/13/output.txt"
       },
       {
-        "testcaseId": 14,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c6_1/14/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c6_1/14/output.txt"
+        "testcase_id": 14,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c6_1/14/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c6_1/14/output.txt"
       },
       {
-        "testcaseId": 15,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c6_1/15/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c6_1/15/output.txt"
+        "testcase_id": 15,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c6_1/15/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c6_1/15/output.txt"
       },
       {
-        "testcaseId": 16,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c6_1/16/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c6_1/16/output.txt"
+        "testcase_id": 16,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c6_1/16/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c6_1/16/output.txt"
       },
       {
-        "testcaseId": 17,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c6_1/17/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c6_1/17/output.txt"
+        "testcase_id": 17,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c6_1/17/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c6_1/17/output.txt"
       },
       {
-        "testcaseId": 18,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c6_1/18/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c6_1/18/output.txt"
+        "testcase_id": 18,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c6_1/18/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c6_1/18/output.txt"
       },
       {
-        "testcaseId": 19,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c6_1/19/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c6_1/19/output.txt"
+        "testcase_id": 19,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c6_1/19/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c6_1/19/output.txt"
       },
       {
-        "testcaseId": 20,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c6_1/20/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c6_1/20/output.txt"
+        "testcase_id": 20,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c6_1/20/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c6_1/20/output.txt"
       }
     ]
   },
   {
-    "id": 6,
-    "isPetitCoder": false,
+    "problem_id": 6,
+    "is_petit_coder": false,
     "name": "main_mystrlen2",
     "statement": "main関数の引数として与えられた文字列の長さを標準出力する関数main_mystrlen2.cを実装し、実行しましょう。",
     "constraints": "改行文字は文字列の長さに含まれない。\n標準入力にscanf()を使用してはいけない。\n 課題においては、'string.h'の関数strlen()の使用は禁止。\n",
-    "executionTime": 1,
-    "memoryLimit": 1024,
-    "inputFmt": "",
-    "outputFmt": "",
-    "openDate": "2024-03-06T00:00:00+09:00",
-    "closeDate": "2024-03-11T23:59:59+09:00",
-    "borderScore": 20,
-    "testcaseWithPaths": [
+    "execution_time": 1,
+    "memory_limit": 1024,
+    "input_format": "",
+    "output_format": "",
+    "open_date": "2024-03-06T00:00:00+09:00",
+    "close_date": "2024-03-11T23:59:59+09:00",
+    "border_score": 20,
+    "testcase_with_paths": [
       {
-        "testcaseId": 1,
-        "argsFilePath": "testcases/c/c6_2/1/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c6_2/1/output.txt"
+        "testcase_id": 1,
+        "args_file_path": "testcases/c/c6_2/1/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c6_2/1/output.txt"
       },
       {
-        "testcaseId": 2,
-        "argsFilePath": "testcases/c/c6_2/2/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c6_2/2/output.txt"
+        "testcase_id": 2,
+        "args_file_path": "testcases/c/c6_2/2/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c6_2/2/output.txt"
       },
       {
-        "testcaseId": 3,
-        "argsFilePath": "testcases/c/c6_2/3/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c6_2/3/output.txt"
+        "testcase_id": 3,
+        "args_file_path": "testcases/c/c6_2/3/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c6_2/3/output.txt"
       },
       {
-        "testcaseId": 4,
-        "argsFilePath": "testcases/c/c6_2/4/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c6_2/4/output.txt"
+        "testcase_id": 4,
+        "args_file_path": "testcases/c/c6_2/4/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c6_2/4/output.txt"
       },
       {
-        "testcaseId": 5,
-        "argsFilePath": "testcases/c/c6_2/5/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c6_2/5/output.txt"
+        "testcase_id": 5,
+        "args_file_path": "testcases/c/c6_2/5/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c6_2/5/output.txt"
       },
       {
-        "testcaseId": 6,
-        "argsFilePath": "testcases/c/c6_2/6/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c6_2/6/output.txt"
+        "testcase_id": 6,
+        "args_file_path": "testcases/c/c6_2/6/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c6_2/6/output.txt"
       },
       {
-        "testcaseId": 7,
-        "argsFilePath": "testcases/c/c6_2/7/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c6_2/7/output.txt"
+        "testcase_id": 7,
+        "args_file_path": "testcases/c/c6_2/7/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c6_2/7/output.txt"
       },
       {
-        "testcaseId": 8,
-        "argsFilePath": "testcases/c/c6_2/8/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c6_2/8/output.txt"
+        "testcase_id": 8,
+        "args_file_path": "testcases/c/c6_2/8/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c6_2/8/output.txt"
       },
       {
-        "testcaseId": 9,
-        "argsFilePath": "testcases/c/c6_2/9/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c6_2/9/output.txt"
+        "testcase_id": 9,
+        "args_file_path": "testcases/c/c6_2/9/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c6_2/9/output.txt"
       },
       {
-        "testcaseId": 10,
-        "argsFilePath": "testcases/c/c6_2/10/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c6_2/10/output.txt"
+        "testcase_id": 10,
+        "args_file_path": "testcases/c/c6_2/10/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c6_2/10/output.txt"
       },
       {
-        "testcaseId": 11,
-        "argsFilePath": "testcases/c/c6_2/11/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c6_2/11/output.txt"
+        "testcase_id": 11,
+        "args_file_path": "testcases/c/c6_2/11/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c6_2/11/output.txt"
       },
       {
-        "testcaseId": 12,
-        "argsFilePath": "testcases/c/c6_2/12/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c6_2/12/output.txt"
+        "testcase_id": 12,
+        "args_file_path": "testcases/c/c6_2/12/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c6_2/12/output.txt"
       },
       {
-        "testcaseId": 13,
-        "argsFilePath": "testcases/c/c6_2/13/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c6_2/13/output.txt"
+        "testcase_id": 13,
+        "args_file_path": "testcases/c/c6_2/13/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c6_2/13/output.txt"
       },
       {
-        "testcaseId": 14,
-        "argsFilePath": "testcases/c/c6_2/14/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c6_2/14/output.txt"
+        "testcase_id": 14,
+        "args_file_path": "testcases/c/c6_2/14/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c6_2/14/output.txt"
       },
       {
-        "testcaseId": 15,
-        "argsFilePath": "testcases/c/c6_2/15/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c6_2/15/output.txt"
+        "testcase_id": 15,
+        "args_file_path": "testcases/c/c6_2/15/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c6_2/15/output.txt"
       },
       {
-        "testcaseId": 16,
-        "argsFilePath": "testcases/c/c6_2/16/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c6_2/16/output.txt"
+        "testcase_id": 16,
+        "args_file_path": "testcases/c/c6_2/16/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c6_2/16/output.txt"
       },
       {
-        "testcaseId": 17,
-        "argsFilePath": "testcases/c/c6_2/17/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c6_2/17/output.txt"
+        "testcase_id": 17,
+        "args_file_path": "testcases/c/c6_2/17/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c6_2/17/output.txt"
       },
       {
-        "testcaseId": 18,
-        "argsFilePath": "testcases/c/c6_2/18/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c6_2/18/output.txt"
+        "testcase_id": 18,
+        "args_file_path": "testcases/c/c6_2/18/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c6_2/18/output.txt"
       },
       {
-        "testcaseId": 19,
-        "argsFilePath": "testcases/c/c6_2/19/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c6_2/19/output.txt"
+        "testcase_id": 19,
+        "args_file_path": "testcases/c/c6_2/19/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c6_2/19/output.txt"
       },
       {
-        "testcaseId": 20,
-        "argsFilePath": "testcases/c/c6_2/20/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c6_2/20/output.txt"
+        "testcase_id": 20,
+        "args_file_path": "testcases/c/c6_2/20/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c6_2/20/output.txt"
       }
     ]
   },
   {
-    "id": 8,
-    "isPetitCoder": false,
+    "problem_id": 8,
+    "is_petit_coder": false,
     "name": "main_SortStruct",
     "statement": "標準入力で与えられたplayers情報を年齢順にソートし、標準出力する main 関数の実装 (main_SortStruct.c)。\n\n注意事項\n• 前回までの課題で作成した mystr 系の関数を用いると良いかも？\n• メモリリークに気を付ける (free() を忘れない)\n• ソースコードを提出(ヘッダーファイルを用いたなら、それも忘れずに)",
     "constraints": "• 与えられる人数Nは 1<=N<=256\n• 年齢X_iは0 <=X_i <=  100\n• 年齢に数字以外が与えられた場合^D後にエラーを返す",
-    "executionTime": 1,
-    "memoryLimit": 1024,
-    "inputFmt": "名前1,年齢1\n名前2,年齢2\n...\n^D (Ctrl+D)",
-    "outputFmt": "名前1,年齢1\n名前2,年齢2\n...\n\n# エラーの場合\ninput error: name(str),age(int)",
-    "openDate": "2024-03-07T00:00:00+09:00",
-    "closeDate": "2024-03-12T23:59:59+09:00",
-    "borderScore": 11,
-    "testcaseWithPaths": [
+    "execution_time": 1,
+    "memory_limit": 1024,
+    "input_format": "名前1,年齢1\n名前2,年齢2\n...\n^D (Ctrl+D)",
+    "output_format": "名前1,年齢1\n名前2,年齢2\n...\n\n# エラーの場合\ninput error: name(str),age(int)",
+    "open_date": "2024-03-07T00:00:00+09:00",
+    "close_date": "2024-03-12T23:59:59+09:00",
+    "border_score": 11,
+    "testcase_with_paths": [
       {
-        "testcaseId": 1,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c8_1/1/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c8_1/1/output.txt"
+        "testcase_id": 1,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c8_1/1/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c8_1/1/output.txt"
       },
       {
-        "testcaseId": 2,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c8_1/2/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c8_1/2/output.txt"
+        "testcase_id": 2,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c8_1/2/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c8_1/2/output.txt"
       },
       {
-        "testcaseId": 3,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c8_1/3/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c8_1/3/output.txt"
+        "testcase_id": 3,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c8_1/3/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c8_1/3/output.txt"
       },
       {
-        "testcaseId": 4,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c8_1/4/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c8_1/4/output.txt"
+        "testcase_id": 4,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c8_1/4/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c8_1/4/output.txt"
       },
       {
-        "testcaseId": 5,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c8_1/5/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c8_1/5/output.txt"
+        "testcase_id": 5,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c8_1/5/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c8_1/5/output.txt"
       },
       {
-        "testcaseId": 6,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c8_1/6/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c8_1/6/output.txt"
+        "testcase_id": 6,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c8_1/6/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c8_1/6/output.txt"
       },
       {
-        "testcaseId": 7,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c8_1/7/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c8_1/7/output.txt"
+        "testcase_id": 7,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c8_1/7/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c8_1/7/output.txt"
       },
       {
-        "testcaseId": 8,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c8_1/8/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c8_1/8/output.txt"
+        "testcase_id": 8,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c8_1/8/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c8_1/8/output.txt"
       },
       {
-        "testcaseId": 9,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c8_1/9/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c8_1/9/output.txt"
+        "testcase_id": 9,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c8_1/9/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c8_1/9/output.txt"
       },
       {
-        "testcaseId": 10,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c8_1/10/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c8_1/10/output.txt"
+        "testcase_id": 10,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c8_1/10/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c8_1/10/output.txt"
       },
       {
-        "testcaseId": 11,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c8_1/11/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c8_1/11/output.txt"
+        "testcase_id": 11,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c8_1/11/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c8_1/11/output.txt"
       }
     ]
   },
   {
-    "id": 9,
-    "isPetitCoder": false,
+    "problem_id": 9,
+    "is_petit_coder": false,
     "name": "File",
     "statement": "ファイルから読み込んだ単語群を辞書順にソートし、別のファイルに出力するmain関数( file.c )の実装しましょう。",
     "constraints": "第1引数に入力ファイル名、第2引数に出力ファイル名を受け取る。\n単語数の上限は適当に静的に確保してください (define 文とかで、256ぐらいあれば大丈夫かと)\n ",
-    "executionTime": 1,
-    "memoryLimit": 1024,
-    "inputFmt": "",
-    "outputFmt": "",
-    "openDate": "2024-03-08T00:00:00+09:00",
-    "closeDate": "2024-03-12T23:59:59+09:00",
-    "borderScore": 19,
-    "testcaseWithPaths": [
+    "execution_time": 1,
+    "memory_limit": 1024,
+    "input_format": "",
+    "output_format": "",
+    "open_date": "2024-03-08T00:00:00+09:00",
+    "close_date": "2024-03-12T23:59:59+09:00",
+    "border_score": 19,
+    "testcase_with_paths": [
       {
-        "testcaseId": 1,
-        "argsFilePath": "testcases/c/c10_1/1/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": ["testcases/c/c10_1/1/input.txt"],
-        "outputFileName": "output.txt",
-        "answerFilePath": "testcases/c/c10_1/1/output.txt"
+        "testcase_id": 1,
+        "args_file_path": "testcases/c/c10_1/1/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [
+          "testcases/c/c10_1/1/input.txt"
+        ],
+        "output_file_name": "output.txt",
+        "answer_file_path": "testcases/c/c10_1/1/output.txt"
       },
       {
-        "testcaseId": 2,
-        "argsFilePath": "testcases/c/c10_1/2/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": ["testcases/c/c10_1/2/input.txt"],
-        "outputFileName": "output.txt",
-        "answerFilePath": "testcases/c/c10_1/2/output.txt"
+        "testcase_id": 2,
+        "args_file_path": "testcases/c/c10_1/2/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [
+          "testcases/c/c10_1/2/input.txt"
+        ],
+        "output_file_name": "output.txt",
+        "answer_file_path": "testcases/c/c10_1/2/output.txt"
       },
       {
-        "testcaseId": 3,
-        "argsFilePath": "testcases/c/c10_1/3/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": ["testcases/c/c10_1/3/input.txt"],
-        "outputFileName": "output.txt",
-        "answerFilePath": "testcases/c/c10_1/3/output.txt"
+        "testcase_id": 3,
+        "args_file_path": "testcases/c/c10_1/3/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [
+          "testcases/c/c10_1/3/input.txt"
+        ],
+        "output_file_name": "output.txt",
+        "answer_file_path": "testcases/c/c10_1/3/output.txt"
       },
       {
-        "testcaseId": 4,
-        "argsFilePath": "testcases/c/c10_1/4/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": ["testcases/c/c10_1/4/input.txt"],
-        "outputFileName": "output.txt",
-        "answerFilePath": "testcases/c/c10_1/4/output.txt"
+        "testcase_id": 4,
+        "args_file_path": "testcases/c/c10_1/4/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [
+          "testcases/c/c10_1/4/input.txt"
+        ],
+        "output_file_name": "output.txt",
+        "answer_file_path": "testcases/c/c10_1/4/output.txt"
       },
       {
-        "testcaseId": 5,
-        "argsFilePath": "testcases/c/c10_1/5/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": ["testcases/c/c10_1/5/input.txt"],
-        "outputFileName": "output.txt",
-        "answerFilePath": "testcases/c/c10_1/5/output.txt"
+        "testcase_id": 5,
+        "args_file_path": "testcases/c/c10_1/5/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [
+          "testcases/c/c10_1/5/input.txt"
+        ],
+        "output_file_name": "output.txt",
+        "answer_file_path": "testcases/c/c10_1/5/output.txt"
       },
       {
-        "testcaseId": 6,
-        "argsFilePath": "testcases/c/c10_1/6/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": ["testcases/c/c10_1/6/input.txt"],
-        "outputFileName": "output.txt",
-        "answerFilePath": "testcases/c/c10_1/6/output.txt"
+        "testcase_id": 6,
+        "args_file_path": "testcases/c/c10_1/6/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [
+          "testcases/c/c10_1/6/input.txt"
+        ],
+        "output_file_name": "output.txt",
+        "answer_file_path": "testcases/c/c10_1/6/output.txt"
       },
       {
-        "testcaseId": 7,
-        "argsFilePath": "testcases/c/c10_1/7/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": ["testcases/c/c10_1/7/input.txt"],
-        "outputFileName": "output.txt",
-        "answerFilePath": "testcases/c/c10_1/7/output.txt"
+        "testcase_id": 7,
+        "args_file_path": "testcases/c/c10_1/7/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [
+          "testcases/c/c10_1/7/input.txt"
+        ],
+        "output_file_name": "output.txt",
+        "answer_file_path": "testcases/c/c10_1/7/output.txt"
       },
       {
-        "testcaseId": 8,
-        "argsFilePath": "testcases/c/c10_1/8/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": ["testcases/c/c10_1/8/input.txt"],
-        "outputFileName": "output.txt",
-        "answerFilePath": "testcases/c/c10_1/8/output.txt"
+        "testcase_id": 8,
+        "args_file_path": "testcases/c/c10_1/8/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [
+          "testcases/c/c10_1/8/input.txt"
+        ],
+        "output_file_name": "output.txt",
+        "answer_file_path": "testcases/c/c10_1/8/output.txt"
       },
       {
-        "testcaseId": 9,
-        "argsFilePath": "testcases/c/c10_1/9/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": ["testcases/c/c10_1/9/input.txt"],
-        "outputFileName": "output.txt",
-        "answerFilePath": "testcases/c/c10_1/9/output.txt"
+        "testcase_id": 9,
+        "args_file_path": "testcases/c/c10_1/9/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [
+          "testcases/c/c10_1/9/input.txt"
+        ],
+        "output_file_name": "output.txt",
+        "answer_file_path": "testcases/c/c10_1/9/output.txt"
       },
       {
-        "testcaseId": 10,
-        "argsFilePath": "testcases/c/c10_1/10/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": ["testcases/c/c10_1/10/input.txt"],
-        "outputFileName": "output.txt",
-        "answerFilePath": "testcases/c/c10_1/10/output.txt"
+        "testcase_id": 10,
+        "args_file_path": "testcases/c/c10_1/10/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [
+          "testcases/c/c10_1/10/input.txt"
+        ],
+        "output_file_name": "output.txt",
+        "answer_file_path": "testcases/c/c10_1/10/output.txt"
       },
       {
-        "testcaseId": 11,
-        "argsFilePath": "testcases/c/c10_1/11/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": ["testcases/c/c10_1/11/input.txt"],
-        "outputFileName": "output.txt",
-        "answerFilePath": "testcases/c/c10_1/11/output.txt"
+        "testcase_id": 11,
+        "args_file_path": "testcases/c/c10_1/11/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [
+          "testcases/c/c10_1/11/input.txt"
+        ],
+        "output_file_name": "output.txt",
+        "answer_file_path": "testcases/c/c10_1/11/output.txt"
       },
       {
-        "testcaseId": 12,
-        "argsFilePath": "testcases/c/c10_1/12/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": ["testcases/c/c10_1/12/input.txt"],
-        "outputFileName": "output.txt",
-        "answerFilePath": "testcases/c/c10_1/12/output.txt"
+        "testcase_id": 12,
+        "args_file_path": "testcases/c/c10_1/12/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [
+          "testcases/c/c10_1/12/input.txt"
+        ],
+        "output_file_name": "output.txt",
+        "answer_file_path": "testcases/c/c10_1/12/output.txt"
       },
       {
-        "testcaseId": 13,
-        "argsFilePath": "testcases/c/c10_1/13/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": ["testcases/c/c10_1/13/input.txt"],
-        "outputFileName": "output.txt",
-        "answerFilePath": "testcases/c/c10_1/13/output.txt"
+        "testcase_id": 13,
+        "args_file_path": "testcases/c/c10_1/13/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [
+          "testcases/c/c10_1/13/input.txt"
+        ],
+        "output_file_name": "output.txt",
+        "answer_file_path": "testcases/c/c10_1/13/output.txt"
       },
       {
-        "testcaseId": 14,
-        "argsFilePath": "testcases/c/c10_1/14/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": ["testcases/c/c10_1/14/input.txt"],
-        "outputFileName": "output.txt",
-        "answerFilePath": "testcases/c/c10_1/14/output.txt"
+        "testcase_id": 14,
+        "args_file_path": "testcases/c/c10_1/14/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [
+          "testcases/c/c10_1/14/input.txt"
+        ],
+        "output_file_name": "output.txt",
+        "answer_file_path": "testcases/c/c10_1/14/output.txt"
       },
       {
-        "testcaseId": 15,
-        "argsFilePath": "testcases/c/c10_1/15/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": ["testcases/c/c10_1/15/input.txt"],
-        "outputFileName": "output.txt",
-        "answerFilePath": "testcases/c/c10_1/15/output.txt"
+        "testcase_id": 15,
+        "args_file_path": "testcases/c/c10_1/15/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [
+          "testcases/c/c10_1/15/input.txt"
+        ],
+        "output_file_name": "output.txt",
+        "answer_file_path": "testcases/c/c10_1/15/output.txt"
       },
       {
-        "testcaseId": 16,
-        "argsFilePath": "testcases/c/c10_1/16/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": ["testcases/c/c10_1/16/input.txt"],
-        "outputFileName": "output.txt",
-        "answerFilePath": "testcases/c/c10_1/16/output.txt"
+        "testcase_id": 16,
+        "args_file_path": "testcases/c/c10_1/16/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [
+          "testcases/c/c10_1/16/input.txt"
+        ],
+        "output_file_name": "output.txt",
+        "answer_file_path": "testcases/c/c10_1/16/output.txt"
       },
       {
-        "testcaseId": 17,
-        "argsFilePath": "testcases/c/c10_1/17/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": ["testcases/c/c10_1/17/input.txt"],
-        "outputFileName": "output.txt",
-        "answerFilePath": "testcases/c/c10_1/17/output.txt"
+        "testcase_id": 17,
+        "args_file_path": "testcases/c/c10_1/17/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [
+          "testcases/c/c10_1/17/input.txt"
+        ],
+        "output_file_name": "output.txt",
+        "answer_file_path": "testcases/c/c10_1/17/output.txt"
       },
       {
-        "testcaseId": 18,
-        "argsFilePath": "testcases/c/c10_1/18/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": ["testcases/c/c10_1/18/input.txt"],
-        "outputFileName": "output.txt",
-        "answerFilePath": "testcases/c/c10_1/18/output.txt"
+        "testcase_id": 18,
+        "args_file_path": "testcases/c/c10_1/18/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [
+          "testcases/c/c10_1/18/input.txt"
+        ],
+        "output_file_name": "output.txt",
+        "answer_file_path": "testcases/c/c10_1/18/output.txt"
       },
       {
-        "testcaseId": 19,
-        "argsFilePath": "testcases/c/c10_1/19/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": ["testcases/c/c10_1/19/input.txt"],
-        "outputFileName": "output.txt",
-        "answerFilePath": "testcases/c/c10_1/19/output.txt"
+        "testcase_id": 19,
+        "args_file_path": "testcases/c/c10_1/19/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [
+          "testcases/c/c10_1/19/input.txt"
+        ],
+        "output_file_name": "output.txt",
+        "answer_file_path": "testcases/c/c10_1/19/output.txt"
       },
       {
-        "testcaseId": 20,
-        "argsFilePath": "testcases/c/c10_1/20/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": ["testcases/c/c10_1/20/input.txt"],
-        "outputFileName": "output.txt",
-        "answerFilePath": "testcases/c/c10_1/20/output.txt"
+        "testcase_id": 20,
+        "args_file_path": "testcases/c/c10_1/20/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [
+          "testcases/c/c10_1/20/input.txt"
+        ],
+        "output_file_name": "output.txt",
+        "answer_file_path": "testcases/c/c10_1/20/output.txt"
       }
     ]
   },
   {
-    "id": 10,
-    "isPetitCoder": false,
+    "problem_id": 10,
+    "is_petit_coder": false,
     "name": "main_mystrsubst",
     "statement": "標準入力で与えられた文字列s1,s2,s3を用いて新たな文字列new_strを標準出力する関数main_mystrsubst.cの実装しましょう。",
     "constraints": "新しい文字列のメモリは関数mystrsubst()内で適切なサイズを動的に確保する\n",
-    "executionTime": 1,
-    "memoryLimit": 1024,
-    "inputFmt": "",
-    "outputFmt": "",
-    "openDate": "2024-03-08T00:00:00+09:00",
-    "closeDate": "2024-03-12T23:59:59+09:00",
-    "borderScore": 20,
-    "testcaseWithPaths": [
+    "execution_time": 1,
+    "memory_limit": 1024,
+    "input_format": "",
+    "output_format": "",
+    "open_date": "2024-03-08T00:00:00+09:00",
+    "close_date": "2024-03-12T23:59:59+09:00",
+    "border_score": 20,
+    "testcase_with_paths": [
       {
-        "testcaseId": 1,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c10_2/1/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c10_2/1/output.txt"
+        "testcase_id": 1,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c10_2/1/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c10_2/1/output.txt"
       },
       {
-        "testcaseId": 2,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c10_2/2/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c10_2/2/output.txt"
+        "testcase_id": 2,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c10_2/2/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c10_2/2/output.txt"
       },
       {
-        "testcaseId": 3,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c10_2/3/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c10_2/3/output.txt"
+        "testcase_id": 3,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c10_2/3/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c10_2/3/output.txt"
       },
       {
-        "testcaseId": 4,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c10_2/4/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c10_2/4/output.txt"
+        "testcase_id": 4,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c10_2/4/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c10_2/4/output.txt"
       },
       {
-        "testcaseId": 5,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c10_2/5/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c10_2/5/output.txt"
+        "testcase_id": 5,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c10_2/5/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c10_2/5/output.txt"
       },
       {
-        "testcaseId": 6,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c10_2/6/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c10_2/6/output.txt"
+        "testcase_id": 6,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c10_2/6/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c10_2/6/output.txt"
       },
       {
-        "testcaseId": 7,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c10_2/7/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c10_2/7/output.txt"
+        "testcase_id": 7,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c10_2/7/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c10_2/7/output.txt"
       },
       {
-        "testcaseId": 8,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c10_2/8/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c10_2/8/output.txt"
+        "testcase_id": 8,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c10_2/8/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c10_2/8/output.txt"
       },
       {
-        "testcaseId": 9,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c10_2/9/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c10_2/9/output.txt"
+        "testcase_id": 9,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c10_2/9/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c10_2/9/output.txt"
       },
       {
-        "testcaseId": 10,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c10_2/10/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c10_2/10/output.txt"
+        "testcase_id": 10,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c10_2/10/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c10_2/10/output.txt"
       },
       {
-        "testcaseId": 11,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c10_2/11/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c10_2/11/output.txt"
+        "testcase_id": 11,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c10_2/11/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c10_2/11/output.txt"
       },
       {
-        "testcaseId": 12,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c10_2/12/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c10_2/12/output.txt"
+        "testcase_id": 12,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c10_2/12/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c10_2/12/output.txt"
       },
       {
-        "testcaseId": 13,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c10_2/13/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c10_2/13/output.txt"
+        "testcase_id": 13,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c10_2/13/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c10_2/13/output.txt"
       },
       {
-        "testcaseId": 14,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c10_2/14/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c10_2/14/output.txt"
+        "testcase_id": 14,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c10_2/14/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c10_2/14/output.txt"
       },
       {
-        "testcaseId": 15,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c10_2/15/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c10_2/15/output.txt"
+        "testcase_id": 15,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c10_2/15/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c10_2/15/output.txt"
       },
       {
-        "testcaseId": 16,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c10_2/16/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c10_2/16/output.txt"
+        "testcase_id": 16,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c10_2/16/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c10_2/16/output.txt"
       },
       {
-        "testcaseId": 17,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c10_2/17/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c10_2/17/output.txt"
+        "testcase_id": 17,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c10_2/17/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c10_2/17/output.txt"
       },
       {
-        "testcaseId": 18,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c10_2/18/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c10_2/18/output.txt"
+        "testcase_id": 18,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c10_2/18/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c10_2/18/output.txt"
       },
       {
-        "testcaseId": 19,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c10_2/19/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c10_2/19/output.txt"
+        "testcase_id": 19,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c10_2/19/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c10_2/19/output.txt"
       },
       {
-        "testcaseId": 20,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c10_2/20/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c10_2/20/output.txt"
+        "testcase_id": 20,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c10_2/20/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c10_2/20/output.txt"
       }
     ]
   },
   {
-    "id": 11,
-    "isPetitCoder": false,
+    "problem_id": 11,
+    "is_petit_coder": false,
     "name": "DictStruct",
     "statement": "コマンドライン引数の文字列を辞書順にソートし、標準出力する main 関数の実装 (main_DictStruct.c)。",
     "constraints": "• 与えられる要素数Nは  1<=N<=256\n• 文字列の長さX_i は  1<=N<=256\n• コマンドライン引数が与えられない場合usageを返す",
-    "executionTime": 1,
-    "memoryLimit": 1024,
-    "inputFmt": "./a.out 文字列1 文字列2 ...",
-    "outputFmt": "input_args\nstring index\n文字列1 1\n文字列2 2\n...\n\nsorted data\nstring index\n文字列2 2\n文字列1 1\n\n# エラーの場合\nusage: ./a.out target-args",
-    "openDate": "2024-03-07T00:00:00+09:00",
-    "closeDate": "2024-03-12T23:59:59+09:00",
-    "borderScore": 7,
-    "testcaseWithPaths": [
+    "execution_time": 1,
+    "memory_limit": 1024,
+    "input_format": "./a.out 文字列1 文字列2 ...",
+    "output_format": "input_args\nstring index\n文字列1 1\n文字列2 2\n...\n\nsorted data\nstring index\n文字列2 2\n文字列1 1\n\n# エラーの場合\nusage: ./a.out target-args",
+    "open_date": "2024-03-07T00:00:00+09:00",
+    "close_date": "2024-03-12T23:59:59+09:00",
+    "border_score": 7,
+    "testcase_with_paths": [
       {
-        "testcaseId": 1,
-        "argsFilePath": "testcases/c/c8_2/1/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c8_2/1/output.txt"
+        "testcase_id": 1,
+        "args_file_path": "testcases/c/c8_2/1/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c8_2/1/output.txt"
       },
       {
-        "testcaseId": 2,
-        "argsFilePath": "testcases/c/c8_2/2/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c8_2/2/output.txt"
+        "testcase_id": 2,
+        "args_file_path": "testcases/c/c8_2/2/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c8_2/2/output.txt"
       },
       {
-        "testcaseId": 3,
-        "argsFilePath": "testcases/c/c8_2/3/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c8_2/3/output.txt"
+        "testcase_id": 3,
+        "args_file_path": "testcases/c/c8_2/3/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c8_2/3/output.txt"
       },
       {
-        "testcaseId": 4,
-        "argsFilePath": "testcases/c/c8_2/4/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c8_2/4/output.txt"
+        "testcase_id": 4,
+        "args_file_path": "testcases/c/c8_2/4/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c8_2/4/output.txt"
       },
       {
-        "testcaseId": 5,
-        "argsFilePath": "testcases/c/c8_2/5/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c8_2/5/output.txt"
+        "testcase_id": 5,
+        "args_file_path": "testcases/c/c8_2/5/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c8_2/5/output.txt"
       },
       {
-        "testcaseId": 6,
-        "argsFilePath": "testcases/c/c8_2/6/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c8_2/6/output.txt"
+        "testcase_id": 6,
+        "args_file_path": "testcases/c/c8_2/6/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c8_2/6/output.txt"
       },
       {
-        "testcaseId": 7,
-        "argsFilePath": "testcases/c/c8_2/7/args.txt",
-        "stdinFilePath": "",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c8_2/7/output.txt"
+        "testcase_id": 7,
+        "args_file_path": "testcases/c/c8_2/7/args.txt",
+        "stdin_file_path": "",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c8_2/7/output.txt"
       }
     ]
   },
   {
-    "id": 12,
-    "isPetitCoder": false,
+    "problem_id": 12,
+    "is_petit_coder": false,
     "name": "mystrcpy",
     "statement": "標準入力で与えられた文字列をコピーして標準出力するmain関数の実装。",
     "constraints": "• 入力は任意の文字列",
-    "executionTime": 1,
-    "memoryLimit": 1024,
-    "inputFmt": "文字列",
-    "outputFmt": "input_str: 文字列\ncopied_str: コピーされた文字列",
-    "openDate": "2024-03-07T00:00:00+09:00",
-    "closeDate": "2024-03-12T23:59:59+09:00",
-    "borderScore": 3,
-    "testcaseWithPaths": [
+    "execution_time": 1,
+    "memory_limit": 1024,
+    "input_format": "文字列",
+    "output_format": "input_str: 文字列\ncopied_str: コピーされた文字列",
+    "open_date": "2024-03-07T00:00:00+09:00",
+    "close_date": "2024-03-12T23:59:59+09:00",
+    "border_score": 3,
+    "testcase_with_paths": [
       {
-        "testcaseId": 1,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c7_1/1/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c7_1/1/output.txt"
+        "testcase_id": 1,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c7_1/1/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c7_1/1/output.txt"
       },
       {
-        "testcaseId": 2,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c7_1/2/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c7_1/2/output.txt"
+        "testcase_id": 2,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c7_1/2/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c7_1/2/output.txt"
       },
       {
-        "testcaseId": 3,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c7_1/3/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c7_1/3/output.txt"
+        "testcase_id": 3,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c7_1/3/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c7_1/3/output.txt"
       }
     ]
   },
   {
-    "id": 13,
-    "isPetitCoder": false,
+    "problem_id": 13,
+    "is_petit_coder": false,
     "name": "mystrncpy",
     "statement": "標準入力で与えられた文字列をn文字目までコピーして標準出力するmain関数の実装。",
     "constraints": "• 1つ目の入力は任意の文字列\n• 2つ目の入力は任意の整数",
-    "executionTime": 1,
-    "memoryLimit": 1024,
-    "inputFmt": "文字列\n数字(n)",
-    "outputFmt": "input_str: 文字列\ncopied_str: コピーされた文字列",
-    "openDate": "2024-03-07T00:00:00+09:00",
-    "closeDate": "2024-03-12T23:59:59+09:00",
-    "borderScore": 4,
-    "testcaseWithPaths": [
+    "execution_time": 1,
+    "memory_limit": 1024,
+    "input_format": "文字列\n数字(n)",
+    "output_format": "input_str: 文字列\ncopied_str: コピーされた文字列",
+    "open_date": "2024-03-07T00:00:00+09:00",
+    "close_date": "2024-03-12T23:59:59+09:00",
+    "border_score": 4,
+    "testcase_with_paths": [
       {
-        "testcaseId": 1,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c7_2/1/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c7_2/1/output.txt"
+        "testcase_id": 1,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c7_2/1/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c7_2/1/output.txt"
       },
       {
-        "testcaseId": 2,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c7_2/2/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c7_2/2/output.txt"
+        "testcase_id": 2,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c7_2/2/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c7_2/2/output.txt"
       },
       {
-        "testcaseId": 3,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c7_2/3/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c7_2/3/output.txt"
+        "testcase_id": 3,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c7_2/3/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c7_2/3/output.txt"
       },
       {
-        "testcaseId": 4,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c7_2/4/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c7_2/4/output.txt"
+        "testcase_id": 4,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c7_2/4/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c7_2/4/output.txt"
       }
     ]
   },
   {
-    "id": 14,
-    "isPetitCoder": false,
+    "problem_id": 14,
+    "is_petit_coder": false,
     "name": "mystrcmp",
     "statement": "標準入力で与えられた2つの文字列を比較した結果をmain関数の実装 (main_mystrcmp.c)。",
     "constraints": "入力は任意の文字列",
-    "executionTime": 1,
-    "memoryLimit": 1024,
-    "inputFmt": "文字列1\n文字列2",
-    "outputFmt": "s1 ( < or > or == ) s2",
-    "openDate": "2024-03-07T00:00:00+09:00",
-    "closeDate": "2024-03-12T23:59:59+09:00",
-    "borderScore": 6,
-    "testcaseWithPaths": [
+    "execution_time": 1,
+    "memory_limit": 1024,
+    "input_format": "文字列1\n文字列2",
+    "output_format": "s1 ( < or > or == ) s2",
+    "open_date": "2024-03-07T00:00:00+09:00",
+    "close_date": "2024-03-12T23:59:59+09:00",
+    "border_score": 6,
+    "testcase_with_paths": [
       {
-        "testcaseId": 1,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c7_3/1/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c7_3/1/output.txt"
+        "testcase_id": 1,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c7_3/1/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c7_3/1/output.txt"
       },
       {
-        "testcaseId": 2,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c7_3/2/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c7_3/2/output.txt"
+        "testcase_id": 2,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c7_3/2/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c7_3/2/output.txt"
       },
       {
-        "testcaseId": 3,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c7_3/3/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c7_3/3/output.txt"
+        "testcase_id": 3,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c7_3/3/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c7_3/3/output.txt"
       },
       {
-        "testcaseId": 4,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c7_3/4/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c7_3/4/output.txt"
+        "testcase_id": 4,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c7_3/4/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c7_3/4/output.txt"
       },
       {
-        "testcaseId": 5,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c7_3/5/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c7_3/5/output.txt"
+        "testcase_id": 5,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c7_3/5/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c7_3/5/output.txt"
       },
       {
-        "testcaseId": 6,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c7_3/6/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c7_3/6/output.txt"
+        "testcase_id": 6,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c7_3/6/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c7_3/6/output.txt"
       }
     ]
   },
   {
-    "id": 15,
-    "isPetitCoder": false,
+    "problem_id": 15,
+    "is_petit_coder": false,
     "name": "mystrncmp",
     "statement": "標準入力で与えられた2つの文字列をn文字目まで比較した結果をmain関数の実装 (main_mystrcmp.c)。",
     "constraints": "• 1つ目と2つ目の入力は任意の文字列\n• 3つ目の入力は任意の整数",
-    "executionTime": 1,
-    "memoryLimit": 1024,
-    "inputFmt": "文字列1\n文字列2\n数字(n)",
-    "outputFmt": "s1 ( < or > or == ) s2",
-    "openDate": "2024-03-07T00:00:00+09:00",
-    "closeDate": "2024-03-12T23:59:59+09:00",
-    "borderScore": 8,
-    "testcaseWithPaths": [
+    "execution_time": 1,
+    "memory_limit": 1024,
+    "input_format": "文字列1\n文字列2\n数字(n)",
+    "output_format": "s1 ( < or > or == ) s2",
+    "open_date": "2024-03-07T00:00:00+09:00",
+    "close_date": "2024-03-12T23:59:59+09:00",
+    "border_score": 8,
+    "testcase_with_paths": [
       {
-        "testcaseId": 1,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c7_4/1/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c7_4/1/output.txt"
+        "testcase_id": 1,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c7_4/1/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c7_4/1/output.txt"
       },
       {
-        "testcaseId": 2,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c7_4/2/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c7_4/2/output.txt"
+        "testcase_id": 2,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c7_4/2/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c7_4/2/output.txt"
       },
       {
-        "testcaseId": 3,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c7_4/3/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c7_4/3/output.txt"
+        "testcase_id": 3,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c7_4/3/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c7_4/3/output.txt"
       },
       {
-        "testcaseId": 4,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c7_4/4/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c7_4/4/output.txt"
+        "testcase_id": 4,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c7_4/4/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c7_4/4/output.txt"
       },
       {
-        "testcaseId": 5,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c7_4/5/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c7_4/5/output.txt"
+        "testcase_id": 5,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c7_4/5/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c7_4/5/output.txt"
       },
       {
-        "testcaseId": 6,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c7_4/6/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c7_4/6/output.txt"
+        "testcase_id": 6,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c7_4/6/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c7_4/6/output.txt"
       },
       {
-        "testcaseId": 7,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c7_4/7/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c7_4/7/output.txt"
+        "testcase_id": 7,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c7_4/7/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c7_4/7/output.txt"
       },
       {
-        "testcaseId": 8,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/c/c7_4/8/input.txt",
-        "inputFilePathList": [],
-        "outputFileName": "",
-        "answerFilePath": "testcases/c/c7_4/8/output.txt"
+        "testcase_id": 8,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c7_4/8/input.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c7_4/8/output.txt"
       }
     ]
   },
   {
-    "id": 16,
-    "isPetitCoder": true,
+    "problem_id": 16,
+    "is_petit_coder": true,
     "name": "[PC_EASY] Your Name",
     "statement": "長さLcmの橋の上にFunasoul君がたくさんおり、毎秒1cmのスピードで橋の上を歩いています。\n各Funasoul君は左右のどちらかを向いており、橋の端に到達するとFunasoul君は落ちていきます。(Funasoul君はとても丈夫な体の持ち主です)\n橋は非常に幅が狭いため、Funasoul君同士が出会うとそれぞれ反対方向を向き戻っていきます。\nあなたには各Funasoul君が橋の左端から何cmのところに存在するかは配列で与えられますが、各Funasoul君が左右どちらを向いているかは与えられません。\n全てのFunasoul君が橋の上から落ちていなくなるまでの最小の時間と最大の時間を教えてください。",
     "constraints": "N <= 10^5",
-    "executionTime": 1,
-    "memoryLimit": 1024,
-    "inputFmt": "2行に渡って与えられる。\n先頭行には橋の長さLと橋の上に存在するFunasoul君の数Nが空白区切りで与えられる。\n2行目には各Funasoul君が橋の左端からどのくらいの位置にいるかが整数の配列として与えられる。",
-    "outputFmt": "出力は1行目に最小の時間、2行目に最大の時間を出力してください",
-    "openDate": "2024-03-26T10:45:00+09:00",
-    "closeDate": "2024-03-26T12:15:00+09:00",
-    "borderScore": 6,
-    "testcaseWithPaths": [
+    "execution_time": 1,
+    "memory_limit": 1024,
+    "input_format": "2行に渡って与えられる。\n先頭行には橋の長さLと橋の上に存在するFunasoul君の数Nが空白区切りで与えられる。\n2行目には各Funasoul君が橋の左端からどのくらいの位置にいるかが整数の配列として与えられる。",
+    "output_format": "出力は1行目に最小の時間、2行目に最大の時間を出力してください",
+    "open_date": "2024-03-26T10:45:00+09:00",
+    "close_date": "2024-03-26T12:15:00+09:00",
+    "border_score": 6,
+    "testcase_with_paths": [
       {
-        "testcaseId": 1,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/pc/2024/easy/in_sample.txt",
-        "inputFilePathList": [],
-        "outputFilePath": "",
-        "answerFilePath": "testcases/pc/2024/easy/out_sample.txt"
+        "testcase_id": 1,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/pc/2024/easy/in_sample.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/pc/2024/easy/out_sample.txt"
       },
       {
-        "testcaseId": 2,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/pc/2024/easy/input1.txt",
-        "inputFilePathList": [],
-        "outputFilePath": "",
-        "answerFilePath": "testcases/pc/2024/easy/output1.txt"
+        "testcase_id": 2,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/pc/2024/easy/input1.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/pc/2024/easy/output1.txt"
       },
       {
-        "testcaseId": 3,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/pc/2024/easy/input2.txt",
-        "inputFilePathList": [],
-        "outputFilePath": "",
-        "answerFilePath": "testcases/pc/2024/easy/output2.txt"
+        "testcase_id": 3,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/pc/2024/easy/input2.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/pc/2024/easy/output2.txt"
       },
       {
-        "testcaseId": 4,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/pc/2024/easy/input3.txt",
-        "inputFilePathList": [],
-        "outputFilePath": "",
-        "answerFilePath": "testcases/pc/2024/easy/output3.txt"
+        "testcase_id": 4,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/pc/2024/easy/input3.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/pc/2024/easy/output3.txt"
       },
       {
-        "testcaseId": 5,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/pc/2024/easy/input4.txt",
-        "inputFilePathList": [],
-        "outputFilePath": "",
-        "answerFilePath": "testcases/pc/2024/easy/output4.txt"
+        "testcase_id": 5,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/pc/2024/easy/input4.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/pc/2024/easy/output4.txt"
       },
       {
-        "testcaseId": 6,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/pc/2024/easy/input5.txt",
-        "inputFilePathList": [],
-        "outputFilePath": "",
-        "answerFilePath": "testcases/pc/2024/easy/output5.txt"
+        "testcase_id": 6,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/pc/2024/easy/input5.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/pc/2024/easy/output5.txt"
       }
     ]
   },
   {
-    "id": 17,
-    "isPetitCoder": true,
+    "problem_id": 17,
+    "is_petit_coder": true,
     "name": "[PC_MEDIUM] Reverse List",
     "statement": "要素数Nのリストが与えられます。\nこの時、与えられる連結リストの[left, right]の区間を反転する関数reverseBetween(ListNode* head, int left, int right)を作成してください。\nheadは与えられる連結リストの先頭、left, rightは1から始まる連結リストの各要素を表すIndexです。\n\n注意: ListNodeを変更することは不可です。配布ファイルのmedium.cのみを編集してください。また、メモリ上にListNodeを確保する際にはmallocを使ってください。あらかじめ与えられる要素の数も不定です。",
     "constraints": "",
-    "executionTime": 1,
-    "memoryLimit": 1024,
-    "inputFmt": "N\n[リスト]\nleft right",
-    "outputFmt": "反転後のリストを改行区切りで出力",
-    "openDate": "2024-03-26T10:45:00+09:00",
-    "closeDate": "2024-03-26T12:15:00+09:00",
-    "borderScore": 6,
-    "testcaseWithPaths": [
+    "execution_time": 1,
+    "memory_limit": 1024,
+    "input_format": "N\n[リスト]\nleft right",
+    "output_format": "反転後のリストを改行区切りで出力",
+    "open_date": "2024-03-26T10:45:00+09:00",
+    "close_date": "2024-03-26T12:15:00+09:00",
+    "border_score": 6,
+    "testcase_with_paths": [
       {
-        "testcaseId": 1,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/pc/2024/medium/in_sample.txt",
-        "outputFilePath": "",
-        "answerFilePath": "testcases/pc/2024/medium/out_sample.txt"
+        "testcase_id": 1,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/pc/2024/medium/in_sample.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/pc/2024/medium/out_sample.txt"
       },
       {
-        "testcaseId": 2,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/pc/2024/medium/input1.txt",
-        "outputFilePath": "",
-        "answerFilePath": "testcases/pc/2024/medium/output1.txt"
+        "testcase_id": 2,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/pc/2024/medium/input1.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/pc/2024/medium/output1.txt"
       },
       {
-        "testcaseId": 3,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/pc/2024/medium/input2.txt",
-        "outputFilePath": "",
-        "answerFilePath": "testcases/pc/2024/medium/output2.txt"
+        "testcase_id": 3,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/pc/2024/medium/input2.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/pc/2024/medium/output2.txt"
       },
       {
-        "testcaseId": 4,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/pc/2024/medium/input3.txt",
-        "outputFilePath": "",
-        "answerFilePath": "testcases/pc/2024/medium/output3.txt"
+        "testcase_id": 4,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/pc/2024/medium/input3.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/pc/2024/medium/output3.txt"
       },
       {
-        "testcaseId": 5,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/pc/2024/medium/input4.txt",
-        "outputFilePath": "",
-        "answerFilePath": "testcases/pc/2024/medium/output4.txt"
+        "testcase_id": 5,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/pc/2024/medium/input4.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/pc/2024/medium/output4.txt"
       },
       {
-        "testcaseId": 6,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/pc/2024/medium/input5.txt",
-        "outputFilePath": "",
-        "answerFilePath": "testcases/pc/2024/medium/output5.txt"
+        "testcase_id": 6,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/pc/2024/medium/input5.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/pc/2024/medium/output5.txt"
       }
     ]
   },
   {
-    "id": 18,
-    "isPetitCoder": true,
+    "problem_id": 18,
+    "is_petit_coder": true,
     "name": "[PC_HARD] Be a King of Pirates!",
     "statement": "Funasoul君の夢は海賊王になることです。\nFunasoul君は手始めに海に存在する島を片っ端から制圧することにしました。\nあなたにはFunasoul君から地図が与えられます。\n地図の大きさはNxMで表され(Nが縦、Mが横)、0,1で描かれており、1が島、0が海を表しています。\n地図上で縦, 横または斜め方向に隣接している2つの島は1つの大きな島と考えてください。\nFunasoul君は海賊王になりたくてうずうずしています。\n彼の夢を叶えるために早急に何個の島を制圧する必要があるか教えてください。",
     "constraints": "",
-    "executionTime": 1,
-    "memoryLimit": 1024,
-    "inputFmt": "M N\n2行目以降にNxMの0,1で埋められた配列が与えられる。",
-    "outputFmt": "島の数を整数で標準出力に出力せよ。",
-    "openDate": "2024-03-26T10:45:00+09:00",
-    "closeDate": "2024-03-26T12:15:00+09:00",
-    "borderScore": 16,
-    "testcaseWithPaths": [
+    "execution_time": 1,
+    "memory_limit": 1024,
+    "input_format": "M N\n2行目以降にNxMの0,1で埋められた配列が与えられる。",
+    "output_format": "島の数を整数で標準出力に出力せよ。",
+    "open_date": "2024-03-26T10:45:00+09:00",
+    "close_date": "2024-03-26T12:15:00+09:00",
+    "border_score": 16,
+    "testcase_with_paths": [
       {
-        "testcaseId": 1,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/pc/2024/hard/in_sample1.txt",
-        "inputFilePathList": [],
-        "outputFilePath": "",
-        "answerFilePath": "testcases/pc/2024/hard/out_sample1.txt"
+        "testcase_id": 1,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/pc/2024/hard/in_sample1.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/pc/2024/hard/out_sample1.txt"
       },
       {
-        "testcaseId": 2,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/pc/2024/hard/in_sample2.txt",
-        "inputFilePathList": [],
-        "outputFilePath": "",
-        "answerFilePath": "testcases/pc/2024/hard/out_sample2.txt"
+        "testcase_id": 2,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/pc/2024/hard/in_sample2.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/pc/2024/hard/out_sample2.txt"
       },
       {
-        "testcaseId": 3,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/pc/2024/hard/in_sample3.txt",
-        "inputFilePathList": [],
-        "outputFilePath": "",
-        "answerFilePath": "testcases/pc/2024/hard/out_sample3.txt"
+        "testcase_id": 3,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/pc/2024/hard/in_sample3.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/pc/2024/hard/out_sample3.txt"
       },
       {
-        "testcaseId": 4,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/pc/2024/hard/in_sample4.txt",
-        "inputFilePathList": [],
-        "outputFilePath": "",
-        "answerFilePath": "testcases/pc/2024/hard/out_sample4.txt"
+        "testcase_id": 4,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/pc/2024/hard/in_sample4.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/pc/2024/hard/out_sample4.txt"
       },
       {
-        "testcaseId": 5,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/pc/2024/hard/in_sample5.txt",
-        "inputFilePathList": [],
-        "outputFilePath": "",
-        "answerFilePath": "testcases/pc/2024/hard/out_sample5.txt"
+        "testcase_id": 5,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/pc/2024/hard/in_sample5.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/pc/2024/hard/out_sample5.txt"
       },
       {
-        "testcaseId": 6,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/pc/2024/hard/in_sample6.txt",
-        "inputFilePathList": [],
-        "outputFilePath": "",
-        "answerFilePath": "testcases/pc/2024/hard/out_sample6.txt"
+        "testcase_id": 6,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/pc/2024/hard/in_sample6.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/pc/2024/hard/out_sample6.txt"
       },
       {
-        "testcaseId": 7,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/pc/2024/hard/input1.txt",
-        "inputFilePathList": [],
-        "outputFilePath": "",
-        "answerFilePath": "testcases/pc/2024/hard/output1.txt"
+        "testcase_id": 7,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/pc/2024/hard/input1.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/pc/2024/hard/output1.txt"
       },
       {
-        "testcaseId": 8,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/pc/2024/hard/input2.txt",
-        "inputFilePathList": [],
-        "outputFilePath": "",
-        "answerFilePath": "testcases/pc/2024/hard/output2.txt"
+        "testcase_id": 8,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/pc/2024/hard/input2.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/pc/2024/hard/output2.txt"
       },
       {
-        "testcaseId": 9,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/pc/2024/hard/input3.txt",
-        "inputFilePathList": [],
-        "outputFilePath": "",
-        "answerFilePath": "testcases/pc/2024/hard/output3.txt"
+        "testcase_id": 9,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/pc/2024/hard/input3.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/pc/2024/hard/output3.txt"
       },
       {
-        "testcaseId": 10,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/pc/2024/hard/input4.txt",
-        "inputFilePathList": [],
-        "outputFilePath": "",
-        "answerFilePath": "testcases/pc/2024/hard/output4.txt"
+        "testcase_id": 10,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/pc/2024/hard/input4.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/pc/2024/hard/output4.txt"
       },
       {
-        "testcaseId": 11,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/pc/2024/hard/input5.txt",
-        "inputFilePathList": [],
-        "outputFilePath": "",
-        "answerFilePath": "testcases/pc/2024/hard/output5.txt"
+        "testcase_id": 11,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/pc/2024/hard/input5.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/pc/2024/hard/output5.txt"
       },
       {
-        "testcaseId": 12,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/pc/2024/hard/input6.txt",
-        "inputFilePathList": [],
-        "outputFilePath": "",
-        "answerFilePath": "testcases/pc/2024/hard/output6.txt"
+        "testcase_id": 12,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/pc/2024/hard/input6.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/pc/2024/hard/output6.txt"
       },
       {
-        "testcaseId": 13,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/pc/2024/hard/input7.txt",
-        "inputFilePathList": [],
-        "outputFilePath": "",
-        "answerFilePath": "testcases/pc/2024/hard/output7.txt"
+        "testcase_id": 13,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/pc/2024/hard/input7.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/pc/2024/hard/output7.txt"
       },
       {
-        "testcaseId": 14,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/pc/2024/hard/input8.txt",
-        "inputFilePathList": [],
-        "outputFilePath": "",
-        "answerFilePath": "testcases/pc/2024/hard/output8.txt"
+        "testcase_id": 14,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/pc/2024/hard/input8.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/pc/2024/hard/output8.txt"
       },
       {
-        "testcaseId": 15,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/pc/2024/hard/input9.txt",
-        "inputFilePathList": [],
-        "outputFilePath": "",
-        "answerFilePath": "testcases/pc/2024/hard/output9.txt"
+        "testcase_id": 15,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/pc/2024/hard/input9.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/pc/2024/hard/output9.txt"
       },
       {
-        "testcaseId": 16,
-        "argsFilePath": "",
-        "stdinFilePath": "testcases/pc/2024/hard/input10.txt",
-        "inputFilePathList": [],
-        "outputFilePath": "",
-        "answerFilePath": "testcases/pc/2024/hard/output10.txt"
+        "testcase_id": 16,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/pc/2024/hard/input10.txt",
+        "input_file_path_list": [],
+        "output_file_name": "",
+        "answer_file_path": "testcases/pc/2024/hard/output10.txt"
       }
     ]
   }

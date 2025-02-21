@@ -9,6 +9,9 @@ def create_problem(db: Session, problem: schemas.ProblemCreate) -> models.Proble
     db.refresh(db_problem)
     return db_problem
 
+def get_all_problems(db: Session) -> list[models.Problem]:
+    return db.query(models.Problem).all()
+
 def delete_all_problems(db: Session) -> None:
     print(type(models.Problem))
     db.query(models.Problem).delete()

@@ -4,11 +4,10 @@ from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 from app.db.base_class import Base
 
-class Result(Base):
-    __tablename__ = "result"
-    result_id = Column(String, primary_key=True, index=True, default=lambda: str(uuid.uuid4()))
-    submission_id = Column(String, ForeignKey("submission.submission_id"), nullable=False)
-    testcase_id = Column(String, ForeignKey("testcase.testcase_id"),nullable=False)
+class SubmissionResult(Base):
+    __tablename__ = "submission_result"
+    submission_id = Column(String, ForeignKey("submission.submission_id"), nullable=False, primary_key=True)
+    testcase_id = Column(String, ForeignKey("testcase_with_path.testcase_id"), nullable=False, primary_key=True)
     status = Column(String, nullable=False)
 
     # リレーションシップ
