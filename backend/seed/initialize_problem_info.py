@@ -1,15 +1,22 @@
 import json
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
-from typing import List
+from typing import List, Text
 
 
 from app import schemas, crud
 from app.api import deps
 
+class TestcaseWithoutId(BaseModel):
+    problem_id: int
+    testcase_number: int
+    args_file_content: Text = ''
+    stdin_file_content: Text = ''
+    answer_file_content:Text = ''
+
 class ProblemJson(BaseModel):
     problem: schemas.ProblemCreate
-    testcases: List[schemas.TestcaseCreate]
+    testcases: List[TestcaseWithoutId]
     testcases_with_path: List[schemas.TestcaseWithPathCreate]
 
 def read_json(seed_root_dir: str, json_file_name: str) -> List[ProblemJson]:
@@ -45,8 +52,8 @@ def read_json(seed_root_dir: str, json_file_name: str) -> List[ProblemJson]:
 def initialize_problem_info(seed_root_dir: str, json_file_name: str):
     db:Session = next(deps.get_db())
     print(type(db))
-    crud.delete_all_testcases_with_path(db)
     crud.delete_all_testcases(db)
+    crud.delete_all_testcases_with_path(db)
     crud.delete_all_problems(db)
 
     problems_info = read_json(seed_root_dir, json_file_name)
@@ -58,14 +65,23 @@ def initialize_problem_info(seed_root_dir: str, json_file_name: str):
         if not created_problem:
             raise Exception("Problem creation failed")
         
-        testcases_with_path_info = problem_info.testcases_with_path
-        for testcase_with_path_info in testcases_with_path_info:
-            created_testcase_with_path = crud.create_testcase_with_path(db, testcase_with_path_info)
-            if not created_testcase_with_path:
-                raise Exception("Testcase with path creation failed")
+        for i in range(len(problem_info.testcases)):
+            testcase_with_path = problem_info.testcases_with_path[i]
+            testcase = problem_info.testcases[i]
 
-        testcases_info = problem_info.testcases
-        for testcase_info in testcases_info:
-            created_testcase = crud.create_testcase(db, testcase_info)
+            created_testcase_with_path = crud.create_testcase_with_path(db, testcase_with_path)
+            if not created_testcase_with_path:
+                raise Exception("TestcaseWithPath creation failed")
+            testcase_id = created_testcase_with_path.testcase_id
+
+            create_testcase = schemas.TestcaseCreate(
+                testcase_id=testcase_id,
+                problem_id=created_problem.problem_id,
+                testcase_number=testcase.testcase_number,
+                args_file_content=testcase.args_file_content,
+                stdin_file_content=testcase.stdin_file_content,
+                answer_file_content=testcase.answer_file_content
+            )
+            created_testcase = crud.create_testcase(db, create_testcase)
             if not created_testcase:
                 raise Exception("Testcase creation failed")

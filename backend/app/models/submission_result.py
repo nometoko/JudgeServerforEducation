@@ -12,3 +12,4 @@ class SubmissionResult(Base):
 
     # リレーションシップ
     submission = relationship("Submission", back_populates="results")
+    testcase_with_path = relationship("TestcaseWithPath", back_populates="results")
