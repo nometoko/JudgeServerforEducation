@@ -14,7 +14,7 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/login") # ドキュメントに�
 class Settings(BaseModel):
     SECRET_KEY: str = os.getenv("SECRET_KEY") # 運用時には再作成する: % openssl rand -base64 32
     PEPPER: str = os.getenv("PEPPER") 
-    
+
 class TokenData(BaseModel):
     username: str | None = None
     

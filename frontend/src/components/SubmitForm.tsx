@@ -34,15 +34,11 @@ const SubmitForm: React.FC = () => {
         setMessage("");
 
         try {
-            const test = await axios.post("http://localhost:8000/api/v1/submission/", {
-                user_name: "user",
-                problem_id: 1
+            const response = await axios.post("http://localhost:8000/handler/receiveFiles/", formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data"
+                }
             });
-            const submissionId = test.data.submission_id;
-            formData.append("submission_id", String(submissionId));
-            console.log(formData);
-
-            const response = await axios.post("http://localhost:8000/receivefiles/", formData);
             setMessage(`アップロード成功: ${response.data.msg}`);
         } catch (error) {
             console.error("Upload error:", error);
