@@ -12,8 +12,8 @@ class ProblemCreate(BaseModel):
     memory_limit: int
     input_format: str
     output_format: str
-    open_date: datetime
-    close_date: datetime
+    open_date: str
+    close_date: str
     border_score: int
 
 class ProblemResponse(BaseModel):

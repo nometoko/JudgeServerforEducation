@@ -17,12 +17,11 @@ class Problem(Base):
     memory_limit = Column(Integer, nullable=False)
     input_format = Column(Text)
     output_format = Column(Text)
-    open_date = Column(DateTime, default=datetime.utcnow)
-    close_date = Column(DateTime)
+    open_date = Column(String)
+    close_date = Column(String)
     border_score = Column(Integer, nullable=False)
 
     # リレーションシップ
     submissions = relationship("Submission", back_populates="problem")
     testcase_with_paths = relationship("TestcaseWithPath", back_populates="problem")
     testcases = relationship("Testcase", back_populates="problem")
-    input_file_contents = relationship("InputFileContent", back_populates="problem")

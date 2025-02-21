@@ -14,9 +14,10 @@ const DashboardPage = () => {
 
   const getProblems = async () => {
     try {
-      const response = await myaxios.get(`/handler/getProblemList/${authUserName}`);
+      const response = await myaxios.get(`/handler/getProblemList/{authUserName}`); // ✅ ユーザー名を渡す
+      console.log(response.data);
       // 成功時は問題リストとメッセージを更新
-      setProblems(response.data.problems);
+      setProblems(response.data);
       setDebug(response.data.message);
       setError("");
     } catch (err: any) {
