@@ -15,11 +15,10 @@ from app.db.base_class import Base  # Base を明示的にインポート
 from .user import User
 from .problem import Problem
 from .testcase_with_path import TestcaseWithPath
-from .problem_with_testcase import ProblemWithTestcase
 from .testcase import Testcase
 from .input_file_content import InputFileContent
 from .submission import Submission
-from .result import Result
+from .submission_result import SubmissionResult
 from .submitted_file import SubmittedFile
 from .submission_with_problem_name import SubmissionWithProblemName
 
