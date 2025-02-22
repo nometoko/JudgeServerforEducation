@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const SubmitForm: React.FC = () => {
+    const navigate = useNavigate();
+
     const [files, setFiles] = useState<FileList | null>(null);
     const [uploading, setUploading] = useState<boolean>(false);
     const [message, setMessage] = useState<string>("");
@@ -34,12 +37,14 @@ const SubmitForm: React.FC = () => {
         setMessage("");
 
         try {
-            const response = await axios.post("http://localhost:8000/handler/receiveFiles/", formData, {
+            const authUserName = localStorage.getItem("authUserName");
+            const response = await axios.post("http://localhost:8000/handler/receiveFiles/" + authUserName + "/1", formData, {
                 headers: {
                     "Content-Type": "multipart/form-data"
                 }
             });
-            setMessage(`アップロード成功: ${response.data.msg}`);
+            const submissionId = response.data;
+            navigate(`/submission/${submissionId}`);
         } catch (error) {
             console.error("Upload error:", error);
             setMessage("アップロードに失敗しました。");

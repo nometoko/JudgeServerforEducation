@@ -9,7 +9,11 @@ type SubmittedFile = {
     filename: string;
 }
 
-const SubmitContent: React.FC = () => {
+type SubmitContentProps = {
+    submissionId: string;
+}
+
+const SubmitContent: React.FC<SubmitContentProps> = ({ submissionId }) => {
     const [files, setFiles] = React.useState<SubmittedFile[]>([]);
     const [selectedFileContent, setSelectedFileContent] = React.useState<string>('');
     const [selectedFileName, setSelectedFileName] = React.useState<string>('');
@@ -44,7 +48,7 @@ const SubmitContent: React.FC = () => {
     }
 
     useEffect(() => {
-        fetch("http://localhost:8000/handler/getSubmittedFiles")
+        fetch("http://localhost:8000/handler/getSubmittedFiles/" + submissionId)
             .then((response) => response.json())
             .then(
                 (data) => {
@@ -73,7 +77,7 @@ const SubmitContent: React.FC = () => {
                     </Button>
                 </Tooltip>
             </Flex>
-            <Box height="60vh" width="100%">
+            <Box height="60vh" width="100%" overflow={"auto"} mt={5}>
                 <SyntaxHighlighter language="c" style={oneDark} children={selectedFileContent} />
             </Box>
         </div>

@@ -27,11 +27,10 @@ __all__ = [
     "User",
     "Problem",
     "TestcaseWithPath",
-    "ProblemWithTestcase",
     "Testcase",
     "InputFileContent",
     "Submission",
-    "Result",
+    "SubmissionResult",
     "SubmittedFile",
     "SubmissionWithProblemName",
 ]

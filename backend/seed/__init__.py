@@ -1,2 +1,3 @@
-from seed.initialize_problem_info import initialize_problem_info
-from seed.initialize_user_info import initialize_user_info
+from seed.delete_all import delete_all_db_data
+from seed.insert_problem_info import insert_problem_info
+from seed.insert_user_info import insert_user_info
