@@ -12,8 +12,11 @@ def create_submission(db: Session, submission: schemas.SubmissionCreate) -> mode
 def get_submission_by_user_name(db: Session, user_name: str) -> List[models.Submission]:
     return db.query(models.Submission).filter(models.Submission.user_name == user_name).all()
 
-def delete_all_submissions(db: Session) -> None:
-    db.query(models.Submission).delete()
+def get_submission_by_submission_id(db: Session, submission_id: str) -> models.Submission:
+    return db.query(models.Submission).filter(models.Submission.submission_id == submission_id).first()
+
+def delete_submission(db: Session, submission_id: str) -> None:
+    db.query(models.Submission).filter(models.Submission.submission_id == submission_id).delete()
     db.commit()
     return None
 
@@ -23,3 +26,8 @@ def get_all_submissions(db: Session) -> List[models.Submission]:
         return db.query(models.Submission).all()
     else:
         return None
+
+def delete_all_submissions(db: Session) -> None:
+    db.query(models.Submission).delete()
+    db.commit()
+    return None

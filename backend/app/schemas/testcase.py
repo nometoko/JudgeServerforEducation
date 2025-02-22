@@ -17,3 +17,9 @@ class TestcaseWithPathCreate(BaseModel):
     input_file_path_list: List[str]
     output_file_name: str
     answer_file_path: str
+
+class TestcaseResponse(BaseModel):
+    testcase_number: int
+    args_file_content: Text
+    stdin_file_content: Text
+    answer_file_content: Text

@@ -6,7 +6,7 @@ import tsconfigPaths from "vite-tsconfig-paths"
 export default defineConfig({
   plugins: [react(), tsconfigPaths()],
   optimizeDeps: {
-    include: ["react-syntax-highlighter"]
+    include: ["react-syntax-highlighter", "react-diff-viewer"]
   }
 })
 

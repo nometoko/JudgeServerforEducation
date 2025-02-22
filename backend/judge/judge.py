@@ -1,44 +1,70 @@
 import os
+from typing import List
 from utils.get_root_dir import get_root_dir
-import constants
-import execute
-import makefile
+import judge.constants as constants
+import judge.execute as execute
+import judge.makefile as makefile
 
-def judge():
-    root_dir: str = get_root_dir()
-    exec_dir: str = os.path.join(root_dir, constants.EXEC_DIR)
-    judge_dir: str = os.path.join(root_dir, constants.JUDGE_DIR)
-    test_dir: str = os.path.join(root_dir, constants.TEST_DIR)
-    if not makefile.have_makefile(exec_dir):
-        makefile.copy_makefile(exec_dir, os.path.join(judge_dir, constants.MAKEFILE_FILENAME))
+from app import schemas
+
+async def judge(submission_id: str, testcases_with_path: List[schemas.TestcaseWithPathCreate]) -> List[schemas.SubmissionResultCreate]:
+
+    exec_dir = os.getenv("EXEC_DIR")
+    files_dir_path: str = os.path.join(exec_dir, submission_id)
+
+    if not makefile.have_makefile(files_dir_path):
+        makefile.copy_makefile(files_dir_path, os.path.join(files_dir_path, "../Makefile"))
 
     # compile
-    if not execute.compile(exec_dir, constants.COMPILE_DELAY):
+    if not execute.compile(files_dir_path, constants.COMPILE_DELAY):
         print(constants.judge_results.CE.value)
-        return
+        raise RuntimeError(constants.judge_results.CE.value)
 
-    executable_path: str = os.path.join(exec_dir, constants.PROG)
+    executable_path: str = os.path.join(files_dir_path, constants.PROG)
+    static_dir = os.getenv("STATIC_DIR")
 
-    # just for test
-    test_c1_dir = os.path.join(test_dir, "c/c1")
-    for dirs in os.listdir(test_c1_dir):
-        input_path = os.path.join(test_c1_dir, dirs, "input.txt")
-        output_path = os.path.join(test_c1_dir, dirs, "output.txt")
-        command: str = f"{executable_path} < {input_path}"
-        result = execute.execute_command(command, constants.EXECUTE_DELAY)
-        if result == constants.judge_results.RE.value:
-            print(constants.judge_results.RE.value)
-            continue
-        elif result == constants.judge_results.TLE.value:
-            print(constants.judge_results.TLE.value)
-            continue
-        with open(output_path, "r") as f:
-            expected_output = f.read()
-            if not execute.judgeResult(result, expected_output):
-                print(constants.judge_results.WA.value)
+    create_submission_result_list: List[schemas.SubmissionResultCreate] = []
+
+    for testcase_with_path in testcases_with_path:
+        command = f"{executable_path}"
+        if testcase_with_path.args_file_path:
+            arg_path = os.path.join(static_dir, testcase_with_path.args_file_path)
+            with open(arg_path) as f:
+                arg_content = f.read()
+            command = command = f"{command} {arg_content}"
+        
+        if testcase_with_path.stdin_file_path:
+            stdin_path = os.path.join(static_dir, testcase_with_path.stdin_file_path)
+            command = f"{command} < {stdin_path}"
+
+        output = execute.execute_command(command, constants.EXECUTE_DELAY)
+        
+        answer_path = os.path.join(static_dir, testcase_with_path.answer_file_path)
+        with open(answer_path) as f:
+            answer_content = f.read()
+
+        status = None
+        try:
+            result = execute.judgeResult(output, answer_content)
+            if result:
+                status = constants.judge_results.AC.value
             else:
-                print(constants.judge_results.AC.value)
-    return
+                status = constants.judge_results.WA.value
 
-if __name__ == "__main__":
-    judge()
+        except TimeoutError:
+            status = constants.judge_results.TLE.value
+        except RuntimeError:
+            status = constants.judge_results.RE.value
+
+        create_submission_result = schemas.SubmissionResultCreate(
+            status=status,
+            submission_id=submission_id,
+            testcase_number=testcase_with_path.testcase_number,
+            output_content=output
+        )
+        create_submission_result_list.append(create_submission_result)
+    
+    command = f"make clean -C {files_dir_path}"
+    execute.execute_command(command, constants.EXECUTE_DELAY)
+
+    return create_submission_result_list

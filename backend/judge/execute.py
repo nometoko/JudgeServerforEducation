@@ -2,11 +2,11 @@ import os
 import sys
 import subprocess
 
-import constants
+import judge.constants
 
 def judgeResult(input: str, output: str) -> bool:
-    input = input.rstrip('\n')
-    output = output.rstrip('\n')
+    input = input.strip()
+    output = output.strip()
     return input == output
 
 # only accept PROG for executable name
@@ -36,7 +36,7 @@ def execute_command(command: str, execute_delay: int) -> str:
     try:
         result = subprocess.run(command, shell=True, timeout=timeout, capture_output=True, text=True)
     except subprocess.TimeoutExpired:
-        return constants.judge_results.TLE.value
+        raise TimeoutError
     except subprocess.CalledProcessError:
-        return constants.judge_results.RE.value
+        raise RuntimeError
     return result.stdout

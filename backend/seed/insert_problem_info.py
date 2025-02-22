@@ -49,12 +49,9 @@ def read_json(seed_root_dir: str, json_file_name: str) -> List[ProblemJson]:
         problems_info.append(ProblemJson(problem=problem, testcases=testcases, testcases_with_path=testcases_with_path))
     return problems_info
 
-def initialize_problem_info(seed_root_dir: str, json_file_name: str):
+def insert_problem_info(seed_root_dir: str, json_file_name: str):
     db:Session = next(deps.get_db())
     print(type(db))
-    crud.delete_all_testcases(db)
-    crud.delete_all_testcases_with_path(db)
-    crud.delete_all_problems(db)
 
     problems_info = read_json(seed_root_dir, json_file_name)
 

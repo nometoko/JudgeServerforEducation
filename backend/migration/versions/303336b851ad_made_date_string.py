@@ -37,10 +37,12 @@ def downgrade() -> None:
     op.alter_column('problems', 'close_date',
                existing_type=sa.String(),
                type_=postgresql.TIMESTAMP(),
-               existing_nullable=True)
+               existing_nullable=True,
+               postgresql_using="close_date::timestamp without time zone")
     op.alter_column('problems', 'open_date',
                existing_type=sa.String(),
                type_=postgresql.TIMESTAMP(),
-               existing_nullable=True)
-    op.drop_constraint(None, 'input_file_content', type_='foreignkey')
+               existing_nullable=True,
+               postgresql_using="open_date::timestamp without time zone")
+    # op.drop_constraint(None, 'input_file_content', type_='foreignkey')
     # ### end Alembic commands ###

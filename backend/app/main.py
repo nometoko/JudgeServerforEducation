@@ -1,4 +1,4 @@
-import os
+import os, shutil
 import uvicorn
 from fastapi import FastAPI, Request, status
 from fastapi.responses import JSONResponse
@@ -35,15 +35,18 @@ async def handler(request: Request, exc: RequestValidationError) -> JSONResponse
 ROOT_DIR = get_root_dir()
 dotenv.load_dotenv(f"{ROOT_DIR}/frontend/.env")
 
+exec_dir = os.getenv("EXEC_DIR")
+dir_list = [os.path.join(exec_dir, dir_name) for dir_name in os.listdir(exec_dir) if os.path.isdir(os.path.join(exec_dir, dir_name))]
+for dir_path in dir_list:
+    shutil.rmtree(dir_path)
+
 from app.db.session import engine
 from app.db.base_class import Base
 
-Base.metadata.create_all(bind=engine)
-
-seed.initialize_problem_info(f"{ROOT_DIR}/static", "seed_data/problems.json")
-seed.initialize_user_info(f"{ROOT_DIR}/static/seed_data/users_2024.json")
-
-
+# データベースに初期データを挿入
+seed.delete_all_db_data()
+seed.insert_problem_info(f"{ROOT_DIR}/static", "seed_data/problems.json")
+seed.insert_user_info(f"{ROOT_DIR}/static/seed_data/users_2024.json")
 
 ##### 以下は本番環境想定
 ## Check required environment variables

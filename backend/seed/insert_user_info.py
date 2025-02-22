@@ -15,10 +15,8 @@ def read_json(json_file_path: str) -> List[schemas.UserCreate]:
         users_info.append(schemas.UserCreate(**user))
     return users_info    
 
-def initialize_user_info(json_file_path: str) -> None:
+def insert_user_info(json_file_path: str) -> None:
     db:Session = next(deps.get_db())
-    print(type(db))
-    crud.delete_all_users(db)
 
     users_info = read_json(json_file_path)
     for user_info in users_info:

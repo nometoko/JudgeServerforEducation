@@ -20,5 +20,4 @@ class TestcaseWithPath(Base):
     # リレーションシップ
     problem = relationship("Problem", back_populates="testcase_with_paths")
     testcases = relationship("Testcase", back_populates="testcase_with_path")
-    results = relationship("SubmissionResult", back_populates="testcase_with_path")
     input_file_contents = relationship("InputFileContent", back_populates="testcase_with_path")
