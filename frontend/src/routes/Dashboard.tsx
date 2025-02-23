@@ -2,9 +2,7 @@ import { Container } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { DefaultLayout } from "@/components/DefaultLayout";
 import { CardList } from "@/components/CardList";
-import { dummyProblems } from "./TestProblems"; // ✅ `data.ts` からインポート
 import myaxios from "@/providers/axios_client";
-import { Myaxios_provider } from '@/providers/axios_client';
 
 const DashboardPage = () => {
   const authUserName = localStorage.getItem("authUserName");
