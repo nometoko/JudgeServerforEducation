@@ -18,18 +18,13 @@ def get_prog_name(makefile_path: str) -> str:
                 return line.split('=')[1].strip()
     raise ValueError("PROG not found in Makefile")
 
-def compile(exec_dir: str, compile_delay: int) -> bool:
+def compile(exec_dir: str, compile_delay: int) -> None:
     command: str = f"make -C {exec_dir}"
     print(command)
     try:
-        subprocess.run(command, shell=True, timeout=compile_delay)
-    except subprocess.TimeoutExpired:
-        print("Compile Timeout")
-        return False
-    except subprocess.CalledProcessError:
-        print("Compile Error")
-        return False
-    return True
+        subprocess.run([command], capture_output=True, text=True, shell=True, check=True)
+    except subprocess.CalledProcessError as e:
+        raise RuntimeError(e.stderr)
 
 def execute_command(command: str, execute_delay: int) -> str:
     timeout: float = execute_delay / 1000

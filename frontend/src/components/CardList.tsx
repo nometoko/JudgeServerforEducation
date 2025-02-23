@@ -108,7 +108,6 @@ const CardItem = ({ pws }: { pws: problemWithStatus }) => {
 
 export const CardList = ({ data }: CardListProps) => {
   // 公開日時でソート
-  console.log(data);
   data = data.sort(sortByOpenDate);
   const check_list = ["完了済みの課題も表示する", "未公開の課題も表示する"];
   const [checkedItems, setCheckedItems] = useState(new Array(check_list.length).fill(false));
@@ -141,7 +140,6 @@ export const CardList = ({ data }: CardListProps) => {
             if (new Date() < new Date(pws.problem.open_date) && !checkedItems[1]) return null;
             // 内部コンポーネント CardItem を利用することで、
             // ここでは条件分岐によりフックの呼び出し順が変わる問題を回避
-            console.log(pws);
             return <CardItem key={pws.problem.problem_id} pws={pws} />;
           })}
         </SimpleGrid>

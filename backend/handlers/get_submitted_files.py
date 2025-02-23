@@ -17,7 +17,6 @@ class FileListResponse(BaseModel):
 @router.get("/{submission_id}", response_model=List[FileListResponse])
 async def get_submitted_files(
     submission_id: str,
-    db: Session = Depends(deps.get_db)
 ) -> List[FileListResponse]:
     
     exec_dir = os.getenv("EXEC_DIR")

@@ -1,5 +1,5 @@
 import myaxios from "@/providers/axios_client";
-import { Accordion, AccordionButton, AccordionItem, AccordionPanel, Box, Flex, Textarea } from "@chakra-ui/react";
+import { Accordion, AccordionButton, AccordionItem, AccordionPanel, Box, Code, Flex, Textarea } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import ReactDiffViewer from "react-diff-viewer";
 
@@ -18,6 +18,15 @@ type TestCaseUserResultProps = {
 type TestCaseResultProps = {
     testcase: TestCaseProps;
     user_result: TestCaseUserResultProps;
+}
+
+type SubmissionProps = {
+    submission_id: string;
+    user_name: string;
+    problem_id: number;
+    submitted_date: string;
+    status: string;
+    compile_error: string | null;
 }
 
 const TestCaseResult: React.FC<TestCaseResultProps> = ({ testcase, user_result }) => {
@@ -62,31 +71,57 @@ const TestCaseResult: React.FC<TestCaseResultProps> = ({ testcase, user_result }
     )
 }
 
-type SubmissionResultProps = {
-    submissionId: string;
+const CompileError: React.FC<{ compileError: string }> = ({ compileError }) => {
+    return (
+        <Box>
+            <h2>Compile Error</h2>
+            <Code
+                p={2}
+                bg="gray.100"
+                rounded="md"
+                display="block"
+                whiteSpace="pre-wrap"
+                textAlign={"left"}
+            >
+                {compileError}
+            </Code>
+        </Box>
+    )
 }
 
-const TestCaseResultList: React.FC<SubmissionResultProps> = ({ submissionId }) => {
+const TestCaseResultList: React.FC<{ submissionId: string }> = ({ submissionId }) => {
+    const [submission, setSubmission] = useState<SubmissionProps>();
     const [testcaseResults, setTestcaseResults] = useState<TestCaseResultProps[]>([]);
 
-    const authUserName = localStorage.getItem("authUserName");
-
     useEffect(() => {
-        const data = myaxios.get(`/handler/getTestcaseResultList/${submissionId}`)
+        myaxios.get(`/handler/getTestcaseResultList/${submissionId}`)
             .then((response) => {
-                console.log(response.data);
                 setTestcaseResults(response.data);
+            }
+            );
+        myaxios.get(`/api/v1/submission/id/${submissionId}`)
+            .then((response) => {
+                setSubmission(response.data);
             }
             );
     }, []);
 
-    return (
-        <Box>
-            {testcaseResults.map((testcase) => (
-                <TestCaseResult testcase={testcase.testcase} user_result={testcase.user_result} />
-            ))}
-        </Box>
-    )
+    if (submission && submission.status === "CE" && submission.compile_error) {
+        return (
+            <Box>
+                <CompileError compileError={submission.compile_error} />
+            </Box>
+        )
+    }
+    else {
+        return (
+            <Box>
+                {testcaseResults.map((testcase) => (
+                    <TestCaseResult testcase={testcase.testcase} user_result={testcase.user_result} key={testcase.testcase.testcase_number} />
+                ))}
+            </Box>
+        )
+    }
 }
 
 export default TestCaseResultList;

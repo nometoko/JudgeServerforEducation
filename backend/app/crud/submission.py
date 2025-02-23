@@ -2,6 +2,7 @@ from typing import List
 from sqlalchemy.orm import Session
 from app import schemas, models
 
+# post
 def create_submission(db: Session, submission: schemas.SubmissionCreate) -> models.Submission:
     db_submission = models.Submission(**submission.model_dump())
     db.add(db_submission)
@@ -9,23 +10,30 @@ def create_submission(db: Session, submission: schemas.SubmissionCreate) -> mode
     db.refresh(db_submission)
     return db_submission
 
+# get
+def get_all_submissions(db: Session) -> List[models.Submission]:
+    return db.query(models.Submission).all()
+
 def get_submission_by_user_name(db: Session, user_name: str) -> List[models.Submission]:
     return db.query(models.Submission).filter(models.Submission.user_name == user_name).all()
 
 def get_submission_by_submission_id(db: Session, submission_id: str) -> models.Submission:
     return db.query(models.Submission).filter(models.Submission.submission_id == submission_id).first()
 
+# patch
+def update_submission_status(db: Session, submission_id: str, submission: schemas.SubmissionUpdate) -> models.Submission:
+    db_submission = db.query(models.Submission).filter(models.Submission.submission_id == submission_id).first()
+    for key, value in submission.model_dump().items():
+        setattr(db_submission, key, value)
+    db.commit()
+    db.refresh(db_submission)
+    return db_submission
+
+# delete
 def delete_submission(db: Session, submission_id: str) -> None:
     db.query(models.Submission).filter(models.Submission.submission_id == submission_id).delete()
     db.commit()
     return None
-
-def get_all_submissions(db: Session) -> List[models.Submission]:
-    print(type(models.Submission))
-    if db.query(models.Submission).all():
-        return db.query(models.Submission).all()
-    else:
-        return None
 
 def delete_all_submissions(db: Session) -> None:
     db.query(models.Submission).delete()
