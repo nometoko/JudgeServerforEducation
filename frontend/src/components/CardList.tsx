@@ -4,29 +4,13 @@ import { Card, CardHeader, CardBody, Heading, Text, Icon, SimpleGrid } from '@ch
 import { useNavigate } from "react-router-dom";
 import { MdLockClock, MdLockOpen } from "react-icons/md";
 import { GiPodium } from "react-icons/gi";
+import { ProblemProps, ProblemWithStatus } from '@/types/DbTypes';
 
-export interface Problem {
-  problem_id: string;
-  is_petit_coder: boolean;
-  name: string;
-  open_date: string;
-  close_date: string;
-}
-
-export interface problemWithStatus {
-  problem: Problem;
-  status: boolean;
-}
-
-export interface CardListProps {
-  data: problemWithStatus[];
-}
-
-const sortByOpenDate = (a: problemWithStatus, b: problemWithStatus): number => {
+const sortByOpenDate = (a: ProblemWithStatus, b: ProblemWithStatus): number => {
   return new Date(a.problem.open_date).getTime() - new Date(b.problem.open_date).getTime();
 };
 
-const CardItem = ({ pws }: { pws: problemWithStatus }) => {
+const CardItem = ({ pws }: { pws: ProblemWithStatus }) => {
   const navigate = useNavigate();
 
   // 残り時間計算用の関数
@@ -106,7 +90,7 @@ const CardItem = ({ pws }: { pws: problemWithStatus }) => {
   );
 };
 
-export const CardList = ({ data }: CardListProps) => {
+export const CardList = ({ data }: { data: ProblemWithStatus[] }) => {
   // 公開日時でソート
   data = data.sort(sortByOpenDate);
   const check_list = ["完了済みの課題も表示する", "未公開の課題も表示する"];

@@ -4,16 +4,9 @@ import { Box, Card, CardHeader, CardBody, Heading, Text, Button } from "@chakra-
 import exp from "constants";
 import { useNavigate } from "react-router-dom";
 import { LuCornerDownLeft } from "react-icons/lu";
+import { SubmissionProps } from "@/types/DbTypes";
 
-type SubmissionListProps = {
-    submission_id: string;
-    user_name: string;
-    problem_id: Number;
-    submitted_date: string;
-    status: string;
-}
-
-const SubmissionBar = ({ submission }: { submission: SubmissionListProps }) => {
+const SubmissionBar = ({ submission }: { submission: SubmissionProps }) => {
     const navigate = useNavigate();
     const submissionDate = new Date(submission.submitted_date);
 
@@ -45,9 +38,9 @@ const SubmissionBar = ({ submission }: { submission: SubmissionListProps }) => {
 
 const SubmissionList = () => {
     const authUserName = localStorage.getItem("authUserName");
-    const [submissions, setSubmissions] = useState<SubmissionListProps[]>([]);
+    const [submissions, setSubmissions] = useState<SubmissionProps[]>([]);
 
-    const sortBySubmittedDate = (a: SubmissionListProps, b: SubmissionListProps): number => {
+    const sortBySubmittedDate = (a: SubmissionProps, b: SubmissionProps): number => {
         return new Date(b.submitted_date).getTime() - new Date(a.submitted_date).getTime();
     }
 
