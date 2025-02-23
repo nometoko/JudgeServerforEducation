@@ -11,30 +11,6 @@ export interface ProblemWithStatus {
     status: boolean;
 }
 
-export interface TestcaseWithPath {
-    TestcaseId: number,
-    ArgsFilePath: string,
-    StdinFilePath: string,
-    InputFilePathList: string[],
-    OutputFileName: string,
-    AnswerFilePath: string,
-}
-
-export interface ProblemWithTestcase {
-    Id: number,
-    Name: string,
-    Statement: string,
-    Constraints: string,
-    ExecutionTime: number,
-    MemoryLimit: number,
-    InputFmt: string,
-    OutputFmt: string,
-    OpenDate: string,
-    CloseDate: string,
-    BorderScore: number,
-    Testcases: TestCaseProps[],
-}
-
 export interface TestCaseProps {
     testcase_number: number,
     args_file_content: string,
