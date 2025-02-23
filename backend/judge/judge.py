@@ -16,9 +16,10 @@ async def judge(submission_id: str, testcases_with_path: List[schemas.TestcaseWi
         makefile.copy_makefile(files_dir_path, os.path.join(files_dir_path, "../Makefile"))
 
     # compile
-    if not execute.compile(files_dir_path, constants.COMPILE_DELAY):
-        print(constants.judge_results.CE.value)
-        raise RuntimeError(constants.judge_results.CE.value)
+    try:
+        execute.compile(files_dir_path, constants.COMPILE_DELAY)
+    except Exception as e:
+        raise e
 
     executable_path: str = os.path.join(files_dir_path, constants.PROG)
     static_dir = os.getenv("STATIC_DIR")

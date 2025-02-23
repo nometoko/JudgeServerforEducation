@@ -37,7 +37,7 @@ const SubmitContent: React.FC<SubmitContentProps> = ({ submissionId }) => {
 
     const handleDownload = () => {
         // download file
-        const blob = new Blob([selectedFileContent], { type: 'text/plain' });
+        const blob = new Blob([selectedFileContent], { type: '.c | .h' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;

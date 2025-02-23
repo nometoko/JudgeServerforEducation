@@ -81,11 +81,8 @@ const App: React.FC = () => {
   //    .catch(() => setMessage("Error fetching data"));
   //}, []);
 
-  console.log("message:", message);
-
   return (
     <ChakraProvider >
-
       <BrowserRouter>
         {/* <AxiosClientProvider> */}
         <Myaxios_provider>

@@ -14,7 +14,7 @@ async def create_submission_endpoint(
     db_submission = models.Submission(**submission.model_dump())
     db.add(db_submission)
 
-    created_submission = await crud.create_submission(db, submission)
+    created_submission = crud.create_submission(db, submission)
     if created_submission:
         return created_submission
     else:
@@ -25,19 +25,31 @@ async def get_all_submissions_endpoint(
     db: Session = Depends(deps.get_db)
 ) -> List[schemas.SubmissionResponse]:
 
-    submission = await crud.get_all_submissions(db)
+    submission = crud.get_all_submissions(db)
     if submission:
         return submission
     else:
         raise HTTPException(status_code=404, detail="Submission not found")
 
-@router.get("/{user_name}", response_model=List[schemas.SubmissionResponse])
+@router.get("/user/{user_name}", response_model=List[schemas.SubmissionResponse])
 async def get_submission_by_user_name_endpoint(
     user_name: str,
     db: Session = Depends(deps.get_db)
 ) -> List[schemas.SubmissionResponse]:
 
-    submission = await crud.get_submission_by_user_name(db, user_name)
+    submission = crud.get_submission_by_user_name(db, user_name)
+    if submission:
+        return submission
+    else:
+        raise HTTPException(status_code=404, detail="Submission not found")
+
+@router.get("/id/{submission_id}", response_model=schemas.SubmissionResponse)
+async def get_submission_by_submission_id_endpoint(
+    submission_id: str,
+    db: Session = Depends(deps.get_db)
+) -> schemas.SubmissionResponse:
+
+    submission = crud.get_submission_by_submission_id(db, submission_id)
     if submission:
         return submission
     else:
@@ -48,5 +60,5 @@ async def delete_all_submission_endpoint(
     db: Session = Depends(deps.get_db)
 ) -> None:
 
-    await crud.delete_all_submissions(db)
+    crud.delete_all_submissions(db)
     return None

@@ -58,11 +58,26 @@ async def receive_file(
 
     testcases_with_path = crud.get_testcases_with_path_by_problem_id(db, problem_id)
 
+    status = "AC"
+
     try:
         submission_result_list = await judge(submission_id, testcases_with_path)
         for submission_result in submission_result_list:
             created_submission_result =  crud.create_submission_result(db, submission_result)
+            testcase_result_status = created_submission_result.status
+            # statusの優先度: RE > WA > TLE > AC
+            if status == "AC":
+                status = testcase_result_status
+            elif status == "TLE" and testcase_result_status in ["RE", "WA"]:
+                status = testcase_result_status
+            elif status == "WA" and testcase_result_status == "RE":
+                status = testcase_result_status
+
     except RuntimeError as e:
-        print("Compile Errorだねー")
+        status = "CE"
+        compile_error = e.args[0]
+
+    update_submission = schemas.SubmissionUpdate(status=status, compile_error=compile_error if status == "CE" else None)
+    updated_submission = crud.update_submission_status(db, submission_id, update_submission)
 
     return submission_id
