@@ -1,34 +1,8 @@
 import myaxios from "@/providers/axios_client";
+import { SubmissionProps, TestCaseResultProps } from "@/types/DbTypes";
 import { Accordion, AccordionButton, AccordionItem, AccordionPanel, Box, Code, Flex, Textarea } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 import ReactDiffViewer from "react-diff-viewer";
-import { text } from "stream/consumers";
-
-type TestCaseProps = {
-    testcase_number: number;
-    args_file_content: string;
-    stdin_file_content: string;
-    answer_file_content: string;
-}
-
-type TestCaseUserResultProps = {
-    output_content: string;
-    status: string;
-}
-
-type TestCaseResultProps = {
-    testcase: TestCaseProps;
-    user_result: TestCaseUserResultProps;
-}
-
-type SubmissionProps = {
-    submission_id: string;
-    user_name: string;
-    problem_id: number;
-    submitted_date: string;
-    status: string;
-    compile_error: string | null;
-}
 
 const TestCaseResult: React.FC<TestCaseResultProps> = ({ testcase, user_result }) => {
     const executedCommand = "prog " + testcase.args_file_content;

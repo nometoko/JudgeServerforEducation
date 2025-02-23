@@ -3,18 +3,10 @@ import React, { useEffect } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { GoCopy, GoDownload } from "react-icons/go";
+import { FileContent } from "@/types/DbTypes";
 
-type SubmittedFile = {
-    content: string;
-    filename: string;
-}
-
-type SubmitContentProps = {
-    submissionId: string;
-}
-
-const SubmitContent: React.FC<SubmitContentProps> = ({ submissionId }) => {
-    const [files, setFiles] = React.useState<SubmittedFile[]>([]);
+const SubmitContent: React.FC<{ submissionId: string }> = ({ submissionId }) => {
+    const [files, setFiles] = React.useState<FileContent[]>([]);
     const [selectedFileContent, setSelectedFileContent] = React.useState<string>('');
     const [selectedFileName, setSelectedFileName] = React.useState<string>('');
     const { onCopy, setValue, hasCopied } = useClipboard('');
@@ -77,7 +69,7 @@ const SubmitContent: React.FC<SubmitContentProps> = ({ submissionId }) => {
                     </Button>
                 </Tooltip>
             </Flex>
-            <Box height="60vh" width="100%" overflow={"auto"} mt={5}>
+            <Box maxHeight="60vh" width="100%" overflow={"auto"}>
                 <SyntaxHighlighter language="c" style={oneDark} children={selectedFileContent} />
             </Box>
         </div>
