@@ -17,7 +17,7 @@
         "testcase_id": 1,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c1/1/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c1/1/output.txt"
       },
@@ -25,7 +25,7 @@
         "testcase_id": 2,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c1/2/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c1/2/output.txt"
       },
@@ -33,7 +33,7 @@
         "testcase_id": 3,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c1/3/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c1/3/output.txt"
       },
@@ -41,7 +41,7 @@
         "testcase_id": 4,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c1/4/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c1/4/output.txt"
       },
@@ -49,7 +49,7 @@
         "testcase_id": 5,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c1/5/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c1/5/output.txt"
       },
@@ -57,7 +57,7 @@
         "testcase_id": 6,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c1/6/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c1/6/output.txt"
       },
@@ -65,7 +65,7 @@
         "testcase_id": 7,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c1/7/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c1/7/output.txt"
       },
@@ -73,7 +73,7 @@
         "testcase_id": 8,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c1/8/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c1/8/output.txt"
       },
@@ -81,7 +81,7 @@
         "testcase_id": 9,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c1/9/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c1/9/output.txt"
       },
@@ -89,7 +89,7 @@
         "testcase_id": 10,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c1/10/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c1/10/output.txt"
       },
@@ -97,7 +97,7 @@
         "testcase_id": 11,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c1/11/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c1/11/output.txt"
       },
@@ -105,7 +105,7 @@
         "testcase_id": 12,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c1/12/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c1/12/output.txt"
       },
@@ -113,7 +113,7 @@
         "testcase_id": 13,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c1/13/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c1/13/output.txt"
       }
@@ -137,7 +137,7 @@
         "testcase_id": 1,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c2_1/1/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c2_1/1/output.txt"
       },
@@ -145,7 +145,7 @@
         "testcase_id": 2,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c2_1/2/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c2_1/2/output.txt"
       },
@@ -153,7 +153,7 @@
         "testcase_id": 3,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c2_1/3/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c2_1/3/output.txt"
       },
@@ -161,7 +161,7 @@
         "testcase_id": 4,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c2_1/4/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c2_1/4/output.txt"
       },
@@ -169,7 +169,7 @@
         "testcase_id": 5,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c2_1/5/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c2_1/5/output.txt"
       },
@@ -177,7 +177,7 @@
         "testcase_id": 6,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c2_1/6/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c2_1/6/output.txt"
       },
@@ -185,7 +185,7 @@
         "testcase_id": 7,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c2_1/7/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c2_1/7/output.txt"
       },
@@ -193,7 +193,7 @@
         "testcase_id": 8,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c2_1/8/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c2_1/8/output.txt"
       },
@@ -201,7 +201,7 @@
         "testcase_id": 9,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c2_1/9/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c2_1/9/output.txt"
       },
@@ -209,7 +209,7 @@
         "testcase_id": 10,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c2_1/10/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c2_1/10/output.txt"
       },
@@ -217,7 +217,7 @@
         "testcase_id": 11,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c2_1/11/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c2_1/11/output.txt"
       },
@@ -225,7 +225,7 @@
         "testcase_id": 12,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c2_1/12/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c2_1/12/output.txt"
       },
@@ -233,7 +233,7 @@
         "testcase_id": 13,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c2_1/13/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c2_1/13/output.txt"
       },
@@ -241,7 +241,7 @@
         "testcase_id": 14,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c2_1/14/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c2_1/14/output.txt"
       },
@@ -249,7 +249,7 @@
         "testcase_id": 15,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c2_1/15/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c2_1/15/output.txt"
       }
@@ -273,7 +273,7 @@
         "testcase_id": 1,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c2_2/1/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c2_2/1/output.txt"
       },
@@ -281,7 +281,7 @@
         "testcase_id": 2,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c2_2/2/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c2_2/2/output.txt"
       },
@@ -289,7 +289,7 @@
         "testcase_id": 3,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c2_2/3/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c2_2/3/output.txt"
       },
@@ -297,7 +297,7 @@
         "testcase_id": 4,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c2_2/4/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c2_2/4/output.txt"
       },
@@ -305,7 +305,7 @@
         "testcase_id": 5,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c2_2/5/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c2_2/5/output.txt"
       },
@@ -313,7 +313,7 @@
         "testcase_id": 6,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c2_2/6/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c2_2/6/output.txt"
       },
@@ -321,7 +321,7 @@
         "testcase_id": 7,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c2_2/7/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c2_2/7/output.txt"
       },
@@ -329,7 +329,7 @@
         "testcase_id": 8,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c2_2/8/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c2_2/8/output.txt"
       },
@@ -337,7 +337,7 @@
         "testcase_id": 9,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c2_2/9/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c2_2/9/output.txt"
       },
@@ -345,7 +345,7 @@
         "testcase_id": 10,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c2_2/10/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c2_2/10/output.txt"
       },
@@ -353,7 +353,7 @@
         "testcase_id": 11,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c2_2/11/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c2_2/11/output.txt"
       },
@@ -361,7 +361,7 @@
         "testcase_id": 12,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c2_2/12/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c2_2/12/output.txt"
       },
@@ -369,7 +369,7 @@
         "testcase_id": 13,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c2_2/13/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c2_2/13/output.txt"
       },
@@ -377,7 +377,7 @@
         "testcase_id": 14,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c2_2/14/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c2_2/14/output.txt"
       },
@@ -385,7 +385,7 @@
         "testcase_id": 15,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c2_2/15/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c2_2/15/output.txt"
       },
@@ -393,7 +393,7 @@
         "testcase_id": 16,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c2_2/16/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c2_2/16/output.txt"
       },
@@ -401,7 +401,7 @@
         "testcase_id": 17,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c2_2/17/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c2_2/17/output.txt"
       },
@@ -409,7 +409,7 @@
         "testcase_id": 18,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c2_2/18/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c2_2/18/output.txt"
       },
@@ -417,7 +417,7 @@
         "testcase_id": 19,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c2_2/19/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c2_2/19/output.txt"
       },
@@ -425,7 +425,7 @@
         "testcase_id": 20,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c2_2/20/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c2_2/20/output.txt"
       }
@@ -449,7 +449,7 @@
         "testcase_id": 1,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c5/1/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c5/1/output.txt"
       },
@@ -457,7 +457,7 @@
         "testcase_id": 2,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c5/2/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c5/2/output.txt"
       },
@@ -465,7 +465,7 @@
         "testcase_id": 3,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c5/3/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c5/3/output.txt"
       },
@@ -473,7 +473,7 @@
         "testcase_id": 4,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c5/4/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c5/4/output.txt"
       },
@@ -481,7 +481,7 @@
         "testcase_id": 5,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c5/5/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c5/5/output.txt"
       },
@@ -489,7 +489,7 @@
         "testcase_id": 6,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c5/6/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c5/6/output.txt"
       },
@@ -497,7 +497,7 @@
         "testcase_id": 7,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c5/7/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c5/7/output.txt"
       },
@@ -505,7 +505,7 @@
         "testcase_id": 8,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c5/8/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c5/8/output.txt"
       },
@@ -513,7 +513,7 @@
         "testcase_id": 9,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c5/9/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c5/9/output.txt"
       },
@@ -521,7 +521,7 @@
         "testcase_id": 10,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c5/10/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c5/10/output.txt"
       },
@@ -529,7 +529,7 @@
         "testcase_id": 11,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c5/11/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c5/11/output.txt"
       },
@@ -537,7 +537,7 @@
         "testcase_id": 12,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c5/12/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c5/12/output.txt"
       },
@@ -545,7 +545,7 @@
         "testcase_id": 13,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c5/13/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c5/13/output.txt"
       },
@@ -553,7 +553,7 @@
         "testcase_id": 14,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c5/14/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c5/14/output.txt"
       },
@@ -561,7 +561,7 @@
         "testcase_id": 15,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c5/15/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c5/15/output.txt"
       },
@@ -569,7 +569,7 @@
         "testcase_id": 16,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c5/16/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c5/16/output.txt"
       },
@@ -577,7 +577,7 @@
         "testcase_id": 17,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c5/17/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c5/17/output.txt"
       },
@@ -585,7 +585,7 @@
         "testcase_id": 18,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c5/18/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c5/18/output.txt"
       },
@@ -593,7 +593,7 @@
         "testcase_id": 19,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c5/19/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c5/19/output.txt"
       },
@@ -601,7 +601,7 @@
         "testcase_id": 20,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c5/20/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c5/20/output.txt"
       }
@@ -625,7 +625,7 @@
         "testcase_id": 1,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c6_1/1/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c6_1/1/output.txt"
       },
@@ -633,7 +633,7 @@
         "testcase_id": 2,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c6_1/2/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c6_1/2/output.txt"
       },
@@ -641,7 +641,7 @@
         "testcase_id": 3,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c6_1/3/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c6_1/3/output.txt"
       },
@@ -649,7 +649,7 @@
         "testcase_id": 4,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c6_1/4/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c6_1/4/output.txt"
       },
@@ -657,7 +657,7 @@
         "testcase_id": 5,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c6_1/5/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c6_1/5/output.txt"
       },
@@ -665,7 +665,7 @@
         "testcase_id": 6,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c6_1/6/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c6_1/6/output.txt"
       },
@@ -673,7 +673,7 @@
         "testcase_id": 7,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c6_1/7/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c6_1/7/output.txt"
       },
@@ -681,7 +681,7 @@
         "testcase_id": 8,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c6_1/8/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c6_1/8/output.txt"
       },
@@ -689,7 +689,7 @@
         "testcase_id": 9,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c6_1/9/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c6_1/9/output.txt"
       },
@@ -697,7 +697,7 @@
         "testcase_id": 10,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c6_1/10/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c6_1/10/output.txt"
       },
@@ -705,7 +705,7 @@
         "testcase_id": 11,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c6_1/11/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c6_1/11/output.txt"
       },
@@ -713,7 +713,7 @@
         "testcase_id": 12,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c6_1/12/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c6_1/12/output.txt"
       },
@@ -721,7 +721,7 @@
         "testcase_id": 13,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c6_1/13/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c6_1/13/output.txt"
       },
@@ -729,7 +729,7 @@
         "testcase_id": 14,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c6_1/14/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c6_1/14/output.txt"
       },
@@ -737,7 +737,7 @@
         "testcase_id": 15,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c6_1/15/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c6_1/15/output.txt"
       },
@@ -745,7 +745,7 @@
         "testcase_id": 16,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c6_1/16/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c6_1/16/output.txt"
       },
@@ -753,7 +753,7 @@
         "testcase_id": 17,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c6_1/17/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c6_1/17/output.txt"
       },
@@ -761,7 +761,7 @@
         "testcase_id": 18,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c6_1/18/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c6_1/18/output.txt"
       },
@@ -769,7 +769,7 @@
         "testcase_id": 19,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c6_1/19/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c6_1/19/output.txt"
       },
@@ -777,7 +777,7 @@
         "testcase_id": 20,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c6_1/20/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c6_1/20/output.txt"
       }
@@ -801,7 +801,7 @@
         "testcase_id": 1,
         "args_file_path": "testcases/c/c6_2/1/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c6_2/1/output.txt"
       },
@@ -809,7 +809,7 @@
         "testcase_id": 2,
         "args_file_path": "testcases/c/c6_2/2/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c6_2/2/output.txt"
       },
@@ -817,7 +817,7 @@
         "testcase_id": 3,
         "args_file_path": "testcases/c/c6_2/3/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c6_2/3/output.txt"
       },
@@ -825,7 +825,7 @@
         "testcase_id": 4,
         "args_file_path": "testcases/c/c6_2/4/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c6_2/4/output.txt"
       },
@@ -833,7 +833,7 @@
         "testcase_id": 5,
         "args_file_path": "testcases/c/c6_2/5/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c6_2/5/output.txt"
       },
@@ -841,7 +841,7 @@
         "testcase_id": 6,
         "args_file_path": "testcases/c/c6_2/6/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c6_2/6/output.txt"
       },
@@ -849,7 +849,7 @@
         "testcase_id": 7,
         "args_file_path": "testcases/c/c6_2/7/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c6_2/7/output.txt"
       },
@@ -857,7 +857,7 @@
         "testcase_id": 8,
         "args_file_path": "testcases/c/c6_2/8/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c6_2/8/output.txt"
       },
@@ -865,7 +865,7 @@
         "testcase_id": 9,
         "args_file_path": "testcases/c/c6_2/9/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c6_2/9/output.txt"
       },
@@ -873,7 +873,7 @@
         "testcase_id": 10,
         "args_file_path": "testcases/c/c6_2/10/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c6_2/10/output.txt"
       },
@@ -881,7 +881,7 @@
         "testcase_id": 11,
         "args_file_path": "testcases/c/c6_2/11/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c6_2/11/output.txt"
       },
@@ -889,7 +889,7 @@
         "testcase_id": 12,
         "args_file_path": "testcases/c/c6_2/12/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c6_2/12/output.txt"
       },
@@ -897,7 +897,7 @@
         "testcase_id": 13,
         "args_file_path": "testcases/c/c6_2/13/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c6_2/13/output.txt"
       },
@@ -905,7 +905,7 @@
         "testcase_id": 14,
         "args_file_path": "testcases/c/c6_2/14/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c6_2/14/output.txt"
       },
@@ -913,7 +913,7 @@
         "testcase_id": 15,
         "args_file_path": "testcases/c/c6_2/15/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c6_2/15/output.txt"
       },
@@ -921,7 +921,7 @@
         "testcase_id": 16,
         "args_file_path": "testcases/c/c6_2/16/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c6_2/16/output.txt"
       },
@@ -929,7 +929,7 @@
         "testcase_id": 17,
         "args_file_path": "testcases/c/c6_2/17/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c6_2/17/output.txt"
       },
@@ -937,7 +937,7 @@
         "testcase_id": 18,
         "args_file_path": "testcases/c/c6_2/18/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c6_2/18/output.txt"
       },
@@ -945,7 +945,7 @@
         "testcase_id": 19,
         "args_file_path": "testcases/c/c6_2/19/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c6_2/19/output.txt"
       },
@@ -953,7 +953,7 @@
         "testcase_id": 20,
         "args_file_path": "testcases/c/c6_2/20/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c6_2/20/output.txt"
       }
@@ -977,7 +977,7 @@
         "testcase_id": 1,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c8_1/1/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c8_1/1/output.txt"
       },
@@ -985,7 +985,7 @@
         "testcase_id": 2,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c8_1/2/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c8_1/2/output.txt"
       },
@@ -993,7 +993,7 @@
         "testcase_id": 3,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c8_1/3/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c8_1/3/output.txt"
       },
@@ -1001,7 +1001,7 @@
         "testcase_id": 4,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c8_1/4/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c8_1/4/output.txt"
       },
@@ -1009,7 +1009,7 @@
         "testcase_id": 5,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c8_1/5/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c8_1/5/output.txt"
       },
@@ -1017,7 +1017,7 @@
         "testcase_id": 6,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c8_1/6/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c8_1/6/output.txt"
       },
@@ -1025,7 +1025,7 @@
         "testcase_id": 7,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c8_1/7/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c8_1/7/output.txt"
       },
@@ -1033,7 +1033,7 @@
         "testcase_id": 8,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c8_1/8/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c8_1/8/output.txt"
       },
@@ -1041,7 +1041,7 @@
         "testcase_id": 9,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c8_1/9/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c8_1/9/output.txt"
       },
@@ -1049,7 +1049,7 @@
         "testcase_id": 10,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c8_1/10/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c8_1/10/output.txt"
       },
@@ -1057,7 +1057,7 @@
         "testcase_id": 11,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c8_1/11/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c8_1/11/output.txt"
       }
@@ -1081,9 +1081,7 @@
         "testcase_id": 1,
         "args_file_path": "testcases/c/c10_1/1/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [
-          "testcases/c/c10_1/1/input.txt"
-        ],
+        "input_file_path": "testcases/c/c10_1/1/input.txt",
         "output_file_name": "output.txt",
         "answer_file_path": "testcases/c/c10_1/1/output.txt"
       },
@@ -1091,9 +1089,7 @@
         "testcase_id": 2,
         "args_file_path": "testcases/c/c10_1/2/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [
-          "testcases/c/c10_1/2/input.txt"
-        ],
+        "input_file_path": "testcases/c/c10_1/2/input.txt",
         "output_file_name": "output.txt",
         "answer_file_path": "testcases/c/c10_1/2/output.txt"
       },
@@ -1101,9 +1097,7 @@
         "testcase_id": 3,
         "args_file_path": "testcases/c/c10_1/3/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [
-          "testcases/c/c10_1/3/input.txt"
-        ],
+        "input_file_path": "testcases/c/c10_1/3/input.txt",
         "output_file_name": "output.txt",
         "answer_file_path": "testcases/c/c10_1/3/output.txt"
       },
@@ -1111,9 +1105,7 @@
         "testcase_id": 4,
         "args_file_path": "testcases/c/c10_1/4/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [
-          "testcases/c/c10_1/4/input.txt"
-        ],
+        "input_file_path": "testcases/c/c10_1/4/input.txt",
         "output_file_name": "output.txt",
         "answer_file_path": "testcases/c/c10_1/4/output.txt"
       },
@@ -1121,9 +1113,7 @@
         "testcase_id": 5,
         "args_file_path": "testcases/c/c10_1/5/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [
-          "testcases/c/c10_1/5/input.txt"
-        ],
+        "input_file_path": "testcases/c/c10_1/5/input.txt",
         "output_file_name": "output.txt",
         "answer_file_path": "testcases/c/c10_1/5/output.txt"
       },
@@ -1131,9 +1121,7 @@
         "testcase_id": 6,
         "args_file_path": "testcases/c/c10_1/6/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [
-          "testcases/c/c10_1/6/input.txt"
-        ],
+        "input_file_path": "testcases/c/c10_1/6/input.txt",
         "output_file_name": "output.txt",
         "answer_file_path": "testcases/c/c10_1/6/output.txt"
       },
@@ -1141,9 +1129,7 @@
         "testcase_id": 7,
         "args_file_path": "testcases/c/c10_1/7/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [
-          "testcases/c/c10_1/7/input.txt"
-        ],
+        "input_file_path": "testcases/c/c10_1/7/input.txt",
         "output_file_name": "output.txt",
         "answer_file_path": "testcases/c/c10_1/7/output.txt"
       },
@@ -1151,9 +1137,7 @@
         "testcase_id": 8,
         "args_file_path": "testcases/c/c10_1/8/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [
-          "testcases/c/c10_1/8/input.txt"
-        ],
+        "input_file_path": "testcases/c/c10_1/8/input.txt",
         "output_file_name": "output.txt",
         "answer_file_path": "testcases/c/c10_1/8/output.txt"
       },
@@ -1161,9 +1145,7 @@
         "testcase_id": 9,
         "args_file_path": "testcases/c/c10_1/9/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [
-          "testcases/c/c10_1/9/input.txt"
-        ],
+        "input_file_path": "testcases/c/c10_1/9/input.txt",
         "output_file_name": "output.txt",
         "answer_file_path": "testcases/c/c10_1/9/output.txt"
       },
@@ -1171,9 +1153,7 @@
         "testcase_id": 10,
         "args_file_path": "testcases/c/c10_1/10/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [
-          "testcases/c/c10_1/10/input.txt"
-        ],
+        "input_file_path": "testcases/c/c10_1/10/input.txt",
         "output_file_name": "output.txt",
         "answer_file_path": "testcases/c/c10_1/10/output.txt"
       },
@@ -1181,9 +1161,7 @@
         "testcase_id": 11,
         "args_file_path": "testcases/c/c10_1/11/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [
-          "testcases/c/c10_1/11/input.txt"
-        ],
+        "input_file_path": "testcases/c/c10_1/11/input.txt",
         "output_file_name": "output.txt",
         "answer_file_path": "testcases/c/c10_1/11/output.txt"
       },
@@ -1191,9 +1169,7 @@
         "testcase_id": 12,
         "args_file_path": "testcases/c/c10_1/12/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [
-          "testcases/c/c10_1/12/input.txt"
-        ],
+        "input_file_path": "testcases/c/c10_1/12/input.txt",
         "output_file_name": "output.txt",
         "answer_file_path": "testcases/c/c10_1/12/output.txt"
       },
@@ -1201,9 +1177,7 @@
         "testcase_id": 13,
         "args_file_path": "testcases/c/c10_1/13/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [
-          "testcases/c/c10_1/13/input.txt"
-        ],
+        "input_file_path": "testcases/c/c10_1/13/input.txt",
         "output_file_name": "output.txt",
         "answer_file_path": "testcases/c/c10_1/13/output.txt"
       },
@@ -1211,9 +1185,7 @@
         "testcase_id": 14,
         "args_file_path": "testcases/c/c10_1/14/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [
-          "testcases/c/c10_1/14/input.txt"
-        ],
+        "input_file_path": "testcases/c/c10_1/14/input.txt",
         "output_file_name": "output.txt",
         "answer_file_path": "testcases/c/c10_1/14/output.txt"
       },
@@ -1221,9 +1193,7 @@
         "testcase_id": 15,
         "args_file_path": "testcases/c/c10_1/15/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [
-          "testcases/c/c10_1/15/input.txt"
-        ],
+        "input_file_path": "testcases/c/c10_1/15/input.txt",
         "output_file_name": "output.txt",
         "answer_file_path": "testcases/c/c10_1/15/output.txt"
       },
@@ -1231,9 +1201,7 @@
         "testcase_id": 16,
         "args_file_path": "testcases/c/c10_1/16/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [
-          "testcases/c/c10_1/16/input.txt"
-        ],
+        "input_file_path": "testcases/c/c10_1/16/input.txt",
         "output_file_name": "output.txt",
         "answer_file_path": "testcases/c/c10_1/16/output.txt"
       },
@@ -1241,9 +1209,7 @@
         "testcase_id": 17,
         "args_file_path": "testcases/c/c10_1/17/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [
-          "testcases/c/c10_1/17/input.txt"
-        ],
+        "input_file_path": "testcases/c/c10_1/17/input.txt",
         "output_file_name": "output.txt",
         "answer_file_path": "testcases/c/c10_1/17/output.txt"
       },
@@ -1251,9 +1217,7 @@
         "testcase_id": 18,
         "args_file_path": "testcases/c/c10_1/18/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [
-          "testcases/c/c10_1/18/input.txt"
-        ],
+        "input_file_path": "testcases/c/c10_1/18/input.txt",
         "output_file_name": "output.txt",
         "answer_file_path": "testcases/c/c10_1/18/output.txt"
       },
@@ -1261,9 +1225,7 @@
         "testcase_id": 19,
         "args_file_path": "testcases/c/c10_1/19/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [
-          "testcases/c/c10_1/19/input.txt"
-        ],
+        "input_file_path": "testcases/c/c10_1/19/input.txt",
         "output_file_name": "output.txt",
         "answer_file_path": "testcases/c/c10_1/19/output.txt"
       },
@@ -1271,9 +1233,7 @@
         "testcase_id": 20,
         "args_file_path": "testcases/c/c10_1/20/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [
-          "testcases/c/c10_1/20/input.txt"
-        ],
+        "input_file_path": "testcases/c/c10_1/20/input.txt",
         "output_file_name": "output.txt",
         "answer_file_path": "testcases/c/c10_1/20/output.txt"
       }
@@ -1297,7 +1257,7 @@
         "testcase_id": 1,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c10_2/1/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c10_2/1/output.txt"
       },
@@ -1305,7 +1265,7 @@
         "testcase_id": 2,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c10_2/2/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c10_2/2/output.txt"
       },
@@ -1313,7 +1273,7 @@
         "testcase_id": 3,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c10_2/3/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c10_2/3/output.txt"
       },
@@ -1321,7 +1281,7 @@
         "testcase_id": 4,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c10_2/4/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c10_2/4/output.txt"
       },
@@ -1329,7 +1289,7 @@
         "testcase_id": 5,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c10_2/5/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c10_2/5/output.txt"
       },
@@ -1337,7 +1297,7 @@
         "testcase_id": 6,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c10_2/6/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c10_2/6/output.txt"
       },
@@ -1345,7 +1305,7 @@
         "testcase_id": 7,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c10_2/7/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c10_2/7/output.txt"
       },
@@ -1353,7 +1313,7 @@
         "testcase_id": 8,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c10_2/8/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c10_2/8/output.txt"
       },
@@ -1361,7 +1321,7 @@
         "testcase_id": 9,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c10_2/9/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c10_2/9/output.txt"
       },
@@ -1369,7 +1329,7 @@
         "testcase_id": 10,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c10_2/10/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c10_2/10/output.txt"
       },
@@ -1377,7 +1337,7 @@
         "testcase_id": 11,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c10_2/11/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c10_2/11/output.txt"
       },
@@ -1385,7 +1345,7 @@
         "testcase_id": 12,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c10_2/12/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c10_2/12/output.txt"
       },
@@ -1393,7 +1353,7 @@
         "testcase_id": 13,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c10_2/13/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c10_2/13/output.txt"
       },
@@ -1401,7 +1361,7 @@
         "testcase_id": 14,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c10_2/14/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c10_2/14/output.txt"
       },
@@ -1409,7 +1369,7 @@
         "testcase_id": 15,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c10_2/15/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c10_2/15/output.txt"
       },
@@ -1417,7 +1377,7 @@
         "testcase_id": 16,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c10_2/16/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c10_2/16/output.txt"
       },
@@ -1425,7 +1385,7 @@
         "testcase_id": 17,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c10_2/17/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c10_2/17/output.txt"
       },
@@ -1433,7 +1393,7 @@
         "testcase_id": 18,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c10_2/18/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c10_2/18/output.txt"
       },
@@ -1441,7 +1401,7 @@
         "testcase_id": 19,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c10_2/19/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c10_2/19/output.txt"
       },
@@ -1449,7 +1409,7 @@
         "testcase_id": 20,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c10_2/20/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c10_2/20/output.txt"
       }
@@ -1473,7 +1433,7 @@
         "testcase_id": 1,
         "args_file_path": "testcases/c/c8_2/1/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c8_2/1/output.txt"
       },
@@ -1481,7 +1441,7 @@
         "testcase_id": 2,
         "args_file_path": "testcases/c/c8_2/2/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c8_2/2/output.txt"
       },
@@ -1489,7 +1449,7 @@
         "testcase_id": 3,
         "args_file_path": "testcases/c/c8_2/3/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c8_2/3/output.txt"
       },
@@ -1497,7 +1457,7 @@
         "testcase_id": 4,
         "args_file_path": "testcases/c/c8_2/4/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c8_2/4/output.txt"
       },
@@ -1505,7 +1465,7 @@
         "testcase_id": 5,
         "args_file_path": "testcases/c/c8_2/5/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c8_2/5/output.txt"
       },
@@ -1513,7 +1473,7 @@
         "testcase_id": 6,
         "args_file_path": "testcases/c/c8_2/6/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c8_2/6/output.txt"
       },
@@ -1521,7 +1481,7 @@
         "testcase_id": 7,
         "args_file_path": "testcases/c/c8_2/7/args.txt",
         "stdin_file_path": "",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c8_2/7/output.txt"
       }
@@ -1545,7 +1505,7 @@
         "testcase_id": 1,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c7_1/1/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c7_1/1/output.txt"
       },
@@ -1553,7 +1513,7 @@
         "testcase_id": 2,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c7_1/2/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c7_1/2/output.txt"
       },
@@ -1561,7 +1521,7 @@
         "testcase_id": 3,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c7_1/3/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c7_1/3/output.txt"
       }
@@ -1585,7 +1545,7 @@
         "testcase_id": 1,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c7_2/1/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c7_2/1/output.txt"
       },
@@ -1593,7 +1553,7 @@
         "testcase_id": 2,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c7_2/2/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c7_2/2/output.txt"
       },
@@ -1601,7 +1561,7 @@
         "testcase_id": 3,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c7_2/3/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c7_2/3/output.txt"
       },
@@ -1609,7 +1569,7 @@
         "testcase_id": 4,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c7_2/4/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c7_2/4/output.txt"
       }
@@ -1633,7 +1593,7 @@
         "testcase_id": 1,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c7_3/1/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c7_3/1/output.txt"
       },
@@ -1641,7 +1601,7 @@
         "testcase_id": 2,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c7_3/2/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c7_3/2/output.txt"
       },
@@ -1649,7 +1609,7 @@
         "testcase_id": 3,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c7_3/3/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c7_3/3/output.txt"
       },
@@ -1657,7 +1617,7 @@
         "testcase_id": 4,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c7_3/4/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c7_3/4/output.txt"
       },
@@ -1665,7 +1625,7 @@
         "testcase_id": 5,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c7_3/5/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c7_3/5/output.txt"
       },
@@ -1673,7 +1633,7 @@
         "testcase_id": 6,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c7_3/6/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c7_3/6/output.txt"
       }
@@ -1697,7 +1657,7 @@
         "testcase_id": 1,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c7_4/1/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c7_4/1/output.txt"
       },
@@ -1705,7 +1665,7 @@
         "testcase_id": 2,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c7_4/2/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c7_4/2/output.txt"
       },
@@ -1713,7 +1673,7 @@
         "testcase_id": 3,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c7_4/3/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c7_4/3/output.txt"
       },
@@ -1721,7 +1681,7 @@
         "testcase_id": 4,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c7_4/4/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c7_4/4/output.txt"
       },
@@ -1729,7 +1689,7 @@
         "testcase_id": 5,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c7_4/5/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c7_4/5/output.txt"
       },
@@ -1737,7 +1697,7 @@
         "testcase_id": 6,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c7_4/6/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c7_4/6/output.txt"
       },
@@ -1745,7 +1705,7 @@
         "testcase_id": 7,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c7_4/7/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c7_4/7/output.txt"
       },
@@ -1753,7 +1713,7 @@
         "testcase_id": 8,
         "args_file_path": "",
         "stdin_file_path": "testcases/c/c7_4/8/input.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c7_4/8/output.txt"
       }
@@ -1777,7 +1737,7 @@
         "testcase_id": 1,
         "args_file_path": "",
         "stdin_file_path": "testcases/pc/2024/easy/in_sample.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/pc/2024/easy/out_sample.txt"
       },
@@ -1785,7 +1745,7 @@
         "testcase_id": 2,
         "args_file_path": "",
         "stdin_file_path": "testcases/pc/2024/easy/input1.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/pc/2024/easy/output1.txt"
       },
@@ -1793,7 +1753,7 @@
         "testcase_id": 3,
         "args_file_path": "",
         "stdin_file_path": "testcases/pc/2024/easy/input2.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/pc/2024/easy/output2.txt"
       },
@@ -1801,7 +1761,7 @@
         "testcase_id": 4,
         "args_file_path": "",
         "stdin_file_path": "testcases/pc/2024/easy/input3.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/pc/2024/easy/output3.txt"
       },
@@ -1809,7 +1769,7 @@
         "testcase_id": 5,
         "args_file_path": "",
         "stdin_file_path": "testcases/pc/2024/easy/input4.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/pc/2024/easy/output4.txt"
       },
@@ -1817,7 +1777,7 @@
         "testcase_id": 6,
         "args_file_path": "",
         "stdin_file_path": "testcases/pc/2024/easy/input5.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/pc/2024/easy/output5.txt"
       }
@@ -1841,7 +1801,7 @@
         "testcase_id": 1,
         "args_file_path": "",
         "stdin_file_path": "testcases/pc/2024/medium/in_sample.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/pc/2024/medium/out_sample.txt"
       },
@@ -1849,7 +1809,7 @@
         "testcase_id": 2,
         "args_file_path": "",
         "stdin_file_path": "testcases/pc/2024/medium/input1.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/pc/2024/medium/output1.txt"
       },
@@ -1857,7 +1817,7 @@
         "testcase_id": 3,
         "args_file_path": "",
         "stdin_file_path": "testcases/pc/2024/medium/input2.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/pc/2024/medium/output2.txt"
       },
@@ -1865,7 +1825,7 @@
         "testcase_id": 4,
         "args_file_path": "",
         "stdin_file_path": "testcases/pc/2024/medium/input3.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/pc/2024/medium/output3.txt"
       },
@@ -1873,7 +1833,7 @@
         "testcase_id": 5,
         "args_file_path": "",
         "stdin_file_path": "testcases/pc/2024/medium/input4.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/pc/2024/medium/output4.txt"
       },
@@ -1881,7 +1841,7 @@
         "testcase_id": 6,
         "args_file_path": "",
         "stdin_file_path": "testcases/pc/2024/medium/input5.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/pc/2024/medium/output5.txt"
       }
@@ -1905,7 +1865,7 @@
         "testcase_id": 1,
         "args_file_path": "",
         "stdin_file_path": "testcases/pc/2024/hard/in_sample1.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/pc/2024/hard/out_sample1.txt"
       },
@@ -1913,7 +1873,7 @@
         "testcase_id": 2,
         "args_file_path": "",
         "stdin_file_path": "testcases/pc/2024/hard/in_sample2.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/pc/2024/hard/out_sample2.txt"
       },
@@ -1921,7 +1881,7 @@
         "testcase_id": 3,
         "args_file_path": "",
         "stdin_file_path": "testcases/pc/2024/hard/in_sample3.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/pc/2024/hard/out_sample3.txt"
       },
@@ -1929,7 +1889,7 @@
         "testcase_id": 4,
         "args_file_path": "",
         "stdin_file_path": "testcases/pc/2024/hard/in_sample4.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/pc/2024/hard/out_sample4.txt"
       },
@@ -1937,7 +1897,7 @@
         "testcase_id": 5,
         "args_file_path": "",
         "stdin_file_path": "testcases/pc/2024/hard/in_sample5.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/pc/2024/hard/out_sample5.txt"
       },
@@ -1945,7 +1905,7 @@
         "testcase_id": 6,
         "args_file_path": "",
         "stdin_file_path": "testcases/pc/2024/hard/in_sample6.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/pc/2024/hard/out_sample6.txt"
       },
@@ -1953,7 +1913,7 @@
         "testcase_id": 7,
         "args_file_path": "",
         "stdin_file_path": "testcases/pc/2024/hard/input1.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/pc/2024/hard/output1.txt"
       },
@@ -1961,7 +1921,7 @@
         "testcase_id": 8,
         "args_file_path": "",
         "stdin_file_path": "testcases/pc/2024/hard/input2.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/pc/2024/hard/output2.txt"
       },
@@ -1969,7 +1929,7 @@
         "testcase_id": 9,
         "args_file_path": "",
         "stdin_file_path": "testcases/pc/2024/hard/input3.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/pc/2024/hard/output3.txt"
       },
@@ -1977,7 +1937,7 @@
         "testcase_id": 10,
         "args_file_path": "",
         "stdin_file_path": "testcases/pc/2024/hard/input4.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/pc/2024/hard/output4.txt"
       },
@@ -1985,7 +1945,7 @@
         "testcase_id": 11,
         "args_file_path": "",
         "stdin_file_path": "testcases/pc/2024/hard/input5.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/pc/2024/hard/output5.txt"
       },
@@ -1993,7 +1953,7 @@
         "testcase_id": 12,
         "args_file_path": "",
         "stdin_file_path": "testcases/pc/2024/hard/input6.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/pc/2024/hard/output6.txt"
       },
@@ -2001,7 +1961,7 @@
         "testcase_id": 13,
         "args_file_path": "",
         "stdin_file_path": "testcases/pc/2024/hard/input7.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/pc/2024/hard/output7.txt"
       },
@@ -2009,7 +1969,7 @@
         "testcase_id": 14,
         "args_file_path": "",
         "stdin_file_path": "testcases/pc/2024/hard/input8.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/pc/2024/hard/output8.txt"
       },
@@ -2017,7 +1977,7 @@
         "testcase_id": 15,
         "args_file_path": "",
         "stdin_file_path": "testcases/pc/2024/hard/input9.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/pc/2024/hard/output9.txt"
       },
@@ -2025,7 +1985,7 @@
         "testcase_id": 16,
         "args_file_path": "",
         "stdin_file_path": "testcases/pc/2024/hard/input10.txt",
-        "input_file_path_list": [],
+        "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/pc/2024/hard/output10.txt"
       }
