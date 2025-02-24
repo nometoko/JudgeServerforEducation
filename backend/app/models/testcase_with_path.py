@@ -13,7 +13,7 @@ class TestcaseWithPath(Base):
     testcase_number = Column(Integer, nullable=False)
     args_file_path = Column(String, nullable=False)
     stdin_file_path = Column(String, nullable=False)
-    input_file_path_list = Column(String)
+    input_file_path = Column(String, nullable=False)
     output_file_name = Column(String, nullable=False)
     answer_file_path = Column(String, nullable=False)
 
