@@ -1,5 +1,5 @@
 export interface ProblemProps {
-    problem_id: string;
+    problem_id: number;
     is_petit_coder: boolean;
     name: string;
     open_date: string;
