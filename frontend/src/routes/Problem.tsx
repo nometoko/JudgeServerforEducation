@@ -1,63 +1,89 @@
 import DefaultLayout from "@/components/DefaultLayout";
 import SubmitForm from "@/components/SubmitForm";
+import myaxios from "@/providers/axios_client";
+import { ProblemProps } from "@/types/DbTypes";
 import { Heading, Stack, Text, Divider } from '@chakra-ui/react';
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const Problem: React.FC = () => {
     const { problemId } = useParams<{ problemId: string }>();
-    console.log(problemId);
+    const [problem, setProblem] = useState<ProblemProps>();
 
-    return (
-        <DefaultLayout>
-            <Heading my={3}>if文, for文</Heading>
-            <Divider />
-            <Stack my={6}>
-                {/* <ExecutionConstraints
+    const getProblem = async () => {
+        try {
+            const response = await myaxios.get(`/api/v1/problem/${problemId}`);
+            console.log(response.data);
+            setProblem(response.data);
+        } catch (err: any) {
+            console.log(err);
+        }
+    }
+
+    useEffect(() => {
+        console.log("useEffect");
+        getProblem();
+    }, [problemId]);
+
+    if (!problem) {
+        return (
+            <DefaultLayout>
+                <h1>Problem not found</h1>
+            </DefaultLayout>
+        );
+    }
+    else {
+        return (
+            <DefaultLayout>
+                <Heading my={3}>if文, for文</Heading>
+                <Divider />
+                <Stack my={6}>
+                    {/* <ExecutionConstraints
                     executionTime={pwt?.ExecutionTime}
                     memoryLimit={pwt?.MemoryLimit}
                 /> */}
-                <Stack mt={4} mb={8}>
-                    <Text
-                        fontSize={24}
-                        fontWeight={'bold'}
-                    >
-                        問題文
-                    </Text>
-                    <Text whiteSpace="pre-line">Statement</Text>
+                    <Stack mt={4} mb={8}>
+                        <Text
+                            fontSize={24}
+                            fontWeight={'bold'}
+                        >
+                            問題文
+                        </Text>
+                        <Text whiteSpace="pre-line">{problem.statement}</Text>
+                    </Stack>
+                    <Stack mb={8}>
+                        <Text
+                            fontSize={24}
+                            fontWeight={'bold'}
+                        >
+                            制約
+                        </Text>
+                        <Text whiteSpace="pre-line">{problem.constraints}</Text>
+                    </Stack>
+                    <Stack mb={8}>
+                        <Text
+                            fontSize={24}
+                            fontWeight={'bold'}
+                        >
+                            入力形式
+                        </Text>
+                        <Text whiteSpace="pre-line">{problem.input_format}</Text>
+                    </Stack>
+                    <Stack mb={8}>
+                        <Text
+                            fontSize={24}
+                            fontWeight={'bold'}
+                        >
+                            出力形式
+                        </Text>
+                        <Text whiteSpace="pre-line">{problem.output_format}</Text>
+                    </Stack>
                 </Stack>
-                <Stack mb={8}>
-                    <Text
-                        fontSize={24}
-                        fontWeight={'bold'}
-                    >
-                        制約
-                    </Text>
-                    <Text whiteSpace="pre-line">キーボード (標準入力)から文字を受け取り、その文字がアルファベットなら、次の処理を実行するプログラムを作成してください。\n
-                        入力が大文字なら小文字に、小文字なら大文字に変換する。 ただし入力はEOF(Ctrl + D) を受け取るまで繰り返されます。</Text>
-                </Stack>
-                <Stack mb={8}>
-                    <Text
-                        fontSize={24}
-                        fontWeight={'bold'}
-                    >
-                        入力形式
-                    </Text>
-                    <Text whiteSpace="pre-line">InputFmt</Text>
-                </Stack>
-                <Stack mb={8}>
-                    <Text
-                        fontSize={24}
-                        fontWeight={'bold'}
-                    >
-                        出力形式
-                    </Text>
-                    <Text whiteSpace="pre-line">OutputFmt</Text>
-                </Stack>
-            </Stack>
-            <Divider />
-            <SubmitForm problemId={Number(problemId)} />
-        </DefaultLayout>
-    );
+                <Divider />
+                <SubmitForm problemId={Number(problemId)} />
+            </DefaultLayout>
+        );
+    }
 };
 
 export default Problem;
