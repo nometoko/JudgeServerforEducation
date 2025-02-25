@@ -3,5 +3,5 @@
 venv/
 .venv
 **/__pycache__/**
-
+**/.vscode/
 app/db/postgres*
