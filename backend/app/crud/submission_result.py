@@ -14,5 +14,5 @@ def delete_all_submission_results(db: Session) -> None:
     db.commit()
     return None
 
-def get_submission_result_by_submission_id(db: Session, submission_id: str) -> List[models.SubmissionResult]:
+def get_submission_results_by_submission_id(db: Session, submission_id: str) -> List[models.SubmissionResult]:
     return db.query(models.SubmissionResult).filter(models.SubmissionResult.submission_id == submission_id).all()

@@ -4,7 +4,7 @@ import { Card, CardHeader, CardBody, Heading, Text, Icon, SimpleGrid } from '@ch
 import { useNavigate } from "react-router-dom";
 import { MdLockClock, MdLockOpen } from "react-icons/md";
 import { GiPodium } from "react-icons/gi";
-import { ProblemProps, ProblemWithStatus } from '@/types/DbTypes';
+import { ProblemWithStatus } from '@/types/DbTypes';
 
 const sortByOpenDate = (a: ProblemWithStatus, b: ProblemWithStatus): number => {
   return new Date(a.problem.open_date).getTime() - new Date(b.problem.open_date).getTime();
