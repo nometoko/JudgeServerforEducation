@@ -35,7 +35,7 @@ const Problem: React.FC = () => {
     else {
         return (
             <DefaultLayout>
-                <Heading my={3}>if文, for文</Heading>
+                <Heading my={3}>{problem.name}</Heading>
                 <Divider />
                 <Stack my={6}>
                     {/* <ExecutionConstraints
