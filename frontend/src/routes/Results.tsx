@@ -1,7 +1,7 @@
 import DefaultLayout from "@/components/DefaultLayout";
 import myaxios from "@/providers/axios_client";
 import SubmissionList from "@/components/SubmissionList";
-import { Button, Flex, Box } from "@chakra-ui/react";
+import { Divider, Button, Flex, Box } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
 const Results = () => {
@@ -27,13 +27,14 @@ const Results = () => {
                 <h1>Results</h1>
             </div>
             <br />
+            <Divider borderWidth="1px" borderColor="black" />
             <br />
 
             <Box>
                 <Flex id="table-header" justifyContent="space-between" fontWeight="bold" mb={1}>
-                    <Box flex="1" textAlign="left" bg="gray" border="1px solid white" color='white' p={2} fontSize="lg">Problem</Box>
-                    <Box flex="1" textAlign="left" bg="gray" border="1px solid white" color='white' p={2} fontSize="lg">Submitted at</Box>
-                    <Box flex="1" textAlign="left" bg="gray" border="1px solid white" color='white' p={2} fontSize="lg">Status</Box>
+                    <Box flex="1" textAlign="left" bg="gray.700" border="1px solid white" color='white' p={3} fontSize="lg">Problem</Box>
+                    <Box flex="1" textAlign="left" bg="gray.700" border="1px solid white" color='white' p={3} fontSize="lg">Submitted at</Box>
+                    <Box flex="1" textAlign="left" bg="gray.700" border="1px solid white" color='white' p={3} fontSize="lg">Status</Box>
                 </Flex>
                 <Box flex="1" overflowY="auto" maxHeight={630}>
                     <SubmissionList />
