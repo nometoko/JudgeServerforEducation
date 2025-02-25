@@ -42,10 +42,11 @@ const CardItem = ({ pws }: { pws: ProblemWithStatus }) => {
   return (
     <Card
       key={pws.problem.problem_id}
-      boxShadow="lg"
-      // border="1px ridge grey"
+      boxShadow="xl"
+      border="1px solid"
+      borderColor="gray.300"
       cursor="pointer"
-      background="blue.50"
+      background="white"
       _hover={{ transform: "scale(1.05)", transition: "0.2s" }}
       onClick={() => navigate(`/Problem/${pws.problem.problem_id}`)}
       width="100%"
