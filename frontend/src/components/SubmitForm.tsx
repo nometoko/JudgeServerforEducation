@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import myaxios from "@/providers/axios_client";
+import axios from "axios";
 
 const SubmitForm: React.FC<{ problemId: number }> = ({ problemId }) => {
     const navigate = useNavigate();
@@ -48,6 +49,9 @@ const SubmitForm: React.FC<{ problemId: number }> = ({ problemId }) => {
         } catch (error) {
             console.error("Upload error:", error);
             setMessage("アップロードに失敗しました。");
+            if (axios.isAxiosError(error) && error.response?.status == 400) {
+                alert("It seems that you submitted the file which is not allowed.\nPlease check contents of the file.");
+            }
         } finally {
             setUploading(false);
         }

@@ -35,7 +35,7 @@ async def receive_file(
     submission = schemas.SubmissionCreate(user_name=user_name, problem_id=problem_id)
     created_submission = crud.create_submission(db, submission)
 
-    submission_id = created_submission.submission_id    
+    submission_id = created_submission.submission_id
 
     save_dir = os.path.join(save_dir, submission_id)
     os.makedirs(save_dir, exist_ok=False)
@@ -49,7 +49,7 @@ async def receive_file(
         # copy file to save_dir
         with open(file_path, "wb") as f:
             shutil.copyfileobj(file.file, f)
-        
+
         created_submission = check_file_type(file_path)
         if not created_submission.success:
             os.removedirs(save_dir)

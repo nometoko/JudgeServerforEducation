@@ -1,14 +1,26 @@
 import { useEffect, useState } from "react";
 import myaxios from "@/providers/axios_client";
-import { Box, Card, CardHeader, CardBody, Heading, Text, Button } from "@chakra-ui/react";
-import exp from "constants";
+import { Box, Card, CardHeader, CardBody, Heading, Button } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { LuCornerDownLeft } from "react-icons/lu";
-import { SubmissionProps } from "@/types/DbTypes";
+import { ProblemProps, SubmissionProps } from "@/types/DbTypes";
 
-const SubmissionBar = ({ submission }: { submission: SubmissionProps }) => {
+const SubmissionBar: React.FC<{ submission: SubmissionProps }> = ({ submission }) => {
     const navigate = useNavigate();
     const submissionDate = new Date(submission.submitted_date);
+    const [problem, setProblem] = useState<ProblemProps>();
+
+    const getProblemById = async () => {
+        try {
+            const response = await myaxios.get(`/api/v1/problem/${submission.problem_id}`);
+            setProblem(response.data);
+        } catch (err: any) {
+            console.log(err);
+        }
+    }
+
+    useEffect(() => {
+        getProblemById();
+    }, []);
 
     return (
         <Card
@@ -19,13 +31,14 @@ const SubmissionBar = ({ submission }: { submission: SubmissionProps }) => {
         >
             <CardHeader>
                 <Heading size="sm">
-                    {String(submission.problem_id)} - {submission.status}
+                    {problem?.name}
                 </Heading>
             </CardHeader>
             <CardBody>
-                <Text>
-                    {submissionDate.toLocaleString()}
-                </Text>
+                {submissionDate.toLocaleString()}
+            </CardBody>
+            <CardBody>
+                {submission.status}
             </CardBody>
             <Button
                 onClick={() => navigate(`/submission/${submission.submission_id}`)}
@@ -36,7 +49,7 @@ const SubmissionBar = ({ submission }: { submission: SubmissionProps }) => {
     )
 };
 
-const SubmissionList = () => {
+const SubmissionList: React.FC = () => {
     const authUserName = localStorage.getItem("authUserName");
     const [submissions, setSubmissions] = useState<SubmissionProps[]>([]);
 

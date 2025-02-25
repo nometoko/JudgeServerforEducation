@@ -4,6 +4,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { GoCopy, GoDownload } from "react-icons/go";
 import { FileContent } from "@/types/DbTypes";
+import myaxios from "@/providers/axios_client";
 
 const SubmitContent: React.FC<{ submissionId: string }> = ({ submissionId }) => {
     const [files, setFiles] = React.useState<FileContent[]>([]);
@@ -39,15 +40,19 @@ const SubmitContent: React.FC<{ submissionId: string }> = ({ submissionId }) => 
         URL.revokeObjectURL(url);
     }
 
+    const getFiles = async () => {
+        try {
+            const response = await myaxios.get(`/handler/getSubmittedFiles/${submissionId}`);
+            setFiles(response.data);
+            setSelectedFileContent(response.data[0].content);
+            setSelectedFileName(response.data[0].filename);
+        } catch (err: any) {
+            console.error(err);
+        }
+    }
+
     useEffect(() => {
-        fetch("http://localhost:8000/handler/getSubmittedFiles/" + submissionId)
-            .then((response) => response.json())
-            .then(
-                (data) => {
-                    setFiles(data)
-                    setSelectedFileContent(data[0].content)
-                }
-            );
+        getFiles();
     }, []);
 
     return (

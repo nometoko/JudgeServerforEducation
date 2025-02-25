@@ -37,7 +37,7 @@ async def get_submission_by_user_name_endpoint(
     db: Session = Depends(deps.get_db)
 ) -> List[schemas.SubmissionResponse]:
 
-    submission = crud.get_submission_by_user_name(db, user_name)
+    submission = crud.get_submissions_by_user_name(db, user_name)
     if submission:
         return submission
     else:

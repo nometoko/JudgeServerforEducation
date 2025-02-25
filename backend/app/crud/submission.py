@@ -14,11 +14,14 @@ def create_submission(db: Session, submission: schemas.SubmissionCreate) -> mode
 def get_all_submissions(db: Session) -> List[models.Submission]:
     return db.query(models.Submission).all()
 
-def get_submission_by_user_name(db: Session, user_name: str) -> List[models.Submission]:
+def get_submissions_by_user_name(db: Session, user_name: str) -> List[models.Submission]:
     return db.query(models.Submission).filter(models.Submission.user_name == user_name).all()
 
 def get_submission_by_submission_id(db: Session, submission_id: str) -> models.Submission:
     return db.query(models.Submission).filter(models.Submission.submission_id == submission_id).first()
+
+def get_submissions_by_user_name_and_problem_id(db: Session, user_name: str, problem_id: int) -> List[models.Submission]:
+    return db.query(models.Submission).filter(models.Submission.user_name == user_name, models.Submission.problem_id == problem_id).all()
 
 # patch
 def update_submission_status(db: Session, submission_id: str, submission: schemas.SubmissionUpdate) -> models.Submission:

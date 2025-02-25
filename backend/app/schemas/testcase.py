@@ -23,4 +23,4 @@ class TestcaseResponse(BaseModel):
     args_file_content: Text
     stdin_file_content: Text
     answer_file_content: Text
-    input_file_content_list: Optional[Text]
+    input_file_content: Optional[Text] = None
