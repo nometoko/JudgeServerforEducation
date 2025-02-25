@@ -36,10 +36,10 @@ const TestCaseResult: React.FC<TestCaseResultProps> = ({ testcase, user_result }
                 </h2>
                 <AccordionPanel pb={4} ref={panelRef}>
                     <Flex>
-                        <Box>
+                        {/* <Box>
                             <h3>Executed Command</h3>
                             <Textarea value={executedCommand} readOnly />
-                        </Box>
+                        </Box> */}
 
                         <Box>
                             <h3>Standard Input</h3>
@@ -61,23 +61,27 @@ const TestCaseResult: React.FC<TestCaseResultProps> = ({ testcase, user_result }
                             </Flex>
                         </Box>
                     ) : (
-                        <Box maxHeight={300} overflowY="auto">
-                            <ReactDiffViewer
-                                newValue={testcase.answer_file_content}
-                                oldValue={user_result.output_content}
-                                splitView={true}
-                                leftTitle="your output"
-                                rightTitle="expected output"
-                                showDiffOnly={false}
-                                styles={{
-                                    line: {
-                                        wordBreak: "break-all",
-                                    },
-                                    contentText: {
-                                        textAlign: "left",
-                                    },
-                                }}
-                            />
+                        <Box>
+                            <Flex justifyContent="space-between" fontWeight="bold" mb={2}>
+                                <Box flex="1" textAlign="left" bg="gray" border="1px solid white" color='white' p={2}>Your Output</Box>
+                                <Box flex="1" textAlign="left" bg="gray" border="1px solid white" color='white' p={2}>Expected Output</Box>
+                            </Flex>
+                            <Box maxHeight={300} overflowY="auto">
+                                <ReactDiffViewer
+                                    newValue={testcase.answer_file_content}
+                                    oldValue={user_result.output_content}
+                                    splitView={true}
+                                    showDiffOnly={false}
+                                    styles={{
+                                        line: {
+                                            wordBreak: "break-all",
+                                        },
+                                        contentText: {
+                                            textAlign: "left",
+                                        },
+                                    }}
+                                />
+                            </Box>
                         </Box>
                     )}
                 </AccordionPanel>
