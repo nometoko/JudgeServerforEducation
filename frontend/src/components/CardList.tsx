@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Stack, Checkbox } from '@chakra-ui/react';
+import { Box, Stack, Checkbox, Divider } from '@chakra-ui/react';
 import { Card, CardHeader, CardBody, Heading, Text, Icon, SimpleGrid } from '@chakra-ui/react';
 import { useNavigate } from "react-router-dom";
 import { MdLockClock, MdLockOpen } from "react-icons/md";
@@ -42,8 +42,10 @@ const CardItem = ({ pws }: { pws: ProblemWithStatus }) => {
   return (
     <Card
       key={pws.problem.problem_id}
-      boxShadow="dark-lg"
+      boxShadow="lg"
+      // border="1px ridge grey"
       cursor="pointer"
+      background="blue.50"
       _hover={{ transform: "scale(1.05)", transition: "0.2s" }}
       onClick={() => navigate(`/Problem/${pws.problem.problem_id}`)}
       width="100%"
@@ -54,6 +56,9 @@ const CardItem = ({ pws }: { pws: ProblemWithStatus }) => {
           {pws.problem.name}
         </Heading>
       </CardHeader>
+      <Box px={4}>
+        <Divider borderColor="gray.400" />
+      </Box>
       <CardBody>
         <Text fontWeight="bold">
           <Icon as={MdLockOpen} w={5} h={5} mr="5px" />
@@ -98,7 +103,7 @@ export const CardList = ({ data }: { data: ProblemWithStatus[] }) => {
 
   return (
     <>
-      <Stack spacing={5} direction="row">
+      <Stack spacing={5} direction="row" mb="4">
         {check_list.map((check, index) => (
           <Checkbox
             key={check}
@@ -115,9 +120,12 @@ export const CardList = ({ data }: { data: ProblemWithStatus[] }) => {
           </Checkbox>
         ))}
       </Stack>
+      <Box >
+        <Divider borderWidth="1px" borderColor="gray.200" />
+      </Box>
 
-      <Stack mt={8}>
-        <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing="20px">
+      <Stack mt="4">
+        <SimpleGrid columns={{ sm: 1, md: 3, lg: 5 }} spacing="20px">
           {data.map((pws) => {
             // フィルタリング処理
             if (pws.status && !checkedItems[0]) return null;

@@ -1,4 +1,4 @@
-import { Container } from "@chakra-ui/react";
+import { Container, Box } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { DefaultLayout } from "@/components/DefaultLayout";
 import { CardList } from "@/components/CardList";
@@ -40,10 +40,10 @@ const DashboardPage = () => {
 
   return (
     <DefaultLayout>
-      <Container maxW="xl" p={6}>
+      <Box display="flex" flexDirection="column" justifyContent="space-between" mt="6">
         <CardList data={problems} />
-      </Container>
-    </DefaultLayout>
+      </Box>
+    </DefaultLayout >
   );
 };
 
