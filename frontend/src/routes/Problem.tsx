@@ -1,8 +1,12 @@
 import DefaultLayout from "@/components/DefaultLayout";
 import SubmitForm from "@/components/SubmitForm";
 import { Heading, Stack, Text, Divider } from '@chakra-ui/react';
+import { useParams } from "react-router-dom";
 
 const Problem: React.FC = () => {
+    const { problemId } = useParams<{ problemId: string }>();
+    console.log(problemId);
+
     return (
         <DefaultLayout>
             <Heading my={3}>if文, for文</Heading>
@@ -51,9 +55,8 @@ const Problem: React.FC = () => {
                 </Stack>
             </Stack>
             <Divider />
-            <SubmitForm />
+            <SubmitForm problemId={Number(problemId)} />
         </DefaultLayout>
-
     );
 };
 

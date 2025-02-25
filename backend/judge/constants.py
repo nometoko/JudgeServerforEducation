@@ -1,6 +1,6 @@
 from enum import Enum
 
-PROG: str = "PROG"
+PROG: str = "prog"
 JUDGE_DIR: str = "backend/judge"
 EXEC_DIR: str = "compile_resource"
 TEST_DIR: str = "static/testcases"

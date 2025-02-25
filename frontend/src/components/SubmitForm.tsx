@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import myaxios from "@/providers/axios_client";
 import axios from "axios";
 
-const SubmitForm: React.FC = () => {
+const SubmitForm: React.FC<{ problemId: number }> = ({ problemId }) => {
+    const navigate = useNavigate();
+
     const [files, setFiles] = useState<FileList | null>(null);
     const [uploading, setUploading] = useState<boolean>(false);
     const [message, setMessage] = useState<string>("");
@@ -34,19 +38,20 @@ const SubmitForm: React.FC = () => {
         setMessage("");
 
         try {
-            const test = await axios.post("http://localhost:8000/api/v1/submission/", {
-                user_name: "user",
-                problem_id: 1
+            const authUserName = localStorage.getItem("authUserName");
+            const response = await myaxios.post(`/handler/receiveFiles/${authUserName}/${problemId}`, formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data"
+                }
             });
-            const submissionId = test.data.submission_id;
-            formData.append("submission_id", String(submissionId));
-            console.log(formData);
-
-            const response = await axios.post("http://localhost:8000/receivefiles/", formData);
-            setMessage(`アップロード成功: ${response.data.msg}`);
+            const submissionId = response.data;
+            navigate(`/submission/${submissionId}`);
         } catch (error) {
             console.error("Upload error:", error);
             setMessage("アップロードに失敗しました。");
+            if (axios.isAxiosError(error) && error.response?.status == 400) {
+                alert("It seems that you submitted the file which is not allowed.\nPlease check contents of the file.");
+            }
         } finally {
             setUploading(false);
         }

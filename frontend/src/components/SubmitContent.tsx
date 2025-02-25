@@ -3,15 +3,11 @@ import React, { useEffect } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { GoCopy, GoDownload } from "react-icons/go";
+import { FileContent } from "@/types/DbTypes";
+import myaxios from "@/providers/axios_client";
 
-type SubmittedFile = {
-    content: string;
-    filename: string;
-}
-
-
-const SubmitContent: React.FC = () => {
-    const [files, setFiles] = React.useState<SubmittedFile[]>([]);
+const SubmitContent: React.FC<{ submissionId: string }> = ({ submissionId }) => {
+    const [files, setFiles] = React.useState<FileContent[]>([]);
     const [selectedFileContent, setSelectedFileContent] = React.useState<string>('');
     const [selectedFileName, setSelectedFileName] = React.useState<string>('');
     const { onCopy, setValue, hasCopied } = useClipboard('');
@@ -34,7 +30,7 @@ const SubmitContent: React.FC = () => {
 
     const handleDownload = () => {
         // download file
-        const blob = new Blob([selectedFileContent], { type: 'text/plain' });
+        const blob = new Blob([selectedFileContent], { type: '.c | .h' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
@@ -44,15 +40,19 @@ const SubmitContent: React.FC = () => {
         URL.revokeObjectURL(url);
     }
 
+    const getFiles = async () => {
+        try {
+            const response = await myaxios.get(`/handler/getSubmittedFiles/${submissionId}`);
+            setFiles(response.data);
+            setSelectedFileContent(response.data[0].content);
+            setSelectedFileName(response.data[0].filename);
+        } catch (err: any) {
+            console.error(err);
+        }
+    }
+
     useEffect(() => {
-        fetch("http://localhost:8000/getfilelist")
-            .then((response) => response.json())
-            .then(
-                (data) => {
-                    setFiles(data)
-                    setSelectedFileContent(data[0].content)
-                }
-            );
+        getFiles();
     }, []);
 
     return (
@@ -74,7 +74,7 @@ const SubmitContent: React.FC = () => {
                     </Button>
                 </Tooltip>
             </Flex>
-            <Box height="60vh" width="100%">
+            <Box maxHeight="60vh" width="100%" overflow={"auto"}>
                 <SyntaxHighlighter language="c" style={oneDark} children={selectedFileContent} />
             </Box>
         </div>
