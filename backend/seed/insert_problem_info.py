@@ -45,7 +45,7 @@ def read_json(seed_root_dir: str, json_file_name: str) -> List[ProblemJson]:
             if answer_file_path:
                 with open(f"{seed_root_dir}/{answer_file_path}", "r") as f:
                     testcase["answer_file_content"] = f.read()
-        
+
         problems_info.append(ProblemJson(problem=problem, testcases=testcases, testcases_with_path=testcases_with_path))
     return problems_info
 
@@ -61,7 +61,7 @@ def insert_problem_info(seed_root_dir: str, json_file_name: str):
         created_problem = crud.create_problem(db, problems_info)
         if not created_problem:
             raise Exception("Problem creation failed")
-        
+
         for i in range(len(problem_info.testcases)):
             testcase_with_path = problem_info.testcases_with_path[i]
             testcase = problem_info.testcases[i]

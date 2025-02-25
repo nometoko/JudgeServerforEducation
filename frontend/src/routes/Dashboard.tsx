@@ -3,16 +3,17 @@ import { useEffect, useState } from "react";
 import { DefaultLayout } from "@/components/DefaultLayout";
 import { CardList } from "@/components/CardList";
 import myaxios from "@/providers/axios_client";
+import { ProblemProps, ProblemWithStatus } from "@/types/DbTypes";
 
 const DashboardPage = () => {
   const authUserName = localStorage.getItem("authUserName");
-  const [problems, setProblems] = useState<any[]>([]);
+  const [problems, setProblems] = useState<ProblemWithStatus[]>([]);
   const [error, setError] = useState("");
   const [debug, setDebug] = useState("");
 
   const getProblems = async () => {
     try {
-      const response = await myaxios.get(`/handler/getProblemList/{authUserName}`); // ✅ ユーザー名を渡す
+      const response = await myaxios.get(`/handler/getProblemList/${authUserName}`); // ✅ ユーザー名を渡す
       // 成功時は問題リストとメッセージを更新
       setProblems(response.data);
       setDebug(response.data.message);
@@ -41,7 +42,6 @@ const DashboardPage = () => {
     <DefaultLayout>
       <Container maxW="xl" p={6}>
         <CardList data={problems} />
-        {/*<CardList data={dummyProblems} />*/}
       </Container>
     </DefaultLayout>
   );

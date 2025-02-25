@@ -22,8 +22,8 @@ app.include_router(login.router)
 app.include_router(create_new_user.router)
 app.include_router(handler_router, prefix="/handler")
 # app.include_router(protected_router, prefix="/protected")
-print(app.routes)
-
+for r in app.routes:
+    print(r)
 
 @app.exception_handler(RequestValidationError)
 async def handler(request: Request, exc: RequestValidationError) -> JSONResponse:
@@ -33,9 +33,10 @@ async def handler(request: Request, exc: RequestValidationError) -> JSONResponse
 
 # 環境変数を読み込む
 ROOT_DIR = get_root_dir()
+os.environ["ROOT_DIR"] = ROOT_DIR
 dotenv.load_dotenv(f"{ROOT_DIR}/frontend/.env")
 
-exec_dir = os.getenv("EXEC_DIR")
+exec_dir = os.path.join(ROOT_DIR, os.getenv("EXEC_DIR"))
 dir_list = [os.path.join(exec_dir, dir_name) for dir_name in os.listdir(exec_dir) if os.path.isdir(os.path.join(exec_dir, dir_name))]
 for dir_path in dir_list:
     shutil.rmtree(dir_path)
