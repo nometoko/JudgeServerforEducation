@@ -19,10 +19,10 @@ import Login from "./routes/Login";
 import React from 'react';
 
 import DashboardPage from "./routes/Dashboard";
-import Problem from './routes/Problem';
-import Account from './routes/Account';
-import NotFound from './routes/NotFound';
-
+import Problem from '@/routes/Problem';
+import Account from '@/routes/Account';
+import Results from '@/routes/Results';
+import NotFound from '@/routes/NotFound';
 
 // import Dashboard from './routes/Dashboard';
 
@@ -65,14 +65,14 @@ const App: React.FC = () => {
   //  });
 
 
-  //useEffect(() => {
-  //  axios.get(`${API_BASE_URL}/tmp`)
-  //  .then((response) => {
-  //    setMessage(response.data.message)
-  //    console.log("response:", response)
-  //  })    
-  //  .catch(() => setMessage("Error fetching data"));
-  //}, []);
+  useEffect(() => {
+    axios.get(`${API_BASE_URL}/tmp`)
+      .then((response) => {
+        setMessage(response.data.message)
+        console.log("response:", response)
+      })
+      .catch(() => setMessage("Error fetching data"));
+  }, []);
 
   //useEffect(() => {
   //  fetch(`${API_BASE_URL}`)
@@ -81,26 +81,23 @@ const App: React.FC = () => {
   //    .catch(() => setMessage("Error fetching data"));
   //}, []);
 
-  console.log("message:", message);
-
   return (
     <ChakraProvider >
-
       <BrowserRouter>
         {/* <AxiosClientProvider> */}
         <Myaxios_provider>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/dashboard" element={<DashboardPage />} />
-          <Route path="/problem/:problemId" element={<Problem />} />
-          <Route path="/submission" element={<Submission />} />
-          <Route path="/test" />
-          <Route path="/account" element={<Account />} />
-          <Route path="/" element={<Navigate to="/login" />} />
-          <Route path="/*" element={<NotFound />} />
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/problem/:problemId" element={<Problem />} />
+            <Route path="/submission/:submissionId" element={<Submission />} />
+            <Route path="/results" element={<Results />} />
+            <Route path="/test" />
+            <Route path="/account" element={<Account />} />
+            <Route path="/" element={<Navigate to="/login" />} />
+            <Route path="/*" element={<NotFound />} />
 
-
-        </Routes>
+          </Routes>
         </Myaxios_provider>
         {/* </AxiosClientProvider> */}
       </BrowserRouter>

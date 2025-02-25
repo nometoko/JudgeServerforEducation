@@ -1,6 +1,6 @@
 import sys
 import os
-import constants
+import judge.constants as constants
 
 def have_makefile(exec_dir: str) -> bool:
     # Check if the Makefile exists in exec dir

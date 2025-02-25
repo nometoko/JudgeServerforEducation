@@ -1,33 +1,28 @@
 import os
-from fastapi import FastAPI, HTTPException
-### 別ファイルをimportするための記述。@routerにすることに注意 
-from fastapi import APIRouter
+from typing import List
+from pydantic import BaseModel
+from fastapi import FastAPI, HTTPException, APIRouter, Depends
+from sqlalchemy.orm import Session
+
+from app import crud, schemas
+from app.api import deps
 
 router = APIRouter()
-###
 
-# 仮想のユーザーリストと問題リスト
-dummy_users = ["alice", "bob", "charlie"]
-dummy_problems = {
-    "alice": [
-        {"id": 1, "title": "Two Sum", "difficulty": "Easy"},
-        {"id": 2, "title": "Longest Substring Without Repeating Characters", "difficulty": "Medium"},
-    ],
-    "bob": [
-        {"id": 3, "title": "Median of Two Sorted Arrays", "difficulty": "Hard"}
-    ],
-    "charlie": [
-        {"id": 4, "title": "Example Problem", "difficulty": "Easy"}
-    ]
-}
+class ProblemResponseForDashboard(BaseModel):
+    problem: schemas.ProblemResponse
+    status: bool
 
-@router.get("/getProblemList/{user_name}")
-async def get_problem_handler(user_name: str):
-    print("getProblemList called for user:", user_name)
-    
-    # ユーザー名を照合
-    if user_name not in dummy_users:
-        raise HTTPException(status_code=404, detail="User not found")
-    
-    # ユーザーが存在する場合、問題リストを返す
-    return {"problems": dummy_problems[user_name], "message": "Success"}
+@router.get("/{user_name}")
+async def get_all_problem_with_status_handler(user_name: str, db: Session = Depends(deps.get_db)) -> List[ProblemResponseForDashboard]:
+    problems = crud.get_all_problems(db)
+    problem_with_status_responses = [ProblemResponseForDashboard(problem=schemas.ProblemResponse(**problem.__dict__), status=False) for problem in problems]
+    for response in problem_with_status_responses:
+        problem_id = response.problem.problem_id
+        submissions = crud.get_submissions_by_user_name_and_problem_id(db, user_name, problem_id)
+        if submissions:
+            for submission in submissions:
+                if submission.status == "AC":
+                    response.status = True
+                    break
+    return problem_with_status_responses

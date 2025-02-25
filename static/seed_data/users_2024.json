@@ -1,72 +1,72 @@
 [
   {
-    "userName": "funa",
+    "user_name": "funa",
     "password": "$2a$08$MIgYe.dbI9IAv.oPPgPSRuxXsQWeuqj2QceyhJmUfsSMtnRP21hLq",
-    "joinedDate": "2009-04-01T00:00:00+09:00"
+    "joined_date": "2009-04-01T00:00:00+09:00"
   },
   {
-    "userName": "isoda",
+    "user_name": "isoda",
     "password": "$2a$08$MIgYe.dbI9IAv.oPPgPSRuxXsQWeuqj2QceyhJmUfsSMtnRP21hLq",
-    "joinedDate": "2022-04-01T00:00:00+09:00"
+    "joined_date": "2022-04-01T00:00:00+09:00"
   },
   {
-    "userName": "araki",
+    "user_name": "araki",
     "password": "$2a$08$MIgYe.dbI9IAv.oPPgPSRuxXsQWeuqj2QceyhJmUfsSMtnRP21hLq",
-    "joinedDate": "2023-04-01T00:00:00+09:00"
+    "joined_date": "2023-04-01T00:00:00+09:00"
   },
   {
-    "userName": "rkimura",
+    "user_name": "rkimura",
     "password": "$2a$08$MIgYe.dbI9IAv.oPPgPSRuxXsQWeuqj2QceyhJmUfsSMtnRP21hLq",
-    "joinedDate": "2023-04-01T00:00:00+09:00"
+    "joined_date": "2023-04-01T00:00:00+09:00"
   },
   {
-    "userName": "mito",
+    "user_name": "mito",
     "password": "$2a$08$MIgYe.dbI9IAv.oPPgPSRuxXsQWeuqj2QceyhJmUfsSMtnRP21hLq",
-    "joinedDate": "2023-04-01T00:00:00+09:00"
+    "joined_date": "2023-04-01T00:00:00+09:00"
   },
   {
-    "userName": "imada",
+    "user_name": "imada",
     "password": "$2a$08$MIgYe.dbI9IAv.oPPgPSRuxXsQWeuqj2QceyhJmUfsSMtnRP21hLq",
-    "joinedDate": "2023-04-01T00:00:00+09:00"
+    "joined_date": "2023-04-01T00:00:00+09:00"
   },
   {
-    "userName": "minagawa",
+    "user_name": "minagawa",
     "password": "$2a$08$MIgYe.dbI9IAv.oPPgPSRuxXsQWeuqj2QceyhJmUfsSMtnRP21hLq",
-    "joinedDate": "2023-04-01T00:00:00+09:00"
+    "joined_date": "2023-04-01T00:00:00+09:00"
   },
   {
-    "userName": "sozeki",
+    "user_name": "sozeki",
     "password": "$2a$08$MIgYe.dbI9IAv.oPPgPSRuxXsQWeuqj2QceyhJmUfsSMtnRP21hLq",
-    "joinedDate": "2023-04-01T00:00:00+09:00"
+    "joined_date": "2023-04-01T00:00:00+09:00"
   },
   {
-    "userName": "hasegawa",
+    "user_name": "hasegawa",
     "password": "$2a$08$MIgYe.dbI9IAv.oPPgPSRuxXsQWeuqj2QceyhJmUfsSMtnRP21hLq",
-    "joinedDate": "2024-04-01T00:00:00+09:00"
+    "joined_date": "2024-04-01T00:00:00+09:00"
   },
   {
-    "userName": "msuzuki",
+    "user_name": "msuzuki",
     "password": "$2a$08$MIgYe.dbI9IAv.oPPgPSRuxXsQWeuqj2QceyhJmUfsSMtnRP21hLq",
-    "joinedDate": "2024-04-01T00:00:00+09:00"
+    "joined_date": "2024-04-01T00:00:00+09:00"
   },
   {
-    "userName": "hamashima",
+    "user_name": "hamashima",
     "password": "$2a$08$MIgYe.dbI9IAv.oPPgPSRuxXsQWeuqj2QceyhJmUfsSMtnRP21hLq",
-    "joinedDate": "2024-04-01T00:00:00+09:00"
+    "joined_date": "2024-04-01T00:00:00+09:00"
   },
   {
-    "userName": "iwamoto",
+    "user_name": "iwamoto",
     "password": "$2a$08$MIgYe.dbI9IAv.oPPgPSRuxXsQWeuqj2QceyhJmUfsSMtnRP21hLq",
-    "joinedDate": "2024-04-01T00:00:00+09:00"
+    "joined_date": "2024-04-01T00:00:00+09:00"
   },
   {
-    "userName": "sugawara",
+    "user_name": "sugawara",
     "password": "$2a$08$MIgYe.dbI9IAv.oPPgPSRuxXsQWeuqj2QceyhJmUfsSMtnRP21hLq",
-    "joinedDate": "2024-04-01T00:00:00+09:00"
+    "joined_date": "2024-04-01T00:00:00+09:00"
   },
   {
-    "userName": "hayashi",
+    "user_name": "hayashi",
     "password": "$2a$08$MIgYe.dbI9IAv.oPPgPSRuxXsQWeuqj2QceyhJmUfsSMtnRP21hLq",
-    "joinedDate": "2024-04-01T00:00:00+09:00"
+    "joined_date": "2024-04-01T00:00:00+09:00"
   }
 ]

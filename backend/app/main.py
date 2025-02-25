@@ -1,36 +1,53 @@
-import os
+import os, shutil
 import uvicorn
 from fastapi import FastAPI, Request, status
 from fastapi.responses import JSONResponse
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 
-from handlers import get_problem, receive_srcfile
 from auth import login, create_new_user
 from utils.get_root_dir import get_root_dir
 import dotenv
 
-# from .handlers import get_problem
-from app.api.api_v1.api_router import router
 from app.core.config import settings
+from app.api.api_v1.api_router import router as api_router
+from handlers.handler_router import router as handler_router
+import seed
 
-app = FastAPI(title=settings.PROJECT_NAME, openapi_url=f"{settings.API_V1_STR}/openapi.json")
-app.include_router(router, prefix=settings.API_V1_STR)
-app.include_router(get_problem.router)
+app = FastAPI(
+    title=settings.PROJECT_NAME, openapi_url=f"{settings.API_V1_STR}/openapi.json"
+)
+app.include_router(api_router, prefix=settings.API_V1_STR)
 app.include_router(login.router)
 app.include_router(create_new_user.router)
-app.include_router(receive_srcfile.router)
+app.include_router(handler_router, prefix="/handler")
 # app.include_router(protected_router, prefix="/protected")
-
+for r in app.routes:
+    print(r)
 
 @app.exception_handler(RequestValidationError)
-async def handler(request:Request, exc:RequestValidationError):
+async def handler(request: Request, exc: RequestValidationError) -> JSONResponse:
     print(exc)
     return JSONResponse(content={}, status_code=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
+
 # 環境変数を読み込む
 ROOT_DIR = get_root_dir()
+os.environ["ROOT_DIR"] = ROOT_DIR
 dotenv.load_dotenv(f"{ROOT_DIR}/frontend/.env")
+
+exec_dir = os.path.join(ROOT_DIR, os.getenv("EXEC_DIR"))
+dir_list = [os.path.join(exec_dir, dir_name) for dir_name in os.listdir(exec_dir) if os.path.isdir(os.path.join(exec_dir, dir_name))]
+for dir_path in dir_list:
+    shutil.rmtree(dir_path)
+
+from app.db.session import engine
+from app.db.base_class import Base
+
+# データベースに初期データを挿入
+seed.delete_all_db_data()
+seed.insert_problem_info(f"{ROOT_DIR}/static", "seed_data/problems.json")
+seed.insert_user_info(f"{ROOT_DIR}/static/seed_data/users_2024.json")
 
 ##### 以下は本番環境想定
 ## Check required environment variables
@@ -61,22 +78,17 @@ app.add_middleware(
 # データベース接続 (未実装)
 # ログイン (未実装)
 
+
 # APIの定義 (適宜追加すること)
-@app.get("/getProblemList/{user_name}")
-async def get_problem_list(user_name: str):
-    return {"user": user_name, "problems": []}
-
-@app.get("/getSubmissionList/{user_name}")
-async def get_submission_list(user_name: str):
-    return {"user": user_name, "submissions": []}
-
 @app.get("/")
 async def hello():
     return {"message": "Hello,World"}
 
+
 @app.get("/tmp")
 async def tmp():
     return {"message": "Happy"}
+
 
 # サーバー開始
 if __name__ == "__main__":

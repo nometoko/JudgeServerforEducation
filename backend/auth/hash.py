@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import bcrypt
@@ -25,7 +26,7 @@ def check_password_hash(password: str, hashed: str) -> bool:
     平文のパスワードとハッシュ値を比較し、一致すれば True を返す。
     hashed : DBに保存されているハッシュ値を想定。
     """
-    PEPPER = Settings().PEPPER
+    PEPPER = Settings(PEPPER=os.getenv("PEPPER")).PEPPER
     password_with_pepper = password + PEPPER
     # 入力されたパスワードと保存されたハッシュ文字列を、それぞれエンコードして checkpw() で比較する
     # print("password_with_pepper: ", password_with_pepper.encode('utf-8'))

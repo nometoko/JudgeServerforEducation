@@ -85,8 +85,8 @@ def create_access_token(data: dict, expires_delta: timedelta | None = None):
         expire = datetime.utcnow() + timedelta(minutes=15)
     # print(expire)
     to_encode.update({"exp": expire}) # 先ほど計算した expire の値を "exp" キーとして、to_encode 辞書に追加
-    settings = Settings()
-    # print("SECRET_KEY", settings.SECRET_KEY)
+    settings = Settings(SECRET_KEY=os.getenv("SECRET_KEY"))
+    print("SECRET_KEY", settings.SECRET_KEY)
     # print(to_encode)
     encoded_jwt = jwt.encode(to_encode, settings.SECRET_KEY, algorithm=SIG_ALGORITHM) # JWTトークンの生成、エンコードを行う
     return encoded_jwt
@@ -156,7 +156,7 @@ def create_refresh_token(data: dict, expires_delta: timedelta | None = None):
     else:
         expire = datetime.utcnow() + timedelta(days=REFRESH_TOKEN_EXPIRE_DAYS)
     to_encode.update({"exp": expire})
-    settings = Settings()
+    settings = Settings(SECRET_KEY=os.getenv("SECRET_KEY"))
     encoded_jwt = jwt.encode(to_encode, settings.SECRET_KEY, algorithm=SIG_ALGORITHM)
     return encoded_jwt
 
