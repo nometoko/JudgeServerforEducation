@@ -61,14 +61,14 @@ const CardItem = ({ pws }: { pws: ProblemWithStatus }) => {
         <Divider borderColor="gray.400" />
       </Box>
       <CardBody>
-        <Text fontWeight="bold">
+        <Text textAlign="left">
           <Icon as={MdLockOpen} w={5} h={5} mr="5px" />
           {new Date(pws.problem.open_date).toLocaleString()}
         </Text>
-        <Text fontWeight="bold">
+        <Text textAlign="left">
           <Icon as={MdLockClock} w={5} h={5} mr="5px" />
           {new Date(pws.problem.close_date).toLocaleString()}
-        </Text>
+        </Text >
         <br />
         <Text fontWeight="bold" color={remainingTime.includes('-') ? "red.500" : "black"}>
           締切まであと
