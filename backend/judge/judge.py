@@ -1,6 +1,5 @@
 import os
 from typing import List
-from utils.get_root_dir import get_root_dir
 import judge.constants as constants
 import judge.execute as execute
 import judge.makefile as makefile
