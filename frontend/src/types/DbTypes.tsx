@@ -4,6 +4,10 @@ export interface ProblemProps {
     name: string;
     open_date: string;
     close_date: string;
+    statement: string;
+    constraints: string;
+    input_format: string;
+    output_format: string;
 }
 
 export interface ProblemWithStatus {
