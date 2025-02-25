@@ -24,8 +24,8 @@ def upgrade() -> None:
     op.drop_index(
         "ix_problem_with_testcase_problem_id", table_name="problem_with_testcase"
     )
-    op.drop_table("problem_with_testcase")
     op.drop_constraint("testcase_problem_id_fkey", "testcase", type_="foreignkey")
+    op.drop_table("problem_with_testcase")
     op.create_foreign_key(None, "testcase", "problems", ["problem_id"], ["problem_id"])
     # ### end Alembic commands ###
 
