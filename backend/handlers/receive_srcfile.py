@@ -6,9 +6,7 @@ from pydantic import BaseModel
 
 from app import schemas, crud
 from app.api import deps
-from utils.get_root_dir import get_root_dir
 from judge.judge import judge
-ROOT_DIR = get_root_dir()
 
 class receive_file_response(BaseModel):
     success: bool
@@ -29,15 +27,15 @@ async def receive_file(
     user_name: str,
     problem_id: int,
     files: List[UploadFile],
-    save_dir: str = os.path.join(ROOT_DIR, "compile_resource"),
     db: Session = Depends(deps.get_db)) -> str:
 
+    static_dir = os.path.join(os.getenv("ROOT_DIR"), os.getenv("STATIC_DIR"))
     submission = schemas.SubmissionCreate(user_name=user_name, problem_id=problem_id)
     created_submission = crud.create_submission(db, submission)
 
     submission_id = created_submission.submission_id
 
-    save_dir = os.path.join(save_dir, submission_id)
+    save_dir = os.path.join(static_dir, submission_id)
     os.makedirs(save_dir, exist_ok=False)
 
     for file in files:
