@@ -53,7 +53,7 @@ const SubmissionBar: React.FC<{ submission: SubmissionProps }> = ({ submission }
             </CardBody>
 
             {/* ステータス */}
-            <CardBody p={2} flex="1" textAlign="left" >
+            <CardBody p={2} flex="1" textAlign="left" fontSize="2xl">
                 {submission.status}
             </CardBody>
         </Card>
@@ -62,23 +62,25 @@ const SubmissionBar: React.FC<{ submission: SubmissionProps }> = ({ submission }
     );
 };
 
-const SubmissionList: React.FC = () => {
+interface SubmissionListProps {
+    selectedProblem: number | null;
+}
+
+const SubmissionList: React.FC<SubmissionListProps> = ({ selectedProblem }) => {
     const authUserName = localStorage.getItem("authUserName");
     const [submissions, setSubmissions] = useState<SubmissionProps[]>([]);
-
-    const sortBySubmittedDate = (a: SubmissionProps, b: SubmissionProps): number => {
-        return new Date(b.submitted_date).getTime() - new Date(a.submitted_date).getTime();
-    }
 
     const getSubmissions = async () => {
         try {
             const response = await myaxios.get(`/handler/getSubmissionList/${authUserName}`);
-            response.data.sort(sortBySubmittedDate);
+            response.data.sort((a: SubmissionProps, b: SubmissionProps) =>
+                new Date(b.submitted_date).getTime() - new Date(a.submitted_date).getTime()
+            );
             setSubmissions(response.data);
         } catch (err: any) {
             console.log(err);
         }
-    }
+    };
 
     useEffect(() => {
         if (authUserName) {
@@ -86,23 +88,24 @@ const SubmissionList: React.FC = () => {
         }
     }, [authUserName]);
 
-    if (submissions.length === 0) {
-        return (
-            <Box>
-                No submission found
-            </Box>
-        );
+    // フィルタリング処理
+    const filteredSubmissions = selectedProblem
+        ? submissions.filter((submission) => submission.problem_id === selectedProblem)
+        : submissions;
+
+    if (filteredSubmissions.length === 0) {
+        return <Box>No submission found</Box>;
     }
 
     return (
         <Box>
-            {submissions.map((submission) => (
+            {filteredSubmissions.map((submission) => (
                 <Box key={submission.submission_id} mb={1}>
                     <SubmissionBar submission={submission} />
                 </Box>
             ))}
         </Box>
     );
-}
+};
 
 export default SubmissionList;
