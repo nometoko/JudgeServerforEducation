@@ -21,13 +21,13 @@ const CardItem = ({ pws }: { pws: ProblemWithStatus }) => {
 
     const absDiff = Math.abs(diff);
     const days = Math.floor(absDiff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor(absDiff / (1000 * 60 * 60));
+    const hours = Math.floor(absDiff % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
     const minutes = Math.floor((absDiff % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((absDiff % (1000 * 60)) / 1000);
 
     return diff >= 0
-      ? `${hours}時間 ${minutes}分 ${seconds}秒`
-      : `- ${hours}時間 ${minutes}分 ${seconds}秒`;
+      ? `${days}日${hours}時間 ${minutes}分 ${seconds}秒`
+      : `-${days}日 ${hours}時間 ${minutes}分 ${seconds}秒`;
   };
 
   // タイマー更新用のステートとエフェクト
