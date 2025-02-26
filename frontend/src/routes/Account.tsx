@@ -16,6 +16,15 @@ import { DefaultLayout } from "../components/DefaultLayout";
 import { useNavigate } from "react-router-dom";
 
 const Account = () => {
+    const authUserName = localStorage.getItem("authUserName");
+    if (!authUserName) {
+        return (
+            <DefaultLayout>
+                <h1>Invalid url</h1>
+            </DefaultLayout>
+        );
+    }
+
     const [username, setUsername] = useState("User Name");
     const [email, setEmail] = useState("user@example.com");
     const [password, setPassword] = useState("");
@@ -42,11 +51,12 @@ const Account = () => {
                         </Heading>
                         <Avatar name={username} size="xl" />
                         <FormControl>
-                            <FormLabel>Username</FormLabel>
+                            <FormLabel>
+                                Username</FormLabel>
                             <Input
                                 type="text"
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
+                                value={authUserName}
+                                readOnly={true}
                             />
                         </FormControl>
                         {/* <FormControl>
@@ -58,7 +68,7 @@ const Account = () => {
                             />
                         </FormControl> */}
                         <FormControl>
-                            <FormLabel>Confirm Password</FormLabel>
+                            <FormLabel>New Password</FormLabel>
                             <Input
                                 type="password"
                                 value={confirmPassword}
@@ -66,7 +76,7 @@ const Account = () => {
                             />
                         </FormControl>
                         <FormControl>
-                            <FormLabel>New Password</FormLabel>
+                            <FormLabel>Confirm Password</FormLabel>
                             <Input
                                 type="password"
                                 value={password}
