@@ -960,7 +960,7 @@
     ]
   },
   {
-    "problem_id": 8,
+    "problem_id": 11,
     "is_petit_coder": false,
     "name": "main_SortStruct",
     "statement": "標準入力で与えられたplayers情報を年齢順にソートし、標準出力する main 関数の実装 (main_SortStruct.c)。\n\n注意事項\n• 前回までの課題で作成した mystr 系の関数を用いると良いかも？\n• メモリリークに気を付ける (free() を忘れない)\n• ソースコードを提出(ヘッダーファイルを用いたなら、それも忘れずに)",
@@ -1064,7 +1064,7 @@
     ]
   },
   {
-    "problem_id": 9,
+    "problem_id": 13,
     "is_petit_coder": false,
     "name": "File",
     "statement": "ファイルから読み込んだ単語群を辞書順にソートし、別のファイルに出力するmain関数( file.c )の実装しましょう。",
@@ -1240,7 +1240,7 @@
     ]
   },
   {
-    "problem_id": 10,
+    "problem_id": 14,
     "is_petit_coder": false,
     "name": "main_mystrsubst",
     "statement": "標準入力で与えられた文字列s1,s2,s3を用いて新たな文字列new_strを標準出力する関数main_mystrsubst.cの実装しましょう。",
@@ -1416,7 +1416,7 @@
     ]
   },
   {
-    "problem_id": 11,
+    "problem_id": 12,
     "is_petit_coder": false,
     "name": "DictStruct",
     "statement": "コマンドライン引数の文字列を辞書順にソートし、標準出力する main 関数の実装 (main_DictStruct.c)。",
@@ -1488,7 +1488,7 @@
     ]
   },
   {
-    "problem_id": 12,
+    "problem_id": 7,
     "is_petit_coder": false,
     "name": "mystrcpy",
     "statement": "標準入力で与えられた文字列をコピーして標準出力するmain関数の実装。",
@@ -1528,7 +1528,7 @@
     ]
   },
   {
-    "problem_id": 13,
+    "problem_id": 8,
     "is_petit_coder": false,
     "name": "mystrncpy",
     "statement": "標準入力で与えられた文字列をn文字目までコピーして標準出力するmain関数の実装。",
@@ -1576,7 +1576,7 @@
     ]
   },
   {
-    "problem_id": 14,
+    "problem_id": 9,
     "is_petit_coder": false,
     "name": "mystrcmp",
     "statement": "標準入力で与えられた2つの文字列を比較した結果をmain関数の実装 (main_mystrcmp.c)。",
@@ -1640,7 +1640,7 @@
     ]
   },
   {
-    "problem_id": 15,
+    "problem_id": 10,
     "is_petit_coder": false,
     "name": "mystrncmp",
     "statement": "標準入力で与えられた2つの文字列をn文字目まで比較した結果をmain関数の実装 (main_mystrcmp.c)。",
@@ -1720,7 +1720,7 @@
     ]
   },
   {
-    "problem_id": 16,
+    "problem_id": 15,
     "is_petit_coder": true,
     "name": "[PC_EASY] Your Name",
     "statement": "長さLcmの橋の上にFunasoul君がたくさんおり、毎秒1cmのスピードで橋の上を歩いています。\n各Funasoul君は左右のどちらかを向いており、橋の端に到達するとFunasoul君は落ちていきます。(Funasoul君はとても丈夫な体の持ち主です)\n橋は非常に幅が狭いため、Funasoul君同士が出会うとそれぞれ反対方向を向き戻っていきます。\nあなたには各Funasoul君が橋の左端から何cmのところに存在するかは配列で与えられますが、各Funasoul君が左右どちらを向いているかは与えられません。\n全てのFunasoul君が橋の上から落ちていなくなるまでの最小の時間と最大の時間を教えてください。",
@@ -1784,7 +1784,7 @@
     ]
   },
   {
-    "problem_id": 17,
+    "problem_id": 16,
     "is_petit_coder": true,
     "name": "[PC_MEDIUM] Reverse List",
     "statement": "要素数Nのリストが与えられます。\nこの時、与えられる連結リストの[left, right]の区間を反転する関数reverseBetween(ListNode* head, int left, int right)を作成してください。\nheadは与えられる連結リストの先頭、left, rightは1から始まる連結リストの各要素を表すIndexです。\n\n注意: ListNodeを変更することは不可です。配布ファイルのmedium.cのみを編集してください。また、メモリ上にListNodeを確保する際にはmallocを使ってください。あらかじめ与えられる要素の数も不定です。",
@@ -1848,7 +1848,7 @@
     ]
   },
   {
-    "problem_id": 18,
+    "problem_id": 17,
     "is_petit_coder": true,
     "name": "[PC_HARD] Be a King of Pirates!",
     "statement": "Funasoul君の夢は海賊王になることです。\nFunasoul君は手始めに海に存在する島を片っ端から制圧することにしました。\nあなたにはFunasoul君から地図が与えられます。\n地図の大きさはNxMで表され(Nが縦、Mが横)、0,1で描かれており、1が島、0が海を表しています。\n地図上で縦, 横または斜め方向に隣接している2つの島は1つの大きな島と考えてください。\nFunasoul君は海賊王になりたくてうずうずしています。\n彼の夢を叶えるために早急に何個の島を制圧する必要があるか教えてください。",
