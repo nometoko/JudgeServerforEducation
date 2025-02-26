@@ -12,7 +12,7 @@ class TestcaseResultResponse(BaseModel):
     testcase: schemas.TestcaseResponse
     user_result: schemas.SubmissionResultResponse
 
-@router.get("/{user_name}/{problem_id}", response_model=List[TestcaseResultResponse])
+@router.get("/{user_name}/{submission_id}", response_model=List[TestcaseResultResponse])
 async def get_testcase_result_list(
     user_name: str,
     submission_id: str,
@@ -20,6 +20,7 @@ async def get_testcase_result_list(
 ) -> List[TestcaseResultResponse]:
 
     submission = crud.get_submission_by_user_name_and_id(db, user_name, submission_id)
+
     if not submission:
         raise HTTPException(status_code=404, detail="Submission not found")
     submission_result = crud.get_submission_results_by_submission_id(db, submission_id)
