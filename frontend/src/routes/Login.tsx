@@ -22,7 +22,7 @@ import myaxios from "../providers/axios_client";
 export interface MyJwtPayload {
   exp: number,
   orig_iat: number,
-  joined: Date,
+  joined_date: string,
   user: string,
 }
 
@@ -33,6 +33,8 @@ const Login = ({ }) => {
   const [debug, setDebug] = useState("");
   const [problems, setProblems] = useState<any[]>([]);
   const authUserName = localStorage.getItem("authUserName");
+  const authJoinedDate = localStorage.getItem("authJoinedDate")
+  const authUserExp = localStorage.getItem("authUserExp");
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -57,8 +59,10 @@ const Login = ({ }) => {
         if (response.status === HttpStatusCode.Ok) { // 200
           const jwtToken = jwtDecode<MyJwtPayload>(response.data.access_token);
           localStorage.setItem("authUserName", jwtToken.user);
-          //              localStorage.setItem("authJoinedDate", jwtToken.joined.toString());
+          localStorage.setItem("authJoinedDate", jwtToken.joined_date);
           localStorage.setItem("authUserExp", jwtToken.exp.toString());
+          //localStorage.setItem("authJoinedDate", response.data.joined);
+
           if (location.state) { // ログイン画面に遷移する前のページが存在する場合
             navigate(location.state, { replace: true }) // ブラウザの履歴が置き換えられ、戻るボタンで前の状態に戻らないようにしています。
           } else {
