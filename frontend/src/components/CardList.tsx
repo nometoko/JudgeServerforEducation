@@ -20,6 +20,7 @@ const CardItem = ({ pws }: { pws: ProblemWithStatus }) => {
     const diff = close.getTime() - now.getTime();
 
     const absDiff = Math.abs(diff);
+    const days = Math.floor(absDiff / (1000 * 60 * 60 * 24));
     const hours = Math.floor(absDiff / (1000 * 60 * 60));
     const minutes = Math.floor((absDiff % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((absDiff % (1000 * 60)) / 1000);
