@@ -41,7 +41,7 @@ def execute_command(command: str, submission_id: str, execute_delay: int = 10000
         if input_file:
             proc = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=input_file, cwd=exec_dir)
         else:
-            proc = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            proc = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=exec_dir)
         stdout, stderr = proc.communicate(timeout=timeout)
         if stderr:
             print(stderr.decode("utf-8"))

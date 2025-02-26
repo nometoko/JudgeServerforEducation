@@ -76,6 +76,6 @@ async def receive_file(
         compile_error = e.args[0]
 
     update_submission = schemas.SubmissionUpdate(status=status, compile_error=compile_error if status == "CE" else None)
-    updated_submission = crud.update_submission_status(db, submission_id, update_submission)
+    crud.update_submission_status(db, submission_id, update_submission)
 
     return submission_id
