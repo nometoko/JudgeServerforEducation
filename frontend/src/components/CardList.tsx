@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Stack, Checkbox } from '@chakra-ui/react';
+import { Box, Stack, Checkbox, Divider } from '@chakra-ui/react';
 import { Card, CardHeader, CardBody, Heading, Text, Icon, SimpleGrid } from '@chakra-ui/react';
 import { useNavigate } from "react-router-dom";
 import { MdLockClock, MdLockOpen } from "react-icons/md";
 import { GiPodium } from "react-icons/gi";
-import { ProblemProps, ProblemWithStatus } from '@/types/DbTypes';
+import { ProblemWithStatus } from '@/types/DbTypes';
 
 const sortByOpenDate = (a: ProblemWithStatus, b: ProblemWithStatus): number => {
   return new Date(a.problem.open_date).getTime() - new Date(b.problem.open_date).getTime();
@@ -20,13 +20,14 @@ const CardItem = ({ pws }: { pws: ProblemWithStatus }) => {
     const diff = close.getTime() - now.getTime();
 
     const absDiff = Math.abs(diff);
-    const hours = Math.floor(absDiff / (1000 * 60 * 60));
+    const days = Math.floor(absDiff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(absDiff % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
     const minutes = Math.floor((absDiff % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((absDiff % (1000 * 60)) / 1000);
 
     return diff >= 0
-      ? `${hours}時間 ${minutes}分 ${seconds}秒`
-      : `- ${hours}時間 ${minutes}分 ${seconds}秒`;
+      ? `${days}日${hours}時間 ${minutes}分 ${seconds}秒`
+      : `-${days}日 ${hours}時間 ${minutes}分 ${seconds}秒`;
   };
 
   // タイマー更新用のステートとエフェクト
@@ -42,8 +43,11 @@ const CardItem = ({ pws }: { pws: ProblemWithStatus }) => {
   return (
     <Card
       key={pws.problem.problem_id}
-      boxShadow="dark-lg"
+      boxShadow="xl"
+      border="1px solid"
+      borderColor="gray.300"
       cursor="pointer"
+      background="white"
       _hover={{ transform: "scale(1.05)", transition: "0.2s" }}
       onClick={() => navigate(`/Problem/${pws.problem.problem_id}`)}
       width="100%"
@@ -54,15 +58,18 @@ const CardItem = ({ pws }: { pws: ProblemWithStatus }) => {
           {pws.problem.name}
         </Heading>
       </CardHeader>
+      <Box px={4}>
+        <Divider borderColor="gray.400" />
+      </Box>
       <CardBody>
-        <Text fontWeight="bold">
+        <Text textAlign="left">
           <Icon as={MdLockOpen} w={5} h={5} mr="5px" />
           {new Date(pws.problem.open_date).toLocaleString()}
         </Text>
-        <Text fontWeight="bold">
+        <Text textAlign="left">
           <Icon as={MdLockClock} w={5} h={5} mr="5px" />
           {new Date(pws.problem.close_date).toLocaleString()}
-        </Text>
+        </Text >
         <br />
         <Text fontWeight="bold" color={remainingTime.includes('-') ? "red.500" : "black"}>
           締切まであと
@@ -98,7 +105,7 @@ export const CardList = ({ data }: { data: ProblemWithStatus[] }) => {
 
   return (
     <>
-      <Stack spacing={5} direction="row">
+      <Stack spacing={5} direction="row" mb="4">
         {check_list.map((check, index) => (
           <Checkbox
             key={check}
@@ -115,9 +122,12 @@ export const CardList = ({ data }: { data: ProblemWithStatus[] }) => {
           </Checkbox>
         ))}
       </Stack>
+      <Box >
+        <Divider borderWidth="1px" borderColor="gray.200" />
+      </Box>
 
-      <Stack mt={8}>
-        <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing="20px">
+      <Stack mt="4">
+        <SimpleGrid columns={{ sm: 1, md: 3, lg: 5 }} spacing="20px">
           {data.map((pws) => {
             // フィルタリング処理
             if (pws.status && !checkedItems[0]) return null;

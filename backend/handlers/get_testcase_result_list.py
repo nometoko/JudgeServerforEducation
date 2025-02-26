@@ -12,14 +12,18 @@ class TestcaseResultResponse(BaseModel):
     testcase: schemas.TestcaseResponse
     user_result: schemas.SubmissionResultResponse
 
-@router.get("/{submission_id}", response_model=List[TestcaseResultResponse])
+@router.get("/{user_name}/{submission_id}", response_model=List[TestcaseResultResponse])
 async def get_testcase_result_list(
+    user_name: str,
     submission_id: str,
     db: Session = Depends(deps.get_db)
 ) -> List[TestcaseResultResponse]:
 
-    submission = crud.get_submission_by_submission_id(db, submission_id)
-    submission_result = crud.get_submission_result_by_submission_id(db, submission_id)
+    submission = crud.get_submission_by_user_name_and_id(db, user_name, submission_id)
+
+    if not submission:
+        raise HTTPException(status_code=404, detail="Submission not found")
+    submission_result = crud.get_submission_results_by_submission_id(db, submission_id)
 
     testcase_result_list = []
     for result in submission_result:
