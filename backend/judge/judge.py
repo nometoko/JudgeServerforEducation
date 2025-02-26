@@ -11,7 +11,7 @@ async def judge(submission_id: str, testcases_with_path: List[models.TestcaseWit
     files_dir_path: str = os.path.join(exec_dir, submission_id)
 
     if not makefile.have_makefile(files_dir_path):
-        makefile.copy_makefile(files_dir_path, os.path.join(files_dir_path, "../Makefile"))
+        makefile.copy_makefile(files_dir_path, os.path.join(exec_dir, constants.MAKEFILE_FILENAME))
 
     # compile
     try:

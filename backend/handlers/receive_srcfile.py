@@ -29,13 +29,13 @@ async def receive_file(
     files: List[UploadFile],
     db: Session = Depends(deps.get_db)) -> str:
 
-    static_dir = os.path.join(os.getenv("ROOT_DIR"), os.getenv("STATIC_DIR"))
+    exec_dir = os.path.join(os.getenv("ROOT_DIR"), os.getenv("EXEC_DIR"))
     submission = schemas.SubmissionCreate(user_name=user_name, problem_id=problem_id)
     created_submission = crud.create_submission(db, submission)
 
     submission_id = created_submission.submission_id
 
-    save_dir = os.path.join(static_dir, submission_id)
+    save_dir = os.path.join(exec_dir, submission_id)
     os.makedirs(save_dir, exist_ok=False)
 
     for file in files:

@@ -109,6 +109,7 @@ const CompileError: React.FC<{ compileError: string }> = ({ compileError }) => {
 }
 
 const TestCaseResultList: React.FC<{ submissionId: string }> = ({ submissionId }) => {
+    const authUserName = localStorage.getItem("authUserName")
     const [submission, setSubmission] = useState<SubmissionProps>();
     const [testcaseResults, setTestcaseResults] = useState<TestCaseResultProps[]>([]);
 
@@ -117,13 +118,13 @@ const TestCaseResultList: React.FC<{ submissionId: string }> = ({ submissionId }
     }
 
     useEffect(() => {
-        myaxios.get(`/handler/getTestcaseResultList/${submissionId}`)
+        myaxios.get(`/handler/getTestcaseResultList/${authUserName}/${submissionId}`)
             .then((response) => {
                 response.data.sort(sortByTestcaseNumber);
                 setTestcaseResults(response.data);
             }
             );
-        myaxios.get(`/api/v1/submission/id/${submissionId}`)
+        myaxios.get(`/api/v1/submission/${authUserName}/${submissionId}`)
             .then((response) => {
                 setSubmission(response.data);
             }
