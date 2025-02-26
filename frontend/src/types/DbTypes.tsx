@@ -1,9 +1,13 @@
 export interface ProblemProps {
-    problem_id: string;
+    problem_id: number;
     is_petit_coder: boolean;
     name: string;
     open_date: string;
     close_date: string;
+    statement: string;
+    constraints: string;
+    input_format: string;
+    output_format: string;
 }
 
 export interface ProblemWithStatus {

@@ -68,7 +68,7 @@ def upgrade() -> None:
     sa.Column('args_file_content', sa.Text(), nullable=False),
     sa.Column('stdin_file_content', sa.Text(), nullable=False),
     sa.Column('answer_file_content', sa.Text(), nullable=False),
-    sa.ForeignKeyConstraint(['problem_id'], ['problem_with_testcase.problem_id'], ),
+    sa.ForeignKeyConstraint(['problem_id'], ['problem_with_testcase.problem_id']),
     sa.PrimaryKeyConstraint('test_case_id')
     )
     op.create_index(op.f('ix_testcase_test_case_id'), 'testcase', ['test_case_id'], unique=False)

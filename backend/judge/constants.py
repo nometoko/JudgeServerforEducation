@@ -1,10 +1,6 @@
 from enum import Enum
 
 PROG: str = "prog"
-JUDGE_DIR: str = "backend/judge"
-EXEC_DIR: str = "compile_resource"
-TEST_DIR: str = "static/testcases"
-
 MAKEFILE_FILENAME: str = "Makefile"
 
 COMPILE_DELAY: int = 2 # seconds

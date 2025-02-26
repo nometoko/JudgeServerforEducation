@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import myaxios from "@/providers/axios_client";
-import { Box, Card, CardHeader, CardBody, Heading, Button } from "@chakra-ui/react";
+import { Box, Card, CardHeader, CardBody, Heading } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { ProblemProps, SubmissionProps } from "@/types/DbTypes";
 
@@ -25,28 +25,41 @@ const SubmissionBar: React.FC<{ submission: SubmissionProps }> = ({ submission }
     return (
         <Card
             key={submission.submission_id}
-            direction={{ base: 'column', sm: 'row' }}
-            // AC: green, WJ: gray, otherwise: red
+            direction="row"
+            display="flex"
+            alignItems="center"  // 垂直方向の中央揃え
+            justifyContent="space-between"  // 均等配置
             bg={submission.status === "AC" ? "green.100" : submission.status === "WJ" ? "gray.100" : "red.100"}
+            cursor={submission.status === "WJ" ? "not-allowed" : "pointer"}
+            onClick={() => {
+                if (submission.status !== "WJ") {
+                    navigate(`/submission/${submission.submission_id}`);
+                }
+            }}
+            _hover={submission.status === "AC" ? { bg: "green.200" } : submission.status !== "AC" && submission.status !== "WJ" ? { bg: "red.200" } : {}}
+            h="50px"  // 高さを固定
+            minH="50px"
+            maxH="80px"
+            p={2}
         >
-            <CardHeader>
-                <Heading size="sm">
-                    {problem?.name}
-                </Heading>
+            {/* 問題名 */}
+            <CardHeader p={2} flex="1" textAlign="left">
+                <Heading size="sm">{problem?.name}</Heading>
             </CardHeader>
-            <CardBody>
+
+            {/* 提出日時 */}
+            <CardBody p={2} flex="1" textAlign="left" >
                 {submissionDate.toLocaleString()}
             </CardBody>
-            <CardBody>
+
+            {/* ステータス */}
+            <CardBody p={2} flex="1" textAlign="left" >
                 {submission.status}
             </CardBody>
-            <Button
-                onClick={() => navigate(`/submission/${submission.submission_id}`)}
-                disabled={submission.status === "WJ"}>
-                Detail
-            </Button>
-        </Card >
-    )
+        </Card>
+
+
+    );
 };
 
 const SubmissionList: React.FC = () => {
@@ -84,7 +97,9 @@ const SubmissionList: React.FC = () => {
     return (
         <Box>
             {submissions.map((submission) => (
-                <SubmissionBar submission={submission} key={submission.submission_id} />
+                <Box key={submission.submission_id} mb={1}>
+                    <SubmissionBar submission={submission} />
+                </Box>
             ))}
         </Box>
     );
