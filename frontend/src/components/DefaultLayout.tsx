@@ -33,7 +33,7 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
                     <Box
                         display="flex"
                         alignItems="center"
-                        justifyContent="center"
+                        justifyContent="left"
                         borderRadius="md"
                         p={3}
                         cursor="pointer"
