@@ -1,7 +1,8 @@
 import myaxios from "@/providers/axios_client";
 import { SubmissionProps, TestCaseResultProps } from "@/types/DbTypes";
-import { Accordion, AccordionButton, AccordionItem, AccordionPanel, Box, Code, Flex, Textarea } from "@chakra-ui/react";
+import { Accordion, AccordionButton, AccordionItem, AccordionPanel, Box, Button, Code, Flex, Textarea, Tooltip, useClipboard } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
+import { GoCopy, GoDownload } from "react-icons/go";
 import ReactDiffViewer from "react-diff-viewer";
 
 const TestCaseResult: React.FC<TestCaseResultProps> = ({ testcase, user_result }) => {
@@ -21,6 +22,53 @@ const TestCaseResult: React.FC<TestCaseResultProps> = ({ testcase, user_result }
         return text.split(/\r\n|\r|\n/).length;
     }
 
+    const Header: React.FC<{ title: string, content: string }> = ({ title, content }) => {
+        const { onCopy, setValue, hasCopied } = useClipboard(content);
+        const [isTooltipOpen, setIsTooltipOpen] = useState(false);
+
+        const formatString = (str: string): string => {
+            return str.toLowerCase().replace(/ /g, "_");
+        }
+
+        const handleCopy = () => {
+            onCopy();
+            setIsTooltipOpen(true);
+            setTimeout(() => {
+                setIsTooltipOpen(false);
+            }, 1000);
+        }
+
+        const handleDownload = () => {
+            // download file
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `problem${testcase.problem_id}_testcase${testcase.testcase_number}_${formatString(title)}.txt`;
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        return (
+            <Flex>
+                <Box flex="1" textAlign="left" bg="gray" border="1px solid white" color='white' p={2}>{title}</Box>
+                <Tooltip label={hasCopied ? 'Copied!' : 'Copy raw file'} placement='top' fontSize='12' isOpen={isTooltipOpen || undefined}>
+                    <Button onClick={() => {
+                        handleCopy();
+                    }}>
+                        <GoCopy />
+                    </Button>
+                </Tooltip>
+                <Tooltip label="Download raw file" placement='top' fontSize='12'>
+                    <Button onClick={handleDownload}>
+                        <GoDownload />
+                    </Button>
+                </Tooltip>
+            </Flex>
+        )
+    }
+
     return (
         <Accordion allowToggle onChange={handleAccordionChange}>
             <AccordionItem>
@@ -36,10 +84,10 @@ const TestCaseResult: React.FC<TestCaseResultProps> = ({ testcase, user_result }
                 </h2>
                 <AccordionPanel pb={4} ref={panelRef}>
                     <Flex mt="2" >
-                        {/* <Box>
+                        <Box>
                             <h3>Executed Command</h3>
                             <Textarea value={executedCommand} readOnly />
-                        </Box> */}
+                        </Box>
 
                         <Box>
                             <h3>Standard Input</h3>
@@ -64,8 +112,12 @@ const TestCaseResult: React.FC<TestCaseResultProps> = ({ testcase, user_result }
                     ) : (
                         <Box>
                             <Flex justifyContent="space-between" fontWeight="bold" mb={2}>
-                                <Box flex="1" textAlign="left" bg="gray" border="1px solid white" color='white' p={2}>Your Output</Box>
-                                <Box flex="1" textAlign="left" bg="gray" border="1px solid white" color='white' p={2}>Expected Output</Box>
+                                <Box width="50%">
+                                    <Header title="Your Output" content={user_result.output_content} />
+                                </Box>
+                                <Box width={"50%"}>
+                                    <Header title="Expected Output" content={testcase.answer_file_content} />
+                                </Box>
                             </Flex>
                             <Box maxHeight={300} overflowY="auto">
                                 <ReactDiffViewer
@@ -86,7 +138,7 @@ const TestCaseResult: React.FC<TestCaseResultProps> = ({ testcase, user_result }
                         </Box>
                     )}
                 </AccordionPanel>
-            </AccordionItem>
+            </AccordionItem >
         </Accordion >
     )
 }
