@@ -10,6 +10,7 @@ from datetime import datetime, timedelta
 from fastapi import Depends, status
 from .initial_auth import TokenData, oauth2_scheme, Settings, SIG_ALGORITHM, get_current_user
 from .hash import hash_password, check_password_hash
+from ..crud.user import get_user_by_username, get_joined_date_by_username
 #from config import SECRET_KEY
 
 router = APIRouter()
@@ -71,7 +72,8 @@ def authenticate_user(username: str, password: str):
     #hash_pw = test[]
     # print(password)
     # print(hash_password(password))
-    if check_password_hash(password, tmp[1]): # tmp[1]を、DBから取得したハッシュ値に置き換える
+    print("password: ", password)
+    if check_password_hash(password, get_user_by_username(username)): # tmp[1]を、DBから取得したハッシュ値に置き換える
         return User(username=username)
     return None
 
@@ -122,9 +124,10 @@ async def login(response: Response, form_data: UserLogin):
         )
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     refresh_token_expires = timedelta(days=REFRESH_TOKEN_EXPIRE_DAYS)
-    # print("Hello")
+    print("Hello")
+    print("joined_date: ", get_joined_date_by_username(user.username))
     access_token = create_access_token(
-        data={"user": user.username},
+        data={"user": user.username, "joined_date": get_joined_date_by_username(user.username)},
         expires_delta=access_token_expires
     )
     refresh_token = create_refresh_token(data={"user": user.username}, expires_delta=refresh_token_expires)
@@ -200,6 +203,7 @@ async def refresh_token_endpoint(response: Response, refresh_request: RefreshTok
     new_access_token = create_access_token(
         data={"user": username},
         expires_delta=access_token_expires
+
     )
 
     response.set_cookie(
