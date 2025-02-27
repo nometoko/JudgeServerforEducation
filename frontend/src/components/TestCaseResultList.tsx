@@ -35,7 +35,7 @@ const TestCaseResult: React.FC<TestCaseResultProps> = ({ testcase, user_result }
                     </AccordionButton>
                 </h2>
                 <AccordionPanel pb={4} ref={panelRef}>
-                    <Flex>
+                    <Flex mt="2" >
                         {/* <Box>
                             <h3>Executed Command</h3>
                             <Textarea value={executedCommand} readOnly />
@@ -46,6 +46,7 @@ const TestCaseResult: React.FC<TestCaseResultProps> = ({ testcase, user_result }
                             <Textarea value={testcase.stdin_file_content} readOnly />
                         </Box>
                     </Flex>
+                    <br />
                     {Math.max(countLines(user_result.output_content), countLines(testcase.answer_file_content)) > 10000 ? (
                         <Box>
                             <text>"Too many lines to display in diff style" </text>
@@ -109,6 +110,7 @@ const CompileError: React.FC<{ compileError: string }> = ({ compileError }) => {
 }
 
 const TestCaseResultList: React.FC<{ submissionId: string }> = ({ submissionId }) => {
+    const authUserName = localStorage.getItem("authUserName")
     const [submission, setSubmission] = useState<SubmissionProps>();
     const [testcaseResults, setTestcaseResults] = useState<TestCaseResultProps[]>([]);
 
@@ -117,13 +119,13 @@ const TestCaseResultList: React.FC<{ submissionId: string }> = ({ submissionId }
     }
 
     useEffect(() => {
-        myaxios.get(`/handler/getTestcaseResultList/${submissionId}`)
+        myaxios.get(`/handler/getTestcaseResultList/${authUserName}/${submissionId}`)
             .then((response) => {
                 response.data.sort(sortByTestcaseNumber);
                 setTestcaseResults(response.data);
             }
             );
-        myaxios.get(`/api/v1/submission/id/${submissionId}`)
+        myaxios.get(`/api/v1/submission/${authUserName}/${submissionId}`)
             .then((response) => {
                 setSubmission(response.data);
             }
