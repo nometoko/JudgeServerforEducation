@@ -6,7 +6,7 @@ import { GoCopy, GoDownload } from "react-icons/go";
 import ReactDiffViewer from "react-diff-viewer";
 
 const TestCaseResult: React.FC<TestCaseResultProps> = ({ testcase, user_result }) => {
-    const executedCommand = "prog " + testcase.args_file_content;
+    const executedCommand = "./a.out " + testcase.args_file_content;
 
     const panelRef = useRef<HTMLDivElement | null>(null);
 

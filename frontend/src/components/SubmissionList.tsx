@@ -71,6 +71,8 @@ const SubmissionList: React.FC = () => {
     const [submissions, setSubmissions] = useState<SubmissionProps[]>([]);
     const [selectedProblemId, setSelectedProblemId] = useState<number>();
     const [uniqueProblems, setUniqueProblems] = useState<ProblemSimpleProps[]>([]);
+    const [statusList, setStatusList] = useState<string[]>([]);
+    const [selectedStatus, setSelectedStatus] = useState<string>();
 
     const getSubmissions = async () => {
         try {
@@ -104,24 +106,51 @@ const SubmissionList: React.FC = () => {
             setUniqueProblems(uProblems);
         };
         fetchProblemNames();
+
+        const statusSet = new Set(submissions.map((submission) => submission.status));
+        setStatusList(Array.from(statusSet));
     }, [submissions]);
 
     // フィルタリング処理
-    const filteredSubmissions = selectedProblemId
-        ? submissions.filter((submission) => submission.problem_id === selectedProblemId)
-        : submissions;
+    const filteredSubmissions = submissions.filter((submission) => {
+        if (selectedProblemId && selectedProblemId !== submission.problem_id) {
+            return false;
+        }
+        if (selectedStatus && selectedStatus !== submission.status) {
+            return false;
+        }
+        return true;
+    }
+    );
 
     return (
         <Box>
-            < Select placeholder="Select a problem" onChange={(e) => setSelectedProblemId(Number(e.target.value))}>
-                {
-                    uniqueProblems.map((problem) => (
-                        <option key={problem.problem_id} value={problem.problem_id}>
-                            {problem.name}
-                        </option>
-                    ))
-                }
-            </Select >
+            <Flex>
+                <Box width="50%">
+                    <Box textAlign="left">Filter by problem:</Box>
+                    <Select placeholder="Select a problem" onChange={(e) => setSelectedProblemId(Number(e.target.value))}>
+                        {
+                            uniqueProblems.map((problem) => (
+                                <option key={problem.problem_id} value={problem.problem_id}>
+                                    {problem.name}
+                                </option>
+                            ))
+                        }
+                    </Select >
+                </Box>
+                <Box width="50%">
+                    <Box textAlign="left">Filter by status:</Box>
+                    <Select placeholder="Select a status" onChange={(e) => setSelectedStatus(e.target.value)}>
+                        {
+                            statusList.map((status) => (
+                                <option key={status} value={status}>
+                                    {status}
+                                </option>
+                            ))
+                        }
+                    </Select>
+                </Box>
+            </Flex>
             <br />
 
             <Flex id="table-header" justifyContent="space-between" fontWeight="bold" mb={1}>
