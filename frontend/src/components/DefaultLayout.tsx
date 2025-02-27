@@ -24,6 +24,9 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
                         <Button variant="ghost" colorScheme="whiteAlpha" onClick={() => navigate("/results")} justifyContent={"flex-start"}>
                             Results
                         </Button>
+                        <Button variant="ghost" colorScheme="whiteAlpha" onClick={() => navigate("/b3status")} justifyContent={"flex-start"}>
+                            B3 Status
+                        </Button>
                         <Button variant="ghost" colorScheme="whiteAlpha" onClick={() => navigate("/tools")} justifyContent={"flex-start"}>
                             Tools
                         </Button>
@@ -33,7 +36,7 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
                     <Box
                         display="flex"
                         alignItems="center"
-                        justifyContent="center"
+                        justifyContent="left"
                         borderRadius="md"
                         p={3}
                         cursor="pointer"

@@ -12,7 +12,7 @@ class UserCreate(BaseModel):
 class UserResponse(BaseModel):
     user_name: str
     password: str
-    joined_date: datetime
+    joined_date: str
 
     class Config:
         from_attributes = True
