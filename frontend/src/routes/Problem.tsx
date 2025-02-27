@@ -44,39 +44,43 @@ const Problem: React.FC = () => {
                 /> */}
                     <Stack mt={4} mb={8}>
                         <Text
-                            fontSize={24}
+                            fontSize={28}
                             fontWeight={'bold'}
+                            textAlign={'left'}
                         >
                             問題文
                         </Text>
-                        <Text whiteSpace="pre-line">{problem.statement}</Text>
+                        <Text whiteSpace="pre-line" textAlign={'left'} fontSize={18}>{problem.statement}</Text>
                     </Stack>
                     <Stack mb={8}>
                         <Text
-                            fontSize={24}
+                            fontSize={28}
                             fontWeight={'bold'}
+                            textAlign={'left'}
                         >
                             制約
                         </Text>
-                        <Text whiteSpace="pre-line">{problem.constraints}</Text>
+                        <Text whiteSpace="pre-line" textAlign={'left'} fontSize={18}>{problem.constraints}</Text>
                     </Stack>
                     <Stack mb={8}>
                         <Text
-                            fontSize={24}
+                            fontSize={28}
                             fontWeight={'bold'}
+                            textAlign={'left'}
                         >
                             入力形式
                         </Text>
-                        <Text whiteSpace="pre-line">{problem.input_format}</Text>
+                        <Text whiteSpace="pre-line" textAlign={'left'} fontSize={18}>{problem.input_format}</Text>
                     </Stack>
                     <Stack mb={8}>
                         <Text
-                            fontSize={24}
+                            fontSize={28}
                             fontWeight={'bold'}
+                            textAlign={'left'}
                         >
                             出力形式
                         </Text>
-                        <Text whiteSpace="pre-line">{problem.output_format}</Text>
+                        <Text whiteSpace="pre-line" textAlign={'left'} fontSize={18}>{problem.output_format}</Text>
                     </Stack>
                 </Stack>
                 <Divider />
