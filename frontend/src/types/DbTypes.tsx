@@ -16,6 +16,7 @@ export interface ProblemWithStatus {
 }
 
 export interface TestCaseProps {
+    problem_id: number,
     testcase_number: number,
     args_file_content: string,
     stdin_file_content: string,
