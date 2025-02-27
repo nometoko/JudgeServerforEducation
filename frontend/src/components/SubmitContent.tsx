@@ -46,6 +46,7 @@ const SubmitContent: React.FC<{ submissionId: string }> = ({ submissionId }) => 
             setFiles(response.data);
             setSelectedFileContent(response.data[0].content);
             setSelectedFileName(response.data[0].filename);
+            setValue(response.data[0].content);
         } catch (err: any) {
             console.error(err);
         }
