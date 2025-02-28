@@ -3,6 +3,7 @@ import { PageType } from "../types/PageType";
 import { Navigate, useLocation, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
+import { connected } from "process";
 
 type Props = {
   component: React.ReactNode;
@@ -28,8 +29,8 @@ export const AuthGuard: React.FC<Props> = (props) => {
 //    setAuthUserExp(localStorage.getItem("authUserExp"));
 //}, []);
 
-  console.log("autUserExp", authUserExp);
-  console.log("props.pageType", props.pageType);
+  //console.log("autUserExp", authUserExp);
+  //console.log("props.pageType", props.pageType);
 
   if ( authUserName && authJoinedDate && authUserExp ) {
     if (Number(authUserExp) < Date.now() / 1000) {
@@ -39,7 +40,7 @@ export const AuthGuard: React.FC<Props> = (props) => {
       message = "ログイン保持期限が切れました。再度ログインしてください。";
     } else if (props.pageType === PageType.Public) {
       allowRoute = true;
-    } else if (props.pageType === PageType.Private) {
+    } else if (props.pageType === PageType.Private) { // B3 status pageのみ
       [allowRoute, message] = CheckAccessPermission({
         authUserName: authUserName,
         authJoinedDate: new Date(authJoinedDate)
@@ -47,7 +48,7 @@ export const AuthGuard: React.FC<Props> = (props) => {
     } else {
       // unknown page type
     }
-  } else {
+  } else { // URL直接入力時
     allowRoute = false;
     message = "コンテンツの閲覧にはログインが必要です。";
   }
@@ -93,11 +94,16 @@ export const CheckAccessPermission = (props:AuthUserProps): [boolean, string] =>
 	else {
 		return [false, "ページへのアクセス権がありません。\nアクセス権のあるアカウントでログインしてください。"];  // junior student
 	}
-	// else {
+	//else {
+	//	console.log("userName", userName);
+	//	console.log("authUserName", props.authUserName);
     //    if (props.authUserName == userName) {
     //        return [true, ""];  // matched userName
     //    } else {
-    //        return [false, "ページへのアクセス権がありません。アクセス権のあるアカウントでログインしてください。"];  // unmatched userName
+    //        return [false, "ページへのアクセス権がありません。\nアクセス権のあるアカウントでログインしてください。"];  // unmatched userName
     //    }
     //}
 }
+
+// 個人しか完全に見られないページはアカウントとダッシュボードのみ。
+// でもこれらはlocalstorageから一致するため、アクセス権の確認は不要。
