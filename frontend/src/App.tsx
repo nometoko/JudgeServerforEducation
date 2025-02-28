@@ -68,14 +68,14 @@ const App: React.FC = () => {
   //  });
 
 
-  useEffect(() => {
-    axios.get(`${API_BASE_URL}/tmp`)
-      .then((response) => {
-        setMessage(response.data.message)
-        console.log("response:", response)
-      })
-      .catch(() => setMessage("Error fetching data"));
-  }, []);
+  //useEffect(() => {
+  //  axios.get(`${API_BASE_URL}/tmp`)
+  //    .then((response) => {
+  //      setMessage(response.data.message)
+  //      console.log("response:", response)
+  //    })
+  //    .catch(() => setMessage("Error fetching data"));
+  //}, []);
 
   //useEffect(() => {
   //  fetch(`${API_BASE_URL}`)
