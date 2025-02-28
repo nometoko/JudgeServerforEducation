@@ -61,7 +61,6 @@ const SubmissionBar: React.FC<{ submission: SubmissionProps }> = ({ submission }
     );
 };
 
-
 const SubmissionList: React.FC = () => {
     interface ProblemSimpleProps {
         problem_id: number;
