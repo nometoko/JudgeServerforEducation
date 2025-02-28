@@ -1,3 +1,8 @@
+export interface UserProps {
+    user_name: string;
+    joined_date: string;
+}
+
 export interface ProblemProps {
     problem_id: number;
     is_petit_coder: boolean;
@@ -20,7 +25,7 @@ export interface TestCaseProps {
     testcase_number: number,
     args_file_content: string,
     stdin_file_content: string,
-    input_file_contents: string[],
+    input_file_content: string,
     answer_file_content: string,
 }
 
@@ -47,3 +52,12 @@ export interface SubmissionProps {
     status: string;
     compile_error: string | null;
 }
+
+export const JudgeStatus = {
+    "AC": "正解",
+    "WA": "不正解",
+    "CE": "コンパイルエラー",
+    "RE": "実行時エラー",
+    "TLE": "時間制限超過",
+    "MLE": "メモリ制限超過"
+} as const;
