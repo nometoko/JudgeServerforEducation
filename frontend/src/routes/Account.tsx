@@ -125,14 +125,6 @@ const Account = () => {
                             />
                         </FormControl>
                         <FormControl>
-                            <FormLabel>New Password</FormLabel>
-                            <Input
-                                type="password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                            />
-                        </FormControl>
-                        <FormControl>
                             <FormLabel>Confirm Password</FormLabel>
                             <Input
                                 type="password"
