@@ -76,7 +76,11 @@ const SubmitContent: React.FC<{ submissionId: string }> = ({ submissionId }) => 
                 </Tooltip>
             </Flex>
             <Box maxHeight="60vh" width="100%" overflow={"auto"}>
-                <SyntaxHighlighter language="c" style={oneDark} children={selectedFileContent} />
+                <SyntaxHighlighter
+                    language={
+                        selectedFileName.includes('Makefile') ? 'makefile' : 'c'
+                    }
+                    style={oneDark} children={selectedFileContent} />
             </Box>
         </div>
     );
