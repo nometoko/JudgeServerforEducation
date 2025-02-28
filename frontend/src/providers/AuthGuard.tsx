@@ -52,9 +52,26 @@ export const AuthGuard: React.FC<Props> = (props) => {
     message = "コンテンツの閲覧にはログインが必要です。";
   }
 
-  if (!allowRoute) {
-    alert(message);
-    return <Navigate to="/login" state={{from: location}} replace={false} />
+//  if (!allowRoute) {
+//    alert(message);
+//    return <Navigate to="/login" state={{from: location}} replace={false} />
+//  }
+
+if (!allowRoute) {
+	const shouldLogout = window.confirm(
+	  `${message}\nこのままページに留まる場合は「キャンセル」、ログアウトする場合は「OK」をクリックしてください。`
+	);
+	if (shouldLogout) {
+	  // ログアウト処理: ローカルストレージから認証情報を削除
+	  localStorage.removeItem("authUserName");
+	  localStorage.removeItem("authJoinedDate");
+	  localStorage.removeItem("authUserExp");
+	  return <Navigate to="/login" replace={false} />;
+	} else {
+	  // ユーザーがキャンセルした場合、適宜表示するコンテンツを返す
+	  // 本当はそのままにしたいけどできていない
+	  return (<Navigate to="/dashboard" state={{ from: location }} replace={true} />);
+	}
   }
 
   return <>{props.component}</>;
@@ -74,7 +91,7 @@ export const CheckAccessPermission = (props:AuthUserProps): [boolean, string] =>
         return [true, ""];  // senior student
     } 
 	else {
-		return [false, "ページへのアクセス権がありません。アクセス権のあるアカウントでログインしてください。"];  // junior student
+		return [false, "ページへのアクセス権がありません。\nアクセス権のあるアカウントでログインしてください。"];  // junior student
 	}
 	// else {
     //    if (props.authUserName == userName) {

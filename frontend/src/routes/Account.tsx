@@ -65,7 +65,7 @@ const Account = () => {
           });
           // API側のレスポンスに応じた処理（ここでは例として200の場合を想定）
           if (response.data.success === true) {
-            setMessage("Account information updated successfully");
+            setMessage("パスワードの変更に成功しました");
             console.log("debug", response.data.success);
             // 必要に応じて、navigateで他ページへ遷移する
             // navigate("/some-path");
