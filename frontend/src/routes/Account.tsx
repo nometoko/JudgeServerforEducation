@@ -56,12 +56,22 @@ const Account = () => {
         }
 
         try {
-            const response = await myaxios.post("/change", { username, password });
-            if (response.data.success) {
-                setMessage("Account information updated successfully");
-            } else {
-                setError("An error occurred while updating the account");
-            }
+          // APIにパスワード変更リクエストを送信
+          const response = await myaxios.post("/change", {
+            username,
+            password,
+          });
+          // API側のレスポンスに応じた処理（ここでは例として200の場合を想定）
+          if (response.data.success === true) {
+            setMessage("パスワードの変更に成功しました");
+            console.log("debug", response.data.success);
+            // 必要に応じて、navigateで他ページへ遷移する
+            // navigate("/some-path");
+          } else {
+            setError("An error occurred while updating the account");
+            setMessage("");
+            console.log("debug", response.data.success);
+          }
         } catch (err) {
             setError("Failed to update account. Please try again.");
         }
