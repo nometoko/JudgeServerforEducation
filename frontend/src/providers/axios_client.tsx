@@ -87,6 +87,7 @@ export function Myaxios_provider({ children }: { children: React.ReactElement })
 	  // レスポンスインターセプター（401エラー時にリフレッシュトークンを実行）
 	  const response_interceptor = myaxios.interceptors.response.use(
 		(response) => {
+		  console.log("refresh");
 		  return response;
 		},
 		async (error) => {
