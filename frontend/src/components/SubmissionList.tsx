@@ -130,7 +130,7 @@ const SubmissionList: React.FC = () => {
             <Flex justifyContent="space-between" alignItems="center" mb={2}>
                 {/* Results タイトル */}
                 <Box id="results-header">
-                    <Heading fontSize="4xl">Results</Heading>
+                    <Heading>Results</Heading>
                 </Box>
 
                 {/* フィルター機能 */}
