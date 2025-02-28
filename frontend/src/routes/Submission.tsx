@@ -5,6 +5,7 @@ import myaxios from "@/providers/axios_client";
 import { SubmissionProps } from "@/types/DbTypes";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { AuthData } from "@/providers/AuthGuard";
 
 const Submission = () => {
     const { submissionId } = useParams<{ submissionId: string }>();
@@ -18,8 +19,31 @@ const Submission = () => {
         );
     }
 
-    const authUserName = localStorage.getItem("authUserName");
+    const [authUserName, setAuthUserName] = useState<string | null>(null);
     const [submission, setSubmission] = useState<SubmissionProps>();
+    const [authData, setAuthData] = useState<AuthData | null>(null);
+    const [errorMessage, setErrorMessage] = useState<string>("");
+
+    useEffect(() => {
+        const fetchAuthData = async () => {
+          try {
+            const response = await myaxios.get("/protected");
+            setAuthData(response.data);
+          } catch (error) {
+            console.error("認証情報の取得エラー:", error);
+            setErrorMessage("認証情報の取得に失敗しました。");
+          } finally {
+            //setLoading(false);
+          }
+        };
+        fetchAuthData();
+      }, []);
+
+      useEffect(() => {
+        if (authData) {
+        setAuthUserName(authData.authUserName);
+        }
+    }, [authData]);
 
     const getSubmission = async () => {
         try {

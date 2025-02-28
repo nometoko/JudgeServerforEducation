@@ -5,7 +5,7 @@ from fastapi.responses import JSONResponse
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 
-from auth import login, create_new_user, change_password
+from auth import login, create_new_user, change_password, logout
 from utils.get_root_dir import get_root_dir
 import dotenv
 
@@ -19,6 +19,7 @@ app = FastAPI(
 )
 app.include_router(api_router, prefix=settings.API_V1_STR)
 app.include_router(login.router)
+app.include_router(logout.router)
 app.include_router(create_new_user.router)
 app.include_router(change_password.router)
 app.include_router(handler_router, prefix="/handler")

@@ -26,6 +26,7 @@ import NotFound from '@/routes/NotFound';
 import B3Status from '@/routes/B3Status';
 import { AuthGuard } from "./providers/AuthGuard";
 import { PageType } from "./types/PageType";
+import { AuthProvider } from "./providers/AuthContext";
 
 // import Dashboard from './routes/Dashboard';
 
@@ -87,6 +88,7 @@ const App: React.FC = () => {
   return (
     <ChakraProvider >
       <BrowserRouter>
+        <AuthProvider>
         {/* <AxiosClientProvider> */}
         <Myaxios_provider>
           <Routes>
@@ -106,6 +108,7 @@ const App: React.FC = () => {
           </Routes>
         </Myaxios_provider>
         {/* </AxiosClientProvider> */}
+        </AuthProvider>
       </BrowserRouter>
     </ChakraProvider>
   );
