@@ -5,7 +5,6 @@ from app.api import deps
 
 router = APIRouter()
 
-
 @router.get("/{user_name}", response_model=schemas.UserResponse)
 async def get_user_by_user_name_endpoint(
     user_name: str,

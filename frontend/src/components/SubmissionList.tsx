@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import myaxios from "@/providers/axios_client";
-import { Box, Card, CardHeader, CardBody, Divider, Heading, Select, Flex, HStack } from "@chakra-ui/react";
+import { Box, Card, CardHeader, CardBody, Divider, Heading, Select, Flex, HStack, Tooltip } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { SubmissionProps } from "@/types/DbTypes";
+import { JudgeStatus, SubmissionProps } from "@/types/DbTypes";
 import { FaFilter } from "react-icons/fa";
 
 const getProblemNameById = async (problemId: number): Promise<string | undefined> => {
@@ -60,24 +60,29 @@ const SubmissionBar: React.FC<{ submission: SubmissionProps }> = ({ submission }
 
             {/* ステータス */}
             <CardBody p={2} flex="1" textAlign="left" fontSize="2xl">
-                <Heading size="md">{submission.status}</Heading>
+                <Tooltip
+                    label={JudgeStatus[submission.status as keyof typeof JudgeStatus]}
+                    placement="top-start"
+                >
+                    <Heading size="md">{submission.status}</Heading>
+                </Tooltip>
             </CardBody>
         </Card>
     );
 };
 
-const ResultList: React.FC<{ results: SubmissionProps[] }> = ({ results: submissions }) => {
+const SubmissionList: React.FC<{ submissions: SubmissionProps[], defaultUserName: string | undefined, defaultProblemId: number | undefined }> = ({ submissions, defaultUserName, defaultProblemId }) => {
     interface ProblemSimpleProps {
         problem_id: number;
         name: string;
     }
 
-    const [selectedProblemId, setSelectedProblemId] = useState<number>();
     const [uniqueProblems, setUniqueProblems] = useState<ProblemSimpleProps[]>([]);
     const [uniqueUsers, setUniqueUsers] = useState<string[]>([]);
     const [statusList, setStatusList] = useState<string[]>([]);
+    const [selectedProblemId, setSelectedProblemId] = useState<number | undefined>(defaultProblemId);
+    const [selectedUser, setSelectedUser] = useState<string | undefined>(defaultUserName);
     const [selectedStatus, setSelectedStatus] = useState<string>();
-    const [selectedUser, setSelectedUser] = useState<string>();
 
     useEffect(() => {
         const fetchProblemNames = async () => {
@@ -118,6 +123,11 @@ const ResultList: React.FC<{ results: SubmissionProps[] }> = ({ results: submiss
     }
     );
 
+    useEffect(() => {
+        setSelectedProblemId(defaultProblemId);
+        setSelectedUser(defaultUserName);
+    }, [defaultProblemId, defaultUserName]);
+
     return (
         <Box>
             {/* タイトル + フィルターを横並び */}
@@ -133,7 +143,12 @@ const ResultList: React.FC<{ results: SubmissionProps[] }> = ({ results: submiss
                     <HStack width="100%" mx="3">
                         <Box width="50%">
                             <Box textAlign="left">Problem</Box>
-                            <Select placeholder="All" mb={2} onChange={(e) => setSelectedProblemId(Number(e.target.value))}>
+                            <Select
+                                placeholder="All"
+                                mb={2}
+                                value={selectedProblemId}
+                                onChange={(e) => setSelectedProblemId(Number(e.target.value))}
+                            >
                                 {uniqueProblems.map((problem) => (
                                     <option key={problem.problem_id} value={problem.problem_id}>
                                         {problem.name}
@@ -143,7 +158,12 @@ const ResultList: React.FC<{ results: SubmissionProps[] }> = ({ results: submiss
                         </Box>
                         <Box width="50%">
                             <Box textAlign="left">User</Box>
-                            <Select placeholder="All" mb={2} onChange={(e) => setSelectedUser(e.target.value)}>
+                            <Select
+                                placeholder="All"
+                                mb={2}
+                                value={selectedUser}
+                                onChange={(e) => setSelectedUser(e.target.value)}
+                            >
                                 {uniqueUsers.map((user) => (
                                     <option key={user} value={user}>
                                         {user}
@@ -182,4 +202,4 @@ const ResultList: React.FC<{ results: SubmissionProps[] }> = ({ results: submiss
     );
 };
 
-export default ResultList;
+export default SubmissionList;

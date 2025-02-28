@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import TestCaseResult from "@/components/TestcaseResult";
 
 const TestCaseResultList: React.FC<{ submissionId: string }> = ({ submissionId }) => {
-    const authUserName = localStorage.getItem("authUserName")
     const [testcaseResults, setTestcaseResults] = useState<TestCaseResultProps[]>([]);
 
     const sortByTestcaseNumber = (a: TestCaseResultProps, b: TestCaseResultProps) => {
@@ -13,7 +12,7 @@ const TestCaseResultList: React.FC<{ submissionId: string }> = ({ submissionId }
     }
 
     useEffect(() => {
-        myaxios.get(`/handler/getTestcaseResultList/${authUserName}/${submissionId}`)
+        myaxios.get(`/handler/getTestcaseResultList/${submissionId}`)
             .then((response) => {
                 response.data.sort(sortByTestcaseNumber);
                 setTestcaseResults(response.data);

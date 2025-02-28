@@ -44,7 +44,7 @@ export const B3results = ({ data }: { data: B3StatusProps[] }) => {
               {data?.map(b3 => (
                 <Th key={b3.UserName}>
                   {permission ?
-                    <Button variant="link" onClick={() => navigate(`/results/${b3.UserName}`)}>
+                    <Button variant="link" onClick={() => navigate(`/results?user=${b3.UserName}`)}>
                       {b3.UserName}
                     </Button>
                     :
@@ -60,7 +60,7 @@ export const B3results = ({ data }: { data: B3StatusProps[] }) => {
                 <Td>{problem.ProblemName}</Td>
                 {data?.map(b3 => (
                   permission ?
-                    <Td><StatusBlock status={b3.ProblemsStatus[i].Status} onClick={() => navigate(`/results/${b3.UserName}`, { state: problem.ProblemName })} /></Td>
+                    <Td><StatusBlock status={b3.ProblemsStatus[i].Status} onClick={() => navigate(`/results?user=${b3.UserName}&problem=${problem.ProblemId}`)} /></Td>
                     :
                     <Td><StatusBlock status={b3.ProblemsStatus[i].Status} /></Td>
                 ))}
