@@ -7,3 +7,5 @@ venv/
 **/.vscode/
 
 app/db/postgres*
+static/
+

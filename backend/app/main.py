@@ -3,6 +3,7 @@ import uvicorn
 from fastapi import FastAPI, Request, status
 from fastapi.responses import JSONResponse
 from fastapi.exceptions import RequestValidationError
+from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 
 from auth import login, create_new_user, change_password
@@ -25,6 +26,8 @@ app.include_router(handler_router, prefix="/handler")
 # app.include_router(protected_router, prefix="/protected")
 for r in app.routes:
     print(r)
+
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 @app.exception_handler(RequestValidationError)
 async def handler(request: Request, exc: RequestValidationError) -> JSONResponse:
