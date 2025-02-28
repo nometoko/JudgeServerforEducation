@@ -22,7 +22,7 @@ export const B3results = ({ data }: { data: B3StatusProps[] }) => {
   console.log("authUserName", authUserName);
   console.log("authJoinedDate", authJoinedDate);
   let [permission, _] = [false, ""]
-  if ( authUserName && authJoinedDate ) {
+  if (authUserName && authJoinedDate) {
     [permission, _] = CheckAccessPermission({
       authUserName: authUserName,
       authJoinedDate: new Date(authJoinedDate)
@@ -32,6 +32,7 @@ export const B3results = ({ data }: { data: B3StatusProps[] }) => {
   return (
     <>
       <Heading mt={5}>B3の提出状況</Heading>
+
       <Divider />
       <TableContainer>
         <Table variant='simple'>
@@ -41,12 +42,12 @@ export const B3results = ({ data }: { data: B3StatusProps[] }) => {
               <Th>Problem</Th>
               {data?.map(b3 => (
                 <Th key={b3.UserName}>
-                  {permission ? 
-                  <Button variant="link" onClick={() => navigate(`/results/${b3.UserName}`)}>
-                    {b3.UserName}
-                  </Button>
-                  :
-                  b3.UserName
+                  {permission ?
+                    <Button variant="link" onClick={() => navigate(`/results/${b3.UserName}`)}>
+                      {b3.UserName}
+                    </Button>
+                    :
+                    b3.UserName
                   }
                 </Th>
               ))}
@@ -57,10 +58,10 @@ export const B3results = ({ data }: { data: B3StatusProps[] }) => {
               <Tr key={problem.ProblemId}>
                 <Td>{problem.ProblemName}</Td>
                 {data?.map(b3 => (
-                  permission ? 
-                  <Td><StatusBlock status={b3.ProblemsStatus[i].Status} onClick={() => navigate(`/results/${b3.UserName}`, { state: problem.ProblemName })} /></Td>
-                  :
-                  <Td><StatusBlock status={b3.ProblemsStatus[i].Status} /></Td>
+                  permission ?
+                    <Td><StatusBlock status={b3.ProblemsStatus[i].Status} onClick={() => navigate(`/results/${b3.UserName}`, { state: problem.ProblemName })} /></Td>
+                    :
+                    <Td><StatusBlock status={b3.ProblemsStatus[i].Status} /></Td>
                 ))}
               </Tr>
             ))}
@@ -70,4 +71,3 @@ export const B3results = ({ data }: { data: B3StatusProps[] }) => {
     </>
   )
 }
-

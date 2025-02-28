@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import myaxios from "@/providers/axios_client";
-import { Box, Card, CardHeader, CardBody, Heading, Select, Flex } from "@chakra-ui/react";
+import { Box, Card, CardHeader, CardBody, Divider, Heading, Select, Flex, HStack } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { SubmissionProps } from "@/types/DbTypes";
+import { FaFilter } from "react-icons/fa";
 
 const getProblemNameById = async (problemId: number): Promise<string | undefined> => {
     try {
@@ -54,7 +55,7 @@ const SubmissionBar: React.FC<{ submission: SubmissionProps }> = ({ submission }
 
             {/* ステータス */}
             <CardBody p={2} flex="1" textAlign="left" fontSize="2xl">
-                {submission.status}
+                <Heading size="md">{submission.status}</Heading>
             </CardBody>
         </Card>
     );
@@ -125,32 +126,45 @@ const SubmissionList: React.FC = () => {
 
     return (
         <Box>
-            <Flex>
-                <Box width="50%">
-                    <Box textAlign="left">Filter by problem:</Box>
-                    <Select placeholder="Select a problem" onChange={(e) => setSelectedProblemId(Number(e.target.value))}>
-                        {
-                            uniqueProblems.map((problem) => (
-                                <option key={problem.problem_id} value={problem.problem_id}>
-                                    {problem.name}
-                                </option>
-                            ))
-                        }
-                    </Select >
+            {/* タイトル + フィルターを横並び */}
+            <Flex justifyContent="space-between" alignItems="center" mb={2}>
+                {/* Results タイトル */}
+                <Box id="results-header">
+                    <Heading fontSize="4xl">Results</Heading>
                 </Box>
-                <Box width="50%">
-                    <Box textAlign="left">Filter by status:</Box>
-                    <Select placeholder="Select a status" onChange={(e) => setSelectedStatus(e.target.value)}>
-                        {
-                            statusList.map((status) => (
-                                <option key={status} value={status}>
-                                    {status}
-                                </option>
-                            ))
-                        }
-                    </Select>
-                </Box>
+
+                {/* フィルター機能 */}
+                <Flex alignItems="center">
+                    <FaFilter size="30px" color="gray" style={{ marginRight: "8px" }} />
+                    <HStack width="100%" mx="3">
+                        <Box width="50%">
+                            <Box textAlign="left">Problem</Box>
+                            <Select placeholder="All" mb={2} onChange={(e) => setSelectedProblemId(Number(e.target.value))}>
+                                {uniqueProblems.map((problem) => (
+                                    <option key={problem.problem_id} value={problem.problem_id}>
+                                        {problem.name}
+                                    </option>
+                                ))}
+                            </Select>
+                        </Box>
+                        <Box width="50%">
+                            <Box textAlign="left">Status</Box>
+                            <Select placeholder="All" mb={2} onChange={(e) => setSelectedStatus(e.target.value)}>
+                                {statusList.map((status) => (
+                                    <option key={status} value={status}>
+                                        {status}
+                                    </option>
+                                ))}
+                            </Select>
+                        </Box>
+                    </HStack>
+                </Flex>
             </Flex>
+
+            <Divider />
+
+
+
             <br />
 
             <Flex id="table-header" justifyContent="space-between" fontWeight="bold" mb={1}>
