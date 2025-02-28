@@ -15,7 +15,7 @@ async def judge(submission_id: str, testcases_with_path: List[models.TestcaseWit
 
     # compile
     try:
-        execute.compile(files_dir_path, constants.COMPILE_DELAY)
+        execute.compile(files_dir_path)
     except Exception as e:
         raise e
 
