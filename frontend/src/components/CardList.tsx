@@ -6,10 +6,6 @@ import { MdLockClock, MdLockOpen } from "react-icons/md";
 import { GiPodium } from "react-icons/gi";
 import { ProblemWithStatus } from '@/types/DbTypes';
 
-const sortByOpenDate = (a: ProblemWithStatus, b: ProblemWithStatus): number => {
-  return new Date(a.problem.open_date).getTime() - new Date(b.problem.open_date).getTime();
-};
-
 const CardItem = ({ pws }: { pws: ProblemWithStatus }) => {
   const navigate = useNavigate();
 
@@ -98,7 +94,12 @@ const CardItem = ({ pws }: { pws: ProblemWithStatus }) => {
 
 export const CardList = ({ data }: { data: ProblemWithStatus[] }) => {
   // 公開日時でソート
-  data = data.sort(sortByOpenDate);
+
+  const sortByProblemId = (a: ProblemWithStatus, b: ProblemWithStatus): number => {
+    return a.problem.problem_id - b.problem.problem_id;
+  };
+
+  data = data.sort(sortByProblemId);
   const check_list = ["完了済みの課題も表示する", "未公開の課題も表示する"];
 
   // ローカルストレージから初期値を取得

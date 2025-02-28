@@ -46,6 +46,7 @@ const SubmitContent: React.FC<{ submissionId: string }> = ({ submissionId }) => 
             setFiles(response.data);
             setSelectedFileContent(response.data[0].content);
             setSelectedFileName(response.data[0].filename);
+            setValue(response.data[0].content);
         } catch (err: any) {
             console.error(err);
         }
@@ -75,7 +76,11 @@ const SubmitContent: React.FC<{ submissionId: string }> = ({ submissionId }) => 
                 </Tooltip>
             </Flex>
             <Box maxHeight="60vh" width="100%" overflow={"auto"}>
-                <SyntaxHighlighter language="c" style={oneDark} children={selectedFileContent} />
+                <SyntaxHighlighter
+                    language={
+                        selectedFileName.includes('Makefile') ? 'makefile' : 'c'
+                    }
+                    style={oneDark} children={selectedFileContent} />
             </Box>
         </div>
     );
