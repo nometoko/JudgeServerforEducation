@@ -50,7 +50,7 @@ export interface SubmissionProps {
     problem_id: number;
     submitted_date: string;
     status: string;
-    compile_error: string | null;
+    compile_error?: string;
 }
 
 export const JudgeStatus = {
