@@ -60,9 +60,9 @@ export const B3results = ({ data }: { data: B3StatusProps[] }) => {
                 <Td>{problem.ProblemName}</Td>
                 {data?.map(b3 => (
                   permission ?
-                    <Td><StatusBlock status={b3.ProblemsStatus[i].Status} onClick={() => navigate(`/results?user=${b3.UserName}&problem=${problem.ProblemId}`)} /></Td>
+                    <Td key={b3.UserName}><StatusBlock status={b3.ProblemsStatus[i].Status} onClick={() => navigate(`/results?user=${b3.UserName}&problem=${problem.ProblemId}`)} /></Td>
                     :
-                    <Td><StatusBlock status={b3.ProblemsStatus[i].Status} /></Td>
+                    <Td key={b3.UserName}><StatusBlock status={b3.ProblemsStatus[i].Status} /></Td>
                 ))}
               </Tr>
             ))}
