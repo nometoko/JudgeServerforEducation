@@ -31,7 +31,8 @@ export const B3results = ({ data }: { data: B3StatusProps[] }) => {
 
   return (
     <>
-      <Heading mt={5}>B3の提出状況</Heading>
+      <Heading mt={5} textAlign="left">B3 Status</Heading>
+      <br />
 
       <Divider />
       <TableContainer>

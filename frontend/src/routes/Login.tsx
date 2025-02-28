@@ -106,8 +106,10 @@ const Login = ({ }) => {
 
 
   /** 🔹 Enterキーを押したらパスワード入力欄にフォーカス */
+  /** 🔹 Enterキーを押したらパスワード入力欄にフォーカス */
   const handleKeyDownUserName = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
+      e.preventDefault(); // フォーム送信を防ぐ
       passwordRef.current?.focus(); // パスワード入力欄にフォーカスを移動
     }
   };
@@ -115,9 +117,14 @@ const Login = ({ }) => {
   /** 🔹 Enterキーを押したらログインボタンを押す */
   const handleKeyDownPassword = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      handleLogin();
+      e.preventDefault(); // フォーム送信を防ぐ
+      if (username.trim() && password.trim()) {
+        handleLogin(e); // イベントオブジェクトを渡す
+      }
     }
   };
+
+
 
 
   return (
