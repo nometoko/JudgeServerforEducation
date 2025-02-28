@@ -1,3 +1,8 @@
+export interface UserProps {
+    user_name: string;
+    joined_date: string;
+}
+
 export interface ProblemProps {
     problem_id: number;
     is_petit_coder: boolean;

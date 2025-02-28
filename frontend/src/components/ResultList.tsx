@@ -48,6 +48,11 @@ const SubmissionBar: React.FC<{ submission: SubmissionProps }> = ({ submission }
                 <Heading size="sm">{problemName}</Heading>
             </CardHeader>
 
+            {/* 提出者 */}
+            <CardBody p={2} flex="1" textAlign="left">
+                {submission.user_name}
+            </CardBody>
+
             {/* 提出日時 */}
             <CardBody p={2} flex="1" textAlign="left" >
                 {submissionDate.toLocaleString()}
@@ -61,36 +66,18 @@ const SubmissionBar: React.FC<{ submission: SubmissionProps }> = ({ submission }
     );
 };
 
-const SubmissionList: React.FC = () => {
+const ResultList: React.FC<{ results: SubmissionProps[] }> = ({ results: submissions }) => {
     interface ProblemSimpleProps {
         problem_id: number;
         name: string;
     }
 
-    const authUserName = localStorage.getItem("authUserName");
-    const [submissions, setSubmissions] = useState<SubmissionProps[]>([]);
     const [selectedProblemId, setSelectedProblemId] = useState<number>();
     const [uniqueProblems, setUniqueProblems] = useState<ProblemSimpleProps[]>([]);
+    const [uniqueUsers, setUniqueUsers] = useState<string[]>([]);
     const [statusList, setStatusList] = useState<string[]>([]);
     const [selectedStatus, setSelectedStatus] = useState<string>();
-
-    const getSubmissions = async () => {
-        try {
-            const response = await myaxios.get(`/handler/getSubmissionList/${authUserName}`);
-            response.data.sort((a: SubmissionProps, b: SubmissionProps) =>
-                new Date(b.submitted_date).getTime() - new Date(a.submitted_date).getTime()
-            );
-            setSubmissions(response.data);
-        } catch (err: any) {
-            console.log(err);
-        }
-    };
-
-    useEffect(() => {
-        if (authUserName) {
-            getSubmissions();
-        }
-    }, [authUserName]);
+    const [selectedUser, setSelectedUser] = useState<string>();
 
     useEffect(() => {
         const fetchProblemNames = async () => {
@@ -111,12 +98,20 @@ const SubmissionList: React.FC = () => {
         setStatusList(Array.from(statusSet));
     }, [submissions]);
 
+    useEffect(() => {
+        const userSet = new Set(submissions.map((submission) => submission.user_name));
+        setUniqueUsers(Array.from(userSet));
+    }, [submissions]);
+
     // フィルタリング処理
     const filteredSubmissions = submissions.filter((submission) => {
         if (selectedProblemId && selectedProblemId !== submission.problem_id) {
             return false;
         }
         if (selectedStatus && selectedStatus !== submission.status) {
+            return false;
+        }
+        if (selectedUser && selectedUser !== submission.user_name) {
             return false;
         }
         return true;
@@ -147,6 +142,16 @@ const SubmissionList: React.FC = () => {
                             </Select>
                         </Box>
                         <Box width="50%">
+                            <Box textAlign="left">User</Box>
+                            <Select placeholder="All" mb={2} onChange={(e) => setSelectedUser(e.target.value)}>
+                                {uniqueUsers.map((user) => (
+                                    <option key={user} value={user}>
+                                        {user}
+                                    </option>
+                                ))}
+                            </Select>
+                        </Box>
+                        <Box width="50%">
                             <Box textAlign="left">Status</Box>
                             <Select placeholder="All" mb={2} onChange={(e) => setSelectedStatus(e.target.value)}>
                                 {statusList.map((status) => (
@@ -159,15 +164,12 @@ const SubmissionList: React.FC = () => {
                     </HStack>
                 </Flex>
             </Flex>
-
             <Divider />
 
-
-
             <br />
-
             <Flex id="table-header" justifyContent="space-between" fontWeight="bold" mb={1}>
                 <Box flex="1" textAlign="left" bg="gray.600" border="1px solid white" color='white' p={3} fontSize="lg">Problem</Box>
+                <Box flex="1" textAlign="left" bg="gray.600" border="1px solid white" color='white' p={3} fontSize="lg">Submitted by</Box>
                 <Box flex="1" textAlign="left" bg="gray.600" border="1px solid white" color='white' p={3} fontSize="lg">Submitted at</Box>
                 <Box flex="1" textAlign="left" bg="gray.600" border="1px solid white" color='white' p={3} fontSize="lg">Status</Box>
             </Flex>
@@ -180,4 +182,4 @@ const SubmissionList: React.FC = () => {
     );
 };
 
-export default SubmissionList;
+export default ResultList;
