@@ -1,7 +1,4 @@
-import { useNavigate } from "react-router-dom";
-import {
-    Text,
-} from "@chakra-ui/react";
+import { Text } from "@chakra-ui/react";
 import DefaultLayout from "@/components/DefaultLayout";
 
 const NotFound = () => {

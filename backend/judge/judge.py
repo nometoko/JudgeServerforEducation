@@ -26,7 +26,7 @@ async def judge(submission_id: str, testcases_with_path: List[models.TestcaseWit
 
     for testcase_with_path in testcases_with_path:
         command = executable_path
-        input_file = None
+        stdin_file = None
         if testcase_with_path.args_file_path:
             arg_path = os.path.join(static_dir, testcase_with_path.args_file_path)
             with open(arg_path) as f:
@@ -36,7 +36,7 @@ async def judge(submission_id: str, testcases_with_path: List[models.TestcaseWit
 
         if testcase_with_path.stdin_file_path:
             stdin_path = os.path.join(static_dir, testcase_with_path.stdin_file_path)
-            input_file = open(stdin_path, "r")
+            stdin_file = open(stdin_path, "r")
 
         if testcase_with_path.input_file_path:
             input_path = os.path.join(static_dir, testcase_with_path.input_file_path)
@@ -49,11 +49,19 @@ async def judge(submission_id: str, testcases_with_path: List[models.TestcaseWit
 
         status = None
         try:
-            if input_file:
-                output = execute.execute_command(command, submission_id, constants.EXECUTE_DELAY, input_file)
-                input_file.close()
+            if stdin_file:
+                output = execute.execute_command(command, submission_id, constants.EXECUTE_DELAY, stdin_file)
+                stdin_file.close()
             else:
                 output = execute.execute_command(command, submission_id, constants.EXECUTE_DELAY)
+
+            if testcase_with_path.output_file_name:
+                output_path = os.path.join(files_dir_path, testcase_with_path.output_file_name)
+                if os.path.exists(output_path):
+                    print(f"output file already exists: {output_path}")
+                    with open(output_path, "r") as f:
+                        output = f.read()
+                    os.remove(output_path)
             answer_path = os.path.join(static_dir, testcase_with_path.answer_file_path)
             with open(answer_path) as f:
                 answer_content = f.read()

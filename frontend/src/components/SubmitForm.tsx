@@ -72,7 +72,7 @@ const SubmitForm: React.FC<{ problemId: number }> = ({ problemId }) => {
     return (
         <div>
             <h2>複数ファイルアップロード</h2>
-            <input type="file" accept="text/**" multiple onChange={handleFileChange} />
+            <input type="file" accept=".c, .h" multiple onChange={handleFileChange} />
             <button onClick={handleUpload} disabled={uploading}>
                 {uploading ? "アップロード中..." : "アップロード"}
             </button>

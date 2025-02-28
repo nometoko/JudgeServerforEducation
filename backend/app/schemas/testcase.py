@@ -19,6 +19,7 @@ class TestcaseWithPathCreate(BaseModel):
     answer_file_path: str
 
 class TestcaseResponse(BaseModel):
+    problem_id: int
     testcase_number: int
     args_file_content: Text
     stdin_file_content: Text
