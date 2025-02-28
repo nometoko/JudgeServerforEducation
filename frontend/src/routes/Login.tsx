@@ -66,17 +66,48 @@ const Login: FC = () => {
       });
   };
 
+
+  const fetchProblems = async () => {
+    try {
+      const response = await myaxios.get(`/getProblemList/${authUserName}`);
+      // 成功時は問題リストとメッセージを更新
+      setProblems(response.data.problems);
+      setDebug(response.data.message);
+      setError("");
+    } catch (err: any) {
+      // エラーがあればエラーメッセージを表示
+      if (err.response && err.response.status === 404) {
+        setError("User not found");
+      } else {
+        setError("Error fetching problems");
+      }
+      setProblems([]);
+      setDebug("");
+    }
+  };
+
+
+  /** 🔹 Enterキーを押したらパスワード入力欄にフォーカス */
+  /** 🔹 Enterキーを押したらパスワード入力欄にフォーカス */
   const handleKeyDownUserName = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      passwordRef.current?.focus();
+      e.preventDefault(); // フォーム送信を防ぐ
+      passwordRef.current?.focus(); // パスワード入力欄にフォーカスを移動
     }
   };
 
   const handleKeyDownPassword = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      handleLogin(e as unknown as FormEvent);
+      e.preventDefault(); // フォーム送信を防ぐ
+      if (username.trim() && password.trim()) {
+        handleLogin(e); // イベントオブジェクトを渡す
+      }
     }
   };
+
+
+
+
 
   return (
     <Flex h="100vh" align="center" justify="center">

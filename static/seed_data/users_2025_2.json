@@ -1,10 +1,5 @@
 [
   {
-    "user_name": "funa",
-    "password": "$2a$08$MIgYe.dbI9IAv.oPPgPSRuxXsQWeuqj2QceyhJmUfsSMtnRP21hLq",
-    "joined_date": "2009-04-01T00:00:00+09:00"
-  },
-  {
     "user_name": "kawakita",
     "password": "$2a$08$MIgYe.dbI9IAv.oPPgPSRuxXsQWeuqj2QceyhJmUfsSMtnRP21hLq",
     "joined_date": "2022-04-01T00:00:00+09:00"
@@ -38,15 +33,5 @@
     "user_name": "tsukada",
     "password": "$2a$08$MIgYe.dbI9IAv.oPPgPSRuxXsQWeuqj2QceyhJmUfsSMtnRP21hLq",
     "joined_date": "2023-04-01T00:00:00+09:00"
-  },
-  {
-    "user_name": "tomiyama",
-    "password": "$2a$08$MIgYe.dbI9IAv.oPPgPSRuxXsQWeuqj2QceyhJmUfsSMtnRP21hLq",
-    "joined_date": "2021-04-01T00:00:00+09:00"
-  },
-  {
-    "user_name": "mitsueda",
-    "password": "$2a$08$MIgYe.dbI9IAv.oPPgPSRuxXsQWeuqj2QceyhJmUfsSMtnRP21hLq",
-    "joined_date": "2021-04-01T00:00:00+09:00"
   }
 ]
