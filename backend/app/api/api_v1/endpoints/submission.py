@@ -31,6 +31,18 @@ async def get_all_submissions_endpoint(
     else:
         raise HTTPException(status_code=404, detail="Submission not found")
 
+@router.get("/id/{submission_id}", response_model=schemas.SubmissionResponse)
+async def get_submission_by_id_endpoint(
+    submission_id: str,
+    db: Session = Depends(deps.get_db)
+) -> schemas.SubmissionResponse:
+
+    submission = crud.get_submission_by_submission_id(db, submission_id)
+    if submission:
+        return submission
+    else:
+        raise HTTPException(status_code=404, detail="Submission not found")
+
 @router.get("/user/{user_name}", response_model=List[schemas.SubmissionResponse])
 async def get_submission_by_user_name_endpoint(
     user_name: str,
