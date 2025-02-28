@@ -11,22 +11,27 @@ from fastapi import Depends, status
 from .initial_auth import TokenData, oauth2_scheme, Settings, SIG_ALGORITHM, get_current_user
 from .hash import hash_password, check_password_hash
 from .login import UserLogin
-
+from sqlalchemy.orm import Session
+from app import crud, schemas
+from app.api import deps
+from app.crud.user import  get_password_by_username, get_joined_date_by_username, change_password_db
 #from config import SECRET_KEY
+from fastapi.responses import JSONResponse
 
 router = APIRouter()
 
-@router.post("/new")
-async def create_new_user(form_data: UserLogin):
+@router.post("/change")
+async def change_password(form_data: UserLogin,  db: Session = Depends(deps.get_db)):
 	"""
 	新規ユーザーを作成する。
 	パスワードはハッシュ化して保存する。
 	"""
-	print("新規ユーザーを作成します...")
+	print("パスワードを変更します...")
 	print("form_data: ", form_data)
 	hashed_password = hash_password(form_data.password)
-	# ユーザー名とハッシュ化されたパスワードを保存する
-	# DBに保存する場合は、hashed_passwordを保存する
-	user = {"username": form_data.username, "password": hashed_password}
-	print(f"新規ユーザーを作成しました: {user}")
-	return user # DBに保存するだけで、返す必要はないと思う
+	if (change_password_db(db, form_data.username, hashed_password)):
+		print("パスワードを変更しました。")
+	else:
+		print("パスワードの変更に失敗しました。")
+		return JSONResponse(content={"success": False, "message": "Failed to change password"})
+	return JSONResponse(content={"success": True, "message": "Account information updated successfully"})
