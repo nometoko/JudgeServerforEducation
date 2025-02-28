@@ -1,10 +1,5 @@
 [
   {
-    "user_name": "funa",
-    "password": "$2a$08$MIgYe.dbI9IAv.oPPgPSRuxXsQWeuqj2QceyhJmUfsSMtnRP21hLq",
-    "joined_date": "2009-04-01T00:00:00+09:00"
-  },
-  {
     "user_name": "kawakita",
     "password": "$2a$08$MIgYe.dbI9IAv.oPPgPSRuxXsQWeuqj2QceyhJmUfsSMtnRP21hLq",
     "joined_date": "2022-04-01T00:00:00+09:00"

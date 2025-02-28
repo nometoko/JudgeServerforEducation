@@ -21,7 +21,7 @@ import React from 'react';
 import DashboardPage from "./routes/Dashboard";
 import Problem from '@/routes/Problem';
 import Account from '@/routes/Account';
-import ResultsForB3 from '@/routes/ResultsForB3';
+import Results from '@/routes/Results';
 import NotFound from '@/routes/NotFound';
 import B3Status from '@/routes/B3Status';
 import { AuthGuard } from "./providers/AuthGuard";
@@ -94,7 +94,7 @@ const App: React.FC = () => {
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/problem/:problemId" element={<Problem />} />
             <Route path="/submission/:submissionId" element={<Submission />} />
-            <Route path="/results" element={<ResultsForB3 />} />
+            <Route path="/results" element={<Results />} />
             {/*<Route path="/b3status" element={<B3Status />} />*/}
             <Route path="/b3status" element={<AuthGuard component={<B3Status />} pageType={PageType.Private} />} />
             {/*<Route path="/submission/:submissionId" element={<RouteAuthGuard component={<SubmissionPage />} pageType={PageType.Public} />} />*/}
