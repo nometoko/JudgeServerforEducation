@@ -30,12 +30,7 @@ const Results = () => {
 
     return (
         <DefaultLayout>
-            <div id="results-header" style={{ textAlign: "left" }}>
-                <h1>Results</h1>
-            </div>
-            <br />
-            <Divider borderWidth="1px" borderColor="black" />
-            <br />
+
 
             <Box flex="1" overflowY="auto" maxHeight={630}>
                 {/* フィルタリング機能を `SubmissionList` に適用 */}

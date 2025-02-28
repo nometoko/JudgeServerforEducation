@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
     Box,
     Button,
-    Container,
     FormControl,
     FormLabel,
     Heading,
@@ -11,6 +10,8 @@ import {
     VStack,
     Text,
     Avatar,
+    AvatarBadge,
+    VisuallyHiddenInput,
 } from "@chakra-ui/react";
 import { DefaultLayout } from "../components/DefaultLayout";
 import { useNavigate } from "react-router-dom";
@@ -21,101 +22,105 @@ const Account = () => {
     if (!authUserName) {
         return (
             <DefaultLayout>
-                <h1>Invalid url</h1>
+                <Flex h="100vh" align="center" justify="center">
+                    <Text fontSize="2xl" color="red.500">Invalid URL</Text>
+                </Flex>
             </DefaultLayout>
         );
     }
 
-    const [username, setUsername] = useState("User Name");
-    const [email, setEmail] = useState("user@example.com");
+    const [username, setUsername] = useState(authUserName);
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState("");
-    const navigate = useNavigate();
     const [message, setMessage] = useState("");
+    const [avatar, setAvatar] = useState<string | null>(null);
+    const fileInputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
-        setUsername(localStorage.getItem("authUserName"));
+        setUsername(authUserName);
     }, []);
 
-    //const handleSave = () => {
-    //    if (password !== confirmPassword) {
-    //        setError("Passwords do not match");
-    //        return;
-    //    }
-    //    setError("");
-    //    myaxios.post("/change", {
-    //        username,
-    //        password,
-    //    });
-    //    alert("Account information updated successfully");
-    //};
-
-    console.log("username:", localStorage.getItem("authUserName"));
-
+    // ✅ パスワード変更処理
     const handleSave = async () => {
-        // 入力チェック
+        setError("");
+        setMessage("");
+
         if (!password) {
             setError("新しいパスワードを入力してください");
-            setMessage("");
             return;
         }
         if (password !== confirmPassword) {
             setError("パスワードが一致しません");
-            setMessage("");
             return;
         }
-        setError("");
+
         try {
-            // APIにパスワード変更リクエストを送信
-            const response = await myaxios.post("/change", {
-                username,
-                password,
-            });
-            // API側のレスポンスに応じた処理（ここでは例として200の場合を想定）
-            if (response.data.success === true) {
+            const response = await myaxios.post("/change", { username, password });
+            if (response.data.success) {
                 setMessage("Account information updated successfully");
-                console.log("debug", response.data.success);
-                // 必要に応じて、navigateで他ページへ遷移する
-                // navigate("/some-path");
             } else {
                 setError("An error occurred while updating the account");
-                setMessage("");
-                console.log("debug", response.data.success);
             }
         } catch (err) {
             setError("Failed to update account. Please try again.");
-            setMessage("");
-            console.error(err);
         }
+    };
+
+    // ✅ 画像アップロード処理
+    const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+        if (event.target.files && event.target.files[0]) {
+            const file = event.target.files[0];
+            const imageUrl = URL.createObjectURL(file);
+            setAvatar(imageUrl);
+        }
+    };
+
+    // ✅ アバターを元に戻す
+    const resetAvatar = () => {
+        if (avatar) {
+            URL.revokeObjectURL(avatar); // メモリリークを防ぐ
+        }
+        setAvatar(null);
     };
 
     return (
         <DefaultLayout>
             <Flex h="100vh" align="center" justify="center">
-                <Box p="20" borderWidth="1px" borderRadius="lg" boxShadow="md" bg="white">
+                <Box p="10" borderWidth="1px" borderRadius="lg" boxShadow="md" bg="white" w="400px">
                     <VStack spacing="6">
                         <Heading size="lg" textAlign="center">
                             Account Settings
                         </Heading>
-                        <Avatar name={username} size="xl" />
+
+                        {/* ✅ アバターのカスタマイズ */}
                         <FormControl>
-                            <FormLabel>
-                                Username</FormLabel>
-                            <Input
-                                type="text"
-                                value={authUserName}
-                                readOnly={true}
-                            />
+                            <Flex direction="column" align="center">
+                                <Avatar size="xl" src={avatar || ""} name={username} mb="4" />
+                                <Button colorScheme="gray" size="sm" onClick={() => fileInputRef.current?.click()}>
+                                    画像をアップロード
+                                </Button>
+                                <VisuallyHiddenInput
+                                    type="file"
+                                    accept="image/*"
+                                    ref={fileInputRef}
+                                    onChange={handleImageUpload}
+                                />
+                                {avatar && (
+                                    <Button mt={2} colorScheme="gray" size="sm" onClick={resetAvatar}>
+                                        元のアバターに戻す
+                                    </Button>
+                                )}
+                            </Flex>
                         </FormControl>
-                        {/* <FormControl>
-                            <FormLabel>Email</FormLabel>
-                            <Input
-                                type="email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                            />
-                        </FormControl> */}
+
+                        {/* ✅ ユーザー名 */}
+                        <FormControl>
+                            <FormLabel>Username</FormLabel>
+                            <Input type="text" value={authUserName} readOnly />
+                        </FormControl>
+
+                        {/* ✅ 新しいパスワード */}
                         <FormControl>
                             <FormLabel>New Password</FormLabel>
                             <Input
@@ -124,6 +129,8 @@ const Account = () => {
                                 onChange={(e) => setPassword(e.target.value)}
                             />
                         </FormControl>
+
+                        {/* ✅ 確認用パスワード */}
                         <FormControl>
                             <FormLabel>Confirm Password</FormLabel>
                             <Input
@@ -132,20 +139,23 @@ const Account = () => {
                                 onChange={(e) => setConfirmPassword(e.target.value)}
                             />
                         </FormControl>
+
+                        {/* ✅ メッセージ表示 */}
                         {error && <Text color="red.500">{error}</Text>}
                         {message && <Text color="green.500">{message}</Text>}
+
+                        {/* ✅ 保存ボタン */}
                         <Button
-                            bg="#81E6D9"
+                            colorScheme="teal"
                             width="full"
                             shadow="md"
                             onClick={handleSave}
-                            _hover={{ bg: "#38B2AC" }}
+                            isDisabled={!password || !confirmPassword}
                         >
                             Save Changes
                         </Button>
                     </VStack>
                 </Box>
-
             </Flex>
         </DefaultLayout>
     );
