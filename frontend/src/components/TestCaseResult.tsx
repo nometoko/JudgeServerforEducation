@@ -1,4 +1,4 @@
-import { TestCaseResultProps } from "@/types/DbTypes";
+import { JudgeStatus, TestCaseResultProps } from "@/types/DbTypes";
 import { Accordion, AccordionButton, AccordionItem, AccordionPanel, Box, Button, Flex, Textarea, Tooltip, useClipboard } from "@chakra-ui/react";
 import { useRef, useState } from "react";
 import { GoCopy, GoDownload } from "react-icons/go";
@@ -84,12 +84,14 @@ const TestCaseResult: React.FC<TestCaseResultProps> = ({ testcase, user_result }
       <AccordionItem>
         <h2>
           <AccordionButton bg={user_result.status === "AC" ? "green.200" : "red.200"}>
-            <Box flex="1" textAlign="left">
+            <Box textAlign="left" width="80%">
               Test Case {testcase.testcase_number}
             </Box>
-            <Box flex="1" textAlign="center">
-              {user_result.status}
-            </Box>
+            <Tooltip label={JudgeStatus[user_result.status as keyof typeof JudgeStatus]} placement="top-start">
+              <Box textAlign="left" width="20%">
+                {user_result.status}
+              </Box>
+            </Tooltip>
           </AccordionButton>
         </h2>
         <AccordionPanel pb={4} ref={panelRef}>
