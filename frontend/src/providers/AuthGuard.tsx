@@ -1,103 +1,123 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { PageType } from "../types/PageType";
-import { Navigate, useLocation, useParams } from "react-router-dom";
-import { useEffect } from "react";
-import { useState } from "react";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import myaxios from "./axios_client";
 
 type Props = {
   component: React.ReactNode;
-  pageType: PageType,
+  pageType: PageType;
+};
+
+interface AuthData {
+  authUserName: string;
+  authJoinedDate: string;
+  authUserExp: string;
 }
 
-export const AuthGuard: React.FC<Props> = (props) => {
-  let allowRoute = false;
-  let message = "";
+export const AuthGuard: React.FC<Props> = ({ component, pageType }) => {
+  const [authData, setAuthData] = useState<AuthData | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [errorMessage, setErrorMessage] = useState<string>("");
   const location = useLocation();
 
-//  const [authUserName, setAuthUserName] = useState<string | null>(null);
-//  const [authJoinedDate, setAuthJoinedDate] = useState<string | null>(null);
-//  const [authUserExp, setAuthUserExp] = useState<string | null>(null);
+  useEffect(() => {
+    const fetchAuthData = async () => {
+      try {
+        const response = await myaxios.get("/protected");
+        setAuthData(response.data);
+      } catch (error) {
+        console.error("認証情報の取得エラー:", error);
+        setErrorMessage("認証情報の取得に失敗しました。");
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchAuthData();
+  }, []);
 
-  const authUserName = localStorage.getItem("authUserName");
-  const authJoinedDate = localStorage.getItem("authJoinedDate");
-  const authUserExp = localStorage.getItem("authUserExp");
+  if (loading) return <div>Loading...</div>;
 
-//useEffect(() => {
-//    setAuthUserName(localStorage.getItem("authUserName"));
-//    setAuthJoinedDate(localStorage.getItem("authJoinedDate"));
-//    setAuthUserExp(localStorage.getItem("authUserExp"));
-//}, []);
+  let allowRoute = false;
+  let message = "";
 
-  console.log("autUserExp", authUserExp);
-  console.log("props.pageType", props.pageType);
-
-  if ( authUserName && authJoinedDate && authUserExp ) {
-    if (Number(authUserExp) < Date.now() / 1000) {
-	  console.log("Now", Date.now() / 1000);
-	  console.log("autUserExp", authUserExp);
+  if (authData && authData.authUserName && authData.authJoinedDate && authData.authUserExp) {
+    const authUserExp = Number(authData.authUserExp);
+    // ログイン保持期限のチェック
+    if (authUserExp < Date.now() / 1000) {
       allowRoute = false;
       message = "ログイン保持期限が切れました。再度ログインしてください。";
-    } else if (props.pageType === PageType.Public) {
+    } else if (pageType === PageType.Public) {
       allowRoute = true;
-    } else if (props.pageType === PageType.Private) {
+    } else if (pageType === PageType.Private) {
       [allowRoute, message] = CheckAccessPermission({
-        authUserName: authUserName,
-        authJoinedDate: new Date(authJoinedDate)
+        authUserName: authData.authUserName,
+        authJoinedDate: new Date(authData.authJoinedDate),
       });
-    } else {
-      // unknown page type
     }
   } else {
     allowRoute = false;
     message = "コンテンツの閲覧にはログインが必要です。";
   }
 
-//  if (!allowRoute) {
-//    alert(message);
-//    return <Navigate to="/login" state={{from: location}} replace={false} />
-//  }
-
-if (!allowRoute) {
-	const shouldLogout = window.confirm(
-	  `${message}\nこのままページに留まる場合は「キャンセル」、ログアウトする場合は「OK」をクリックしてください。`
-	);
-	if (shouldLogout) {
-	  // ログアウト処理: ローカルストレージから認証情報を削除
-	  localStorage.removeItem("authUserName");
-	  localStorage.removeItem("authJoinedDate");
-	  localStorage.removeItem("authUserExp");
-	  return <Navigate to="/login" replace={false} />;
-	} else {
-	  // ユーザーがキャンセルした場合、適宜表示するコンテンツを返す
-	  // 本当はそのままにしたいけどできていない
-	  return (<Navigate to="/dashboard" state={{ from: location }} replace={true} />);
-	}
+  if (!allowRoute) {
+    return <LogoutFlow message={message} location={location} />;
   }
 
-  return <>{props.component}</>;
-
-}
+  return <>{component}</>;
+};
 
 type AuthUserProps = {
-  authUserName: string,
-  authJoinedDate: Date
-}
+  authUserName: string;
+  authJoinedDate: Date;
+};
 
-export const CheckAccessPermission = (props:AuthUserProps): [boolean, string] => {
-    const { userName } = useParams()
-	//console.log("now", new Date().getFullYear());
-	//console.log("authJoinedDate", props.authJoinedDate.getFullYear());
-    if (props.authJoinedDate.getFullYear() < new Date().getFullYear()) {
-        return [true, ""];  // senior student
-    } 
-	else {
-		return [false, "ページへのアクセス権がありません。\nアクセス権のあるアカウントでログインしてください。"];  // junior student
-	}
-	// else {
-    //    if (props.authUserName == userName) {
-    //        return [true, ""];  // matched userName
-    //    } else {
-    //        return [false, "ページへのアクセス権がありません。アクセス権のあるアカウントでログインしてください。"];  // unmatched userName
-    //    }
-    //}
-}
+export const CheckAccessPermission = ({
+  authUserName,
+  authJoinedDate,
+}: AuthUserProps): [boolean, string] => {
+  // 例: 入学年度が今年より前の場合はアクセス許可（senior student）
+  if (authJoinedDate.getFullYear() < new Date().getFullYear()) {
+    return [true, ""];
+  } else {
+    return [
+      false,
+      "ページへのアクセス権がありません。\nアクセス権のあるアカウントでログインしてください。",
+    ];
+  }
+};
+
+type LogoutFlowProps = {
+  message: string;
+  location: any;
+};
+
+const LogoutFlow: React.FC<LogoutFlowProps> = ({ message, location }) => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const doLogout = async () => {
+      const shouldLogout = window.confirm(
+        `${message}\nこのままページに留まる場合は「キャンセル」、ログアウトする場合は「OK」をクリックしてください。`
+      );
+      if (shouldLogout) {
+        // ローカルストレージの認証情報を削除
+        localStorage.removeItem("authUserName");
+        localStorage.removeItem("authJoinedDate");
+        localStorage.removeItem("authUserExp");
+        try {
+          const response = await myaxios.post("/logout", null, { withCredentials: true });
+          console.log(response.data.message);
+        } catch (error) {
+          console.error("ログアウトAPIの呼び出しに失敗しました", error);
+        }
+        navigate("/login");
+      } else {
+        navigate("/dashboard", { state: { from: location }, replace: true });
+      }
+    };
+
+    doLogout();
+  }, [message, location, navigate]);
+
+  return <div>リダイレクト中...</div>;
+};

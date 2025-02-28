@@ -2,7 +2,7 @@
 
 import './App.css'
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Component, useEffect, useState } from "react";
 import axios from "axios";
 import { Myaxios_provider } from './providers/axios_client';
 
@@ -26,6 +26,7 @@ import NotFound from '@/routes/NotFound';
 import B3Status from '@/routes/B3Status';
 import { AuthGuard } from "./providers/AuthGuard";
 import { PageType } from "./types/PageType";
+import { AuthProvider } from "./providers/AuthContext";
 
 // import Dashboard from './routes/Dashboard';
 
@@ -87,25 +88,27 @@ const App: React.FC = () => {
   return (
     <ChakraProvider >
       <BrowserRouter>
+        <AuthProvider>
         {/* <AxiosClientProvider> */}
         <Myaxios_provider>
           <Routes>
             <Route path="/login" element={<Login />} />
-            <Route path="/dashboard" element={<DashboardPage />} />
-            <Route path="/problem/:problemId" element={<Problem />} />
-            <Route path="/submission/:submissionId" element={<Submission />} />
-            <Route path="/results" element={<Results />} />
+            <Route path="/dashboard" element={<AuthGuard component={<DashboardPage />}  pageType={PageType.Public}/>} />
+            <Route path="/problem/:problemId" element={<AuthGuard component={<Problem />} pageType={PageType.Public} />} />
+            <Route path="/submission/:submissionId" element={<AuthGuard component={<Submission />} pageType={PageType.Public} />} />
+            <Route path="/results" element={<AuthGuard component={<Results />} pageType={PageType.Public} />} />
             {/*<Route path="/b3status" element={<B3Status />} />*/}
             <Route path="/b3status" element={<AuthGuard component={<B3Status />} pageType={PageType.Private} />} />
             {/*<Route path="/submission/:submissionId" element={<RouteAuthGuard component={<SubmissionPage />} pageType={PageType.Public} />} />*/}
             <Route path="/test" />
-            <Route path="/account" element={<Account />} />
+            <Route path="/account" element={<AuthGuard component={<Account />} pageType={PageType.Public} />} />
             <Route path="/" element={<Navigate to="/login" />} />
             <Route path="/*" element={<NotFound />} />
 
           </Routes>
         </Myaxios_provider>
         {/* </AxiosClientProvider> */}
+        </AuthProvider>
       </BrowserRouter>
     </ChakraProvider>
   );

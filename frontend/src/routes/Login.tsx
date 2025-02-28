@@ -16,6 +16,7 @@ import {
   Image,
 } from "@chakra-ui/react";
 import myaxios from "../providers/axios_client";
+import { useAuth } from "../providers/AuthContext";
 
 export interface MyJwtPayload {
   exp: number,
@@ -41,10 +42,11 @@ const Login: FC = () => {
     })
       .then((response) => {
         if (response.status === HttpStatusCode.Ok) {
-          const jwtToken = jwtDecode<MyJwtPayload>(response.data.access_token);
-          localStorage.setItem("authUserName", jwtToken.user);
-          localStorage.setItem("authJoinedDate", jwtToken.joined_date);
-          localStorage.setItem("authUserExp", jwtToken.exp.toString());
+        //  const jwtToken = jwtDecode<MyJwtPayload>(response.data.access_token);
+        //  localStorage.setItem("authUserName", jwtToken.user);
+        //  localStorage.setItem("authJoinedDate", jwtToken.joined_date);
+        //  localStorage.setItem("authUserExp", jwtToken.exp.toString());
+        //  console.log("authUserName", authUserName);
           if (location.state) {
             //console.log("here", location.state);
             navigate(location.state, { replace: true });
