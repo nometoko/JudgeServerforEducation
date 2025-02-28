@@ -30,6 +30,7 @@ for r in app.routes:
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
+
 @app.exception_handler(RequestValidationError)
 async def handler(request: Request, exc: RequestValidationError) -> JSONResponse:
     print(exc)
@@ -54,7 +55,6 @@ from app.db.base_class import Base
 seed.delete_all_db_data()
 seed.insert_problem_info(f"{ROOT_DIR}/static", "seed_data/problems.json")
 seed.insert_user_info(f"{ROOT_DIR}/static/seed_data/users_2025.json")
-seed.insert_user_info(f"{ROOT_DIR}/static/seed_data/users_2025_2.json")
 
 ##### 以下は本番環境想定
 ## Check required environment variables
