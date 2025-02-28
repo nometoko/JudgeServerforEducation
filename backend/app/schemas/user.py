@@ -11,7 +11,6 @@ class UserCreate(BaseModel):
 # ユーザー読み取り時のスキーマ
 class UserResponse(BaseModel):
     user_name: str
-    password: str
     joined_date: str
 
     class Config:

@@ -4,6 +4,7 @@ from typing import Optional
 
 from app import models, schemas
 
+# post
 def create_user(db: Session, user: schemas.UserCreate) -> models.User:
     db_user = models.User(**user.model_dump())
     db.add(db_user)
@@ -24,6 +25,9 @@ def change_password_db(db: Session, username: str, new_password: str) -> int:
 #                .all()
 #    return [result.password for result in results]
 
+def get_user_by_user_name(db: Session, username: str) -> models.User:
+    return db.query(models.User).filter(models.User.user_name == username).first()
+
 def get_password_by_username(username: str, db: Session) -> Optional[str]:
     result = db.query(models.User.password)\
                .filter(models.User.user_name == username)\
@@ -41,7 +45,7 @@ def get_all_b3_users(db: Session) -> list[schemas.UserResponse]:
     threshold = datetime.fromisoformat("2025-03-30T00:00:00+09:00")
     # joined_date が閾値以降のユーザーを取得
     users = db.query(models.User).filter(models.User.joined_date >= threshold).all()
-    
+
     # 取得したユーザーの各情報を UserResponse として整形し、
     # なお表示時に「B3」とラベル付けする（ここでは print で表示例を示しています）
     b3_users = []
@@ -51,7 +55,6 @@ def get_all_b3_users(db: Session) -> list[schemas.UserResponse]:
         # 表示時に B3 と一緒に出力
         print("B3", user_response.user_name)
         b3_users.append(user_response)
-    
     return b3_users
 
 def delete_all_users(db: Session) -> None:
