@@ -16,20 +16,13 @@ import {
 import { DefaultLayout } from "../components/DefaultLayout";
 import { useNavigate } from "react-router-dom";
 import myaxios from "@/providers/axios_client";
+import { AuthData } from "@/providers/AuthGuard";
 
 const Account = () => {
-    const authUserName = localStorage.getItem("authUserName");
-    if (!authUserName) {
-        return (
-            <DefaultLayout>
-                <Flex h="100vh" align="center" justify="center">
-                    <Text fontSize="2xl" color="red.500">Invalid URL</Text>
-                </Flex>
-            </DefaultLayout>
-        );
-    }
-
-    const [username, setUsername] = useState(authUserName);
+    const [authData, setAuthData] = useState<AuthData | null>(null);
+    const [errorMessage, setErrorMessage] = useState<string>("");
+    const [loading, setLoading] = useState<boolean>(true);
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState("");
@@ -38,8 +31,45 @@ const Account = () => {
     const fileInputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
-        setUsername(authUserName);
-    }, []);
+        const fetchAuthData = async () => {
+          try {
+            const response = await myaxios.get("/protected");
+            setAuthData(response.data);
+          } catch (error) {
+            console.error("認証情報の取得エラー:", error);
+            setErrorMessage("認証情報の取得に失敗しました。");
+          } finally {
+            setLoading(false);
+          }
+        };
+        fetchAuthData();
+      }, []);
+
+    useEffect(() => {
+        if (authData) {
+        setUsername(authData.authUserName);
+        }
+    }, [authData]);
+
+    //if (loading) {
+    //    return (
+    //        <DefaultLayout>
+    //            <Flex h="100vh" align="center" justify="center">
+    //                <Text fontSize="2xl">Loading...</Text>
+    //            </Flex>
+    //        </DefaultLayout>
+    //    );
+    //}
+
+    //if (!username) {
+    //    return (
+    //        <DefaultLayout>
+    //            <Flex h="100vh" align="center" justify="center">
+    //                <Text fontSize="2xl" color="red.500">Invalid URL</Text>
+    //            </Flex>
+    //        </DefaultLayout>
+    //    );
+    //}
 
     // ✅ パスワード変更処理
     const handleSave = async () => {
@@ -127,7 +157,7 @@ const Account = () => {
                         {/* ✅ ユーザー名 */}
                         <FormControl>
                             <FormLabel>Username</FormLabel>
-                            <Input type="text" value={authUserName} readOnly />
+                            <Input type="text" value={username} readOnly />
                         </FormControl>
 
                         {/* ✅ 新しいパスワード */}
