@@ -1,25 +1,25 @@
 import { useEffect, useState } from "react";
 import myaxios from "@/providers/axios_client";
-import { Box, Card, CardHeader, CardBody, Heading } from "@chakra-ui/react";
+import { Box, Card, CardHeader, CardBody, Heading, Select, Flex } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { ProblemProps, SubmissionProps } from "@/types/DbTypes";
+import { SubmissionProps } from "@/types/DbTypes";
+
+const getProblemNameById = async (problemId: number): Promise<string | undefined> => {
+    try {
+        const response = await myaxios.get(`/api/v1/problem/${problemId}`);
+        return response.data.name;
+    } catch (err: any) {
+        console.log(err);
+    }
+}
 
 const SubmissionBar: React.FC<{ submission: SubmissionProps }> = ({ submission }) => {
     const navigate = useNavigate();
     const submissionDate = new Date(submission.submitted_date);
-    const [problem, setProblem] = useState<ProblemProps>();
-
-    const getProblemById = async () => {
-        try {
-            const response = await myaxios.get(`/api/v1/problem/${submission.problem_id}`);
-            setProblem(response.data);
-        } catch (err: any) {
-            console.log(err);
-        }
-    }
+    const [problemName, setProblemName] = useState<string>();
 
     useEffect(() => {
-        getProblemById();
+        getProblemNameById(submission.problem_id).then((name) => setProblemName(name));
     }, []);
 
     return (
@@ -44,7 +44,7 @@ const SubmissionBar: React.FC<{ submission: SubmissionProps }> = ({ submission }
         >
             {/* 問題名 */}
             <CardHeader p={2} flex="1" textAlign="left">
-                <Heading size="sm">{problem?.name}</Heading>
+                <Heading size="sm">{problemName}</Heading>
             </CardHeader>
 
             {/* 提出日時 */}
@@ -57,18 +57,22 @@ const SubmissionBar: React.FC<{ submission: SubmissionProps }> = ({ submission }
                 {submission.status}
             </CardBody>
         </Card>
-
-
     );
 };
 
-interface SubmissionListProps {
-    selectedProblem: number | null;
-}
 
-const SubmissionList: React.FC<SubmissionListProps> = ({ selectedProblem }) => {
+const SubmissionList: React.FC = () => {
+    interface ProblemSimpleProps {
+        problem_id: number;
+        name: string;
+    }
+
     const authUserName = localStorage.getItem("authUserName");
     const [submissions, setSubmissions] = useState<SubmissionProps[]>([]);
+    const [selectedProblemId, setSelectedProblemId] = useState<number>();
+    const [uniqueProblems, setUniqueProblems] = useState<ProblemSimpleProps[]>([]);
+    const [statusList, setStatusList] = useState<string[]>([]);
+    const [selectedStatus, setSelectedStatus] = useState<string>();
 
     const getSubmissions = async () => {
         try {
@@ -88,17 +92,72 @@ const SubmissionList: React.FC<SubmissionListProps> = ({ selectedProblem }) => {
         }
     }, [authUserName]);
 
-    // フィルタリング処理
-    const filteredSubmissions = selectedProblem
-        ? submissions.filter((submission) => submission.problem_id === selectedProblem)
-        : submissions;
+    useEffect(() => {
+        const fetchProblemNames = async () => {
+            const uniqueProblemIds = Array.from(new Set(submissions.map((submission) => submission.problem_id)));
+            const uProblems = await Promise.all(uniqueProblemIds.map(async (problemId) => {
+                const problemName = await getProblemNameById(problemId);
+                return {
+                    problem_id: problemId,
+                    name: problemName ?? "Unknown Problem" // undefined の場合のデフォルト値
+                };
+            }));
+            uProblems.sort((a, b) => a.problem_id - b.problem_id);
+            setUniqueProblems(uProblems);
+        };
+        fetchProblemNames();
 
-    if (filteredSubmissions.length === 0) {
-        return <Box>No submission found</Box>;
+        const statusSet = new Set(submissions.map((submission) => submission.status));
+        setStatusList(Array.from(statusSet));
+    }, [submissions]);
+
+    // フィルタリング処理
+    const filteredSubmissions = submissions.filter((submission) => {
+        if (selectedProblemId && selectedProblemId !== submission.problem_id) {
+            return false;
+        }
+        if (selectedStatus && selectedStatus !== submission.status) {
+            return false;
+        }
+        return true;
     }
+    );
 
     return (
         <Box>
+            <Flex>
+                <Box width="50%">
+                    <Box textAlign="left">Filter by problem:</Box>
+                    <Select placeholder="Select a problem" onChange={(e) => setSelectedProblemId(Number(e.target.value))}>
+                        {
+                            uniqueProblems.map((problem) => (
+                                <option key={problem.problem_id} value={problem.problem_id}>
+                                    {problem.name}
+                                </option>
+                            ))
+                        }
+                    </Select >
+                </Box>
+                <Box width="50%">
+                    <Box textAlign="left">Filter by status:</Box>
+                    <Select placeholder="Select a status" onChange={(e) => setSelectedStatus(e.target.value)}>
+                        {
+                            statusList.map((status) => (
+                                <option key={status} value={status}>
+                                    {status}
+                                </option>
+                            ))
+                        }
+                    </Select>
+                </Box>
+            </Flex>
+            <br />
+
+            <Flex id="table-header" justifyContent="space-between" fontWeight="bold" mb={1}>
+                <Box flex="1" textAlign="left" bg="gray.600" border="1px solid white" color='white' p={3} fontSize="lg">Problem</Box>
+                <Box flex="1" textAlign="left" bg="gray.600" border="1px solid white" color='white' p={3} fontSize="lg">Submitted at</Box>
+                <Box flex="1" textAlign="left" bg="gray.600" border="1px solid white" color='white' p={3} fontSize="lg">Status</Box>
+            </Flex>
             {filteredSubmissions.map((submission) => (
                 <Box key={submission.submission_id} mb={1}>
                     <SubmissionBar submission={submission} />

@@ -17,7 +17,16 @@ import { useNavigate } from "react-router-dom";
 import myaxios from "@/providers/axios_client";
 
 const Account = () => {
-    const [username, setUsername] = useState("");
+    const authUserName = localStorage.getItem("authUserName");
+    if (!authUserName) {
+        return (
+            <DefaultLayout>
+                <h1>Invalid url</h1>
+            </DefaultLayout>
+        );
+    }
+
+    const [username, setUsername] = useState("User Name");
     const [email, setEmail] = useState("user@example.com");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -50,36 +59,36 @@ const Account = () => {
             setError("新しいパスワードを入力してください");
             setMessage("");
             return;
-          }
+        }
         if (password !== confirmPassword) {
-          setError("パスワードが一致しません");
-          setMessage("");
-          return;
+            setError("パスワードが一致しません");
+            setMessage("");
+            return;
         }
         setError("");
         try {
-          // APIにパスワード変更リクエストを送信
-          const response = await myaxios.post("/change", {
-            username,
-            password,
-          });
-          // API側のレスポンスに応じた処理（ここでは例として200の場合を想定）
-          if (response.data.success === true) {
-            setMessage("Account information updated successfully");
-            console.log("debug", response.data.success);
-            // 必要に応じて、navigateで他ページへ遷移する
-            // navigate("/some-path");
-          } else {
-            setError("An error occurred while updating the account");
-            setMessage("");
-            console.log("debug", response.data.success);
-          }
+            // APIにパスワード変更リクエストを送信
+            const response = await myaxios.post("/change", {
+                username,
+                password,
+            });
+            // API側のレスポンスに応じた処理（ここでは例として200の場合を想定）
+            if (response.data.success === true) {
+                setMessage("Account information updated successfully");
+                console.log("debug", response.data.success);
+                // 必要に応じて、navigateで他ページへ遷移する
+                // navigate("/some-path");
+            } else {
+                setError("An error occurred while updating the account");
+                setMessage("");
+                console.log("debug", response.data.success);
+            }
         } catch (err) {
-          setError("Failed to update account. Please try again.");
+            setError("Failed to update account. Please try again.");
             setMessage("");
-          console.error(err);
+            console.error(err);
         }
-      };
+    };
 
     return (
         <DefaultLayout>
@@ -91,11 +100,12 @@ const Account = () => {
                         </Heading>
                         <Avatar name={username} size="xl" />
                         <FormControl>
-                            <FormLabel>Username</FormLabel>
+                            <FormLabel>
+                                Username</FormLabel>
                             <Input
                                 type="text"
-                                value={username}
-                                //onChange={(e) => setUsername(e.target.value)}
+                                value={authUserName}
+                                readOnly={true}
                             />
                         </FormControl>
                         {/* <FormControl>
@@ -106,6 +116,14 @@ const Account = () => {
                                 onChange={(e) => setEmail(e.target.value)}
                             />
                         </FormControl> */}
+                        <FormControl>
+                            <FormLabel>New Password</FormLabel>
+                            <Input
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                        </FormControl>
                         <FormControl>
                             <FormLabel>New Password</FormLabel>
                             <Input
