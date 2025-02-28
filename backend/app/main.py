@@ -49,7 +49,8 @@ from app.db.base_class import Base
 # データベースに初期データを挿入
 seed.delete_all_db_data()
 seed.insert_problem_info(f"{ROOT_DIR}/static", "seed_data/problems.json")
-seed.insert_user_info(f"{ROOT_DIR}/static/seed_data/users_2024.json")
+seed.insert_user_info(f"{ROOT_DIR}/static/seed_data/users_2025.json")
+seed.insert_user_info(f"{ROOT_DIR}/static/seed_data/users_2025_2.json")
 
 ##### 以下は本番環境想定
 ## Check required environment variables
