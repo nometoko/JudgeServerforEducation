@@ -1,3 +1,4 @@
+import CompileError from "@/components/CompileError";
 import DefaultLayout from "@/components/DefaultLayout";
 import SubmitContent from "@/components/SubmitContent";
 import TestCaseResultList from "@/components/TestCaseResultList";
@@ -55,7 +56,11 @@ const Submission = () => {
         return (
             <DefaultLayout>
                 <SubmitContent submissionId={submissionId} />
-                <TestCaseResultList submissionId={submissionId} />
+                {/* statusがCEならCompileError, それ以外ならTestCaseResultList */}
+                {submission.status === "CE" ?
+                    <CompileError compileError={submission.compile_error || "Unknown compile error"} /> :
+                    <TestCaseResultList submissionId={submissionId} />
+                }
             </DefaultLayout>
         );
     }
