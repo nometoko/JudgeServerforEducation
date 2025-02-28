@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
     Box,
     Button,
@@ -14,23 +14,72 @@ import {
 } from "@chakra-ui/react";
 import { DefaultLayout } from "../components/DefaultLayout";
 import { useNavigate } from "react-router-dom";
+import myaxios from "@/providers/axios_client";
 
 const Account = () => {
-    const [username, setUsername] = useState("User Name");
+    const [username, setUsername] = useState("");
     const [email, setEmail] = useState("user@example.com");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState("");
     const navigate = useNavigate();
+    const [message, setMessage] = useState("");
 
-    const handleSave = () => {
-        if (password !== confirmPassword) {
-            setError("Passwords do not match");
+    useEffect(() => {
+        setUsername(localStorage.getItem("authUserName"));
+    }, []);
+
+    //const handleSave = () => {
+    //    if (password !== confirmPassword) {
+    //        setError("Passwords do not match");
+    //        return;
+    //    }
+    //    setError("");
+    //    myaxios.post("/change", {
+    //        username,
+    //        password,
+    //    });
+    //    alert("Account information updated successfully");
+    //};
+
+    console.log("username:", localStorage.getItem("authUserName"));
+
+    const handleSave = async () => {
+        // 入力チェック
+        if (!password) {
+            setError("新しいパスワードを入力してください");
+            setMessage("");
             return;
+          }
+        if (password !== confirmPassword) {
+          setError("パスワードが一致しません");
+          setMessage("");
+          return;
         }
         setError("");
-        alert("Account information updated successfully");
-    };
+        try {
+          // APIにパスワード変更リクエストを送信
+          const response = await myaxios.post("/change", {
+            username,
+            password,
+          });
+          // API側のレスポンスに応じた処理（ここでは例として200の場合を想定）
+          if (response.data.success === true) {
+            setMessage("Account information updated successfully");
+            console.log("debug", response.data.success);
+            // 必要に応じて、navigateで他ページへ遷移する
+            // navigate("/some-path");
+          } else {
+            setError("An error occurred while updating the account");
+            setMessage("");
+            console.log("debug", response.data.success);
+          }
+        } catch (err) {
+          setError("Failed to update account. Please try again.");
+            setMessage("");
+          console.error(err);
+        }
+      };
 
     return (
         <DefaultLayout>
@@ -46,7 +95,7 @@ const Account = () => {
                             <Input
                                 type="text"
                                 value={username}
-                                onChange={(e) => setUsername(e.target.value)}
+                                //onChange={(e) => setUsername(e.target.value)}
                             />
                         </FormControl>
                         {/* <FormControl>
@@ -58,14 +107,6 @@ const Account = () => {
                             />
                         </FormControl> */}
                         <FormControl>
-                            <FormLabel>Confirm Password</FormLabel>
-                            <Input
-                                type="password"
-                                value={confirmPassword}
-                                onChange={(e) => setConfirmPassword(e.target.value)}
-                            />
-                        </FormControl>
-                        <FormControl>
                             <FormLabel>New Password</FormLabel>
                             <Input
                                 type="password"
@@ -73,7 +114,16 @@ const Account = () => {
                                 onChange={(e) => setPassword(e.target.value)}
                             />
                         </FormControl>
+                        <FormControl>
+                            <FormLabel>Confirm Password</FormLabel>
+                            <Input
+                                type="password"
+                                value={confirmPassword}
+                                onChange={(e) => setConfirmPassword(e.target.value)}
+                            />
+                        </FormControl>
                         {error && <Text color="red.500">{error}</Text>}
+                        {message && <Text color="green.500">{message}</Text>}
                         <Button
                             bg="#81E6D9"
                             width="full"

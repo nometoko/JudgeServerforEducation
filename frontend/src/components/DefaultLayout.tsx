@@ -1,5 +1,5 @@
 import { ChakraProvider, Box, Flex, VStack, Button, Image, Avatar, Text, theme } from "@chakra-ui/react";
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 
 interface DefaultLayoutProps {
@@ -8,6 +8,7 @@ interface DefaultLayoutProps {
 
 export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
     const navigate = useNavigate();
+    const authUserName = localStorage.getItem("authUserName");
 
     return (
         <ChakraProvider >
@@ -43,8 +44,8 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
                         onClick={() => navigate("/account")}
                         _hover={{ bg: "gray.600" }}
                     >
-                        <Avatar name="User Name" src="../../img/user-avatar.png" size="md" mr={3} />
-                        <Text fontSize="lg" fontWeight="bold">User Name</Text>
+                        <Avatar name={authUserName} src="../../img/user-avatar.png" size="md" mr={3} />
+                        <Text fontSize="lg" fontWeight="bold">{authUserName}</Text>
                     </Box>
                 </Box>
 

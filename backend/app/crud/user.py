@@ -11,6 +11,13 @@ def create_user(db: Session, user: schemas.UserCreate) -> models.User:
     db.refresh(db_user)
     return user
 
+def change_password_db(db: Session, username: str, new_password: str) -> int:
+    affected_rows = db.query(models.User).filter(
+        models.User.user_name == username
+    ).update({"password": new_password})
+    db.commit()
+    return affected_rows > 0
+
 #def get_password_by_username(username: str) -> List[str]:
 #    results = db.query(models.UserResponse.password)\
 #                .filter(models.UserResponse.username == username)\

@@ -13,7 +13,7 @@ def hash_password(password: str) -> str:
     """
     PEPPER = Settings().PEPPER
 	# パスワードにpepperを結合する
-    password_with_pepper = password + PEPPER
+    password_with_pepper = password + os.getenv("PEPPER")
     # bcrypt.gensalt(rounds=8) により、8ラウンド (256回)の反復処理を使ってランダムなソルトを生成する = ストレッチング
     salt = bcrypt.gensalt(rounds=8)
     # 入力されたパスワード（文字列）を UTF-8 エンコードしてバイト列に変換し、hashpw() に渡す

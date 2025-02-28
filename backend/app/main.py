@@ -5,7 +5,7 @@ from fastapi.responses import JSONResponse
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 
-from auth import login, create_new_user
+from auth import login, create_new_user, change_password
 from utils.get_root_dir import get_root_dir
 import dotenv
 
@@ -20,6 +20,7 @@ app = FastAPI(
 app.include_router(api_router, prefix=settings.API_V1_STR)
 app.include_router(login.router)
 app.include_router(create_new_user.router)
+app.include_router(change_password.router)
 app.include_router(handler_router, prefix="/handler")
 # app.include_router(protected_router, prefix="/protected")
 for r in app.routes:
@@ -35,6 +36,7 @@ async def handler(request: Request, exc: RequestValidationError) -> JSONResponse
 ROOT_DIR = get_root_dir()
 os.environ["ROOT_DIR"] = ROOT_DIR
 dotenv.load_dotenv(f"{ROOT_DIR}/frontend/.env")
+print(os.getenv("PEPPER"))
 
 exec_dir = os.path.join(ROOT_DIR, os.getenv("EXEC_DIR"))
 dir_list = [os.path.join(exec_dir, dir_name) for dir_name in os.listdir(exec_dir) if os.path.isdir(os.path.join(exec_dir, dir_name))]
