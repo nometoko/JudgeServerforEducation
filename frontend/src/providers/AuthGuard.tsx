@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { PageType } from "../types/PageType";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import myaxios from "./axios_client";
 
 type Props = {

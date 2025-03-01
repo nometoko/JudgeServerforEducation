@@ -32,22 +32,22 @@ const Account = () => {
 
     useEffect(() => {
         const fetchAuthData = async () => {
-          try {
-            const response = await myaxios.get("/protected");
-            setAuthData(response.data);
-          } catch (error) {
-            console.error("認証情報の取得エラー:", error);
-            setErrorMessage("認証情報の取得に失敗しました。");
-          } finally {
-            setLoading(false);
-          }
+            try {
+                const response = await myaxios.get("/protected");
+                setAuthData(response.data);
+            } catch (error) {
+                console.error("認証情報の取得エラー:", error);
+                setErrorMessage("認証情報の取得に失敗しました。");
+            } finally {
+                setLoading(false);
+            }
         };
         fetchAuthData();
-      }, []);
+    }, []);
 
     useEffect(() => {
         if (authData) {
-        setUsername(authData.authUserName);
+            setUsername(authData.authUserName);
         }
     }, [authData]);
 
@@ -86,22 +86,22 @@ const Account = () => {
         }
 
         try {
-          // APIにパスワード変更リクエストを送信
-          const response = await myaxios.post("/change", {
-            username,
-            password,
-          });
-          // API側のレスポンスに応じた処理（ここでは例として200の場合を想定）
-          if (response.data.success === true) {
-            setMessage("パスワードの変更に成功しました");
-            console.log("debug", response.data.success);
-            // 必要に応じて、navigateで他ページへ遷移する
-            // navigate("/some-path");
-          } else {
-            setError("An error occurred while updating the account");
-            setMessage("");
-            console.log("debug", response.data.success);
-          }
+            // APIにパスワード変更リクエストを送信
+            const response = await myaxios.post("/change", {
+                username,
+                password,
+            });
+            // API側のレスポンスに応じた処理（ここでは例として200の場合を想定）
+            if (response.data.success === true) {
+                setMessage("パスワードの変更に成功しました");
+                console.log("debug", response.data.success);
+                // 必要に応じて、navigateで他ページへ遷移する
+                // navigate("/some-path");
+            } else {
+                setError("An error occurred while updating the account");
+                setMessage("");
+                console.log("debug", response.data.success);
+            }
         } catch (err) {
             setError("Failed to update account. Please try again.");
         }

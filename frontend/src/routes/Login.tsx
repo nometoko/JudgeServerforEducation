@@ -1,7 +1,6 @@
 import { FormEvent, FC, useState, useRef } from 'react';
 import { HttpStatusCode } from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { jwtDecode } from "jwt-decode";
 import {
   Box,
   Button,
@@ -16,7 +15,6 @@ import {
   Image,
 } from "@chakra-ui/react";
 import myaxios from "../providers/axios_client";
-import { useAuth } from "../providers/AuthContext";
 
 export interface MyJwtPayload {
   exp: number,
@@ -42,11 +40,11 @@ const Login: FC = () => {
     })
       .then((response) => {
         if (response.status === HttpStatusCode.Ok) {
-        //  const jwtToken = jwtDecode<MyJwtPayload>(response.data.access_token);
-        //  localStorage.setItem("authUserName", jwtToken.user);
-        //  localStorage.setItem("authJoinedDate", jwtToken.joined_date);
-        //  localStorage.setItem("authUserExp", jwtToken.exp.toString());
-        //  console.log("authUserName", authUserName);
+          //  const jwtToken = jwtDecode<MyJwtPayload>(response.data.access_token);
+          //  localStorage.setItem("authUserName", jwtToken.user);
+          //  localStorage.setItem("authJoinedDate", jwtToken.joined_date);
+          //  localStorage.setItem("authUserExp", jwtToken.exp.toString());
+          //  console.log("authUserName", authUserName);
           if (location.state) {
             //console.log("here", location.state);
             navigate(location.state, { replace: true });
@@ -66,27 +64,6 @@ const Login: FC = () => {
       });
   };
 
-
-  const fetchProblems = async () => {
-    try {
-      const response = await myaxios.get(`/getProblemList/${authUserName}`);
-      // 成功時は問題リストとメッセージを更新
-      setProblems(response.data.problems);
-      setDebug(response.data.message);
-      setError("");
-    } catch (err: any) {
-      // エラーがあればエラーメッセージを表示
-      if (err.response && err.response.status === 404) {
-        setError("User not found");
-      } else {
-        setError("Error fetching problems");
-      }
-      setProblems([]);
-      setDebug("");
-    }
-  };
-
-
   /** 🔹 Enterキーを押したらパスワード入力欄にフォーカス */
   /** 🔹 Enterキーを押したらパスワード入力欄にフォーカス */
   const handleKeyDownUserName = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -104,10 +81,6 @@ const Login: FC = () => {
       }
     }
   };
-
-
-
-
 
   return (
     <Flex h="100vh" align="center" justify="center">
