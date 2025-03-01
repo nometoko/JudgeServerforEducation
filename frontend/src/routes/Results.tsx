@@ -26,6 +26,7 @@ const Results: React.FC = () => {
 
     const [userName, setUserName] = useState<string | null>(null);
     const [problemId, setProblemId] = useState<string | null>(null);
+    const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
         const getSubmissions = async () => {
@@ -35,17 +36,20 @@ const Results: React.FC = () => {
                     new Date(b.submitted_date).getTime() - new Date(a.submitted_date).getTime()
                 );
                 setResults(response.data);
+                if (response.data.some((submission: SubmissionProps) => submission.status === "WJ")) {
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+                    setLoading(!loading);
+                }
             } catch (err: any) {
                 console.log(err);
             }
         };
-
         getSubmissions();
-    }, []);
+    }, [loading]);
 
     useEffect(() => {
         // クエリパラメータをURLSearchParamsで取得
-        const params = new URLSearchParams(location.search);  // location.search = '?problemId=1&difficulty=hard'
+        const params = new URLSearchParams(location.search);
         const problemIdString = params.get('problem');
         const userName = params.get('user');
 

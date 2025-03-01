@@ -22,4 +22,4 @@ class SubmissionResponse(BaseModel):
 
 class SubmissionUpdate(BaseModel):
     status: str
-    compile_error: Optional[str]
+    compile_error: Optional[str] = None

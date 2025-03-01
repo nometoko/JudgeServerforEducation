@@ -20,7 +20,7 @@ async def get_submitted_files(
     exec_dir = os.path.join(os.getenv("ROOT_DIR"), os.getenv("EXEC_DIR"))
     dir_path = os.path.join(exec_dir, submission_id)
 
-    files = [filename for filename in os.listdir(dir_path) if not filename.startswith('.')]
+    files = [filename for filename in os.listdir(dir_path) if filename.endswith((".c", ".h"))]
     submitted_files = []
 
     for file in files:

@@ -81,9 +81,9 @@ const TestCaseResult: React.FC<TestCaseResultProps> = ({ testcase, user_result }
 
   return (
     <Accordion allowToggle onChange={handleAccordionChange}>
-      <AccordionItem>
+      <AccordionItem isDisabled={user_result.status === "WJ"}>
         <h2>
-          <AccordionButton bg={user_result.status === "AC" ? "green.200" : "red.200"}>
+          <AccordionButton bg={user_result.status === "AC" ? "green.200" : user_result.status === "WJ" ? "gray.200" : "red.200"}>
             <Box textAlign="left" width="80%">
               Test Case {testcase.testcase_number}
             </Box>
