@@ -4,6 +4,7 @@ from sqlalchemy.orm import Session
 from typing import List
 from pydantic import BaseModel
 
+import auth
 from app import schemas, crud
 from app.api import deps
 from judge.judge import judge
@@ -22,15 +23,15 @@ def check_file_type(file_name: str):
 
 router = APIRouter()
 
-@router.post("/{user_name}/{problem_id}", response_model=str)
+@router.post("/{problem_id}", response_model=str)
 async def receive_file(
-    user_name: str,
     problem_id: int,
     files: List[UploadFile],
-    db: Session = Depends(deps.get_db)) -> str:
+    db: Session = Depends(deps.get_db),
+    user:auth.TokenData = Depends(auth.get_current_user)) -> str:
 
     exec_dir = os.path.join(os.getenv("ROOT_DIR"), os.getenv("EXEC_DIR"))
-    submission = schemas.SubmissionCreate(user_name=user_name, problem_id=problem_id)
+    submission = schemas.SubmissionCreate(user_name=user.authUserName, problem_id=problem_id)
     created_submission = crud.create_submission(db, submission)
 
     submission_id = created_submission.submission_id
