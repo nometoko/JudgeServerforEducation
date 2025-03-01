@@ -3,6 +3,9 @@ import { Button, Divider, Heading, Table, TableCaption, TableContainer, Tbody, T
 import { useNavigate } from 'react-router-dom'
 import StatusBlock from './StatusBlock'
 import { CheckAccessPermission } from '../providers/AuthGuard'
+import { Flex, Box } from "@chakra-ui/react";
+import { FaTableCellsRowLock } from "react-icons/fa6";
+
 
 interface problemStatus {
   ProblemId: number,
@@ -31,8 +34,14 @@ export const B3results = ({ data }: { data: B3StatusProps[] }) => {
 
   return (
     <>
-      <Heading mt={5} textAlign="left">B3 Status</Heading>
+      <Flex justifyContent="space-between" alignItems="center" >
+        <Flex alignItems="center" mt={5} >
+          <FaTableCellsRowLock size={32} style={{ marginRight: "10px" }} /> {/* アイコンとテキストの間に隙間 */}
+          <Heading textAlign="left" >B3 Status</Heading>
+        </Flex>
+      </Flex>
       <br />
+      <Divider />
 
       <Divider />
       <TableContainer>

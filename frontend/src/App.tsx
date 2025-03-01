@@ -24,6 +24,7 @@ import Account from '@/routes/Account';
 import Results from '@/routes/Results';
 import NotFound from '@/routes/NotFound';
 import B3Status from '@/routes/B3Status';
+import Tools from '@/routes/Tools'
 import { AuthGuard } from "./providers/AuthGuard";
 import { PageType } from "./types/PageType";
 
@@ -100,6 +101,7 @@ const App: React.FC = () => {
             {/*<Route path="/submission/:submissionId" element={<RouteAuthGuard component={<SubmissionPage />} pageType={PageType.Public} />} />*/}
             <Route path="/test" />
             <Route path="/account" element={<Account />} />
+            <Route path="/tools" element={<Tools />} />
             <Route path="/" element={<Navigate to="/login" />} />
             <Route path="/*" element={<NotFound />} />
 

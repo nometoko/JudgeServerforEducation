@@ -4,6 +4,7 @@ import { Box, Card, CardHeader, CardBody, Divider, Heading, Select, Flex, HStack
 import { useNavigate } from "react-router-dom";
 import { SubmissionProps } from "@/types/DbTypes";
 import { FaFilter } from "react-icons/fa";
+import { LuListCheck } from "react-icons/lu";
 
 const getProblemNameById = async (problemId: number): Promise<string | undefined> => {
     try {
@@ -128,10 +129,10 @@ const SubmissionList: React.FC = () => {
         <Box>
             {/* タイトル + フィルターを横並び */}
             <Flex justifyContent="space-between" alignItems="center" mb={2}>
-                {/* Results タイトル */}
-                <Box id="results-header">
-                    <Heading>Results</Heading>
-                </Box>
+                <Flex alignItems="center" mt={5} >
+                    <LuListCheck size={32} style={{ marginRight: "10px" }} /> {/* アイコンとテキストの間に隙間 */}
+                    <Heading textAlign="left" >Results</Heading>
+                </Flex>
 
                 {/* フィルター機能 */}
                 <Flex alignItems="center">
@@ -139,7 +140,7 @@ const SubmissionList: React.FC = () => {
                     <HStack width="100%" mx="3">
                         <Box width="50%">
                             <Box textAlign="left">Problem</Box>
-                            <Select placeholder="All" mb={2} onChange={(e) => setSelectedProblemId(Number(e.target.value))}>
+                            <Select placeholder="All" mb={1} onChange={(e) => setSelectedProblemId(Number(e.target.value))}>
                                 {uniqueProblems.map((problem) => (
                                     <option key={problem.problem_id} value={problem.problem_id}>
                                         {problem.name}
@@ -149,7 +150,7 @@ const SubmissionList: React.FC = () => {
                         </Box>
                         <Box width="50%">
                             <Box textAlign="left">Status</Box>
-                            <Select placeholder="All" mb={2} onChange={(e) => setSelectedStatus(e.target.value)}>
+                            <Select placeholder="All" mb={1} onChange={(e) => setSelectedStatus(e.target.value)}>
                                 {statusList.map((status) => (
                                     <option key={status} value={status}>
                                         {status}

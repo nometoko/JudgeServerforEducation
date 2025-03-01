@@ -4,7 +4,7 @@ import DefaultLayout from "@/components/DefaultLayout";
 const NotFound = () => {
     return (
         <DefaultLayout>
-            <Text>
+            <Text fontSize="2xl">
                 NotFound
             </Text>
         </DefaultLayout>
