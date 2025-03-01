@@ -1,7 +1,7 @@
 import { Box, Button, Flex, Select, Tooltip, useClipboard } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { oneDark, oneLight } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { GoCopy, GoDownload } from "react-icons/go";
 import { FileContent } from "@/types/DbTypes";
 import myaxios from "@/providers/axios_client";
@@ -75,12 +75,12 @@ const SubmitContent: React.FC<{ submissionId: string }> = ({ submissionId }) => 
                     </Button>
                 </Tooltip>
             </Flex>
-            <Box maxHeight="60vh" width="100%" overflow={"auto"}>
+            <Box maxHeight="60vh" width="100%" overflow={"auto"} border={"1px solid black"} borderRadius={5} mt={5}>
                 <SyntaxHighlighter
-                    language={
-                        selectedFileName.includes('Makefile') ? 'makefile' : 'c'
-                    }
-                    style={oneDark} children={selectedFileContent} />
+                    language={selectedFileName.includes('Makefile') ? 'makefile' : 'c'}
+                    style={oneLight} children={selectedFileContent}
+                    customStyle={{ margin: 0, fontSize: 15 }}
+                />
             </Box>
         </div>
     );
