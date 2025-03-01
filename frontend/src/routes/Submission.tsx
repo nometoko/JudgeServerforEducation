@@ -3,10 +3,9 @@ import DefaultLayout from "@/components/DefaultLayout";
 import SubmitContent from "@/components/SubmitContent";
 import TestCaseResultList from "@/components/TestCaseResultList";
 import myaxios from "@/providers/axios_client";
-import { SubmissionProps, UserProps } from "@/types/DbTypes";
+import { SubmissionProps } from "@/types/DbTypes";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { AuthData } from "@/providers/AuthGuard";
 
 const Submission = () => {
     const { submissionId } = useParams<{ submissionId: string }>();
@@ -21,7 +20,6 @@ const Submission = () => {
     }
 
     const [submission, setSubmission] = useState<SubmissionProps>();
-    const [errorMessage, setErrorMessage] = useState<string>("");
 
     useEffect(() => {
         const getSubmission = async () => {

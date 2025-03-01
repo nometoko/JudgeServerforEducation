@@ -19,22 +19,22 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
 
     useEffect(() => {
         const fetchAuthData = async () => {
-          try {
-            const response = await myaxios.get("/protected");
-            setAuthData(response.data);
-          } catch (error) {
-            console.error("認証情報の取得エラー:", error);
-            setErrorMessage("認証情報の取得に失敗しました。");
-          } finally {
-            //setLoading(false);
-          }
+            try {
+                const response = await myaxios.get("/protected");
+                setAuthData(response.data);
+            } catch (error) {
+                console.error("認証情報の取得エラー:", error);
+                setErrorMessage("認証情報の取得に失敗しました。");
+            } finally {
+                //setLoading(false);
+            }
         };
         fetchAuthData();
-      }, []);
+    }, []);
 
-      useEffect(() => {
+    useEffect(() => {
         if (authData) {
-        setUsername(authData.authUserName);
+            setUsername(authData.authUserName);
         }
     }, [authData]);
 

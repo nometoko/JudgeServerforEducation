@@ -1,10 +1,9 @@
 import DefaultLayout from "@/components/DefaultLayout";
 import myaxios from "@/providers/axios_client";
 import SubmissionList from "@/components/SubmissionList";
-import { Divider, Button, Flex, Box, Select } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { SubmissionProps, UserProps } from "@/types/DbTypes";
-import { AuthData } from "@/providers/AuthGuard";
+import { SubmissionProps } from "@/types/DbTypes";
 
 const Results: React.FC = () => {
     const [listHeight, setListHeight] = useState("auto");

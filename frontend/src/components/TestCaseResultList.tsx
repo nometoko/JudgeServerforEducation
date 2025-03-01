@@ -1,8 +1,8 @@
 import myaxios from "@/providers/axios_client";
-import { SubmissionProps, TestCaseResultProps } from "@/types/DbTypes";
-import { Box, Code } from "@chakra-ui/react";
+import { TestCaseResultProps } from "@/types/DbTypes";
+import { Box } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import TestCaseResult from "@/components/TestcaseResult";
+import TestCaseResult from "@/components/TestCaseResult";
 
 const TestCaseResultList: React.FC<{ submissionId: string }> = ({ submissionId }) => {
     const [testcaseResults, setTestcaseResults] = useState<TestCaseResultProps[]>([]);
