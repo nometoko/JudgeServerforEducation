@@ -20,47 +20,15 @@ const Submission = () => {
         );
     }
 
-    const [authUserName, setAuthUserName] = useState<string | null>(null);
-    //const authUserName = localStorage.getItem("authUserName");
-    const [user, setUser] = useState<UserProps>();
     const [submission, setSubmission] = useState<SubmissionProps>();
-    const [authData, setAuthData] = useState<AuthData | null>(null);
     const [errorMessage, setErrorMessage] = useState<string>("");
-
-    useEffect(() => {
-        const fetchAuthData = async () => {
-          try {
-            const response = await myaxios.get("/protected");
-            setAuthData(response.data);
-          } catch (error) {
-            console.error("認証情報の取得エラー:", error);
-            setErrorMessage("認証情報の取得に失敗しました。");
-          } finally {
-            //setLoading(false);
-          }
-        };
-        fetchAuthData();
-      }, []);
-
-      useEffect(() => {
-        if (authData) {
-        setUser(authData.authUserName);
-        }
-    }, [authData]);
 
     useEffect(() => {
         const getSubmission = async () => {
             try {
-                if (!user) return;
-                if (!authUserName) return;
-                if (new Date(user.joined_date).getFullYear() === new Date().getFullYear()) {
-                    const response = await myaxios.get(`/api/v1/submission/${authUserName}/${submissionId}`);
-                    setSubmission(response.data);
-                }
-                else {
-                    const response = await myaxios.get(`/api/v1/submission/id/${submissionId}`);
-                    setSubmission(response.data);
-                }
+                const response = await myaxios.get(`/api/v1/submission/id/${submissionId}`);
+                setSubmission(response.data);
+
             }
             catch (err: any) {
                 console.error(err);
@@ -70,19 +38,6 @@ const Submission = () => {
 
         getSubmission();
         setLoading(false);
-    }, [user]);
-
-    useEffect(() => {
-        const getUserInfo = async () => {
-            try {
-                const response = await myaxios.get(`/api/v1/users/${authUserName}`);
-                setUser(response.data);
-            } catch (err: any) {
-                console.error(err);
-            }
-        };
-
-        getUserInfo();
     }, []);
 
     if (loading) {

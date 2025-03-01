@@ -4,14 +4,11 @@ import SubmissionList from "@/components/SubmissionList";
 import { Divider, Button, Flex, Box, Select } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { SubmissionProps, UserProps } from "@/types/DbTypes";
-import { useParams } from "react-router-dom";
-import Problem from "./Problem";
+import { AuthData } from "@/providers/AuthGuard";
 
 const Results: React.FC = () => {
     const [listHeight, setListHeight] = useState("auto");
     const [results, setResults] = useState<SubmissionProps[]>([]);
-    const [user, setUser] = useState<UserProps>();
-    const authUserName = localStorage.getItem("authUserName");
 
     useEffect(() => {
         const updateHeight = () => {
@@ -27,19 +24,6 @@ const Results: React.FC = () => {
         return () => window.removeEventListener("resize", updateHeight);
     }, []);
 
-    useEffect(() => {
-        const getUserInfo = async () => {
-            try {
-                const response = await myaxios.get(`/api/v1/users/${authUserName}`);
-                setUser(response.data);
-            } catch (err: any) {
-                console.log(err);
-            }
-        };
-
-        getUserInfo();
-    }, []);
-
 
     const [userName, setUserName] = useState<string | null>(null);
     const [problemId, setProblemId] = useState<string | null>(null);
@@ -47,28 +31,18 @@ const Results: React.FC = () => {
     useEffect(() => {
         const getSubmissions = async () => {
             try {
-                if (!user) return;
-                if (new Date(user.joined_date).getFullYear() === new Date().getFullYear()) {
-                    const response = await myaxios.get(`/handler/getSubmissionList/${authUserName}`);
-                    response.data.sort((a: SubmissionProps, b: SubmissionProps) =>
-                        new Date(b.submitted_date).getTime() - new Date(a.submitted_date).getTime()
-                    );
-                    setResults(response.data);
-                }
-                else {
-                    const response = await myaxios.get(`/handler/getSubmissionList/`);
-                    response.data.sort((a: SubmissionProps, b: SubmissionProps) =>
-                        new Date(b.submitted_date).getTime() - new Date(a.submitted_date).getTime()
-                    );
-                    setResults(response.data);
-                }
+                const response = await myaxios.get(`/handler/getSubmissionList/`);
+                response.data.sort((a: SubmissionProps, b: SubmissionProps) =>
+                    new Date(b.submitted_date).getTime() - new Date(a.submitted_date).getTime()
+                );
+                setResults(response.data);
             } catch (err: any) {
                 console.log(err);
             }
         };
 
         getSubmissions();
-    }, [user]);
+    }, []);
 
     useEffect(() => {
         // クエリパラメータをURLSearchParamsで取得

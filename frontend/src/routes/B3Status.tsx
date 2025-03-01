@@ -6,17 +6,17 @@ import myaxios from "../providers/axios_client";
 
 const B3Status = () => {
   const [data, setData] = useState<B3StatusProps[]>([]);
-  
+
   useEffect(() => {
     (async () => {
       try {
-		console.log("🔄 B3ステータスを取得...");
+        console.log("🔄 B3ステータスを取得...");
         const { data } = await myaxios.get(`/handler/getB3Status`)
         setData(data);
       }
       catch (error) {
         console.log(error)
-		setData([]);
+        setData([]);
       }
     })()
   }, []);

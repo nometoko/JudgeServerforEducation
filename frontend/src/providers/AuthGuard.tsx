@@ -8,7 +8,7 @@ type Props = {
   pageType: PageType;
 };
 
-interface AuthData {
+export interface AuthData {
   authUserName: string;
   authJoinedDate: string;
   authUserExp: string;
