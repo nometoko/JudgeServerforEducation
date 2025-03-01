@@ -24,9 +24,10 @@ const Submission = () => {
     useEffect(() => {
         const getSubmission = async () => {
             try {
+                console.log("🔄 提出情報を取得...");
                 const response = await myaxios.get(`/api/v1/submission/id/${submissionId}`);
                 setSubmission(response.data);
-
+                setLoading(false);
             }
             catch (err: any) {
                 console.error(err);
@@ -35,13 +36,12 @@ const Submission = () => {
         };
 
         getSubmission();
-        setLoading(false);
     }, []);
 
     if (loading) {
         return (
             <DefaultLayout>
-                <h1>Loading...</h1>
+                <h1>Waiting Judge...</h1>
             </DefaultLayout>
         );
     }

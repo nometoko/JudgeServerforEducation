@@ -31,12 +31,8 @@ const SubmissionBar: React.FC<{ submission: SubmissionProps }> = ({ submission }
             alignItems="center"  // 垂直方向の中央揃え
             justifyContent="space-between"  // 均等配置
             bg={submission.status === "AC" ? "green.100" : submission.status === "WJ" ? "gray.100" : "red.100"}
-            cursor={submission.status === "WJ" ? "not-allowed" : "pointer"}
-            onClick={() => {
-                if (submission.status !== "WJ") {
-                    navigate(`/submission/${submission.submission_id}`);
-                }
-            }}
+            cursor={"pointer"}
+            onClick={() => { navigate(`/submission/${submission.submission_id}`); }}
             _hover={submission.status === "AC" ? { bg: "green.200" } : submission.status !== "AC" && submission.status !== "WJ" ? { bg: "red.200" } : {}}
             h="50px"  // 高さを固定
             minH="50px"
@@ -49,17 +45,17 @@ const SubmissionBar: React.FC<{ submission: SubmissionProps }> = ({ submission }
             </CardHeader>
 
             {/* 提出者 */}
-            <CardBody p={2} flex="1" textAlign="left">
+            <CardBody textAlign="left">
                 {submission.user_name}
             </CardBody>
 
             {/* 提出日時 */}
-            <CardBody p={2} flex="1" textAlign="left" >
+            <CardBody textAlign="left" >
                 {submissionDate.toLocaleString()}
             </CardBody>
 
             {/* ステータス */}
-            <CardBody p={2} flex="1" textAlign="left" fontSize="2xl">
+            <CardBody textAlign="left" fontSize="2xl">
                 <Tooltip
                     label={JudgeStatus[submission.status as keyof typeof JudgeStatus]}
                     placement="top-start"

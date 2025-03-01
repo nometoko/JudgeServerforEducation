@@ -3,6 +3,7 @@ from io import TextIOWrapper
 from typing import List
 import subprocess
 
+import judge.makefile as makefile
 import judge.constants
 
 def judgeResult(input: str, output: str) -> bool:
@@ -21,6 +22,7 @@ def get_prog_name(makefile_path: str) -> str:
 
 def compile(exec_dir: str) -> None:
     try:
+        makefile.copy_makefile(exec_dir)
         subprocess.run(["make", "-C", exec_dir], capture_output=True, text=True, check=True)
     except subprocess.CalledProcessError as e:
         raise RuntimeError(e.stderr)
