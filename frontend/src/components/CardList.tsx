@@ -45,7 +45,7 @@ const CardItem = ({ pws }: { pws: ProblemWithStatus }) => {
       border="1px solid"
       borderColor="gray.300"
       cursor="pointer"
-      background="white"
+      background={pws.status ? "green.100" : "white"}
       _hover={{ transform: "scale(1.05)", transition: "0.2s" }}
       onClick={() => navigate(`/Problem/${pws.problem.problem_id}`)}
       width="100%"
@@ -72,13 +72,13 @@ const CardItem = ({ pws }: { pws: ProblemWithStatus }) => {
         </Text>
         {pws.status && (
           <Text
-            bg="red.500"
+            bg="white"
             w="100%"
             h="20%"
             display="flex"
             justifyContent="center"
             alignItems="center"
-            color="white"
+            color="green.500"
             rounded="xl"
             mt="3"
             fontWeight="bold"
@@ -87,7 +87,7 @@ const CardItem = ({ pws }: { pws: ProblemWithStatus }) => {
           </Text>
         )}
       </CardBody>
-    </Card>
+    </Card >
   );
 };
 

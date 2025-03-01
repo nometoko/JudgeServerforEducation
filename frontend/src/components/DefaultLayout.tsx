@@ -1,6 +1,10 @@
 import { ChakraProvider, Box, Flex, VStack, Button, Image, Avatar, Text, theme } from "@chakra-ui/react";
 import React, { ReactNode, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
+import { MdDashboard } from "react-icons/md";
+import { LuListCheck } from "react-icons/lu";
+import { FaTableCellsRowLock } from "react-icons/fa6";
+import { AiFillTool } from "react-icons/ai";
 
 interface DefaultLayoutProps {
     children: ReactNode;
@@ -9,6 +13,9 @@ interface DefaultLayoutProps {
 export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
     const navigate = useNavigate();
     const authUserName = localStorage.getItem("authUserName");
+
+    const iconsize = 21
+    const iconwidth = "8px"
 
     return (
         <ChakraProvider >
@@ -20,15 +27,23 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
                             <Image src="../../img/funalab.png" alt="funalab logo" boxSize="80px" mb={4} cursor="pointer" />
                         </a>
                         <Button variant="ghost" colorScheme="whiteAlpha" onClick={() => navigate("/dashboard")} justifyContent={"flex-start"}>
+                            <MdDashboard size={iconsize} /> {/* アイコンを追加 */}
+                            <Box w={iconwidth} />
                             Dashboard
                         </Button>
                         <Button variant="ghost" colorScheme="whiteAlpha" onClick={() => navigate("/results")} justifyContent={"flex-start"}>
+                            <LuListCheck size={iconsize} />
+                            <Box w={iconwidth} />
                             Results
                         </Button>
                         <Button variant="ghost" colorScheme="whiteAlpha" onClick={() => navigate("/b3status")} justifyContent={"flex-start"}>
+                            <FaTableCellsRowLock size={iconsize} />
+                            <Box w={iconwidth} />
                             B3 Status
                         </Button>
                         <Button variant="ghost" colorScheme="whiteAlpha" onClick={() => navigate("/tools")} justifyContent={"flex-start"}>
+                            <AiFillTool size={iconsize} />
+                            <Box w={iconwidth} />
                             Tools
                         </Button>
                     </VStack>
