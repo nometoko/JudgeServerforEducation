@@ -3,7 +3,6 @@ import { TestCaseResultProps } from "@/types/DbTypes";
 import { Box } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import TestCaseResult from "@/components/TestCaseResult";
-import { get } from "http";
 
 const TestCaseResultList: React.FC<{ submissionId: string }> = ({ submissionId }) => {
     const [testcaseResults, setTestcaseResults] = useState<TestCaseResultProps[]>([]);
@@ -26,7 +25,7 @@ const TestCaseResultList: React.FC<{ submissionId: string }> = ({ submissionId }
             }
         };
         getTestcaseResults();
-    }, [loading]);
+    }, [loading, submissionId]);
 
     return (
         <Box>
