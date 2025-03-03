@@ -36,14 +36,14 @@ def make_clean(exec_dir: str) -> None:
 
 def execute_command(command: str, submission_id: str, execute_delay: int = 10000000, input_file: TextIOWrapper = None) -> str:
     timeout: float = execute_delay / 1000
+    command = ["/bin/sh", "-c", command]
+    print(command)
     exec_dir = f"{os.getenv('ROOT_DIR')}/{os.getenv('EXEC_DIR')}/{submission_id}"
-    print(command, timeout)
-    print(exec_dir)
     try:
         if input_file:
-            proc = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=input_file, cwd=exec_dir)
+            proc = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=input_file, cwd=exec_dir, text=True)
         else:
-            proc = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=exec_dir)
+            proc = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=exec_dir, text=True)
         stdout, stderr = proc.communicate(timeout=timeout)
         if stderr:
             print(stderr.decode("utf-8"))
@@ -57,4 +57,10 @@ def execute_command(command: str, submission_id: str, execute_delay: int = 10000
     except subprocess.CalledProcessError:
         print("called process error")
         raise RuntimeError
-    return stdout.decode("utf-8")
+    except UnicodeDecodeError:
+        print("unicode decode error")
+        raise RuntimeError
+    except Exception as e:
+        print(e)
+        raise RuntimeError
+    return stdout
