@@ -2,7 +2,7 @@ import { JudgeStatus, TestCaseResultProps } from "@/types/DbTypes";
 import { Accordion, AccordionButton, AccordionItem, AccordionPanel, Box, Button, Flex, Textarea, Tooltip, useClipboard } from "@chakra-ui/react";
 import { useRef, useState } from "react";
 import { GoCopy, GoDownload } from "react-icons/go";
-import ReactDiffViewer from "react-diff-viewer";
+import ReactDiffViewer, { DiffMethod } from "react-diff-viewer-continued";
 
 const TestCaseResultHeader: React.FC<{ title: string, content: string }> = ({ title, content }) => {
   const { onCopy, setValue, hasCopied } = useClipboard(content);
