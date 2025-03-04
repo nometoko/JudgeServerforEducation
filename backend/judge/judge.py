@@ -32,7 +32,6 @@ def judge(
 
             command = executable_path
             stdin_file = None
-            print(f"testcase_with_path: {testcase_with_path}")
 
             db.refresh(testcase_with_path)
 

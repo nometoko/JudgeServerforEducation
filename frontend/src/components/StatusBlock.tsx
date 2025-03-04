@@ -9,7 +9,7 @@ type StatusProps = {
 const StatusBlock = ({ status, onClick }: StatusProps) => {
   return (
     <Flex
-      width={"10"}
+      width={"20"}
       bg={getStatusColor({ status: status })}
       color={"white"}
       fontWeight={'bold'}
