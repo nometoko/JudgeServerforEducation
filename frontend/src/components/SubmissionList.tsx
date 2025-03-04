@@ -191,7 +191,7 @@ const SubmissionList: React.FC<{ submissions: SubmissionProps[], defaultUserName
                 <Box flex="1" textAlign="left" bg="gray.600" border="1px solid white" color='white' p={3} fontSize="lg">Submitted at</Box>
                 <Box flex="1" textAlign="left" bg="gray.600" border="1px solid white" color='white' p={3} fontSize="lg">Status</Box>
             </Flex>
-            <Box flex="1" overflowY="auto">
+            <Box flex="1" overflowY="auto" maxHeight="620">
                 {filteredSubmissions.map((submission) => (
                     <Box key={submission.submission_id} mb={1}>
                         <SubmissionBar submission={submission} />
