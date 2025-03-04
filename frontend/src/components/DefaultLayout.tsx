@@ -1,19 +1,13 @@
-import { ChakraProvider, Box, Flex, VStack, Button, Image, Avatar, Text, theme } from "@chakra-ui/react";
+import { ChakraProvider, Box, Flex, VStack, Button, Image, Avatar, Text } from "@chakra-ui/react";
 import React, { ReactNode, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import { MdDashboard } from "react-icons/md";
 import { LuListCheck } from "react-icons/lu";
 import { FaTableCellsRowLock } from "react-icons/fa6";
 import { AiFillTool } from "react-icons/ai";
-
 import { useState } from "react";
 import { AuthData } from "../providers/AuthGuard";
 import { myaxios } from "../providers/axios_client";
-
-
-const SERVER_IP: string = import.meta.env.VITE_PUBLIC_SERVER_IP;
-const BACKEND_PORT: string = import.meta.env.VITE_BACKEND_PORT
-const BACKRND_URL: string = `http://${SERVER_IP}:${BACKEND_PORT}`
 
 interface DefaultLayoutProps {
     children: ReactNode;
@@ -23,7 +17,6 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
     const navigate = useNavigate();
     //const authUserName = localStorage.getItem("authUserName");
     const [authData, setAuthData] = useState<AuthData | null>(null);
-    const [errorMessage, setErrorMessage] = useState<string>("");
     const [username, setUsername] = useState<string>("");
 
 
@@ -34,7 +27,6 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
                 setAuthData(response.data);
             } catch (error) {
                 console.error("認証情報の取得エラー:", error);
-                setErrorMessage("認証情報の取得に失敗しました。");
             } finally {
                 //setLoading(false);
             }
