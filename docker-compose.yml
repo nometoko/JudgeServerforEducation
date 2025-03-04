@@ -1,0 +1,38 @@
+version: '3.9'
+services:
+  db:
+    image: postgres:15
+    volumes:
+      - ./backend/app/db/postgresql/data:/var/lib/postgresql/data
+      - ./backend/app/db/postgres:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_INITDB_ARGS=--encoding=UTF-8 --locale=C
+
+  backend:
+    build:
+      context: .
+      dockerfile: ./dockerfiles/dockerfile_backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    env_file:
+      - ./backend/.env
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/postgres  # DB接続情報
+
+  frontend:
+    build:
+      context: .
+      dockerfile: ./dockerfiles/dockerfile_frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    env_file:
+      - ./frontend/.env
+

@@ -10,17 +10,14 @@ import {
     VStack,
     Text,
     Avatar,
-    AvatarBadge,
     VisuallyHiddenInput,
 } from "@chakra-ui/react";
 import { DefaultLayout } from "../components/DefaultLayout";
-import { useNavigate } from "react-router-dom";
 import myaxios from "@/providers/axios_client";
 import { AuthData } from "@/providers/AuthGuard";
 
 const Account = () => {
     const [authData, setAuthData] = useState<AuthData | null>(null);
-    const [errorMessage, setErrorMessage] = useState<string>("");
     const [loading, setLoading] = useState<boolean>(true);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -37,7 +34,6 @@ const Account = () => {
                 setAuthData(response.data);
             } catch (error) {
                 console.error("認証情報の取得エラー:", error);
-                setErrorMessage("認証情報の取得に失敗しました。");
             } finally {
                 setLoading(false);
             }
@@ -102,7 +98,8 @@ const Account = () => {
                 setMessage("");
                 console.log("debug", response.data.success);
             }
-        } catch (err) {
+        } catch (err: any) {
+            console.log("Failed to update account.", err);
             setError("Failed to update account. Please try again.");
         }
     };
@@ -123,6 +120,14 @@ const Account = () => {
         }
         setAvatar(null);
     };
+
+    if (loading){
+        return(
+            <DefaultLayout>
+                <h3>Loading</h3>
+            </DefaultLayout>
+        )
+    }
 
     return (
         <DefaultLayout>

@@ -1,0 +1,15 @@
+# Node.js の公式イメージ
+FROM node:20
+
+# 作業ディレクトリを設定
+WORKDIR /app
+
+# ソースコードをコピー
+COPY ./frontend .
+RUN npm install --legacy-peer-deps
+# ポートを開放（Viteの場合は5173、Next.jsは3000）
+EXPOSE 5173
+
+# Devモードで起動
+CMD ["npm", "run", "dev", "--", "--host"]
+

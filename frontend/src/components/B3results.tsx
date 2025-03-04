@@ -2,8 +2,7 @@
 import { Button, Divider, Heading, Table, TableCaption, TableContainer, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 import StatusBlock from './StatusBlock'
-import { CheckAccessPermission } from '../providers/AuthGuard'
-import { Flex, Box } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { FaTableCellsRowLock } from "react-icons/fa6";
 
 
