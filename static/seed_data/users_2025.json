@@ -1,0 +1,174 @@
+[
+  {
+    "user_name": "funa",
+    "password": "$2a$08$MIgYe.dbI9IAv.oPPgPSRuxXsQWeuqj2QceyhJmUfsSMtnRP21hLq",
+    "joined_date": "2009-04-01T00:00:00+09:00",
+    "image_path": []
+  },
+  {
+    "user_name": "tsukada",
+    "password": "$2a$08$MIgYe.dbI9IAv.oPPgPSRuxXsQWeuqj2QceyhJmUfsSMtnRP21hLq",
+    "joined_date": "2023-04-01T00:00:00+09:00",
+    "image_path": []
+  },
+  {
+    "user_name": "morikura",
+    "password": "$2a$08$MIgYe.dbI9IAv.oPPgPSRuxXsQWeuqj2QceyhJmUfsSMtnRP21hLq",
+    "joined_date": "2023-04-01T00:00:00+09:00",
+    "image_path": []
+  },
+  {
+    "user_name": "hiki",
+    "password": "$2a$08$MIgYe.dbI9IAv.oPPgPSRuxXsQWeuqj2QceyhJmUfsSMtnRP21hLq",
+    "joined_date": "2018-04-01T00:00:00+09:00",
+    "image_path": [ "photos/d/hiki.jpg" ]
+  },
+  {
+    "user_name": "kanazawa",
+    "password": "$2a$08$MIgYe.dbI9IAv.oPPgPSRuxXsQWeuqj2QceyhJmUfsSMtnRP21hLq",
+    "joined_date": "2021-04-01T00:00:00+09:00",
+    "image_path": [ "photos/d/kanazawa.jpg" ]
+  },
+  {
+    "user_name": "kawakita",
+    "password": "$2a$08$MIgYe.dbI9IAv.oPPgPSRuxXsQWeuqj2QceyhJmUfsSMtnRP21hLq",
+    "joined_date": "2022-04-01T00:00:00+09:00",
+    "image_path": [ "photos/m2/kawakita_hard_work_everyday.jpg",
+                    "photos/m2/kawakita_has_woken_up.jpg" ]
+  },
+  {
+    "user_name": "taguchi",
+    "password": "$2a$08$MIgYe.dbI9IAv.oPPgPSRuxXsQWeuqj2QceyhJmUfsSMtnRP21hLq",
+    "joined_date": "2022-04-01T00:00:00+09:00",
+    "image_path": [ "photos/m2/taguchi_mimics_mantis.jpg",
+                    "photos/m2/taguchi_normal.jpg",
+                    "photos/m2/taguchi_terminater.jpg" ]
+  },
+  {
+    "user_name": "amtakahashi",
+    "password": "$2a$08$MIgYe.dbI9IAv.oPPgPSRuxXsQWeuqj2QceyhJmUfsSMtnRP21hLq",
+    "joined_date": "2022-04-01T00:00:00+09:00",
+    "image_path": [ "photos/m2/amtakahashi_is_despairing.jpg",
+                    "photos/m2/amtakahashi_selfy.jpg" ]
+  },
+  {
+    "user_name": "isoda",
+    "password": "$2b$08$GF7LS6nEsKamuDOrDyxlReTjgL1kaqtsP9yGS7Rg/AJ7KyadZXip2",
+    "joined_date": "2022-04-01T00:00:00+09:00",
+    "image_path": [ "photos/m2/isoda_growth.jpg",
+                    "photos/m2/isoda_prevent_hamashima_from_studying.jpg" ]
+  },
+  {
+    "user_name": "araki",
+    "password": "$2a$08$MIgYe.dbI9IAv.oPPgPSRuxXsQWeuqj2QceyhJmUfsSMtnRP21hLq",
+    "joined_date": "2023-04-01T00:00:00+09:00",
+    "image_path": [ "photos/m1/araki_neoki.jpg",
+                    "photos/m1/araki_deisui.jpg" ]
+  },
+  {
+    "user_name": "rkimura",
+    "password": "$2a$08$MIgYe.dbI9IAv.oPPgPSRuxXsQWeuqj2QceyhJmUfsSMtnRP21hLq",
+    "joined_date": "2023-04-01T00:00:00+09:00",
+    "image_path": [ "photos/m1/rkimura_is_seeing.jpg",
+                    "photos/m1/rkimura_is_fighting.jpg" ]
+  },
+  {
+    "user_name": "mito",
+    "password": "$2a$08$MIgYe.dbI9IAv.oPPgPSRuxXsQWeuqj2QceyhJmUfsSMtnRP21hLq",
+    "joined_date": "2023-04-01T00:00:00+09:00",
+    "image_path": [ "photos/m1/mito_sensitive.jpg" ]
+  },
+  {
+    "user_name": "imada",
+    "password": "$2a$08$MIgYe.dbI9IAv.oPPgPSRuxXsQWeuqj2QceyhJmUfsSMtnRP21hLq",
+    "joined_date": "2023-04-01T00:00:00+09:00",
+    "image_path": [ "photos/m1/imada_kiss_face.jpg" ]
+  },
+  {
+    "user_name": "minagawa",
+    "password": "$2a$08$MIgYe.dbI9IAv.oPPgPSRuxXsQWeuqj2QceyhJmUfsSMtnRP21hLq",
+    "joined_date": "2023-04-01T00:00:00+09:00",
+    "image_path": [ "photos/m1/minagawa_centering.jpg",
+                    "photos/m1/minagawa_magao.jpg" ]
+  },
+  {
+    "user_name": "hayashi",
+    "password": "$2a$08$MIgYe.dbI9IAv.oPPgPSRuxXsQWeuqj2QceyhJmUfsSMtnRP21hLq",
+    "joined_date": "2024-04-01T00:00:00+09:00",
+    "image_path": [ "photos/m1/hayashi_rapper.jpg" ]
+  },
+  {
+    "user_name": "sozeki",
+    "password": "$2a$08$MIgYe.dbI9IAv.oPPgPSRuxXsQWeuqj2QceyhJmUfsSMtnRP21hLq",
+    "joined_date": "2023-04-01T00:00:00+09:00",
+    "image_path": [ "photos/m1/sozeki_good_picture.jpg" ]
+  },
+  {
+    "user_name": "hasegawa",
+    "password": "$2b$08$GF7LS6nEsKamuDOrDyxlReTjgL1kaqtsP9yGS7Rg/AJ7KyadZXip2",
+    "joined_date": "2024-04-01T00:00:00+09:00",
+    "image_path": [ "photos/b4/hasegawa_pseudo_smile.jpg" ]
+  },
+  {
+    "user_name": "msuzuki",
+    "password": "$2b$08$GF7LS6nEsKamuDOrDyxlReTjgL1kaqtsP9yGS7Rg/AJ7KyadZXip2",
+    "joined_date": "2024-04-01T00:00:00+09:00",
+    "image_path": [ "photos/b4/sugwara_aruhara_2msuzuki2.jpg" ]
+  },
+  {
+    "user_name": "hamashima",
+    "password": "$2b$08$GF7LS6nEsKamuDOrDyxlReTjgL1kaqtsP9yGS7Rg/AJ7KyadZXip2",
+    "joined_date": "2024-04-01T00:00:00+09:00",
+    "image_path": [ "photos/b4/hamashima_pseudo_brothers.jpg" ]
+  },
+  {
+    "user_name": "iwamoto",
+    "password": "$2b$08$GF7LS6nEsKamuDOrDyxlReTjgL1kaqtsP9yGS7Rg/AJ7KyadZXip2",
+    "joined_date": "2024-04-01T00:00:00+09:00",
+    "image_path": [ "photos/b4/iwamoto_rolling.jpg",
+                    "photos/b4/iwamoto_after.jpg",
+                    "photos/b4/iwamoto_before.jpg" ]
+  },
+  {
+    "user_name": "sugawara",
+    "password": "$2b$08$GF7LS6nEsKamuDOrDyxlReTjgL1kaqtsP9yGS7Rg/AJ7KyadZXip2",
+    "joined_date": "2024-04-01T00:00:00+09:00",
+    "image_path": [ "photos/b4/sugwara_aruhara_2msuzuki.jpg" ]
+  },
+  {
+    "user_name": "sasaki",
+    "password": "$2b$08$GF7LS6nEsKamuDOrDyxlReTjgL1kaqtsP9yGS7Rg/AJ7KyadZXip2",
+    "joined_date": "2025-04-01T00:00:00+09:00",
+    "image_path": []
+  },
+  {
+    "user_name": "ktakahashi",
+    "password": "$2b$08$GF7LS6nEsKamuDOrDyxlReTjgL1kaqtsP9yGS7Rg/AJ7KyadZXip2",
+    "joined_date": "2025-04-01T00:00:00+09:00",
+    "image_path": []
+  },
+  {
+    "user_name": "matsushita",
+    "password": "$2b$08$GF7LS6nEsKamuDOrDyxlReTjgL1kaqtsP9yGS7Rg/AJ7KyadZXip2",
+    "joined_date": "2025-04-01T00:00:00+09:00",
+    "image_path": []
+  },
+  {
+    "user_name": "hosoda",
+    "password": "$2b$08$GF7LS6nEsKamuDOrDyxlReTjgL1kaqtsP9yGS7Rg/AJ7KyadZXip2",
+    "joined_date": "2025-04-01T00:00:00+09:00",
+    "image_path": []
+  },
+  {
+    "user_name": "mori",
+    "password": "$2b$08$GF7LS6nEsKamuDOrDyxlReTjgL1kaqtsP9yGS7Rg/AJ7KyadZXip2",
+    "joined_date": "2025-04-01T00:00:00+09:00",
+    "image_path": []
+  },
+  {
+    "user_name": "dohi",
+    "password": "$2b$08$GF7LS6nEsKamuDOrDyxlReTjgL1kaqtsP9yGS7Rg/AJ7KyadZXip2",
+    "joined_date": "2025-04-01T00:00:00+09:00",
+    "image_path": []
+  }
+]

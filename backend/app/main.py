@@ -3,9 +3,10 @@ import uvicorn
 from fastapi import FastAPI, Request, status
 from fastapi.responses import JSONResponse
 from fastapi.exceptions import RequestValidationError
+from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 
-from auth import login, create_new_user, change_password
+from auth import login, create_new_user, change_password, logout
 from utils.get_root_dir import get_root_dir
 import dotenv
 
@@ -19,12 +20,16 @@ app = FastAPI(
 )
 app.include_router(api_router, prefix=settings.API_V1_STR)
 app.include_router(login.router)
+app.include_router(logout.router)
 app.include_router(create_new_user.router)
 app.include_router(change_password.router)
 app.include_router(handler_router, prefix="/handler")
 # app.include_router(protected_router, prefix="/protected")
 for r in app.routes:
     print(r)
+
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
 
 @app.exception_handler(RequestValidationError)
 async def handler(request: Request, exc: RequestValidationError) -> JSONResponse:
@@ -49,7 +54,7 @@ from app.db.base_class import Base
 # データベースに初期データを挿入
 seed.delete_all_db_data()
 seed.insert_problem_info(f"{ROOT_DIR}/static", "seed_data/problems.json")
-seed.insert_user_info(f"{ROOT_DIR}/static/seed_data/users_2024.json")
+seed.insert_user_info(f"{ROOT_DIR}/static/seed_data/users_2025.json")
 
 ##### 以下は本番環境想定
 ## Check required environment variables

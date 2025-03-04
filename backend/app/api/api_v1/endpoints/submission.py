@@ -1,8 +1,13 @@
 from typing import List
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
+
 from app import crud, schemas, models
 from app.api import deps
+
+import auth
+import utils
+
 router = APIRouter()
 
 @router.post("/", response_model=schemas.SubmissionResponse, status_code=201)
@@ -31,6 +36,23 @@ async def get_all_submissions_endpoint(
     else:
         raise HTTPException(status_code=404, detail="Submission not found")
 
+@router.get("/id/{submission_id}", response_model=schemas.SubmissionResponse)
+async def get_submission_by_id_endpoint(
+    submission_id: str,
+    db: Session = Depends(deps.get_db),
+    user: auth.TokenData = Depends(auth.get_current_user)
+) -> schemas.SubmissionResponse:
+
+    if utils.check_b3(user):
+        submission = crud.get_submission_by_user_name_and_id(db, user.authUserName, submission_id)
+    else:
+        submission = crud.get_submission_by_submission_id(db, submission_id)
+
+    if submission:
+        return submission
+    else:
+        raise HTTPException(status_code=404, detail="Submission not found")
+
 @router.get("/user/{user_name}", response_model=List[schemas.SubmissionResponse])
 async def get_submission_by_user_name_endpoint(
     user_name: str,
@@ -38,18 +60,6 @@ async def get_submission_by_user_name_endpoint(
 ) -> List[schemas.SubmissionResponse]:
 
     submission = crud.get_submissions_by_user_name(db, user_name)
-    if submission:
-        return submission
-    else:
-        raise HTTPException(status_code=404, detail="Submission not found")
-
-@router.get("/{user_name}/{submission_id}", response_model=schemas.SubmissionResponse)
-async def get_submission_by_user_name_and_id_endpoint(
-    user_name: str,
-    submission_id: str,
-    db: Session = Depends(deps.get_db)
-) -> schemas.SubmissionResponse:
-    submission = crud.get_submission_by_user_name_and_id(db, user_name, submission_id)
     if submission:
         return submission
     else:

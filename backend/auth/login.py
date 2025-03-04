@@ -14,6 +14,7 @@ from sqlalchemy.orm import Session
 from app import crud, schemas
 from app.api import deps
 from app.crud.user import  get_password_by_username, get_joined_date_by_username
+from jwt.exceptions import ExpiredSignatureError, InvalidTokenError
 #from config import SECRET_KEY
 
 router = APIRouter()
@@ -21,6 +22,7 @@ router = APIRouter()
 ACCESS_TOKEN_EXPIRE_MINUTES = 30 # min
 # リフレッシュトークンの有効期限（例：7日間）
 REFRESH_TOKEN_EXPIRE_DAYS = 7  
+SIG_ALGORITHM = "HS256"
 
 # PWはハッシュ化してDBに保存する
 
@@ -185,7 +187,7 @@ def create_refresh_token(data: dict, expires_delta: timedelta | None = None):
     # print("now", datetime.now())
     # print(expire)
     # to_encode.update({"exp": expire}) # 先ほど計算した expire の値を "exp" キーとして、to_encode 辞書に追加
-    to_encode.update({"exp": int(expire.timestamp())})
+    to_encode.update({"authUserExp": int(expire.timestamp())})
     if "joined_date" in to_encode and isinstance(to_encode["joined_date"], datetime):
         to_encode["joined_date"] = to_encode["joined_date"].isoformat()
     settings = Settings()
@@ -272,8 +274,36 @@ async def refresh_token_endpoint(
 #    return token_data
 
 # 認証が必要な保護エンドポイント
-@router.get("/protected") # トークンが無効であれば実行されない
-async def protected_route(current_user: TokenData = Depends(get_current_user)):
-    return {"message": f"Hello, {current_user.username}!"}
+#@router.get("/protected") # トークンが無効であれば実行されない
+#async def protected_route(current_user: TokenData = Depends(get_current_user)):
+#    print("protected_route...")
+#    return {"authusername" : current_user.username, "authJoinedDate": current_user.joined_date, "authUserExp": current_user.user_exp}
+
+
+# 認証チェック用の関数
+def get_current_user_info(request: Request):
+    token = request.cookies.get("token")
+    if not token:
+        raise HTTPException(status_code=401, detail="Not authenticated")
+    
+    try:
+        payload = jwt.decode(token, os.getenv("SECRET_KEY"), algorithms=[SIG_ALGORITHM])
+        return payload  # { "user_id": 123 }
+    except jwt.ExpiredSignatureError:
+        raise HTTPException(status_code=401, detail="Token expired")
+    except jwt.InvalidTokenError:
+        raise HTTPException(status_code=401, detail="Invalid token")
+
+# 認証が必要なエンドポイント
+@router.get("/protected")
+async def protected_route(payload: dict = Depends(get_current_user_info)):
+    user = payload.get("user")
+    joineddate = payload.get("joined_date")
+    exp = payload.get("exp")
+    #print("user: ", user)
+    #print("joineddate: ", joineddate)
+    #print("exp: ", exp)
+    return {"message": "Authenticated", "authUserName": user, "authJoinedDate": joineddate, "authUserExp": exp}
+
 
 # JWTは認証情報の形式や内容そのものであり、クッキーはその情報をクライアント側に保持させ、安全にサーバーへ送るための手段

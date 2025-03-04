@@ -6,13 +6,43 @@ import { LuListCheck } from "react-icons/lu";
 import { FaTableCellsRowLock } from "react-icons/fa6";
 import { AiFillTool } from "react-icons/ai";
 
+import { useState } from "react";
+import { AuthData } from "../providers/AuthGuard";
+import { myaxios } from "../providers/axios_client";
+
 interface DefaultLayoutProps {
     children: ReactNode;
 }
 
 export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
     const navigate = useNavigate();
-    const authUserName = localStorage.getItem("authUserName");
+    //const authUserName = localStorage.getItem("authUserName");
+    const [authData, setAuthData] = useState<AuthData | null>(null);
+    const [errorMessage, setErrorMessage] = useState<string>("");
+    const [username, setUsername] = useState<string>("");
+
+
+    useEffect(() => {
+        const fetchAuthData = async () => {
+            try {
+                const response = await myaxios.get("/protected");
+                setAuthData(response.data);
+            } catch (error) {
+                console.error("認証情報の取得エラー:", error);
+                setErrorMessage("認証情報の取得に失敗しました。");
+            } finally {
+                //setLoading(false);
+            }
+        };
+        fetchAuthData();
+    }, []);
+
+    useEffect(() => {
+        if (authData) {
+            setUsername(authData.authUserName);
+        }
+    }, [authData]);
+
 
     const iconsize = 21
     const iconwidth = "8px"
@@ -59,8 +89,8 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
                         onClick={() => navigate("/account")}
                         _hover={{ bg: "gray.600" }}
                     >
-                        <Avatar name={authUserName} src="../../img/user-avatar.png" size="md" mr={3} />
-                        <Text fontSize="lg" fontWeight="bold">{authUserName}</Text>
+                        <Avatar name={username} src="../../img/user-avatar.png" size="md" mr={3} />
+                        <Text fontSize="lg" fontWeight="bold">{username}</Text>
                     </Box>
                 </Box>
 

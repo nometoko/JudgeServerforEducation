@@ -1,70 +1,44 @@
 import myaxios from "@/providers/axios_client";
-import { SubmissionProps, TestCaseResultProps } from "@/types/DbTypes";
-import { Box, Code } from "@chakra-ui/react";
+import { TestCaseResultProps } from "@/types/DbTypes";
+import { Box } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import TestCaseResult from "@/components/TestcaseResult";
-
-const CompileError: React.FC<{ compileError: string }> = ({ compileError }) => {
-    return (
-        <Box>
-            <h2>Compile Error</h2>
-            <Code
-                p={2}
-                bg="gray.100"
-                rounded="md"
-                display="block"
-                whiteSpace="pre-wrap"
-                textAlign={"left"}
-            >
-                {compileError}
-            </Code>
-        </Box>
-    )
-}
+import TestCaseResult from "@/components/TestCaseResult";
+import { get } from "http";
 
 const TestCaseResultList: React.FC<{ submissionId: string }> = ({ submissionId }) => {
-    const authUserName = localStorage.getItem("authUserName")
-    const [submission, setSubmission] = useState<SubmissionProps>();
     const [testcaseResults, setTestcaseResults] = useState<TestCaseResultProps[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
 
     const sortByTestcaseNumber = (a: TestCaseResultProps, b: TestCaseResultProps) => {
         return a.testcase.testcase_number - b.testcase.testcase_number;
     }
 
     useEffect(() => {
-        myaxios.get(`/handler/getTestcaseResultList/${authUserName}/${submissionId}`)
-            .then((response) => {
-                response.data.sort(sortByTestcaseNumber);
-                setTestcaseResults(response.data);
+        const getTestcaseResults = async () => {
+            console.log("🔄 テストケース結果を取得...")
+            const response = await myaxios.get(`/handler/getTestcaseResultList/${submissionId}`);
+            response.data.sort(sortByTestcaseNumber);
+            setTestcaseResults(response.data);
+            // WJのものがあればローディングを続ける
+            if (response.data.some((result: TestCaseResultProps) => result.user_result.status === "WJ")) {
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                setLoading(!loading);
             }
-            );
-        myaxios.get(`/api/v1/submission/${authUserName}/${submissionId}`)
-            .then((response) => {
-                setSubmission(response.data);
-            }
-            );
-    }, []);
+        };
+        getTestcaseResults();
+    }, [loading]);
 
-    if (submission && submission.status === "CE" && submission.compile_error) {
-        return (
-            <Box>
-                <CompileError compileError={submission.compile_error} />
-            </Box>
-        )
-    }
-    else {
-        return (
-            <Box>
-                {testcaseResults.map((testcase) => (
-                    <TestCaseResult
-                        key={testcase.testcase.testcase_number}
-                        testcase={testcase.testcase}
-                        user_result={testcase.user_result}
-                    />
-                ))}
-            </Box>
-        )
-    }
+    return (
+        <Box>
+            {testcaseResults.map((testcase) => (
+                <TestCaseResult
+                    key={testcase.testcase.testcase_number}
+                    testcase={testcase.testcase}
+                    user_result={testcase.user_result}
+                />
+            ))}
+        </Box>
+    )
 }
 
 export default TestCaseResultList;

@@ -56,15 +56,16 @@ const Login = ({ }) => {
       password: password,
     })
       .then((response) => {
-        if (response.status === HttpStatusCode.Ok) { // 200
-          const jwtToken = jwtDecode<MyJwtPayload>(response.data.access_token);
-          localStorage.setItem("authUserName", jwtToken.user);
-          localStorage.setItem("authJoinedDate", jwtToken.joined_date);
-          localStorage.setItem("authUserExp", jwtToken.exp.toString());
-          //localStorage.setItem("authJoinedDate", response.data.joined);
 
-          if (location.state) { // ログイン画面に遷移する前のページが存在する場合
-            navigate(location.state, { replace: true }) // ブラウザの履歴が置き換えられ、戻るボタンで前の状態に戻らないようにしています。
+        if (response.status === HttpStatusCode.Ok) {
+          //  const jwtToken = jwtDecode<MyJwtPayload>(response.data.access_token);
+          //  localStorage.setItem("authUserName", jwtToken.user);
+          //  localStorage.setItem("authJoinedDate", jwtToken.joined_date);
+          //  localStorage.setItem("authUserExp", jwtToken.exp.toString());
+          //  console.log("authUserName", authUserName);
+          if (location.state) {
+            //console.log("here", location.state);
+            navigate(location.state, { replace: true });
           } else {
             // console.log("token", response.data.access_token);　一致を確認、これはログイン時に生成されるトークン
             navigate('/dashboard', { replace: true })
@@ -83,25 +84,6 @@ const Login = ({ }) => {
           setError('通信に失敗しました。');
         }
       });
-  };
-
-  const fetchProblems = async () => {
-    try {
-      const response = await myaxios.get(`/getProblemList/${authUserName}`);
-      // 成功時は問題リストとメッセージを更新
-      setProblems(response.data.problems);
-      setDebug(response.data.message);
-      setError("");
-    } catch (err: any) {
-      // エラーがあればエラーメッセージを表示
-      if (err.response && err.response.status === 404) {
-        setError("User not found");
-      } else {
-        setError("Error fetching problems");
-      }
-      setProblems([]);
-      setDebug("");
-    }
   };
 
 
@@ -186,11 +168,11 @@ const Login = ({ }) => {
           </form>
 
           {/* デバッグ用：問題リスト取得 */}
-          <Box mt={4}>
+          {/* <Box mt={4}>
             <Button onClick={fetchProblems} bg="gray.300" _hover={{ bg: "gray.400" }}>
               Problem List (Debug)
             </Button>
-          </Box>
+          </Box> */}
         </Box>
 
         {/* 取得したデバッグ情報の表示 */}

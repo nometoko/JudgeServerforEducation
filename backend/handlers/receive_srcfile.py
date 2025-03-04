@@ -1,12 +1,15 @@
 import os, shutil, magic
-from fastapi import APIRouter, UploadFile, Form, Depends, HTTPException
+from fastapi import APIRouter, UploadFile, Form, Depends, HTTPException, BackgroundTasks
 from sqlalchemy.orm import Session
+from concurrent.futures import ThreadPoolExecutor
 from typing import List
 from pydantic import BaseModel
 
+import auth, judge
 from app import schemas, crud
 from app.api import deps
-from judge.judge import judge
+
+executor = ThreadPoolExecutor(max_workers=10)
 
 class receive_file_response(BaseModel):
     success: bool
@@ -22,15 +25,17 @@ def check_file_type(file_name: str):
 
 router = APIRouter()
 
-@router.post("/{user_name}/{problem_id}", response_model=str)
+@router.post("/{problem_id}", response_model=str)
 async def receive_file(
-    user_name: str,
     problem_id: int,
     files: List[UploadFile],
-    db: Session = Depends(deps.get_db)) -> str:
+    background_tasks: BackgroundTasks,
+    user:auth.TokenData = Depends(auth.get_current_user),
+    db: Session = Depends(deps.get_db),
+    ) -> str:
 
     exec_dir = os.path.join(os.getenv("ROOT_DIR"), os.getenv("EXEC_DIR"))
-    submission = schemas.SubmissionCreate(user_name=user_name, problem_id=problem_id)
+    submission = schemas.SubmissionCreate(user_name=user.authUserName, problem_id=problem_id)
     created_submission = crud.create_submission(db, submission)
 
     submission_id = created_submission.submission_id
@@ -54,28 +59,24 @@ async def receive_file(
             crud.delete_submission(db, submission_id)
             raise HTTPException(status_code=400, detail=created_submission.msg)
 
-    testcases_with_path = crud.get_testcases_with_path_by_problem_id(db, problem_id)
-
-    status = "AC"
-
     try:
-        submission_result_list = await judge(submission_id, testcases_with_path)
-        for submission_result in submission_result_list:
-            created_submission_result =  crud.create_submission_result(db, submission_result)
-            testcase_result_status = created_submission_result.status
-            # statusの優先度: RE > WA > TLE > AC
-            if status == "AC":
-                status = testcase_result_status
-            elif status == "TLE" and testcase_result_status in ["RE", "WA"]:
-                status = testcase_result_status
-            elif status == "WA" and testcase_result_status == "RE":
-                status = testcase_result_status
+        judge.compile(save_dir)
+    except Exception as e:
+        update_submission = schemas.SubmissionUpdate(status="CE", compile_error=e.args[0])
+        crud.update_submission_status(db, submission_id, update_submission)
+        return submission_id
 
-    except RuntimeError as e:
-        status = "CE"
-        compile_error = e.args[0]
+    testcases_with_path = crud.get_testcases_with_path_by_problem_id(db, problem_id)
+    if not testcases_with_path:
+        os.removedirs(save_dir)
+        crud.delete_submission(db, submission_id)
+        raise HTTPException(status_code=400, detail="No testcases found for this problem")
 
-    update_submission = schemas.SubmissionUpdate(status=status, compile_error=compile_error if status == "CE" else None)
-    crud.update_submission_status(db, submission_id, update_submission)
+    for testcase_with_path in testcases_with_path:
+        create_submission_result = schemas.SubmissionResultCreate( submission_id=submission_id, testcase_number=testcase_with_path.testcase_number)
+        crud.create_submission_result(db, create_submission_result)
+
+    # background_tasks.add_task(judge.judge, submission_id, problem_id, db)
+    executor.submit(judge.judge, submission_id, problem_id)
 
     return submission_id

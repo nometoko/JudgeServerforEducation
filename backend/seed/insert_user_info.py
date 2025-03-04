@@ -13,7 +13,7 @@ def read_json(json_file_path: str) -> List[schemas.UserCreate]:
     users_info = []
     for user in users:
         users_info.append(schemas.UserCreate(**user))
-    return users_info    
+    return users_info
 
 def insert_user_info(json_file_path: str) -> None:
     db:Session = next(deps.get_db())
