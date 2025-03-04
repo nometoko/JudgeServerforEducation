@@ -1,6 +1,6 @@
 import DefaultLayout from "@/components/DefaultLayout";
 import ToolsList from "@/components/ToolsList"
-import { Heading, Divider, Button, Flex, Box } from "@chakra-ui/react";
+import { Heading, Divider, Flex, Box } from "@chakra-ui/react";
 import { AiFillTool } from "react-icons/ai";
 
 const Tools = () => {

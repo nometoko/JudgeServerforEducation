@@ -6,24 +6,7 @@ import { useEffect, useState } from "react";
 import { SubmissionProps } from "@/types/DbTypes";
 
 const Results: React.FC = () => {
-    const [listHeight, setListHeight] = useState("auto");
     const [results, setResults] = useState<SubmissionProps[]>([]);
-
-    useEffect(() => {
-        const updateHeight = () => {
-            const brElements = document.querySelectorAll('br').length * 16;
-            const headerHeight = document.getElementById("results-header")?.offsetHeight || 0;
-            const tableHeaderHeight = document.getElementById("table-header")?.offsetHeight || 0;
-            const availableHeight = window.innerHeight - headerHeight - tableHeaderHeight - brElements - 40;
-            setListHeight(`${availableHeight}px`);
-        };
-
-        updateHeight();
-        window.addEventListener("resize", updateHeight);
-        return () => window.removeEventListener("resize", updateHeight);
-    }, []);
-
-
     const [userName, setUserName] = useState<string | null>(null);
     const [problemId, setProblemId] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean>(true);

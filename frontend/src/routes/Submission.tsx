@@ -12,16 +12,7 @@ const Submission = () => {
     const navigate = useNavigate();
     const { submissionId } = useParams<{ submissionId: string }>();
     const [loading, setLoading] = useState<boolean>(true);
-
-    if (!submissionId) {
-        return (
-            <DefaultLayout>
-                <h1>Invalid url</h1>
-            </DefaultLayout>
-        );
-    }
-
-    const [submission, setSubmission] = useState<SubmissionProps>();
+    const [submission, setSubmission] = useState<SubmissionProps | null>(null);
 
     useEffect(() => {
         const getSubmission = async () => {
@@ -33,7 +24,7 @@ const Submission = () => {
             }
             catch (err: any) {
                 console.error(err);
-                setSubmission(undefined);
+                setSubmission(null);
             }
         };
 
@@ -57,7 +48,14 @@ const Submission = () => {
         }
     }, [submission]);
 
-    if (loading) {
+    if (!submissionId) {
+        return (
+            <DefaultLayout>
+                <h1>Invalid url</h1>
+            </DefaultLayout>
+        );
+    }
+    else if (loading) {
         return (
             <DefaultLayout>
                 <h1>Waiting Judge...</h1>
