@@ -116,6 +116,14 @@
         "input_file_path": "",
         "output_file_name": "",
         "answer_file_path": "testcases/c/c1/13/output.txt"
+      },
+      {
+        "testcase_id": 14,
+        "args_file_path": "",
+        "stdin_file_path": "testcases/c/c1/14/input.txt",
+        "input_file_path": "",
+        "output_file_name": "",
+        "answer_file_path": "testcases/c/c1/14/output.txt"
       }
     ]
   },

@@ -1,19 +1,14 @@
-import { Container, Box } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { DefaultLayout } from "@/components/DefaultLayout";
 import { CardList } from "@/components/CardList";
 import myaxios from "@/providers/axios_client";
-import { ProblemProps, ProblemWithStatus } from "@/types/DbTypes";
-import { useAuth } from "@/providers/AuthContext";
-import { AuthData } from "@/providers/AuthGuard";
+import { ProblemWithStatus } from "@/types/DbTypes";
 
 const DashboardPage = () => {
-  const [errorMessage, setErrorMessage] = useState<string>("");
-  const [loading, setLoading] = useState<boolean>(true);
   const [problems, setProblems] = useState<ProblemWithStatus[]>([]);
   const [error, setError] = useState("");
   const [debug, setDebug] = useState("");
-  const { setAuthInfo } = useAuth();
 
   useEffect(() => {
     const getProblems = async () => {

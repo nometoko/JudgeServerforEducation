@@ -10,18 +10,17 @@ const Problem: React.FC = () => {
     const { problemId } = useParams<{ problemId: string }>();
     const [problem, setProblem] = useState<ProblemProps>();
 
-    const getProblem = async () => {
-        try {
-            const response = await myaxios.get(`/api/v1/problem/${problemId}`);
-            console.log(response.data);
-            setProblem(response.data);
-        } catch (err: any) {
-            console.log(err);
-        }
-    }
-
     useEffect(() => {
-        console.log("useEffect");
+        const getProblem = async () => {
+            try {
+                const response = await myaxios.get(`/api/v1/problem/${problemId}`);
+                console.log(response.data);
+                setProblem(response.data);
+            } catch (err: any) {
+                console.log(err);
+            }
+        }
+
         getProblem();
     }, [problemId]);
 
