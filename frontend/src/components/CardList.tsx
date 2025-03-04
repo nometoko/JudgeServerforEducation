@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Box, Stack, Checkbox, Divider } from '@chakra-ui/react';
 import { Card, CardHeader, CardBody, Heading, Text, Icon, SimpleGrid } from '@chakra-ui/react';
 import { useNavigate } from "react-router-dom";
-import { MdLockClock, MdLockOpen } from "react-icons/md";
+import { MdLockClock } from "react-icons/md";
 import { GiPodium } from "react-icons/gi";
 import { ProblemWithStatus } from '@/types/DbTypes';
 
