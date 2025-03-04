@@ -33,7 +33,7 @@ const ToolsItem = ({ title, path, icon }: { title: string, path: string, icon: a
 
 const ToolsList = () => {
     const tools = [
-        { title: "Lab Members", path: "/lab-members", icon: FaUsers },
+        { title: "Lab Members", path: "/LabMembers", icon: FaUsers },
         { title: "Games", path: "/games", icon: FaGamepad },
         { title: "Mini Quiz", path: "/mini-quiz", icon: FaQuestionCircle },
     ];
