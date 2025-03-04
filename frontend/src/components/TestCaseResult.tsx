@@ -93,7 +93,8 @@ const TestCaseResult: React.FC<TestCaseResultProps> = ({ testcase, user_result }
       <AccordionItem isDisabled={user_result.status === "WJ"}>
         <h2>
           <AccordionButton
-            bg={user_result.status === "AC" ? "green.200" : user_result.status === "WJ" ? "gray.200" : "red.200"}
+            bg={user_result.status === "AC" ? "green.100" : user_result.status === "WJ" ? "gray.200" : "red.100"}
+            _hover={user_result.status === "AC" ? { bg: "green.200" } : user_result.status === "WJ" ? { bg: "gray.200" } : { bg: "red.200" }}
           >
             <Box textAlign="left" width="80%">
               Test Case {testcase.testcase_number}
@@ -174,7 +175,7 @@ const TestCaseResult: React.FC<TestCaseResultProps> = ({ testcase, user_result }
           )}
         </AccordionPanel>
       </AccordionItem>
-    </Accordion>
+    </Accordion >
   );
 };
 
