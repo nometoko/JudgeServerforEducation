@@ -6,7 +6,7 @@ import { AiFillTool } from "react-icons/ai";
 const Tools = () => {
     return (
         <DefaultLayout>
-            <Box flex="1" overflowY="auto" maxHeight={630}>
+            <Box flex="1" overflowY="auto" maxHeight={700}>
                 {/* タイトル + フィルターを横並び */}
                 <Flex justifyContent="space-between" alignItems="center" >
                     {/* Results タイトル */}
