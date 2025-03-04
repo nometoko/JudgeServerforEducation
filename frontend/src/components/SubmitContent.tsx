@@ -1,7 +1,7 @@
 import { Box, Button, Flex, Select, Tooltip, useClipboard } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { oneDark, oneLight } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { oneLight } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { GoCopy, GoDownload } from "react-icons/go";
 import { FileContent } from "@/types/DbTypes";
 import myaxios from "@/providers/axios_client";

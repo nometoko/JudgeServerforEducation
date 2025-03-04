@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Box, Stack, Divider, Flex } from '@chakra-ui/react';
+import { Stack, Flex } from '@chakra-ui/react';
 import { Card, CardHeader, CardBody, Heading, Text, SimpleGrid, Icon } from '@chakra-ui/react';
 import { FaUsers, FaGamepad, FaQuestionCircle } from "react-icons/fa"; // アイコンをインポート
 

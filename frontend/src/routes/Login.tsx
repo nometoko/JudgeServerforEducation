@@ -1,7 +1,6 @@
-import { FormEvent, FC } from 'react';
+import { FormEvent } from 'react';
 import { HttpStatusCode } from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { jwtDecode } from "jwt-decode";
 import { useState, useRef } from "react";
 import {
   Box,
@@ -26,15 +25,10 @@ export interface MyJwtPayload {
   user: string,
 }
 
-const Login = ({ }) => {
+const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [debug, setDebug] = useState("");
-  const [problems, setProblems] = useState<any[]>([]);
-  const authUserName = localStorage.getItem("authUserName");
-  const authJoinedDate = localStorage.getItem("authJoinedDate")
-  const authUserExp = localStorage.getItem("authUserExp");
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -58,16 +52,10 @@ const Login = ({ }) => {
       .then((response) => {
 
         if (response.status === HttpStatusCode.Ok) {
-          //  const jwtToken = jwtDecode<MyJwtPayload>(response.data.access_token);
-          //  localStorage.setItem("authUserName", jwtToken.user);
-          //  localStorage.setItem("authJoinedDate", jwtToken.joined_date);
-          //  localStorage.setItem("authUserExp", jwtToken.exp.toString());
-          //  console.log("authUserName", authUserName);
           if (location.state) {
             //console.log("here", location.state);
             navigate(location.state, { replace: true });
           } else {
-            // console.log("token", response.data.access_token);　一致を確認、これはログイン時に生成されるトークン
             navigate('/dashboard', { replace: true })
           }
         } else {
@@ -166,28 +154,6 @@ const Login = ({ }) => {
               </Button>
             </VStack>
           </form>
-
-          {/* デバッグ用：問題リスト取得 */}
-          {/* <Box mt={4}>
-            <Button onClick={fetchProblems} bg="gray.300" _hover={{ bg: "gray.400" }}>
-              Problem List (Debug)
-            </Button>
-          </Box> */}
-        </Box>
-
-        {/* 取得したデバッグ情報の表示 */}
-        <Box mt={4} p={4} borderWidth="1px" borderRadius="md" bg="gray.100">
-          <Heading size="md">Debug Information</Heading>
-          <Text>{debug}</Text>
-          {problems.length > 0 && (
-            <VStack align="start" mt={2}>
-              {problems.map((problem) => (
-                <Text key={problem.id}>
-                  {problem.id}: {problem.title} ({problem.difficulty})
-                </Text>
-              ))}
-            </VStack>
-          )}
         </Box>
       </Container>
     </Flex>

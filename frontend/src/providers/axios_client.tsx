@@ -1,11 +1,9 @@
 // Axios のカスタムインスタンスである myaxios に対してインターセプターを設定し、HTTP リクエストやレスポンスの共通処理を実装するためのコンポーネント
 import { useEffect } from 'react'
-import { useState } from 'react'
 import axios, { HttpStatusCode } from 'axios'
 import { useNavigate } from 'react-router-dom'
 //import { jwtDecode } from "jwt-decode";
 //import { MyJwtPayload } from '../routes/Login/MyJwtPayload'
-import { useAuth } from "./AuthContext";
 
 export const myaxios = axios.create({
 	// 必要に応じてconfigを設定
@@ -76,7 +74,6 @@ export default myaxios;
 
 export function Myaxios_provider({ children }: { children: React.ReactElement }) {
 	const navigate = useNavigate();
-	const { setAuthInfo } = useAuth();
 	//const [authUserName, setAuthUserName] = useState<string | null>(null);
 	//const [authJoinedDate, setAuthJoinedDate] = useState<string | null>(null);
 	//const [authUserExp, setAuthUserExp] = useState<string | null>(null);
