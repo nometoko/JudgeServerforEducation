@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import myaxios from "@/providers/axios_client";
-import { Box, Card, CardHeader, CardBody, Divider, Heading, Select, Flex, HStack } from "@chakra-ui/react";
+import { Box, Card, CardHeader, CardBody, Divider, Heading, Select, Flex, HStack, Tooltip } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { SubmissionProps } from "@/types/DbTypes";
+import { JudgeStatus, SubmissionProps } from "@/types/DbTypes";
 import { FaFilter } from "react-icons/fa";
 import { LuListCheck } from "react-icons/lu";
 
@@ -32,12 +32,8 @@ const SubmissionBar: React.FC<{ submission: SubmissionProps }> = ({ submission }
             alignItems="center"  // 垂直方向の中央揃え
             justifyContent="space-between"  // 均等配置
             bg={submission.status === "AC" ? "green.100" : submission.status === "WJ" ? "gray.100" : "red.100"}
-            cursor={submission.status === "WJ" ? "not-allowed" : "pointer"}
-            onClick={() => {
-                if (submission.status !== "WJ") {
-                    navigate(`/submission/${submission.submission_id}`);
-                }
-            }}
+            cursor={"pointer"}
+            onClick={() => { navigate(`/submission/${submission.submission_id}`); }}
             _hover={submission.status === "AC" ? { bg: "green.200" } : submission.status !== "AC" && submission.status !== "WJ" ? { bg: "red.200" } : {}}
             h="50px"  // 高さを固定
             minH="50px"
@@ -49,50 +45,41 @@ const SubmissionBar: React.FC<{ submission: SubmissionProps }> = ({ submission }
                 <Heading size="sm">{problemName}</Heading>
             </CardHeader>
 
+            {/* 提出者 */}
+            <CardBody textAlign="left">
+                {submission.user_name}
+            </CardBody>
+
             {/* 提出日時 */}
-            <CardBody p={2} flex="1" textAlign="left" >
+            <CardBody textAlign="left" >
                 {submissionDate.toLocaleString()}
             </CardBody>
 
             {/* ステータス */}
-            <CardBody p={2} flex="1" textAlign="left" fontSize="2xl">
-                <Heading size="md">{submission.status}</Heading>
+            <CardBody textAlign="left" fontSize="2xl">
+                <Tooltip
+                    label={JudgeStatus[submission.status as keyof typeof JudgeStatus]}
+                    placement="top-start"
+                >
+                    <Heading size="md">{submission.status}</Heading>
+                </Tooltip>
             </CardBody>
         </Card>
     );
 };
 
-
-const SubmissionList: React.FC = () => {
+const SubmissionList: React.FC<{ submissions: SubmissionProps[], defaultUserName: string | undefined, defaultProblemId: number | undefined }> = ({ submissions, defaultUserName, defaultProblemId }) => {
     interface ProblemSimpleProps {
         problem_id: number;
         name: string;
     }
 
-    const authUserName = localStorage.getItem("authUserName");
-    const [submissions, setSubmissions] = useState<SubmissionProps[]>([]);
-    const [selectedProblemId, setSelectedProblemId] = useState<number>();
     const [uniqueProblems, setUniqueProblems] = useState<ProblemSimpleProps[]>([]);
+    const [uniqueUsers, setUniqueUsers] = useState<string[]>([]);
     const [statusList, setStatusList] = useState<string[]>([]);
+    const [selectedProblemId, setSelectedProblemId] = useState<number | undefined>(defaultProblemId);
+    const [selectedUser, setSelectedUser] = useState<string | undefined>(defaultUserName);
     const [selectedStatus, setSelectedStatus] = useState<string>();
-
-    const getSubmissions = async () => {
-        try {
-            const response = await myaxios.get(`/handler/getSubmissionList/${authUserName}`);
-            response.data.sort((a: SubmissionProps, b: SubmissionProps) =>
-                new Date(b.submitted_date).getTime() - new Date(a.submitted_date).getTime()
-            );
-            setSubmissions(response.data);
-        } catch (err: any) {
-            console.log(err);
-        }
-    };
-
-    useEffect(() => {
-        if (authUserName) {
-            getSubmissions();
-        }
-    }, [authUserName]);
 
     useEffect(() => {
         const fetchProblemNames = async () => {
@@ -113,6 +100,11 @@ const SubmissionList: React.FC = () => {
         setStatusList(Array.from(statusSet));
     }, [submissions]);
 
+    useEffect(() => {
+        const userSet = new Set(submissions.map((submission) => submission.user_name));
+        setUniqueUsers(Array.from(userSet));
+    }, [submissions]);
+
     // フィルタリング処理
     const filteredSubmissions = submissions.filter((submission) => {
         if (selectedProblemId && selectedProblemId !== submission.problem_id) {
@@ -121,9 +113,17 @@ const SubmissionList: React.FC = () => {
         if (selectedStatus && selectedStatus !== submission.status) {
             return false;
         }
+        if (selectedUser && selectedUser !== submission.user_name) {
+            return false;
+        }
         return true;
     }
     );
+
+    useEffect(() => {
+        setSelectedProblemId(defaultProblemId);
+        setSelectedUser(defaultUserName);
+    }, [defaultProblemId, defaultUserName]);
 
     return (
         <Box>
@@ -140,10 +140,31 @@ const SubmissionList: React.FC = () => {
                     <HStack width="100%" mx="3">
                         <Box width="50%">
                             <Box textAlign="left">Problem</Box>
-                            <Select placeholder="All" mb={1} onChange={(e) => setSelectedProblemId(Number(e.target.value))}>
+
+                            <Select
+                                placeholder="All"
+                                mb={2}
+                                value={selectedProblemId}
+                                onChange={(e) => setSelectedProblemId(Number(e.target.value))}
+                            >
                                 {uniqueProblems.map((problem) => (
                                     <option key={problem.problem_id} value={problem.problem_id}>
                                         {problem.name}
+                                    </option>
+                                ))}
+                            </Select>
+                        </Box>
+                        <Box width="50%">
+                            <Box textAlign="left">User</Box>
+                            <Select
+                                placeholder="All"
+                                mb={2}
+                                value={selectedUser}
+                                onChange={(e) => setSelectedUser(e.target.value)}
+                            >
+                                {uniqueUsers.map((user) => (
+                                    <option key={user} value={user}>
+                                        {user}
                                     </option>
                                 ))}
                             </Select>
@@ -161,15 +182,12 @@ const SubmissionList: React.FC = () => {
                     </HStack>
                 </Flex>
             </Flex>
-
             <Divider />
 
-
-
             <br />
-
             <Flex id="table-header" justifyContent="space-between" fontWeight="bold" mb={1}>
                 <Box flex="1" textAlign="left" bg="gray.600" border="1px solid white" color='white' p={3} fontSize="lg">Problem</Box>
+                <Box flex="1" textAlign="left" bg="gray.600" border="1px solid white" color='white' p={3} fontSize="lg">Submitted by</Box>
                 <Box flex="1" textAlign="left" bg="gray.600" border="1px solid white" color='white' p={3} fontSize="lg">Submitted at</Box>
                 <Box flex="1" textAlign="left" bg="gray.600" border="1px solid white" color='white' p={3} fontSize="lg">Status</Box>
             </Flex>

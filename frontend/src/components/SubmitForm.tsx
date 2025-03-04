@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import myaxios from "@/providers/axios_client";
 import axios from "axios";
@@ -38,11 +38,10 @@ const SubmitForm: React.FC<{ problemId: number }> = ({ problemId }) => {
         setMessage("");
 
         try {
-            const authUserName = localStorage.getItem("authUserName");
-            const response = await myaxios.post(`/handler/receiveFiles/${authUserName}/${problemId}`, formData, {
+            const response = await myaxios.post(`/handler/receiveFiles/${problemId}`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data"
-                }
+                },
             });
             const submissionId = response.data;
             navigate(`/submission/${submissionId}`);
