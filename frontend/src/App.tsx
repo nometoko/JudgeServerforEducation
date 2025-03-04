@@ -2,8 +2,6 @@
 
 import './App.css'
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { Component, useEffect, useState } from "react";
-import axios from "axios";
 import { Myaxios_provider } from './providers/axios_client';
 
 //const API_BASE_URL = `http://${process.env.REACT_APP_PUBLIC_SERVER_IP}:${process.env.REACT_APP_BACKEND_PORT}`;
@@ -34,8 +32,6 @@ import { AuthProvider } from "./providers/AuthContext";
 import Submission from './routes/Submission';
 
 const App: React.FC = () => {
-
-  const [message, setMessage] = useState("");
 
   //useEffect(() => {
   //  axios.post(`${API_BASE_URL}/login`, {

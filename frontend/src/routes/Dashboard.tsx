@@ -7,8 +7,6 @@ import { ProblemWithStatus } from "@/types/DbTypes";
 
 const DashboardPage = () => {
   const [problems, setProblems] = useState<ProblemWithStatus[]>([]);
-  const [error, setError] = useState("");
-  const [debug, setDebug] = useState("");
 
   useEffect(() => {
     const getProblems = async () => {
@@ -16,17 +14,10 @@ const DashboardPage = () => {
         const response = await myaxios.get(`/handler/getProblemList/`);
         // 成功時は問題リストとメッセージを更新
         setProblems(response.data);
-        setDebug(response.data.message);
-        setError("");
       } catch (err: any) {
         // エラーがあればエラーメッセージを表示
-        if (err.response && err.response.status === 404) {
-          setError("User not found");
-        } else {
-          setError("Error fetching problems");
-        }
+        console.log("error in getProblemList", err)
         setProblems([]);
-        setDebug("");
       }
     };
     getProblems();

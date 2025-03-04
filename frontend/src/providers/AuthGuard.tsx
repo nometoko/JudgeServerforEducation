@@ -17,7 +17,6 @@ export interface AuthData {
 export const AuthGuard: React.FC<Props> = ({ component, pageType }) => {
   const [authData, setAuthData] = useState<AuthData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
-  const [errorMessage, setErrorMessage] = useState<string>("");
   const location = useLocation();
 
   useEffect(() => {
@@ -27,7 +26,6 @@ export const AuthGuard: React.FC<Props> = ({ component, pageType }) => {
         setAuthData(response.data);
       } catch (error) {
         console.error("認証情報の取得エラー:", error);
-        setErrorMessage("認証情報の取得に失敗しました。");
       } finally {
         setLoading(false);
       }
@@ -72,7 +70,6 @@ type AuthUserProps = {
 };
 
 export const CheckAccessPermission = ({
-  authUserName,
   authJoinedDate,
 }: AuthUserProps): [boolean, string] => {
   // 例: 入学年度が今年より前の場合はアクセス許可（senior student）
