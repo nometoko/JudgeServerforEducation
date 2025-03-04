@@ -127,14 +127,14 @@ const SubmissionList: React.FC<{ submissions: SubmissionProps[], defaultUserName
 
     return (
         <Box>
-            {/* タイトル + フィルターを横並び */}
+
             <Flex justifyContent="space-between" alignItems="center" mb={2}>
                 <Flex alignItems="center" mt={5} >
                     <LuListCheck size={32} style={{ marginRight: "10px" }} /> {/* アイコンとテキストの間に隙間 */}
                     <Heading textAlign="left" >Results</Heading>
                 </Flex>
 
-                {/* フィルター機能 */}
+
                 <Flex alignItems="center">
                     <FaFilter size="30px" color="gray" style={{ marginRight: "8px" }} />
                     <HStack width="100%" mx="3">
@@ -191,11 +191,14 @@ const SubmissionList: React.FC<{ submissions: SubmissionProps[], defaultUserName
                 <Box flex="1" textAlign="left" bg="gray.600" border="1px solid white" color='white' p={3} fontSize="lg">Submitted at</Box>
                 <Box flex="1" textAlign="left" bg="gray.600" border="1px solid white" color='white' p={3} fontSize="lg">Status</Box>
             </Flex>
-            {filteredSubmissions.map((submission) => (
-                <Box key={submission.submission_id} mb={1}>
-                    <SubmissionBar submission={submission} />
-                </Box>
-            ))}
+            <Box flex="1" overflowY="auto">
+                {filteredSubmissions.map((submission) => (
+                    <Box key={submission.submission_id} mb={1}>
+                        <SubmissionBar submission={submission} />
+                    </Box>
+                ))}
+            </Box>
+
         </Box>
     );
 };

@@ -42,7 +42,7 @@ const Results: React.FC = () => {
 
     return (
         <DefaultLayout>
-            <Box flex="1" overflowY="auto" maxHeight={630}>
+            <Box flex="1" >
                 <SubmissionList
                     submissions={results}
                     defaultUserName={userName || undefined}
