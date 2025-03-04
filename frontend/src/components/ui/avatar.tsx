@@ -1,7 +1,7 @@
 "use client"
 
-import type { GroupProps, SlotRecipeProps } from "@chakra-ui/react"
-import { Avatar as ChakraAvatar, Group } from "@chakra-ui/react"
+//import type { GroupProps, SlotRecipeProps } from "@chakra-ui/react"
+import { Avatar as ChakraAvatar } from "@chakra-ui/react"
 import * as React from "react"
 
 type ImageProps = React.ImgHTMLAttributes<HTMLImageElement>
