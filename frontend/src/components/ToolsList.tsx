@@ -13,7 +13,7 @@ const ToolsItem = ({ title, path, icon }: { title: string, path: string, icon: a
             borderColor="gray.300"
             cursor="pointer"
             background="white"
-            _hover={{ transform: "scale(1.05)", transition: "0.2s" }}
+            _hover={{ transform: "scale(1.02)", transition: "0.2s" }}
             onClick={() => navigate(path)}
             width="100%"
             p={4}
@@ -33,13 +33,13 @@ const ToolsItem = ({ title, path, icon }: { title: string, path: string, icon: a
 
 const ToolsList = () => {
     const tools = [
-        { title: "Lab Members", path: "/lab-members", icon: FaUsers },
+        { title: "Lab Members", path: "/LabMembers", icon: FaUsers },
         { title: "Games", path: "/games", icon: FaGamepad },
         { title: "Mini Quiz", path: "/mini-quiz", icon: FaQuestionCircle },
     ];
 
     return (
-        <Stack mt="4">
+        <Stack my="4" mx="2">
             <SimpleGrid columns={{ sm: 1, md: 2, lg: 2 }} spacing="20px">
                 {tools.map((tool) => (
                     <ToolsItem key={tool.path} title={tool.title} path={tool.path} icon={tool.icon} />

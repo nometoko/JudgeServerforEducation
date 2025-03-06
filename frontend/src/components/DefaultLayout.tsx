@@ -52,7 +52,7 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
                 <Box w="250px" h="100vh" bg="gray.800" color="white" p={4} display="flex" flexDirection="column" justifyContent="space-between">
                     <VStack spacing={4} align="stretch">
                         <a href="https://fun.bio.keio.ac.jp/" target="_blank" rel="noopener noreferrer">
-                            <Image src="http://localhost:8000/static/photos/b4/hasegawa_pseudo_smile.jpg" alt="funalab logo" boxSize="80px" mb={4} cursor="pointer" />
+                            <Image src="http://localhost:8000/static/photos/m1/rkimura_is_fighting.jpg" alt="funalab logo" boxSize="100px" mb={4} cursor="pointer" />
                         </a>
                         <Button variant="ghost" colorScheme="whiteAlpha" onClick={() => navigate("/dashboard")} justifyContent={"flex-start"}>
                             <MdDashboard size={iconsize} /> {/* アイコンを追加 */}

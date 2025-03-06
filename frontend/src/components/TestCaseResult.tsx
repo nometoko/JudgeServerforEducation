@@ -1,5 +1,5 @@
 import { JudgeStatus, TestCaseResultProps } from "@/types/DbTypes";
-import { Accordion, AccordionButton, AccordionItem, AccordionPanel, Box, Button, Flex, Textarea, Tooltip, useClipboard } from "@chakra-ui/react";
+import { Accordion, AccordionButton, AccordionItem, AccordionPanel, Box, Button, Divider, Flex, Textarea, Tooltip, useClipboard } from "@chakra-ui/react";
 import { useRef, useState } from "react";
 import { GoCopy, GoDownload } from "react-icons/go";
 import ReactDiffViewer from "react-diff-viewer-continued";
@@ -61,29 +61,41 @@ const ResultViewer: React.FC<{ title: string, content: string }> = ({ title, con
     </Box>
   )
 }
-
 const TestCaseResult: React.FC<TestCaseResultProps> = ({ testcase, user_result }) => {
   const executedCommand = "./a.out " + testcase.args_file_content;
 
   const panelRef = useRef<HTMLDivElement | null>(null);
+  const { onCopy: copyStdin, hasCopied: hasCopiedStdin } = useClipboard(testcase.stdin_file_content);
+  const [isTooltipOpenStdin, setIsTooltipOpenStdin] = useState(false);
 
   const handleAccordionChange = () => {
     setTimeout(() => {
       if (panelRef.current) {
         panelRef.current.scrollIntoView({ behavior: "smooth", block: "nearest" });
       }
-    }, 10); // アニメーション完了後にスクロール
+    }, 10);
+  };
+
+  const handleCopyStdin = () => {
+    copyStdin();
+    setIsTooltipOpenStdin(true);
+    setTimeout(() => {
+      setIsTooltipOpenStdin(false);
+    }, 1000);
   };
 
   const countLines = (text: string) => {
     return text.split(/\r\n|\r|\n/).length;
-  }
+  };
 
   return (
     <Accordion allowToggle onChange={handleAccordionChange}>
       <AccordionItem isDisabled={user_result.status === "WJ"}>
         <h2>
-          <AccordionButton bg={user_result.status === "AC" ? "green.200" : user_result.status === "WJ" ? "gray.200" : "red.200"}>
+          <AccordionButton
+            bg={user_result.status === "AC" ? "green.100" : user_result.status === "WJ" ? "gray.200" : "red.100"}
+            _hover={user_result.status === "AC" ? { bg: "green.200" } : user_result.status === "WJ" ? { bg: "gray.200" } : { bg: "red.200" }}
+          >
             <Box textAlign="left" width="80%">
               Test Case {testcase.testcase_number}
             </Box>
@@ -94,20 +106,41 @@ const TestCaseResult: React.FC<TestCaseResultProps> = ({ testcase, user_result }
             </Tooltip>
           </AccordionButton>
         </h2>
-        <AccordionPanel pb={4} ref={panelRef}>
-          <Flex mt="2" >
-            <Box>
+        <AccordionPanel p={4} ref={panelRef}>
+          <Flex mt="2">
+            <Box flex="1" mr={4}>
               <h3>Executed Command</h3>
-              <Textarea value={executedCommand} readOnly />
+              <Box position="relative" mt="2">
+                <Textarea value={executedCommand} readOnly />
+              </Box>
+
             </Box>
 
-            <Box>
-              <h3>Standard Input</h3>
-              <Textarea value={testcase.stdin_file_content} readOnly />
+            <Box flex="1" position="relative">
+              <h3 >Standard Input</h3>
+              <Box position="relative" mt="2">
+                <Textarea value={testcase.stdin_file_content} readOnly />
+                <Tooltip label={hasCopiedStdin ? "Copied!" : "Copy"} placement="top" fontSize="12" isOpen={isTooltipOpenStdin}>
+                  <Button
+                    position="absolute"
+                    top="5px"
+                    right="5px"
+                    size="sm"
+                    onClick={handleCopyStdin}
+                    bg="gray.100"
+                    _hover={{ bg: "whiteAlpha.900" }}
+                  >
+                    <GoCopy />
+                  </Button>
+                </Tooltip>
+              </Box>
             </Box>
           </Flex>
           <br />
-          {/* 10000行以上はreact-diff-viewerがクソ重くなるのでTextareaで表示 */}
+          <Divider />
+          <br />
+
+
           {Math.max(countLines(user_result.output_content), countLines(testcase.answer_file_content)) > 10000 ? (
             <Box>
               <text>"Too many lines to display in diff style" </text>
@@ -141,9 +174,11 @@ const TestCaseResult: React.FC<TestCaseResultProps> = ({ testcase, user_result }
             </Box>
           )}
         </AccordionPanel>
-      </AccordionItem >
+      </AccordionItem>
     </Accordion >
-  )
-}
+  );
+};
+
+
 
 export default TestCaseResult;
