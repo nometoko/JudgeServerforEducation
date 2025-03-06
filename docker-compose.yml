@@ -10,22 +10,26 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
       - POSTGRES_INITDB_ARGS=--encoding=UTF-8 --locale=C
 
   backend:
+    platform: linux/amd64
     build:
       context: .
       dockerfile: ./dockerfiles/dockerfile_backend
     ports:
-      - "8000:8000"
+      - "8080:8080"
     depends_on:
       - db
     env_file:
       - ./backend/.env
     environment:
       - DATABASE_URL=postgresql://postgres:postgres@db:5432/postgres  # DB接続情報
+      - POSTGRES_SERVER=db
 
   frontend:
+    platform: linux/amd64
     build:
       context: .
       dockerfile: ./dockerfiles/dockerfile_frontend
