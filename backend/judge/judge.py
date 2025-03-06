@@ -18,11 +18,11 @@ def judge(
 
     db = next(deps.get_db())
     try:
-        exec_dir = os.path.join(os.getenv("ROOT_DIR"), os.getenv("EXEC_DIR"))
+        exec_dir = os.path.join("..", os.getenv("EXEC_DIR"))
         files_dir_path: str = os.path.join(exec_dir, submission_id)
 
         executable_path: str = f"./{constants.PROG}"
-        static_dir = os.path.join(os.getenv("ROOT_DIR"), os.getenv("STATIC_DIR"))
+        static_dir = os.path.join("..", os.getenv("STATIC_DIR"))
 
         submission_status = judge_results.AC.value
 

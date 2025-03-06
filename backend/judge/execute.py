@@ -38,7 +38,7 @@ def execute_command(command: str, submission_id: str, execute_delay: int = 10000
     timeout: float = execute_delay / 1000
     command = ["/bin/sh", "-c", command]
     print(command)
-    exec_dir = f"{os.getenv('ROOT_DIR')}/{os.getenv('EXEC_DIR')}/{submission_id}"
+    exec_dir = f"../{os.getenv('EXEC_DIR')}/{submission_id}"
     try:
         if input_file:
             proc = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=input_file, cwd=exec_dir, text=True)
@@ -46,9 +46,9 @@ def execute_command(command: str, submission_id: str, execute_delay: int = 10000
             proc = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=exec_dir, text=True)
         stdout, stderr = proc.communicate(timeout=timeout)
         if stderr:
-            print(stderr.decode("utf-8"))
+            print(stderr)
             print("error")
-            raise RuntimeError(stderr.decode("utf-8"))
+            raise RuntimeError(stderr)
     except subprocess.TimeoutExpired:
         proc.kill()
         stdout, stderr = proc.communicate()

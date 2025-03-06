@@ -8,4 +8,5 @@ venv/
 
 app/db/postgres*
 static/
+*.tar.gz
 

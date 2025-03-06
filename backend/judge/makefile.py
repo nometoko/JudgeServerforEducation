@@ -7,7 +7,7 @@ def have_makefile(exec_dir: str) -> bool:
     return os.path.exists(os.path.join(exec_dir, constants.MAKEFILE_FILENAME))
 
 def copy_makefile(exec_dir: str):
-    makefile_filepath = os.path.join(os.getenv("ROOT_DIR"), os.getenv("EXEC_DIR"), constants.MAKEFILE_FILENAME)
+    makefile_filepath = os.path.join("..", os.getenv("EXEC_DIR"), constants.MAKEFILE_FILENAME)
     # Copy the Makefile to the exec dir
     with open(makefile_filepath, "r") as f:
         with open(os.path.join(exec_dir, constants.MAKEFILE_FILENAME), "w") as f2:

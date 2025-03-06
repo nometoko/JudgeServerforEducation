@@ -34,7 +34,7 @@ async def receive_file(
     db: Session = Depends(deps.get_db),
     ) -> str:
 
-    exec_dir = os.path.join(os.getenv("ROOT_DIR"), os.getenv("EXEC_DIR"))
+    exec_dir = os.path.join("..", os.getenv("EXEC_DIR"))
     submission = schemas.SubmissionCreate(user_name=user.authUserName, problem_id=problem_id)
     created_submission = crud.create_submission(db, submission)
 

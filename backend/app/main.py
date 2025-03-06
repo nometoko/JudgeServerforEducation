@@ -7,7 +7,6 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 
 from auth import login, create_new_user, change_password, logout
-from utils.get_root_dir import get_root_dir
 import dotenv
 
 from app.core.config import settings
@@ -38,13 +37,13 @@ async def handler(request: Request, exc: RequestValidationError) -> JSONResponse
 
 
 # 環境変数を読み込む
-ROOT_DIR = get_root_dir()
-os.environ["ROOT_DIR"] = ROOT_DIR
-dotenv.load_dotenv(f"{ROOT_DIR}/frontend/.env")
-print(os.getenv("PEPPER"))
-
-exec_dir = os.path.join(ROOT_DIR, os.getenv("EXEC_DIR"))
-dir_list = [os.path.join(exec_dir, dir_name) for dir_name in os.listdir(exec_dir) if os.path.isdir(os.path.join(exec_dir, dir_name))]
+dotenv.load_dotenv("./.env")
+exec_dir = os.path.join("..", os.getenv("EXEC_DIR"))
+dir_list = [
+    os.path.join(exec_dir, dir_name)
+    for dir_name in os.listdir(exec_dir)
+    if os.path.isdir(os.path.join(exec_dir, dir_name))
+]
 for dir_path in dir_list:
     shutil.rmtree(dir_path)
 
@@ -53,8 +52,8 @@ from app.db.base_class import Base
 
 # データベースに初期データを挿入
 seed.delete_all_db_data()
-seed.insert_problem_info(f"{ROOT_DIR}/static", "seed_data/problems.json")
-seed.insert_user_info(f"{ROOT_DIR}/static/seed_data/users_2025.json")
+seed.insert_problem_info("../static", "seed_data/problems.json")
+seed.insert_user_info("../static/seed_data/users_2025.json")
 
 ##### 以下は本番環境想定
 ## Check required environment variables
