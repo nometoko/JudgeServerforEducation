@@ -22,21 +22,20 @@ class TokenData(BaseModel):
 
 # リクエストから JWT トークンを検証し、現在のユーザ情報を取得する依存関数
 async def get_current_user(request: Request):
-
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="認証情報が無効です",
         headers={"WWW-Authenticate": "Bearer"},
     )
-    print("get_current_user...")
+    # print("get_current_user...")
     try:
         token = request.cookies.get("token")
-        print("token: ", token)
-        payload = jwt.decode(token, os.getenv("SECRET_KEY") , algorithms=[SIG_ALGORITHM])
+        # print("token: ", token)
+        payload = jwt.decode(token, os.getenv("SECRET_KEY"), algorithms=[SIG_ALGORITHM])
         username: str = payload.get("user")
-        print("username: ", username)
-        print("joined_date: ", payload.get("joined_date"))
-        print("authUserExp: ", payload.get("authUserExp"))
+        # print("username: ", username)
+        # print("joined_date: ", payload.get("joined_date"))
+        # print("authUserExp: ", payload.get("authUserExp"))
         if username is None:
             raise credentials_exception
         token_data = TokenData(authUserName=username, authJoinedDate=payload.get("joined_date"), authUserExp=payload.get("authUserExp"))
