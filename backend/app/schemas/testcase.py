@@ -25,3 +25,12 @@ class TestcaseResponse(BaseModel):
     stdin_file_content: Text
     answer_file_content: Text
     input_file_content: Optional[Text] = None
+
+class TestcaseWithPathResponse(BaseModel):
+    problem_id: int
+    testcase_number: int
+    args_file_path: str
+    stdin_file_path: str
+    input_file_path: str
+    output_file_name: str
+    answer_file_path: str

@@ -8,8 +8,8 @@ class SubmissionResultCreate(BaseModel):
     status: str = "WJ"
 
 class SubmissionResultUpdate(BaseModel):
-    output_content: Optional[str]
-    status: Optional[str]
+    output_content: str = ''
+    status: str
 
 class SubmissionResultResponse(BaseModel):
     submission_id: str
