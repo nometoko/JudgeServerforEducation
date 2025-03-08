@@ -5,7 +5,7 @@ FROM node:20
 WORKDIR /app
 
 # ソースコードをコピー
-COPY ./frontend .
+COPY ./frontend /app
 RUN npm install --legacy-peer-deps
 # ポートを開放（Viteの場合は5173、Next.jsは3000）
 EXPOSE 5173
