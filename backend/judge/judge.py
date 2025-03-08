@@ -20,11 +20,14 @@ def judge(
 
     db = next(deps.get_db())
     try:
-        exec_dir = os.path.join("..", os.getenv("EXEC_DIR"))
+        exec_dir = os.getenv("EXEC_DIR")
+        if not exec_dir:
+            return
+
         files_dir_path: str = os.path.join(exec_dir, submission_id)
 
         executable_path: str = f"./{constants.PROG}"
-        static_dir = os.path.join("..", os.getenv("STATIC_DIR"))
+        static_dir = os.getenv("STATIC_DIR")
 
         submission_status = judge_results.AC.value
 
@@ -54,20 +57,18 @@ def judge(
                     return None
 
                 if not os.path.islink(dist_path):
-                    # files_dir_pathからの相対パスで指定
-                    os.symlink(os.path.join("..", input_path), dist_path)
+                    os.symlink(input_path, dist_path)
                 else:
                     os.unlink(dist_path)
-                    # files_dir_pathからの相対パスで指定
-                    os.symlink(os.path.join("..", input_path), dist_path)
+                    os.symlink(input_path, dist_path)
 
             status = None
             try:
                 if stdin_file:
-                    output = execute.execute_command(command, submission_id, constants.EXECUTE_DELAY, stdin_file)
+                    output = execute.execute_command(command, files_dir_path, constants.EXECUTE_DELAY, stdin_file)
                     stdin_file.close()
                 else:
-                    output = execute.execute_command(command, submission_id, constants.EXECUTE_DELAY)
+                    output = execute.execute_command(command, files_dir_path, constants.EXECUTE_DELAY)
 
                 if testcase.output_file_name:
                     output_path = os.path.join(files_dir_path, testcase.output_file_name)

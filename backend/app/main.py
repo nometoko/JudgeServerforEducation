@@ -29,16 +29,15 @@ for r in app.routes:
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
-
 @app.exception_handler(RequestValidationError)
 async def handler(request: Request, exc: RequestValidationError) -> JSONResponse:
     print(exc)
     return JSONResponse(content={}, status_code=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
+exec_dir = os.getenv("EXEC_DIR")
+if not exec_dir:
+    raise EnvironmentError("EXEC_DIR environment variable not set")
 
-# 環境変数を読み込む
-dotenv.load_dotenv("./.env")
-exec_dir = os.path.join("..", os.getenv("EXEC_DIR"))
 dir_list = [
     os.path.join(exec_dir, dir_name)
     for dir_name in os.listdir(exec_dir)

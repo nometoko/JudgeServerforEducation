@@ -17,7 +17,10 @@ async def get_submitted_files(
     submission_id: str,
 ) -> List[FileListResponse]:
 
-    exec_dir = os.path.join("..", os.getenv("EXEC_DIR"))
+    exec_dir = os.getenv("EXEC_DIR")
+    if not exec_dir:
+        raise HTTPException(status_code=500, detail="EXEC_DIR environment variable not set")
+
     dir_path = os.path.join(exec_dir, submission_id)
 
     files = [filename for filename in os.listdir(dir_path) if filename.endswith((".c", ".h"))]

@@ -34,17 +34,20 @@ async def receive_file(
     db: Session = Depends(deps.get_db),
     ) -> str:
 
-    exec_dir = os.path.join("..", os.getenv("EXEC_DIR"))
+    exec_dir = os.getenv("EXEC_DIR")
+    if not exec_dir:
+        raise HTTPException(status_code=500, detail="EXEC_DIR environment variable not set")
+
     submission = schemas.SubmissionCreate(user_name=user.authUserName, problem_id=problem_id)
     created_submission = crud.create_submission(db, submission)
 
-    submission_id = created_submission.submission_id
+    submission_id = str(created_submission.submission_id)
 
-    save_dir = os.path.join(exec_dir, submission_id)
+    save_dir = os.path.join(exec_dir, str(submission_id))
     os.makedirs(save_dir, exist_ok=False)
 
     for file in files:
-        if file.filename == "":
+        if not file.filename:
             continue
 
         file_path: str = os.path.join(save_dir, file.filename)

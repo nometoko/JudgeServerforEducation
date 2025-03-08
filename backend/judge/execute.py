@@ -47,13 +47,12 @@ def make_clean(exec_dir: str) -> None:
 
 def execute_command(
     command: str,
-    submission_id: str,
+    exec_dir: str,
     execute_delay: int = 10000000,
     input_file: TextIOWrapper = None,
 ) -> str:
     timeout: float = execute_delay / 1000
     command = ["/bin/sh", "-c", command]
-    exec_dir = f"../{os.getenv('EXEC_DIR')}/{submission_id}"
 
     try:
         if input_file:
