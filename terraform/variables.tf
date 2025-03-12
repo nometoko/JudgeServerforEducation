@@ -1,6 +1,6 @@
 variable "project_id" {
-    description = "Project ID"
-    type        = string
+  description = "Project ID"
+  type        = string
 }
 
 variable "region" {
@@ -13,14 +13,9 @@ variable "backend_image" {
   type        = string
 }
 
-variable "frontend_image" {
-  description = "Frontend Image URL"
-  type        = string
-}
-
 variable "service_account_name" {
-    description = "Service Account Name"
-    type        = string
+  description = "Service Account Name"
+  type        = string
 }
 
 variable "db_instance_name" {

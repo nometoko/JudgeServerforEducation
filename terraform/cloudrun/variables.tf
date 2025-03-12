@@ -3,19 +3,14 @@ variable "backend_image" {
   type        = string
 }
 
-variable "frontend_image" {
-  description = "Frontend Container Image"
-  type        = string
-}
-
 variable "region" {
   description = "GCP Region"
   type        = string
 }
 
 variable "project_id" {
-    description = "Project ID"
-    type        = string
+  description = "Project ID"
+  type        = string
 }
 
 variable "db_instance_name" {
@@ -36,7 +31,7 @@ variable "db_user" {
 variable "db_password" {
   description = "Database Password"
   type        = string
-  sensitive = true
+  sensitive   = true
 }
 
 variable "service_account_email" {
