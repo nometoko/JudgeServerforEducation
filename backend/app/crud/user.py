@@ -10,7 +10,7 @@ def create_user(db: Session, user: schemas.UserCreate) -> models.User:
     db.add(db_user)
     db.commit()
     db.refresh(db_user)
-    return user
+    return db_user
 
 def change_password_db(db: Session, username: str, new_password: str) -> int:
     affected_rows = db.query(models.User).filter(
@@ -25,8 +25,8 @@ def change_password_db(db: Session, username: str, new_password: str) -> int:
 #                .all()
 #    return [result.password for result in results]
 
-def get_user_by_user_name(db: Session, username: str) -> models.User:
-    return db.query(models.User).filter(models.User.user_name == username).first()
+def get_user_by_user_name(db: Session, user_name: str) -> models.User | None:
+    return db.query(models.User).filter(models.User.user_name == user_name).first()
 
 def get_password_by_username(username: str, db: Session) -> Optional[str]:
     result = db.query(models.User.password)\

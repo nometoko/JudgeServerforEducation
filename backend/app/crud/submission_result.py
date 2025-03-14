@@ -15,7 +15,7 @@ def get_submission_results_by_submission_id(db: Session, submission_id: str) -> 
     return db.query(models.SubmissionResult).filter(models.SubmissionResult.submission_id == submission_id).all()
 
 # patch
-def update_submission_result(db: Session, submission_id: str, testcase_number: int, submission_result: schemas.SubmissionResultUpdate) -> models.SubmissionResult:
+def update_submission_result(db: Session, submission_id: str, testcase_number: int, submission_result: schemas.SubmissionResultUpdate) -> models.SubmissionResult | None:
     db_submission = db.query(models.SubmissionResult).filter(models.SubmissionResult.submission_id == submission_id).filter(models.SubmissionResult.testcase_number == testcase_number).first()
     if db_submission:
         db_submission.status = submission_result.status
