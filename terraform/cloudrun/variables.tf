@@ -14,8 +14,8 @@ variable "region" {
 }
 
 variable "project_id" {
-    description = "Project ID"
-    type        = string
+  description = "Project ID"
+  type        = string
 }
 
 variable "db_instance_name" {
@@ -36,7 +36,7 @@ variable "db_user" {
 variable "db_password" {
   description = "Database Password"
   type        = string
-  sensitive = true
+  sensitive   = true
 }
 
 variable "service_account_email" {

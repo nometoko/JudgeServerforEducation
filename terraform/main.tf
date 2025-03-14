@@ -15,8 +15,8 @@ provider "google" {
 }
 
 module "iam" {
-  source = "./iam"
-  project_id = var.project_id
+  source               = "./iam"
+  project_id           = var.project_id
   service_account_name = var.service_account_name
 }
 
@@ -41,15 +41,15 @@ module "cloudrun" {
 }
 
 module "cloudsql" {
-  source             = "./cloudsql"
-  region             = var.region
-  project_id         = var.project_id
-  vpc_self_link      = module.networking.vpc_self_link
-  db_instance_name   = var.db_instance_name
-  db_tier            = var.db_tier
-  db_name            = var.db_name
-  db_user            = var.db_user
-  db_password        = var.db_password
+  source           = "./cloudsql"
+  region           = var.region
+  project_id       = var.project_id
+  vpc_self_link    = module.networking.vpc_self_link
+  db_instance_name = var.db_instance_name
+  db_tier          = var.db_tier
+  db_name          = var.db_name
+  db_user          = var.db_user
+  db_password      = var.db_password
 }
 
 output "backend_url" {
