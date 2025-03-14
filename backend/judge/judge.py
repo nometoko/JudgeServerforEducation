@@ -28,6 +28,8 @@ def judge(
 
         executable_path: str = f"./{constants.PROG}"
         static_dir = os.getenv("STATIC_DIR")
+        if not static_dir:
+            return
 
         submission_status = judge_results.AC.value
 
@@ -38,18 +40,21 @@ def judge(
             stdin_file = None
 
             if testcase.args_file_path:
-                arg_path = os.path.join(static_dir, testcase.args_file_path)
+                args_file_path = str(testcase.args_file_path)
+                arg_path = os.path.join(static_dir, args_file_path)
                 with open(arg_path) as f:
                     arg_content = f.read()
                 for arg in arg_content.split():
                     command += " " + arg
 
             if testcase.stdin_file_path:
-                stdin_path = os.path.join(static_dir, testcase.stdin_file_path)
+                stdin_file_path = str(testcase.stdin_file_path)
+                stdin_path = os.path.join(static_dir, stdin_file_path)
                 stdin_file = open(stdin_path, "r")
 
             if testcase.input_file_path:
-                input_path = os.path.join(static_dir, testcase.input_file_path)
+                input_path = str(testcase.input_file_path)
+                input_path = os.path.join(static_dir, input_path)
                 dist_path = os.path.join(files_dir_path, os.path.basename(input_path))
 
                 if not os.path.exists(input_path):
@@ -71,12 +76,14 @@ def judge(
                     output = execute.execute_command(command, files_dir_path, constants.EXECUTE_DELAY)
 
                 if testcase.output_file_name:
-                    output_path = os.path.join(files_dir_path, testcase.output_file_name)
+                    filename = str(testcase.output_file_name)
+                    output_path = os.path.join(files_dir_path, filename)
                     if os.path.exists(output_path):
                         with open(output_path, "r") as f:
                             output = f.read()
                         os.remove(output_path)
-                answer_path = os.path.join(static_dir, testcase.answer_file_path)
+
+                answer_path = os.path.join(static_dir, str(testcase.answer_file_path))
                 with open(answer_path) as f:
                     answer_content = f.read()
 
@@ -94,6 +101,7 @@ def judge(
 
             testcase_number = testcase.testcase_number
             update_submission_result = schemas.SubmissionResultUpdate(status=status, output_content=output)
+
             crud.update_submission_result(db, submission_id, testcase_number, update_submission_result)
             # statusの優先度: RE > WA > TLE > AC
             if submission_status == judge_results.AC.value:

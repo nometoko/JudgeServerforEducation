@@ -49,7 +49,7 @@ def execute_command(
     command: str,
     exec_dir: str,
     execute_delay: int = 10000000,
-    input_file: TextIOWrapper = None,
+    input_file: TextIOWrapper | None = None,
 ) -> str:
     timeout: float = execute_delay / 1000
     command = ["/bin/sh", "-c", command]
@@ -62,19 +62,20 @@ def execute_command(
         stdout, stderr = proc.communicate(timeout=timeout)
         if stderr:
             raise RuntimeError(stderr)
+
+    except RuntimeError as e:
+        raise RuntimeError(e)
     except subprocess.TimeoutExpired:
         proc.kill()
         stdout, stderr = proc.communicate()
-        print("timeout")
         raise TimeoutError
     except subprocess.CalledProcessError:
         proc.kill()
-        raise RuntimeError
+        raise RuntimeError("CalledProcessError")
     except UnicodeDecodeError:
         proc.kill()
-        raise RuntimeError
+        raise RuntimeError("UnicodeDecodeError")
     except Exception as e:
         proc.kill()
-        print(e)
-        raise RuntimeError
+        raise RuntimeError(e)
     return stdout
