@@ -7,3 +7,8 @@ output "vpc_connector_name" {
   description = "VPC Connector ID"
   value = google_vpc_access_connector.vpc_connector.name
 }
+
+output "private_ip" {
+  description = "Private IP Address"
+  value = google_compute_global_address.private_ip_alloc.address
+}

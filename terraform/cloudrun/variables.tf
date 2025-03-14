@@ -3,11 +3,6 @@ variable "backend_image" {
   type        = string
 }
 
-variable "frontend_image" {
-  description = "Frontend Container Image"
-  type        = string
-}
-
 variable "region" {
   description = "GCP Region"
   type        = string

@@ -10,6 +10,8 @@ resource "google_sql_database_instance" "db" {
       private_network = var.vpc_self_link
     }
   }
+
+  depends_on = [  ]
 }
 
 resource "google_sql_database" "database" {

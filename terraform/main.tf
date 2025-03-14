@@ -28,7 +28,6 @@ module "networking" {
 module "cloudrun" {
   source                = "./cloudrun"
   backend_image         = var.backend_image
-  frontend_image        = var.frontend_image
   project_id            = var.project_id
   region                = var.region
   db_instance_name      = var.db_instance_name

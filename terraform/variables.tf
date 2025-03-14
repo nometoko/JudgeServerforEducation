@@ -13,11 +13,6 @@ variable "backend_image" {
   type        = string
 }
 
-variable "frontend_image" {
-  description = "Frontend Image URL"
-  type        = string
-}
-
 variable "service_account_name" {
   description = "Service Account Name"
   type        = string
