@@ -9,4 +9,5 @@ def delete_all_db_data():
     crud.delete_all_testcases(db)
     crud.delete_all_testcases_with_path(db)
     crud.delete_all_problems(db)
+    crud.delete_all_image_paths(db)
     crud.delete_all_users(db)

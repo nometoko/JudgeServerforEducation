@@ -1,10 +1,12 @@
 import os, shutil
 import uvicorn
 from fastapi import FastAPI, Request, status
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, RedirectResponse
 from fastapi.exceptions import RequestValidationError
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
+
+from starlette.responses import FileResponse
 
 from auth import login, create_new_user, change_password, logout
 import dotenv
@@ -24,16 +26,40 @@ app.include_router(create_new_user.router)
 app.include_router(change_password.router)
 app.include_router(handler_router, prefix="/handler")
 # app.include_router(protected_router, prefix="/protected")
+
+app.mount("/photos", StaticFiles(directory="static/photos"), name="static")
+app.mount("/static", StaticFiles(directory="static/js", html=True), name="static")
+
+@app.get("/top/{full_path:path}")
+async def catch_all(full_path: str):
+    return FileResponse("static/js/index.html")
+
+@app.get("/")
+async def root():
+    return RedirectResponse("/top")
+
+@app.middleware("http")
+async def print_request_info(request: Request, call_next):
+    print(f"Path: {request.url.path}, Root Path: {request.scope.get('root_path')}")
+    response = await call_next(request)
+    return response
+
 for r in app.routes:
     print(r)
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
+# すべてのフロントエンドのパスを index.html にリダイレクト
+# @app.get("/top/{full_path:path}")
+# async def catch_all(full_path: str):
+#     return FileResponse("frontend/dist/index.html")
+
 
 @app.exception_handler(RequestValidationError)
 async def handler(request: Request, exc: RequestValidationError) -> JSONResponse:
     print(exc)
     return JSONResponse(content={}, status_code=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
+
+dotenv.load_dotenv()
 exec_dir = os.getenv("EXEC_DIR")
 if not exec_dir:
     raise EnvironmentError("EXEC_DIR environment variable not set")
@@ -65,41 +91,8 @@ seed.insert_user_info("../static/seed_data/users_2025.json")
 #    raise EnvironmentError(f"Missing environment variables: {', '.join(missing_env_vars)}")
 #####
 
-# CORS
-# 許可するオリジンを指定 (すなわちフロントエンドのURL)
-origins = [
-    f"http://{os.getenv('PUBLIC_SERVER_IP')}:{os.getenv('FRONTEND_PORT')}",
-]
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,  # Cookieを使う場合はTrue
-    allow_methods=["*"],  # 全てのHTTPメソッド (GETとか)を許可
-    allow_headers=["*"],  # 全てのHTTPヘッダを許可、わかってないです
-    # allow_headers=["Content-Type", "Authorization"],  # 必要なヘッダーのみ許可、他が必要かは検証
-)
-
 # データベース接続 (未実装)
 # ログイン (未実装)
 
-
 # APIの定義 (適宜追加すること)
-@app.get("/")
-async def hello():
-    return {"message": "Hello,World"}
 
-
-@app.get("/tmp")
-async def tmp():
-    return {"message": "Happy"}
-
-
-# サーバー開始
-if __name__ == "__main__":
-    uvicorn.run(
-        app,
-        host=os.getenv("PRIVATE_SERVER_IP"),
-        port=int(os.getenv("BACKEND_PORT")),
-        log_level="debug",
-    )

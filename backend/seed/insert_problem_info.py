@@ -58,6 +58,9 @@ def insert_problem_info(seed_root_dir: str, json_file_name: str):
     # for problem in problems
     for problem_info in problems_info:
         problems_info = problem_info.problem
+        if crud.get_problem_by_id(db, problems_info.problem_id):
+            continue
+
         created_problem = crud.create_problem(db, problems_info)
         if not created_problem:
             raise Exception("Problem creation failed")
