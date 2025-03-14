@@ -101,7 +101,7 @@ const Login = () => {
     <Flex h="100vh" align="center" justify="center">
       {/* 左上のロゴ */}
       <Box position="absolute" top="10px" left="10px">
-        <Image src="../../img/funalab.png" alt="funalab logo" boxSize="100px" />
+        <Image src="/photos/funalab.png" alt="funalab logo" boxSize="100px" />
       </Box>
 
       <Container

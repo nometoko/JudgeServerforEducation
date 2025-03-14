@@ -2,17 +2,12 @@ import React, { useEffect, useState } from "react";
 import { PageType } from "../types/PageType";
 import { useLocation, useNavigate } from "react-router-dom";
 import myaxios from "./axios_client";
+import { AuthData } from "@/types/DbTypes";
 
 type Props = {
   component: React.ReactNode;
   pageType: PageType;
 };
-
-export interface AuthData {
-  authUserName: string;
-  authJoinedDate: string;
-  authUserExp: string;
-}
 
 export const AuthGuard: React.FC<Props> = ({ component, pageType }) => {
   const [authData, setAuthData] = useState<AuthData | null>(null);
@@ -47,10 +42,10 @@ export const AuthGuard: React.FC<Props> = ({ component, pageType }) => {
     } else if (pageType === PageType.Public) {
       allowRoute = true;
     } else if (pageType === PageType.Private) {
-      [allowRoute, message] = CheckAccessPermission({
-        authUserName: authData.authUserName,
-        authJoinedDate: new Date(authData.authJoinedDate),
-      });
+      allowRoute = CheckAccessPermission(new Date(authData.authJoinedDate));
+      if (!allowRoute) {
+        message = "ページへのアクセス権がありません。\nアクセス権のあるアカウントでログインしてください。";
+      }
     }
   } else {
     allowRoute = false;
@@ -64,22 +59,12 @@ export const AuthGuard: React.FC<Props> = ({ component, pageType }) => {
   return <>{component}</>;
 };
 
-type AuthUserProps = {
-  authUserName: string;
-  authJoinedDate: Date;
-};
-
-export const CheckAccessPermission = ({
-  authJoinedDate,
-}: AuthUserProps): [boolean, string] => {
+export const CheckAccessPermission = ( authJoinedDate: Date): boolean => {
   // 例: 入学年度が今年より前の場合はアクセス許可（senior student）
   if (authJoinedDate.getFullYear() < new Date().getFullYear()) {
-    return [true, ""];
+    return true;
   } else {
-    return [
-      false,
-      "ページへのアクセス権がありません。\nアクセス権のあるアカウントでログインしてください。",
-    ];
+    return  false;
   }
 };
 

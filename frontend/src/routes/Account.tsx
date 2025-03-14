@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { DefaultLayout } from "../components/DefaultLayout";
 import myaxios from "@/providers/axios_client";
-import { AuthData } from "@/providers/AuthGuard";
+import { AuthData } from "@/types/DbTypes";
 
 const Account = () => {
     const [authData, setAuthData] = useState<AuthData | null>(null);

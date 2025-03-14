@@ -24,13 +24,14 @@ import NotFound from '@/routes/NotFound';
 import B3Status from '@/routes/B3Status';
 import Tools from '@/routes/Tools';
 import LabMembers from '@/routes/LabMembers'
-import { AuthGuard } from "./providers/AuthGuard";
-import { PageType } from "./types/PageType";
+import { AuthGuard } from "@/providers/AuthGuard";
+import { PageType } from "@/types/PageType";
 import { AuthProvider } from "./providers/AuthContext";
 
 // import Dashboard from './routes/Dashboard';
 
 import Submission from './routes/Submission';
+import { RootAuthGuard } from './providers/RootAuthGuard';
 
 const App: React.FC = () => {
 
@@ -85,29 +86,28 @@ const App: React.FC = () => {
 
   return (
     <ChakraProvider >
-      <BrowserRouter>
+      <BrowserRouter basename='/top'>
         <AuthProvider>
           {/* <AxiosClientProvider> */}
           <Myaxios_provider>
-            <Routes>
-              <Route path="/login" element={<Login />} />
-              <Route path="/dashboard" element={<AuthGuard component={<DashboardPage />} pageType={PageType.Public} />} />
-              <Route path="/problem/:problemId" element={<AuthGuard component={<Problem />} pageType={PageType.Public} />} />
-              <Route path="/submission/:submissionId" element={<AuthGuard component={<Submission />} pageType={PageType.Public} />} />
-              <Route path="/results" element={<AuthGuard component={<Results />} pageType={PageType.Public} />} />
-              {/*<Route path="/b3status" element={<B3Status />} />*/}
-              <Route path="/b3status" element={<AuthGuard component={<B3Status />} pageType={PageType.Private} />} />
-              {/*<Route path="/submission/:submissionId" element={<RouteAuthGuard component={<SubmissionPage />} pageType={PageType.Public} />} />*/}
-              <Route path="/test" />
-              <Route path="/account" element={<Account />} />
-              <Route path="/tools" element={<Tools />} />
-              <Route path="/LabMembers" element={<LabMembers />} />
+              <Routes>
+                <Route path="/login" element={<Login />} />
+                <Route path="/dashboard" element={<AuthGuard component={<DashboardPage />} pageType={PageType.Public} />} />
+                <Route path="/problem/:problemId" element={<AuthGuard component={<Problem />} pageType={PageType.Public} />} />
+                <Route path="/submission/:submissionId" element={<AuthGuard component={<Submission />} pageType={PageType.Public} />} />
+                <Route path="/results" element={<AuthGuard component={<Results />} pageType={PageType.Public} />} />
+                {/*<Route path="/b3status" element={<B3Status />} />*/}
+                <Route path="/b3status" element={<AuthGuard component={<B3Status />} pageType={PageType.Private} />} />
+                {/*<Route path="/submission/:submissionId" element={<RouteAuthGuard component={<SubmissionPage />} pageType={PageType.Public} />} />*/}
+                <Route path="/test" />
+                <Route path="/account" element={<AuthGuard component={<Account />} pageType={PageType.Public} />} />
+                <Route path="/tools" element={<AuthGuard component={<Tools />} pageType={PageType.Public} />} />
+                <Route path="/LabMembers" element={<AuthGuard component={<LabMembers />} pageType={PageType.Public} />} />
 
-              <Route path="/account" element={<AuthGuard component={<Account />} pageType={PageType.Public} />} />
-              <Route path="/" element={<Navigate to="/login" />} />
-              <Route path="/*" element={<NotFound />} />
-
-            </Routes>
+                <Route path="/account" element={<AuthGuard component={<Account />} pageType={PageType.Public} />} />
+                <Route path="/" element={<RootAuthGuard component1={<Navigate to="/dashboard" />} component2={<Navigate to="/login" />} />} />
+                <Route path="/*" element={<NotFound />} />
+              </Routes>
           </Myaxios_provider>
           {/* </AxiosClientProvider> */}
         </AuthProvider>

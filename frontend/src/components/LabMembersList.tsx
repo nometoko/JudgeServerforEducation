@@ -1,9 +1,4 @@
-import { useState, useEffect } from 'react';
 import { Box, SimpleGrid, Image, Text, Heading, Divider } from '@chakra-ui/react';
-
-const SERVER_IP: string = import.meta.env.VITE_PUBLIC_SERVER_IP;
-const BACKEND_PORT: string = import.meta.env.VITE_BACKEND_PORT;
-const BACKEND_URL: string = `http://${SERVER_IP}:${BACKEND_PORT}`;
 
 const members = [
     { name: "Alice Johnson", photo: "https://via.placeholder.com/100", status: "Professor" },

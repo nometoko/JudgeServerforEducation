@@ -6,9 +6,9 @@ import { LuListCheck } from "react-icons/lu";
 import { FaTableCellsRowLock } from "react-icons/fa6";
 import { AiFillTool } from "react-icons/ai";
 import { useState } from "react";
-import { AuthData } from "../providers/AuthGuard";
+import { AuthData } from "@/types/DbTypes";
 import { myaxios } from "../providers/axios_client";
-
+import { CheckAccessPermission } from "@/providers/AuthGuard";
 
 interface DefaultLayoutProps {
     children: ReactNode;
@@ -19,6 +19,7 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
     //const authUserName = localStorage.getItem("authUserName");
     const [authData, setAuthData] = useState<AuthData | null>(null);
     const [username, setUsername] = useState<string>("");
+    const [isSeniorStudent, setIsSeniorStudent] = useState<boolean>(false);
 
 
     useEffect(() => {
@@ -37,6 +38,12 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
 
     useEffect(() => {
         if (authData) {
+            setIsSeniorStudent(CheckAccessPermission(new Date(authData.authJoinedDate)));
+        }
+    }, [authData]);
+
+    useEffect(() => {
+        if (authData) {
             setUsername(authData.authUserName);
         }
     }, [authData]);
@@ -52,7 +59,7 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
                 <Box w="250px" h="100vh" bg="gray.800" color="white" p={4} display="flex" flexDirection="column" justifyContent="space-between">
                     <VStack spacing={4} align="stretch">
                         <a href="https://fun.bio.keio.ac.jp/" target="_blank" rel="noopener noreferrer">
-                            <Image src="http://localhost:8080/static/photos/m1/rkimura_is_fighting.jpg" alt="funalab logo" boxSize="100px" mb={4} cursor="pointer" />
+                            <Image src="/photos/m1/rkimura_is_fighting.jpg" alt="funalab logo" boxSize="100px" mb={4} cursor="pointer" />
                         </a>
                         <Button variant="ghost" colorScheme="whiteAlpha" onClick={() => navigate("/dashboard")} justifyContent={"flex-start"}>
                             <MdDashboard size={iconsize} /> {/* アイコンを追加 */}
@@ -64,11 +71,14 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
                             <Box w={iconwidth} />
                             Results
                         </Button>
-                        <Button variant="ghost" colorScheme="whiteAlpha" onClick={() => navigate("/b3status")} justifyContent={"flex-start"}>
-                            <FaTableCellsRowLock size={iconsize} />
-                            <Box w={iconwidth} />
-                            B3 Status
-                        </Button>
+                        {/* isSeniorStudentなら */}
+                        {isSeniorStudent &&
+                            <Button variant="ghost" colorScheme="whiteAlpha" onClick={() => navigate("/b3status")} justifyContent={"flex-start"}>
+                                <FaTableCellsRowLock size={iconsize} />
+                                <Box w={iconwidth} />
+                                B3 Status
+                            </Button>
+                        }
                         <Button variant="ghost" colorScheme="whiteAlpha" onClick={() => navigate("/tools")} justifyContent={"flex-start"}>
                             <AiFillTool size={iconsize} />
                             <Box w={iconwidth} />
@@ -87,7 +97,7 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
                         onClick={() => navigate("/account")}
                         _hover={{ bg: "gray.600" }}
                     >
-                        <Avatar name={username} src="../../img/user-avatar.png" size="md" mr={3} />
+                        <Avatar name={username} size="md" mr={3} />
                         <Text fontSize="lg" fontWeight="bold">{username}</Text>
                     </Box>
                 </Box>

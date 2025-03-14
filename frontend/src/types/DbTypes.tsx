@@ -1,3 +1,10 @@
+
+export interface AuthData {
+  authUserName: string;
+  authJoinedDate: string;
+  authUserExp: string;
+}
+
 export interface UserProps {
     user_name: string;
     joined_date: string;

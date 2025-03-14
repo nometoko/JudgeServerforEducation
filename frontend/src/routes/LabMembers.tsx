@@ -1,7 +1,7 @@
 import DefaultLayout from "@/components/DefaultLayout";
 import LabMembersList from "@/components/LabMembersList"
 
-import { Heading, Divider, Button, Flex, Box } from "@chakra-ui/react";
+import { Heading, Divider, Flex, Box } from "@chakra-ui/react";
 import { FaUsers } from "react-icons/fa"; // アイコンをインポート
 
 

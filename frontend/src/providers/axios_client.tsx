@@ -9,10 +9,10 @@ export const myaxios = axios.create({
 	// 必要に応じてconfigを設定
 });
 
-const SERVER_IP: string = import.meta.env.VITE_PUBLIC_SERVER_IP;
-const BACKEND_PORT: string = import.meta.env.VITE_BACKEND_PORT
+// const SERVER_IP: string = import.meta.env.VITE_PUBLIC_SERVER_IP;
+// const BACKEND_PORT: string = import.meta.env.VITE_BACKEND_PORT
 
-myaxios.defaults.baseURL = `http://${SERVER_IP}:${BACKEND_PORT}`;
+myaxios.defaults.baseURL = `/`;
 myaxios.defaults.withCredentials = true; // クッキーを送信するために必要
 
 // グローバルに使用される変数を他のファイルから読み込めるようにする
