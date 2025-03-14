@@ -21,6 +21,7 @@ from .submission import Submission
 from .submission_result import SubmissionResult
 from .submitted_file import SubmittedFile
 from .submission_with_problem_name import SubmissionWithProblemName
+from .image_path import ImagePath
 
 # __all__ に登録しておくと、from app.models import * などの形でも全モデルが取り込まれる
 __all__ = [
@@ -33,4 +34,5 @@ __all__ = [
     "SubmissionResult",
     "SubmittedFile",
     "SubmissionWithProblemName",
+    "ImagePath",
 ]

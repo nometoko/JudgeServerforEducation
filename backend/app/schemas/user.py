@@ -6,6 +6,8 @@ from pydantic import BaseModel
 class UserCreate(BaseModel):
     user_name: str
     password: str
+    user_fullname: str
+    user_grade: str
     joined_date: datetime
 
 # ユーザー読み取り時のスキーマ

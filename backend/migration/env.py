@@ -4,8 +4,6 @@ from urllib.parse import quote
 
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
-
-from app.core.config import settings
 from app.db.base_class import Base
 
 from alembic import context
@@ -31,9 +29,12 @@ target_metadata = Base.metadata
 # can be acquired:
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
-config.set_section_option(
-    "alembic", "DB_URL", settings.SQLALCHEMY_DATABASE_URI.replace("%", "%%")
-)
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+if not DATABASE_URL:
+    raise EnvironmentError("DATABASE_URL environment variable not set")
+
+config.set_section_option("alembic", "DB_URL", DATABASE_URL)
 
 
 def run_migrations_offline() -> None:
