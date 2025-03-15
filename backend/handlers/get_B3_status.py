@@ -27,10 +27,10 @@ async def get_all_b3_status(db: Session = Depends(deps.get_db)) -> List[B3Status
     problems = crud.get_all_problems(db)
 
     results = []
-    
+
     for user in b3_users:
         user_problem_status = []
-        
+
         for problem in problems:
             # 各ユーザーの問題に対する提出情報を取得
             submissions = crud.get_submissions_by_user_name_and_problem_id(db, user.user_name, problem.problem_id)
