@@ -38,17 +38,6 @@ exec_dir = os.getenv("EXEC_DIR")
 if not exec_dir:
     raise EnvironmentError("EXEC_DIR environment variable not set")
 
-dir_list = [
-    os.path.join(exec_dir, dir_name)
-    for dir_name in os.listdir(exec_dir)
-    if os.path.isdir(os.path.join(exec_dir, dir_name))
-]
-for dir_path in dir_list:
-    shutil.rmtree(dir_path)
-
-from app.db.session import engine
-from app.db.base_class import Base
-
 # データベースに初期データを挿入
 seed.delete_all_db_data()
 seed.insert_problem_info("../static", "seed_data/problems.json")
