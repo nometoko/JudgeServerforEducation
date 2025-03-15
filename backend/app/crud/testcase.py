@@ -27,7 +27,17 @@ def delete_all_testcases_with_path(db: Session) -> None:
     db.commit()
     return None
 
+def delete_testcases_with_path_by_problem_id(db: Session, problem_id: int) -> None:
+    db.query(models.TestcaseWithPath).filter(models.TestcaseWithPath.problem_id == problem_id).delete()
+    db.commit()
+    return None
+
 def delete_all_testcases(db: Session) -> None:
     db.query(models.Testcase).delete()
+    db.commit()
+    return None
+
+def delete_testcases_by_problem_id(db: Session, problem_id: int) -> None:
+    db.query(models.Testcase).filter(models.Testcase.problem_id == problem_id).delete()
     db.commit()
     return None

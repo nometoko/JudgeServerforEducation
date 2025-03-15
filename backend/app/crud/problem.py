@@ -23,3 +23,8 @@ def delete_all_problems(db: Session) -> None:
     db.query(models.Problem).delete()
     db.commit()
     return None
+
+def delete_problem_by_id(db: Session, problem_id: int) -> None:
+    db.query(models.Problem).filter(models.Problem.problem_id == problem_id).delete()
+    db.commit()
+    return None
