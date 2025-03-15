@@ -30,19 +30,16 @@ app.include_router(handler_router, prefix="/handler")
 app.mount("/photos", StaticFiles(directory="static/photos"), name="static")
 app.mount("/static", StaticFiles(directory="static/js", html=True), name="static")
 
+
 @app.get("/top/{full_path:path}")
 async def catch_all(full_path: str):
     return FileResponse("static/js/index.html")
+
 
 @app.get("/")
 async def root():
     return RedirectResponse("/top")
 
-@app.middleware("http")
-async def print_request_info(request: Request, call_next):
-    print(f"Path: {request.url.path}, Root Path: {request.scope.get('root_path')}")
-    response = await call_next(request)
-    return response
 
 for r in app.routes:
     print(r)
@@ -76,7 +73,6 @@ from app.db.session import engine
 from app.db.base_class import Base
 
 # データベースに初期データを挿入
-seed.delete_all_db_data()
 seed.insert_problem_info("../static", "seed_data/problems.json")
 seed.insert_user_info("../static/seed_data/users_2025.json")
 
@@ -95,4 +91,3 @@ seed.insert_user_info("../static/seed_data/users_2025.json")
 # ログイン (未実装)
 
 # APIの定義 (適宜追加すること)
-
