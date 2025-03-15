@@ -44,7 +44,6 @@ def make_clean(exec_dir: str) -> None:
     except subprocess.CalledProcessError as e:
         raise RuntimeError(e.stderr)
 
-
 def execute_command(
     command: str,
     exec_dir: str,
@@ -53,12 +52,14 @@ def execute_command(
 ) -> str:
     timeout: float = execute_delay / 1000
     command = ["/bin/sh", "-c", command]
+    proc = None
 
     try:
         if input_file:
             proc = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=input_file, cwd=exec_dir, text=True)
         else:
             proc = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=exec_dir, text=True)
+
         stdout, stderr = proc.communicate(timeout=timeout)
         if stderr:
             raise RuntimeError(stderr)
@@ -66,16 +67,20 @@ def execute_command(
     except RuntimeError as e:
         raise RuntimeError(e)
     except subprocess.TimeoutExpired:
-        proc.kill()
-        stdout, stderr = proc.communicate()
+        if proc:
+            proc.kill()
         raise TimeoutError
     except subprocess.CalledProcessError:
-        proc.kill()
+        if proc:
+            proc.kill()
         raise RuntimeError("CalledProcessError")
     except UnicodeDecodeError:
-        proc.kill()
+        if proc:
+            proc.kill()
         raise RuntimeError("UnicodeDecodeError")
     except Exception as e:
-        proc.kill()
+        if proc:
+            proc.kill()
         raise RuntimeError(e)
+
     return stdout

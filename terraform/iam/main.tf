@@ -21,11 +21,18 @@ resource "google_project_iam_member" "cloud_sql_client" {
   member  = "serviceAccount:${google_service_account.app_sa.email}"
 }
 
-resource "google_project_iam_member" "storage_access" {
+resource "google_project_iam_member" "storage_object_viewer" {
   project = var.project_id
   role    = "roles/storage.objectViewer"
   member  = "serviceAccount:${google_service_account.app_sa.email}"
 }
+
+resource "google_project_iam_member" "storage_object_creator" {
+  project = var.project_id
+  role    = "roles/storage.objectCreator"
+  member  = "serviceAccount:${google_service_account.app_sa.email}"
+}
+
 
 resource "google_project_iam_member" "vpcaccess_user" {
   project = var.project_id

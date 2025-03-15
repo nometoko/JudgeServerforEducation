@@ -4,6 +4,7 @@ from sqlalchemy.orm import Session
 from concurrent.futures import ThreadPoolExecutor
 from typing import List
 from pydantic import BaseModel
+from google.cloud import storage
 
 import auth, judge
 from app import schemas, crud
@@ -44,7 +45,16 @@ async def receive_file(
     submission_id = str(created_submission.submission_id)
 
     save_dir = os.path.join(exec_dir, str(submission_id))
-    os.makedirs(save_dir, exist_ok=False)
+    os.makedirs(save_dir, exist_ok=True)
+
+    bucket_name = os.getenv("BUCKET_NAME")
+    if not bucket_name:
+        raise HTTPException(status_code=500, detail="BUCKET_NAME environment variable not set")
+
+    print(f"save_dir: {save_dir}")
+
+    client = storage.Client()
+    bucket = client.bucket(bucket_name)
 
     for file in files:
         if not file.filename:
@@ -56,9 +66,12 @@ async def receive_file(
         with open(file_path, "wb") as f:
             shutil.copyfileobj(file.file, f)
 
+        # cloud storageにも保存
+        blob = bucket.blob(os.path.join(str(submission_id), file.filename))
+        blob.upload_from_filename(file_path)
+
         created_submission = check_file_type(file_path)
         if not created_submission.success:
-            os.removedirs(save_dir)
             crud.delete_submission(db, submission_id)
             raise HTTPException(status_code=400, detail=created_submission.msg)
 
@@ -67,6 +80,7 @@ async def receive_file(
     except Exception as e:
         update_submission = schemas.SubmissionUpdate(status="CE", compile_error=e.args[0])
         crud.update_submission_status(db, submission_id, update_submission)
+        shutil.rmtree(save_dir)
         return submission_id
 
     testcases_with_path = crud.get_testcases_with_path_by_problem_id(db, problem_id)
@@ -80,6 +94,7 @@ async def receive_file(
         crud.create_submission_result(db, create_submission_result)
 
     # background_tasks.add_task(judge.judge, submission_id, problem_id, db)
+    print(f"judge function called")
     executor.submit(judge.judge, submission_id, problem_id)
 
     return submission_id

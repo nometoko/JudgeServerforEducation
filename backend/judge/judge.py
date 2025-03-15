@@ -1,4 +1,4 @@
-import os
+import os, shutil
 from typing import List
 from sqlalchemy.orm import Session
 
@@ -50,6 +50,9 @@ def judge(
             if testcase.stdin_file_path:
                 stdin_file_path = str(testcase.stdin_file_path)
                 stdin_path = os.path.join(static_dir, stdin_file_path)
+                if not os.path.exists(stdin_path):
+                    print("os.pardir(stdin_path) not exists")
+                    return None
                 stdin_file = open(stdin_path, "r")
 
             if testcase.input_file_path:
@@ -71,7 +74,6 @@ def judge(
             try:
                 if stdin_file:
                     output = execute.execute_command(command, files_dir_path, constants.EXECUTE_DELAY, stdin_file)
-                    stdin_file.close()
                 else:
                     output = execute.execute_command(command, files_dir_path, constants.EXECUTE_DELAY)
 
@@ -95,9 +97,15 @@ def judge(
             except TimeoutError:
                 status = judge_results.TLE.value
                 output = ""
-            except RuntimeError:
+            except RuntimeError as e:
                 status = judge_results.RE.value
-                output = ""
+                output = str(e)
+            except Exception as e:
+                status = judge_results.RE.value
+                output = str(e)
+
+            if stdin_file:
+                stdin_file.close()
 
             testcase_number = testcase.testcase_number
             update_submission_result = schemas.SubmissionResultUpdate(status=status, output_content=output)
@@ -120,3 +128,4 @@ def judge(
 
     finally:
         db.close()
+        shutil.rmtree(files_dir_path)

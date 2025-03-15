@@ -49,3 +49,24 @@ variable "db_password" {
   type        = string
   sensitive   = true
 }
+
+variable "bucket_name" {
+  description = "Cloud Storage Bucket Name"
+  type        = string
+}
+
+variable "storage_mount_path" {
+  description = "Mount Path"
+  type        = string
+}
+
+variable "storage_class" {
+  description = "Storage Class"
+  type        = string
+  default     = "STANDARD"
+}
+
+variable "volume_name" {
+  description = "Volume Name"
+  type        = string
+}

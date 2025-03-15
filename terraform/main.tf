@@ -25,6 +25,13 @@ module "networking" {
   region = var.region
 }
 
+module "cloudstorage" {
+  source        = "./cloudstorage"
+  region        = var.region
+  bucket_name   = var.bucket_name
+  storage_class = var.storage_class
+}
+
 module "cloudsql" {
   source           = "./cloudsql"
   region           = var.region
@@ -50,6 +57,9 @@ module "cloudrun" {
   service_account_email = module.iam.app_sa_email
   db_connection_name    = module.cloudsql.db_connection_name
   vpc_connector_name    = module.networking.vpc_connector_name
+  volume_name           = var.volume_name
+  storage_mount_path    = var.storage_mount_path
+  bucket_name           = module.cloudstorage.bucket_name
 }
 
 output "backend_url" {

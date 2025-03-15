@@ -54,3 +54,17 @@ variable "vpc_connector_name" {
   type        = string
 }
 
+variable "volume_name" {
+  description = "Volume Name"
+  type        = string
+}
+
+variable "storage_mount_path" {
+  description = "Storage Mount Path"
+  type        = string
+}
+
+variable "bucket_name" {
+  description = "Bucket Name"
+  type        = string
+}

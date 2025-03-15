@@ -1,8 +1,9 @@
-import os
+import os, re
 from typing import List
 from pydantic import BaseModel
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
+from google.cloud import storage
 
 from app.api import deps
 
@@ -17,17 +18,23 @@ async def get_submitted_files(
     submission_id: str,
 ) -> List[FileListResponse]:
 
-    exec_dir = os.getenv("EXEC_DIR")
-    if not exec_dir:
-        raise HTTPException(status_code=500, detail="EXEC_DIR environment variable not set")
+    bucket_name = os.getenv("BUCKET_NAME")
+    if not bucket_name:
+        raise HTTPException(status_code=500, detail="BUCKET_NAME environment variable not set")
 
-    dir_path = os.path.join(exec_dir, submission_id)
+    client = storage.Client()
+    bucket = client.bucket(bucket_name)
 
-    files = [filename for filename in os.listdir(dir_path) if filename.endswith((".c", ".h"))]
+    # 拡張子は.cか.hのファイルのみを取得
+    blobs = bucket.list_blobs(prefix=submission_id)
+    print(blobs)
+
     submitted_files = []
 
-    for file in files:
-        with open(os.path.join(dir_path, file), "r") as f:
-            content = f.read()
-            submitted_files.append(FileListResponse(filename=file, content=content.strip()))
+    for blob in blobs:
+        if blob.name.endswith((".c", ".h")):
+            filename = os.path.basename(blob.name)
+            content = blob.download_as_text()
+            submitted_files.append(FileListResponse(filename=filename, content=content.strip()))
+
     return submitted_files
