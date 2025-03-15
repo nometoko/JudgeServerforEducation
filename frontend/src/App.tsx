@@ -34,56 +34,6 @@ import Submission from './routes/Submission';
 import { RootAuthGuard } from './providers/RootAuthGuard';
 
 const App: React.FC = () => {
-
-  //useEffect(() => {
-  //  axios.post(`${API_BASE_URL}/login`, {
-  //    username: "test",
-  //    password: "test"
-  //  })
-  //  .then((response) => {
-  //    // レスポンスは { access_token, token_type } の形式になるはずです
-  //    setMessage("ログイン成功！");
-  //    console.log("Login response:", response.data);
-  //  })
-  //  .catch((error) => {
-  //    setMessage("ログインエラー");
-  //    console.error("Error during login:", error);
-  //  });
-  //}, []);
-
-  //// axios を使って x-www-form-urlencoded 形式で送信する例
-  //  axios.post(`${API_BASE_URL}/login`, qs.stringify({
-  //    username: "test",
-  //    password: "test"
-  //  }), {
-  //    headers: {
-  //      "Content-Type": "application/x-www-form-urlencoded"
-  //    }
-  //  })
-  //  .then((response) => {
-  //    console.log("Login response:", response.data);
-  //  })
-  //  .catch((error) => {
-  //    console.error("Error during login:", error);
-  //  });
-
-
-  //useEffect(() => {
-  //  axios.get(`${API_BASE_URL}/tmp`)
-  //    .then((response) => {
-  //      setMessage(response.data.message)
-  //      console.log("response:", response)
-  //    })
-  //    .catch(() => setMessage("Error fetching data"));
-  //}, []);
-
-  //useEffect(() => {
-  //  fetch(`${API_BASE_URL}`)
-  //    .then((res) => res.json())
-  //    .then((data) => setMessage(data.message))
-  //    .catch(() => setMessage("Error fetching data"));
-  //}, []);
-
   return (
     <ChakraProvider >
       <BrowserRouter basename='/top'>
@@ -96,10 +46,7 @@ const App: React.FC = () => {
                 <Route path="/problem/:problemId" element={<AuthGuard component={<Problem />} pageType={PageType.Public} />} />
                 <Route path="/submission/:submissionId" element={<AuthGuard component={<Submission />} pageType={PageType.Public} />} />
                 <Route path="/results" element={<AuthGuard component={<Results />} pageType={PageType.Public} />} />
-                {/*<Route path="/b3status" element={<B3Status />} />*/}
                 <Route path="/b3status" element={<AuthGuard component={<B3Status />} pageType={PageType.Private} />} />
-                {/*<Route path="/submission/:submissionId" element={<RouteAuthGuard component={<SubmissionPage />} pageType={PageType.Public} />} />*/}
-                <Route path="/test" />
                 <Route path="/account" element={<AuthGuard component={<Account />} pageType={PageType.Public} />} />
                 <Route path="/tools" element={<AuthGuard component={<Tools />} pageType={PageType.Public} />} />
                 <Route path="/LabMembers" element={<AuthGuard component={<LabMembers />} pageType={PageType.Public} />} />
