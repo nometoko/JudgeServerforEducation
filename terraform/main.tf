@@ -25,20 +25,6 @@ module "networking" {
   region = var.region
 }
 
-module "cloudrun" {
-  source                = "./cloudrun"
-  backend_image         = var.backend_image
-  project_id            = var.project_id
-  region                = var.region
-  db_instance_name      = var.db_instance_name
-  db_name               = var.db_name
-  db_user               = var.db_user
-  db_password           = var.db_password
-  service_account_email = module.iam.app_sa_email
-  db_connection_name    = module.cloudsql.db_connection_name
-  vpc_connector_name    = module.networking.vpc_connector_name
-}
-
 module "cloudsql" {
   source           = "./cloudsql"
   region           = var.region
@@ -51,6 +37,21 @@ module "cloudsql" {
   db_password      = var.db_password
 }
 
+module "cloudrun" {
+  source                = "./cloudrun"
+  backend_image         = var.backend_image
+  project_id            = var.project_id
+  region                = var.region
+  digest                = var.backend_digest
+  db_instance_name      = var.db_instance_name
+  db_name               = var.db_name
+  db_user               = var.db_user
+  db_password           = var.db_password
+  service_account_email = module.iam.app_sa_email
+  db_connection_name    = module.cloudsql.db_connection_name
+  vpc_connector_name    = module.networking.vpc_connector_name
+}
+
 output "backend_url" {
   value = module.cloudrun.backend_url
 }
@@ -58,8 +59,4 @@ output "backend_url" {
 output "vpc_connector_name" {
   value = module.networking.vpc_connector_name
 }
-
-# output "frontend_url" {
-#   value = module.cloudrun.frontend_url
-# }
 

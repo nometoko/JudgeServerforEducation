@@ -13,6 +13,11 @@ variable "backend_image" {
   type        = string
 }
 
+variable "backend_digest" {
+  description = "backend docker image digest"
+  type        = string
+}
+
 variable "service_account_name" {
   description = "Service Account Name"
   type        = string
