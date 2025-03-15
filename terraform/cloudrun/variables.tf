@@ -13,6 +13,11 @@ variable "project_id" {
   type        = string
 }
 
+variable "digest" {
+  description = "docker image digest"
+  type        = string
+}
+
 variable "db_instance_name" {
   description = "Cloud SQL Instance Name"
   type        = string
