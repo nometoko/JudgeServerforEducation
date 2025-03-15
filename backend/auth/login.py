@@ -211,7 +211,7 @@ async def refresh_token_endpoint(
     refresh_token = request.cookies.get("refresh_token")
     if not refresh_token:
         raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
+            status_code=status.HTTP_404_NOT_FOUND,
             detail="リフレッシュトークンがありません",
         )
     try:
@@ -221,13 +221,13 @@ async def refresh_token_endpoint(
         username: str = payload.get("user")
         if username is None:
             raise HTTPException(
-                status_code=status.HTTP_401_UNAUTHORIZED,
+                status_code=status.HTTP_404_NOT_FOUND,
                 detail="リフレッシュトークンのペイロードが無効です",
                 headers={"WWW-Authenticate": "Bearer"},
             )
     except JWTError:
         raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
+            status_code=status.HTTP_404_NOT_FOUND,
             detail="リフレッシュトークンが無効です",
             headers={"WWW-Authenticate": "Bearer"},
         )
