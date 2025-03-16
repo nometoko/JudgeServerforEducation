@@ -2,7 +2,7 @@ PROG = prog
 CC = gcc
 SRCS = $(wildcard *.c)
 OBJS = $(SRCS:.c=.o)
-CFLAGS = -Wall -O0 -extra -error
+CFLAGS = -Wall -O0 -Werror
 LDFLAGS = -lm
 
 .PHONY: all
