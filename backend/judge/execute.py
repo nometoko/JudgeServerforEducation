@@ -14,12 +14,12 @@ def judgeResult(input: str, output: str) -> bool:
 
 
 # only accept PROG for executable name
-def get_prog_name(makefile_path: str) -> str:
-    with open(makefile_path, "r") as f:
-        lines = f.readlines()
-        for line in reversed(lines):
-            if line.startswith("PROG"):
-                return line.split("=")[1].strip()
+def get_executable(exec_dir: str) -> str:
+    for file in os.listdir(exec_dir):
+        # if file is executable
+        if os.access(os.path.join(exec_dir, file), os.X_OK):
+            return file
+
     raise ValueError("PROG not found in Makefile")
 
 
@@ -51,14 +51,14 @@ def execute_command(
     input_file: TextIOWrapper | None = None,
 ) -> str:
     timeout: float = execute_delay / 1000
-    command = ["/bin/sh", "-c", command]
+    execute_command = ["/bin/sh", "-c", command]
     proc = None
 
     try:
         if input_file:
-            proc = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=input_file, cwd=exec_dir, text=True)
+            proc = subprocess.Popen(execute_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=input_file, cwd=exec_dir, text=True)
         else:
-            proc = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=exec_dir, text=True)
+            proc = subprocess.Popen(execute_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=exec_dir, text=True)
 
         stdout, stderr = proc.communicate(timeout=timeout)
         if stderr:
@@ -83,4 +83,44 @@ def execute_command(
             proc.kill()
         raise RuntimeError(e)
 
+    is_leak, leak_message = isLeaked(command, exec_dir, input_file)
+    if is_leak:
+        raise MemoryError(leak_message)
+
     return stdout
+
+
+def isLeaked(
+    command: str,
+    exec_dir: str,
+    input_file: TextIOWrapper | None = None,
+) -> tuple[bool, str]:
+
+    leak_check_command = ["/bin/sh", "-c", f"valgrind --leak-check=full --error-exitcode=1 {command}"]
+    proc = None
+
+    try:
+        if input_file:
+            proc = subprocess.Popen(leak_check_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=input_file, cwd=exec_dir, text=True)
+        else:
+            proc = subprocess.Popen(leak_check_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=exec_dir, text=True)
+
+        stdout, stderr = proc.communicate()
+        print(proc.returncode)
+        if proc.returncode != 0:
+            return True, stderr
+
+    except subprocess.CalledProcessError:
+        if proc:
+            proc.kill()
+        raise RuntimeError("CalledProcessError")
+    except UnicodeDecodeError:
+        if proc:
+            proc.kill()
+        raise RuntimeError("UnicodeDecodeError")
+    except Exception as e:
+        if proc:
+            proc.kill()
+        raise RuntimeError(e)
+
+    return False, ""

@@ -19,20 +19,18 @@ def judge(
 ) -> None:
 
     db = next(deps.get_db())
+    exec_dir = os.getenv("EXEC_DIR")
+    if not exec_dir:
+        return
+    files_dir_path: str = os.path.join(exec_dir, submission_id)
+
+    executable_path: str = f"./{constants.PROG}"
+    static_dir = os.getenv("STATIC_DIR")
+    if not static_dir:
+        return
+
     try:
-        exec_dir = os.getenv("EXEC_DIR")
-        if not exec_dir:
-            return
-
-        files_dir_path: str = os.path.join(exec_dir, submission_id)
-
-        executable_path: str = f"./{constants.PROG}"
-        static_dir = os.getenv("STATIC_DIR")
-        if not static_dir:
-            return
-
         submission_status = judge_results.AC.value
-
         testcases_with_path = crud.get_testcases_with_path_by_problem_id(db, problem_id)
 
         for testcase in testcases_with_path:
@@ -100,6 +98,9 @@ def judge(
             except RuntimeError as e:
                 status = judge_results.RE.value
                 output = str(e)
+            except MemoryError as e:
+                status = judge_results.ML.value
+                output = str(e)
             except Exception as e:
                 status = judge_results.RE.value
                 output = str(e)
@@ -111,14 +112,9 @@ def judge(
             update_submission_result = schemas.SubmissionResultUpdate(status=status, output_content=output)
 
             crud.update_submission_result(db, submission_id, testcase_number, update_submission_result)
-            # statusの優先度: RE > WA > TLE > AC
-            if submission_status == judge_results.AC.value:
-                submission_status = status
-            # elif status == "TLE" and testcase_result_status in ["RE", "WA"]:
-            elif submission_status == judge_results.TLE.value and status in [judge_results.RE.value, judge_results.WA.value]:
-                submission_status = status
-            # elif status == "WA" and testcase_result_status == "RE":
-            elif submission_status == judge_results.WA.value and status == judge_results.RE.value:
+
+            # statusの優先度: RE > WA > TLE > ML > AC
+            if constants.STATUS_PRIORITY.index(submission_status) < constants.STATUS_PRIORITY.index(status):
                 submission_status = status
 
         execute.make_clean(files_dir_path)
@@ -128,4 +124,5 @@ def judge(
 
     finally:
         db.close()
-        shutil.rmtree(files_dir_path)
+        if os.path.exists(files_dir_path) and os.getenv("BUCKET_NAME"):
+            shutil.rmtree(files_dir_path)

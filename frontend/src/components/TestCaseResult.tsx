@@ -1,5 +1,5 @@
 import { JudgeStatus, TestCaseResultProps } from "@/types/DbTypes";
-import { Accordion, AccordionButton, AccordionItem, AccordionPanel, Box, Button, Divider, Flex, Textarea, Tooltip, useClipboard } from "@chakra-ui/react";
+import { Accordion, AccordionButton, AccordionItem, AccordionPanel, Box, Button, Code, Divider, Flex, Textarea, Tooltip, useClipboard } from "@chakra-ui/react";
 import { useRef, useState } from "react";
 import { GoCopy, GoDownload } from "react-icons/go";
 import ReactDiffViewer from "react-diff-viewer-continued";
@@ -53,7 +53,61 @@ const TestCaseResultHeader: React.FC<{ title: string, content: string }> = ({ ti
   );
 }
 
-const ResultViewer: React.FC<{ title: string, content: string }> = ({ title, content }) => {
+const ResultViewer: React.FC<{ status: string, userOutput: string, expectedOutput: string }> = ({ status, userOutput, expectedOutput }) => {
+
+  const countLines = (text: string) => {
+    return text.split(/\r\n|\r|\n/).length;
+  };
+
+  if (status === "AC" || status === "WA") {
+    if (Math.max(countLines(userOutput), countLines(expectedOutput)) > 10000) {
+      return (
+        <Box>
+          <text>"Too many lines to display in diff style" </text>
+          <Flex>
+            <ResultTextArea title="Your Output" content={userOutput} />
+            <ResultTextArea title="Expected Output" content={expectedOutput} />
+          </Flex>
+        </Box>
+      )
+    }
+    else {
+      return (
+        <Box>
+          <Flex justifyContent="space-between" fontWeight="bold" mb={2}>
+            <TestCaseResultHeader title="Your Output" content={userOutput} />
+            <TestCaseResultHeader title="Expected Output" content={expectedOutput} />
+          </Flex>
+          <Box maxHeight={300} overflowY="auto">
+            <ReactDiffViewer
+              newValue={expectedOutput}
+              oldValue={userOutput}
+              splitView={true}
+              showDiffOnly={false}
+              styles={{
+                line: {
+                  wordBreak: "break-all",
+                },
+                contentText: {
+                  textAlign: "left",
+                },
+              }}
+            />
+          </Box>
+        </Box>
+      )
+    }
+  }
+  else {
+    return (
+      <Code whiteSpace={"pre-wrap"} textAlign={"left"} width={"100%"}>
+        {userOutput}
+      </Code>
+    )
+  }
+}
+
+const ResultTextArea: React.FC<{ title: string, content: string }> = ({ title, content }) => {
   return (
     <Box>
       <h3>{title}</h3>
@@ -84,9 +138,7 @@ const TestCaseResult: React.FC<TestCaseResultProps> = ({ testcase, user_result }
     }, 1000);
   };
 
-  const countLines = (text: string) => {
-    return text.split(/\r\n|\r|\n/).length;
-  };
+  console.log("user_result", user_result);
 
   return (
     <Accordion allowToggle onChange={handleAccordionChange}>
@@ -113,7 +165,6 @@ const TestCaseResult: React.FC<TestCaseResultProps> = ({ testcase, user_result }
               <Box position="relative" mt="2">
                 <Textarea value={executedCommand} readOnly />
               </Box>
-
             </Box>
 
             <Box flex="1" position="relative">
@@ -139,40 +190,7 @@ const TestCaseResult: React.FC<TestCaseResultProps> = ({ testcase, user_result }
           <br />
           <Divider />
           <br />
-
-
-          {Math.max(countLines(user_result.output_content), countLines(testcase.answer_file_content)) > 10000 ? (
-            <Box>
-              <text>"Too many lines to display in diff style" </text>
-              <Flex>
-                <ResultViewer title="Your Output" content={user_result.output_content} />
-                <ResultViewer title="Expected Output" content={testcase.answer_file_content} />
-              </Flex>
-            </Box>
-          ) : (
-            <Box>
-              <Flex justifyContent="space-between" fontWeight="bold" mb={2}>
-                <TestCaseResultHeader title="Your Output" content={user_result.output_content} />
-                <TestCaseResultHeader title="Expected Output" content={testcase.answer_file_content} />
-              </Flex>
-              <Box maxHeight={300} overflowY="auto">
-                <ReactDiffViewer
-                  newValue={testcase.answer_file_content}
-                  oldValue={user_result.output_content}
-                  splitView={true}
-                  showDiffOnly={false}
-                  styles={{
-                    line: {
-                      wordBreak: "break-all",
-                    },
-                    contentText: {
-                      textAlign: "left",
-                    },
-                  }}
-                />
-              </Box>
-            </Box>
-          )}
+          <ResultViewer status={user_result.status} userOutput={user_result.output_content} expectedOutput={testcase.answer_file_content} />
         </AccordionPanel>
       </AccordionItem>
     </Accordion >

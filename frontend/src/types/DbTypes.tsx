@@ -1,8 +1,8 @@
 
 export interface AuthData {
-  authUserName: string;
-  authJoinedDate: string;
-  authUserExp: string;
+    authUserName: string;
+    authJoinedDate: string;
+    authUserExp: string;
 }
 
 export interface UserProps {
@@ -66,5 +66,7 @@ export const JudgeStatus = {
     "CE": "コンパイルエラー",
     "RE": "実行時エラー",
     "TLE": "時間制限超過",
-    "MLE": "メモリ制限超過"
+    "MLE": "メモリ制限超過",
+    "WJ": "ジャッジ待ち",
+    "ML": "メモリリーク"
 } as const;

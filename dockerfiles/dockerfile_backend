@@ -8,7 +8,8 @@ COPY ./static  /app/static
 COPY ./compile_resource /app/compile_resource
 EXPOSE 8080
 WORKDIR /app/backend
+# Install leaks command
+RUN apt-get update && apt-get install -y valgrind
 RUN pip install --no-cache-dir -r requirements.txt
 ENV PYTHONUNBUFFERED=1
 CMD ["sh", "-c", "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8080 --reload"]
-
