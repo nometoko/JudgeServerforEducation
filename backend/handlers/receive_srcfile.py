@@ -48,13 +48,11 @@ async def receive_file(
     os.makedirs(save_dir, exist_ok=True)
 
     bucket_name = os.getenv("BUCKET_NAME")
-    if not bucket_name:
-        raise HTTPException(status_code=500, detail="BUCKET_NAME environment variable not set")
+    bucket = None
 
-    print(f"save_dir: {save_dir}")
-
-    client = storage.Client()
-    bucket = client.bucket(bucket_name)
+    if bucket_name:
+        client = storage.Client()
+        bucket = client.bucket(bucket_name)
 
     for file in files:
         if not file.filename:
@@ -67,8 +65,9 @@ async def receive_file(
             shutil.copyfileobj(file.file, f)
 
         # cloud storageにも保存
-        blob = bucket.blob(os.path.join(str(submission_id), file.filename))
-        blob.upload_from_filename(file_path)
+        if bucket_name and bucket:
+            blob = bucket.blob(os.path.join(str(submission_id), file.filename))
+            blob.upload_from_filename(file_path)
 
         created_submission = check_file_type(file_path)
         if not created_submission.success:
