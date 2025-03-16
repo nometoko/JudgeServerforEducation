@@ -68,5 +68,5 @@ export const JudgeStatus = {
     "TLE": "時間制限超過",
     "MLE": "メモリ制限超過",
     "WJ": "ジャッジ待ち",
-    "ML": "メモリリーク"
+    "ME": "メモリエラー",
 } as const;

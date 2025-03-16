@@ -100,9 +100,11 @@ const ResultViewer: React.FC<{ status: string, userOutput: string, expectedOutpu
   }
   else {
     return (
-      <Code whiteSpace={"pre-wrap"} textAlign={"left"} width={"100%"}>
-        {userOutput}
-      </Code>
+      <Box maxHeight={300} overflowY="auto">
+        <Code whiteSpace={"pre-wrap"} textAlign={"left"} width={"100%"}>
+          {userOutput}
+        </Code>
+      </Box>
     )
   }
 }
@@ -137,8 +139,6 @@ const TestCaseResult: React.FC<TestCaseResultProps> = ({ testcase, user_result }
       setIsTooltipOpenStdin(false);
     }, 1000);
   };
-
-  console.log("user_result", user_result);
 
   return (
     <Accordion allowToggle onChange={handleAccordionChange}>

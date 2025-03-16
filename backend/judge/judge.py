@@ -24,7 +24,6 @@ def judge(
         return
     files_dir_path: str = os.path.join(exec_dir, submission_id)
 
-    executable_path: str = f"./{constants.PROG}"
     static_dir = os.getenv("STATIC_DIR")
     if not static_dir:
         return
@@ -34,8 +33,8 @@ def judge(
         testcases_with_path = crud.get_testcases_with_path_by_problem_id(db, problem_id)
 
         for testcase in testcases_with_path:
-            command = executable_path
             stdin_file = None
+            args = ""
 
             if testcase.args_file_path:
                 args_file_path = str(testcase.args_file_path)
@@ -43,7 +42,7 @@ def judge(
                 with open(arg_path) as f:
                     arg_content = f.read()
                 for arg in arg_content.split():
-                    command += " " + arg
+                    args += " " + arg
 
             if testcase.stdin_file_path:
                 stdin_file_path = str(testcase.stdin_file_path)
@@ -71,9 +70,9 @@ def judge(
             status = None
             try:
                 if stdin_file:
-                    output = execute.execute_command(command, files_dir_path, constants.EXECUTE_DELAY, stdin_file)
+                    output = execute.execute_command(args, files_dir_path, constants.EXECUTE_DELAY, stdin_file)
                 else:
-                    output = execute.execute_command(command, files_dir_path, constants.EXECUTE_DELAY)
+                    output = execute.execute_command(args, files_dir_path, constants.EXECUTE_DELAY)
 
                 if testcase.output_file_name:
                     filename = str(testcase.output_file_name)
@@ -99,7 +98,7 @@ def judge(
                 status = judge_results.RE.value
                 output = str(e)
             except MemoryError as e:
-                status = judge_results.ML.value
+                status = judge_results.ME.value
                 output = str(e)
             except Exception as e:
                 status = judge_results.RE.value
