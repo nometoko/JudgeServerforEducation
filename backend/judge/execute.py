@@ -45,18 +45,15 @@ def make_clean(exec_dir: str) -> None:
         raise RuntimeError(e.stderr)
 
 def execute_command(
-    args: str,
+    execute_command: List[str],
     exec_dir: str,
     execute_delay: int = 10000000,
-    input_file: TextIOWrapper | None = None,
-) -> str:
+    get_output: bool = True,
+    input_file: TextIOWrapper | None = None
+) -> str | None:
+
     timeout: float = execute_delay / 1000
-
-    execute_command = ["/bin/sh", "-c", f"./{constants.PROG}{args}"]
-    execute_command_debug = ["/bin/sh", "-c", f"./{constants.PROG_DEBUG}{args}"]
-
     proc = None
-    proc_debug = None
 
     try:
         if input_file:
@@ -65,10 +62,10 @@ def execute_command(
             proc = subprocess.Popen(execute_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=exec_dir, text=True)
 
         stdout, stderr = proc.communicate(timeout=timeout)
-        if stderr:
-            raise RuntimeError(stderr)
 
     except RuntimeError as e:
+        if proc:
+            proc.kill()
         raise RuntimeError(e)
     except subprocess.TimeoutExpired:
         if proc:
@@ -81,34 +78,22 @@ def execute_command(
     except UnicodeDecodeError:
         if proc:
             proc.kill()
-        raise RuntimeError("UnicodeDecodeError")
+        if get_output:
+            raise RuntimeError("UnicodeDecodeError")
+        else:
+            return None
     except Exception as e:
         if proc:
             proc.kill()
         raise RuntimeError(e)
 
-    try:
-        if input_file:
-            proc_debug = subprocess.Popen(execute_command_debug, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=input_file, cwd=exec_dir, text=True)
-        else:
-            proc_debug = subprocess.Popen(execute_command_debug, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=exec_dir, text=True)
+    if stderr:
+        raise RuntimeError(stderr)
 
-        stdout_debug, stderr_debug = proc_debug.communicate()
-        if stderr_debug:
-            raise RuntimeError(stderr_debug)
-
-    except Exception as e:
-        if proc_debug:
-            proc_debug.kill()
-        # address error
-        raise MemoryError(e)
-
-    # is_leak, leak_message = isLeaked(f"./{constants.PROG}{args}", exec_dir, input_file)
-    # if is_leak:
-        # raise MemoryError(leak_message)
-
-    return stdout
-
+    if get_output:
+        return stdout
+    else:
+        return None
 
 def isLeaked(
     command: str,
@@ -126,7 +111,6 @@ def isLeaked(
             proc = subprocess.Popen(leak_check_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=exec_dir, text=True)
 
         stdout, stderr = proc.communicate()
-        print(proc.returncode)
         if proc.returncode != 0:
             return True, stderr
 

@@ -1,5 +1,6 @@
 import os, shutil
 from typing import List
+import chardet
 from sqlalchemy.orm import Session
 
 from judge.constants import judge_results
@@ -69,22 +70,40 @@ def judge(
 
             status = None
             try:
-                if stdin_file:
-                    output = execute.execute_command(args, files_dir_path, constants.EXECUTE_DELAY, stdin_file)
-                else:
-                    output = execute.execute_command(args, files_dir_path, constants.EXECUTE_DELAY)
+                get_stdout = True
+                if testcase.output_file_name:
+                    get_stdout = False
+
+                execute_command = ["/bin/sh", "-c", f"./{constants.PROG}{args}"]
+                output = execute.execute_command(execute_command, files_dir_path, constants.EXECUTE_DELAY, get_stdout, stdin_file)
+
+                try:
+                    execute_command_for_memory = ["/bin/sh", "-c", f"./{constants.PROG_DEBUG}{args}"]
+                    execute.execute_command(execute_command_for_memory, files_dir_path, constants.EXECUTE_DELAY, False, stdin_file)
+
+                except Exception as e:
+                    raise(MemoryError(e))
 
                 if testcase.output_file_name:
                     filename = str(testcase.output_file_name)
                     output_path = os.path.join(files_dir_path, filename)
                     if os.path.exists(output_path):
-                        with open(output_path, "r") as f:
+                        with open(output_path, "rb") as f:
+                            output = f.read()
+                        chardet_result = chardet.detect(output)
+                        encoding = chardet_result["encoding"]
+
+                        with open(output_path, "r", encoding=encoding, errors="replace") as f:
                             output = f.read()
                         os.remove(output_path)
 
                 answer_path = os.path.join(static_dir, str(testcase.answer_file_path))
                 with open(answer_path) as f:
                     answer_content = f.read()
+
+                if output is None:
+                    status = judge_results.RE.value
+                    raise RuntimeError("output is None")
 
                 result = execute.judgeResult(output, answer_content)
                 if result:
