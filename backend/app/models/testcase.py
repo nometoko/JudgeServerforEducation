@@ -13,6 +13,7 @@ class Testcase(Base):
     args_file_content = Column(Text, nullable=False)
     stdin_file_content = Column(Text, nullable=False)
     answer_file_content = Column(Text, nullable=False)
+    input_file_content = Column(Text, nullable=True)
 
     # リレーションシップ
     problem = relationship("Problem", back_populates="testcases")
