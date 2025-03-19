@@ -13,6 +13,7 @@ class TestcaseWithoutId(BaseModel):
     args_file_content: Text = ''
     stdin_file_content: Text = ''
     answer_file_content:Text = ''
+    input_file_content: Text = ''
 
 class ProblemJson(BaseModel):
     problem: schemas.ProblemCreate
@@ -45,6 +46,10 @@ def read_json(seed_root_dir: str, json_file_name: str) -> List[ProblemJson]:
             if answer_file_path:
                 with open(f"{seed_root_dir}/{answer_file_path}", "r") as f:
                     testcase["answer_file_content"] = f.read()
+            input_file_path = testcase.pop("input_file_path")
+            if input_file_path:
+                with open(f"{seed_root_dir}/{input_file_path}", "r") as f:
+                    testcase["input_file_content"] = f.read()
 
         problems_info.append(ProblemJson(problem=problem, testcases=testcases, testcases_with_path=testcases_with_path))
     return problems_info
@@ -55,33 +60,47 @@ def insert_problem_info(seed_root_dir: str, json_file_name: str):
 
     problems_info = read_json(seed_root_dir, json_file_name)
 
-    # for problem in problems
-    for problem_info in problems_info:
-        problems_info = problem_info.problem
-        if crud.get_problem_by_id(db, problems_info.problem_id):
-            continue
+    try:
+        # for problem in problems
+        for problem_info in problems_info:
+            problems_info = problem_info.problem
+            if not crud.get_problem_by_id(db, problems_info.problem_id):
+                created_problem = crud.create_problem(db, problems_info)
+                if not created_problem:
+                    raise Exception("Problem creation failed")
 
-        created_problem = crud.create_problem(db, problems_info)
-        if not created_problem:
-            raise Exception("Problem creation failed")
+            for i in range(len(problem_info.testcases)):
+                testcase_with_path = problem_info.testcases_with_path[i]
+                testcase = problem_info.testcases[i]
 
-        for i in range(len(problem_info.testcases)):
-            testcase_with_path = problem_info.testcases_with_path[i]
-            testcase = problem_info.testcases[i]
+                if not crud.get_testcase_with_path_by_problem_id_and_testcase_number(db, testcase_with_path.problem_id, testcase_with_path.testcase_number):
+                    created_testcase_with_path = crud.create_testcase_with_path(db, testcase_with_path)
+                    if not created_testcase_with_path:
+                        raise Exception("TestcaseWithPath creation failed")
+                    testcase_id = created_testcase_with_path.testcase_id
 
-            created_testcase_with_path = crud.create_testcase_with_path(db, testcase_with_path)
-            if not created_testcase_with_path:
-                raise Exception("TestcaseWithPath creation failed")
-            testcase_id = created_testcase_with_path.testcase_id
-
-            create_testcase = schemas.TestcaseCreate(
-                testcase_id=testcase_id,
-                problem_id=created_problem.problem_id,
-                testcase_number=testcase.testcase_number,
-                args_file_content=testcase.args_file_content,
-                stdin_file_content=testcase.stdin_file_content,
-                answer_file_content=testcase.answer_file_content
-            )
-            created_testcase = crud.create_testcase(db, create_testcase)
-            if not created_testcase:
-                raise Exception("Testcase creation failed")
+                if not crud.get_testcase_by_problem_id_and_testcase_number(db, testcase.problem_id, testcase.testcase_number):
+                    create_testcase = schemas.TestcaseCreate(
+                        testcase_id=testcase_id,
+                        problem_id=created_problem.problem_id,
+                        testcase_number=testcase.testcase_number,
+                        args_file_content=testcase.args_file_content,
+                        stdin_file_content=testcase.stdin_file_content,
+                        answer_file_content=testcase.answer_file_content,
+                        input_file_content=testcase.input_file_content
+                    )
+                    created_testcase = crud.create_testcase(db, create_testcase)
+                    if not created_testcase:
+                        raise Exception("Testcase creation failed")
+                else:
+                    update_testcase = schemas.TestcaseUpdate(
+                        args_file_content=testcase.args_file_content,
+                        stdin_file_content=testcase.stdin_file_content,
+                        answer_file_content=testcase.answer_file_content,
+                        input_file_content=testcase.input_file_content
+                    )
+                    updated_testcase = crud.update_testcase(db, problem_id=testcase.problem_id, testcase_number=testcase.testcase_number, testcase_update=update_testcase)
+                    if not updated_testcase:
+                        raise Exception("Testcase update failed")
+    finally:
+        db.close()
