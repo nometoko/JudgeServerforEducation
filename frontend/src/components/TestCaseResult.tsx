@@ -186,6 +186,14 @@ const TestCaseResult: React.FC<TestCaseResultProps> = ({ testcase, user_result }
                 </Tooltip>
               </Box>
             </Box>
+            {testcase.args_file_content.length > 0 && (
+              <Box flex="1" position="relative">
+                <h3>Input File Content</h3>
+                <Box position="relative" mt="2">
+                  <Textarea value={testcase.input_file_content} readOnly />
+                </Box>
+              </Box>
+            )}
           </Flex>
           <br />
           <Divider />
@@ -196,7 +204,5 @@ const TestCaseResult: React.FC<TestCaseResultProps> = ({ testcase, user_result }
     </Accordion >
   );
 };
-
-
 
 export default TestCaseResult;
