@@ -9,7 +9,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from starlette.responses import FileResponse
 
 from auth import login, create_new_user, change_password, logout
-import dotenv
 
 from app.core.config import settings
 from app.api.api_v1.api_router import router as api_router
@@ -55,11 +54,6 @@ async def handler(request: Request, exc: RequestValidationError) -> JSONResponse
     print(exc)
     return JSONResponse(content={}, status_code=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
-
-dotenv.load_dotenv()
-exec_dir = os.getenv("EXEC_DIR")
-if not exec_dir:
-    raise EnvironmentError("EXEC_DIR environment variable not set")
 
 # データベースに初期データを挿入
 seed.insert_problem_info("../static", "seed_data/problems.json")
