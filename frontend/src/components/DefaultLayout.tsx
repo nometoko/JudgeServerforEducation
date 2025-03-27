@@ -20,6 +20,7 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
     const [authData, setAuthData] = useState<AuthData | null>(null);
     const [username, setUsername] = useState<string>("");
     const [isSeniorStudent, setIsSeniorStudent] = useState<boolean>(false);
+    const [imagePath, setImagePath] = useState<string>("photos/funalab.png");
 
 
     useEffect(() => {
@@ -48,6 +49,18 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
         }
     }, [authData]);
 
+    useEffect(() => {
+        const fetchImagePath = async () => {
+            try {
+                const response = await myaxios.get("/handler/getRandomPhoto");
+                setImagePath(response.data);
+            }
+            catch (error) {
+                console.error("画像の取得エラー:", error);
+            }
+        };
+        fetchImagePath();
+    }, []);
 
     const iconsize = 21
     const iconwidth = "8px"
@@ -59,7 +72,7 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
                 <Box w="250px" h="100vh" bg="gray.800" color="white" p={4} display="flex" flexDirection="column" justifyContent="space-between">
                     <VStack spacing={4} align="stretch">
                         <a href="https://fun.bio.keio.ac.jp/" target="_blank" rel="noopener noreferrer">
-                            <Image src="/photos/m1/rkimura_is_fighting.jpg" alt="funalab logo" boxSize="100px" mb={4} cursor="pointer" />
+                            <Image src={"/" + imagePath} alt="funalab logo" boxSize="100px" mb={4} cursor="pointer" />
                         </a>
                         <Button variant="ghost" colorScheme="whiteAlpha" onClick={() => navigate("/dashboard")} justifyContent={"flex-start"}>
                             <MdDashboard size={iconsize} /> {/* アイコンを追加 */}
