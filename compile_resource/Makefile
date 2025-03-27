@@ -15,7 +15,7 @@ all: $(PROG) $(PROG_DEBUG)
 	$(CC) $(CFLAGS) -c $<
 
 $(PROG): $(OBJS)
-	$(CC) -o $@ $^ $(LDFLAGS)
+	$(CC) -g -o $@ $^ $(LDFLAGS)
 
 $(PROG_DEBUG): $(OBJS)
 	$(CC) -o $@ $^ $(LDFLAGS) $(DEBUGFLAGS)
