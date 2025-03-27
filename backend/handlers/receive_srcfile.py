@@ -93,7 +93,6 @@ async def receive_file(
         crud.create_submission_result(db, create_submission_result)
 
     # background_tasks.add_task(judge.judge, submission_id, problem_id, db)
-    print(f"judge function called")
     executor.submit(judge.judge, submission_id, problem_id)
 
     return submission_id
