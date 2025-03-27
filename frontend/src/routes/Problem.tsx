@@ -5,6 +5,9 @@ import { ProblemProps } from "@/types/DbTypes";
 import { Heading, Stack, Text, Divider } from '@chakra-ui/react';
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { BlockMath } from "react-katex";
+import "katex/dist/katex.min.css";
+import "@/styles.css";
 
 const Problem: React.FC = () => {
     const { problemId } = useParams<{ problemId: string }>();
@@ -49,7 +52,14 @@ const Problem: React.FC = () => {
                         >
                             問題文
                         </Text>
-                        <Text whiteSpace="pre-line" textAlign={'left'} fontSize={18}>{problem.statement}</Text>
+                        <Text whiteSpace="pre-line" textAlign={'left'} fontSize={18}>
+                            {problem.statement}
+                        </Text>
+                        {/* problem.mathがnullでなければ表示 */}
+                        {problem.math && (
+                            <BlockMath>{problem.math}</BlockMath>
+                        )}
+
                     </Stack>
                     <Stack mb={8}>
                         <Text

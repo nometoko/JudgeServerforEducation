@@ -5,6 +5,7 @@ from sqlalchemy import Column, Integer, String, Boolean, DateTime, Text
 from sqlalchemy.orm import relationship
 from app.db.base_class import Base
 
+
 class Problem(Base):
     __tablename__ = "problems"
 
@@ -12,6 +13,7 @@ class Problem(Base):
     is_petit_coder = Column(Boolean, default=False)
     name = Column(String, nullable=False)
     statement = Column(Text, nullable=False)
+    math = Column(Text, nullable=True)
     constraints = Column(Text)
     execution_time = Column(Integer, nullable=False)
     memory_limit = Column(Integer, nullable=False)

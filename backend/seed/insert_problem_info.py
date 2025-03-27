@@ -3,17 +3,16 @@ from pydantic import BaseModel
 from sqlalchemy.orm import Session
 from typing import List, Text
 
-
 from app import schemas, crud
 from app.api import deps
 
 class TestcaseWithoutId(BaseModel):
     problem_id: int
     testcase_number: int
-    args_file_content: Text = ''
-    stdin_file_content: Text = ''
-    answer_file_content:Text = ''
-    input_file_content: Text = ''
+    args_file_content: Text = ""
+    stdin_file_content: Text = ""
+    answer_file_content: Text = ""
+    input_file_content: Text = ""
 
 class ProblemJson(BaseModel):
     problem: schemas.ProblemCreate
@@ -27,10 +26,10 @@ def read_json(seed_root_dir: str, json_file_name: str) -> List[ProblemJson]:
     problems_info = []
     for problem in problems:
         testcases_with_path = problem.pop("testcase_with_paths")
-        problem_id = problem['problem_id']
+        problem_id = problem["problem_id"]
         for testcase_with_path in testcases_with_path:
-            testcase_with_path['problem_id'] = problem_id
-            testcase_with_path['testcase_number'] = testcase_with_path.pop("testcase_id")
+            testcase_with_path["problem_id"] = problem_id
+            testcase_with_path["testcase_number"] = testcase_with_path.pop("testcase_id")
 
         testcases = [ testcase_with_path.copy() for testcase_with_path in testcases_with_path ]
         for testcase in testcases:
@@ -55,8 +54,7 @@ def read_json(seed_root_dir: str, json_file_name: str) -> List[ProblemJson]:
     return problems_info
 
 def insert_problem_info(seed_root_dir: str, json_file_name: str):
-    db:Session = next(deps.get_db())
-    print(type(db))
+    db: Session = next(deps.get_db())
 
     problems_info = read_json(seed_root_dir, json_file_name)
 

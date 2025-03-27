@@ -17,6 +17,7 @@ export interface ProblemProps {
     open_date: string;
     close_date: string;
     statement: string;
+    math: string;
     constraints: string;
     input_format: string;
     output_format: string;

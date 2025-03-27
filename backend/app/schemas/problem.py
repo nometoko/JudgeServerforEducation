@@ -7,6 +7,7 @@ class ProblemCreate(BaseModel):
     is_petit_coder: bool
     name: str
     statement: str
+    math: Optional[str] = None
     constraints: str
     execution_time: int
     memory_limit: int
@@ -21,6 +22,7 @@ class ProblemResponse(BaseModel):
     is_petit_coder: bool
     name: str
     statement: str
+    math: Optional[str] = None
     constraints: str
     execution_time: int
     memory_limit: int
