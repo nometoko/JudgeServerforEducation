@@ -57,11 +57,14 @@ def execute_command(
 
     try:
         if input_file:
-            proc = subprocess.Popen(execute_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=input_file, cwd=exec_dir, text=True)
+            proc = subprocess.Popen(execute_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=input_file, cwd=exec_dir, text=get_output)
         else:
-            proc = subprocess.Popen(execute_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=exec_dir, text=True)
+            proc = subprocess.Popen(execute_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=exec_dir, text=get_output)
 
         stdout, stderr = proc.communicate(timeout=timeout)
+
+        if not get_output:
+            stderr = stderr.decode()
 
     except RuntimeError as e:
         if proc:
@@ -78,10 +81,8 @@ def execute_command(
     except UnicodeDecodeError:
         if proc:
             proc.kill()
-        if get_output:
-            raise RuntimeError("UnicodeDecodeError")
-        else:
-            return None
+        raise RuntimeError("UnicodeDecodeError")
+
     except Exception as e:
         if proc:
             proc.kill()
@@ -101,7 +102,7 @@ def isLeaked(
     input_file: TextIOWrapper | None = None,
 ) -> tuple[bool, str]:
 
-    leak_check_command = ["/bin/sh", "-c", f"valgrind --leak-check=full --error-exitcode=1 {command}"]
+    leak_check_command = ["/bin/sh", "-c", f"valgrind --leak-check=full --error-exitcode=1 --undef-value-errors=no {command}"]
     proc = None
 
     try:

@@ -18,7 +18,6 @@ def judge(
     problem_id: int,
     # db: Session
 ) -> None:
-
     db = next(deps.get_db())
     exec_dir = os.getenv("EXEC_DIR")
     if not exec_dir:
@@ -70,19 +69,8 @@ def judge(
 
             status = None
             try:
-                get_stdout = True
-                if testcase.output_file_name:
-                    get_stdout = False
-
-                execute_command = ["/bin/sh", "-c", f"./{constants.PROG}{args}"]
-                output = execute.execute_command(execute_command, files_dir_path, constants.EXECUTE_DELAY, get_stdout, stdin_file)
-
-                try:
-                    execute_command_for_memory = ["/bin/sh", "-c", f"./{constants.PROG_DEBUG}{args}"]
-                    execute.execute_command(execute_command_for_memory, files_dir_path, constants.EXECUTE_DELAY, False, stdin_file)
-
-                except Exception as e:
-                    raise(MemoryError(e))
+                execute_command_for_memory = ["/bin/sh", "-c", f"./{constants.PROG_DEBUG}{args}" ]
+                output = execute.execute_command(execute_command_for_memory, files_dir_path, constants.EXECUTE_DELAY, True, stdin_file)
 
                 if testcase.output_file_name:
                     filename = str(testcase.output_file_name)
@@ -110,6 +98,7 @@ def judge(
                     status = judge_results.AC.value
                 else:
                     status = judge_results.WA.value
+
             except TimeoutError:
                 status = judge_results.TLE.value
                 output = ""
