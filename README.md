@@ -92,3 +92,10 @@ terraform init
 
 Also, you have to upload photos directory to GCP bucket to get full functionality of the server.
 And put your service account key in `secret` directory.
+
+## Contributers
+
+[nometoko] (https://github.com/nometoko) - features around judge
+[Miku Suzuki] (https://github.com/mszk2003) - features around user authorization
+[Go Hasegawa] (https://github.com/hase-go) - frontend design 
+[Sugawara Hirotaka] (https://github.com/sugawarahirotaka) - database design
