@@ -2,4 +2,5 @@
 **/.idea
 **/.vscode
 .env
+static/seed_data/users_2025.json
 
