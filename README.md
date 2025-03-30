@@ -91,3 +91,4 @@ terraform init
 ```
 
 Also, you have to upload photos directory to GCP bucket to get full functionality of the server.
+And put your service account key in `secret` directory.
