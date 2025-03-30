@@ -1,2 +1,10 @@
+auth_venv
 .env
 *.log
+venv/
+.venv
+**/__pycache__/**
+**/.vscode/
+
+app/db/postgres*
+*.tar.gz

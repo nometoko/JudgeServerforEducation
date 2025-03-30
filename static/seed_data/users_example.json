@@ -1,0 +1,12 @@
+[
+    {
+        "user_name": "hoge",
+        "user_fullname": "hoge hoge",
+        "password": "hashed_password",
+        "joined_date": "2025-04-01T00:00:00+09:00",
+        "role": "student",
+        "image_path": [
+            "path/from/backend/static"
+        ]
+    }
+]
