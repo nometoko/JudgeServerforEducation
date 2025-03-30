@@ -57,7 +57,7 @@ async def handler(request: Request, exc: RequestValidationError) -> JSONResponse
 
 # データベースに初期データを挿入
 seed.insert_problem_info("../static", "seed_data/problems.json")
-seed.insert_user_info("../static/seed_data/users_2025.json")
+seed.insert_user_info("../static/seed_data/users_example.json")
 
 ##### 以下は本番環境想定
 ## Check required environment variables
