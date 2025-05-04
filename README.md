@@ -1,5 +1,21 @@
 # Judge Server For Education
 
+This repository contains the code for a Judge Server designed for educational purposes.
+Its main goal is to provide a platform where students can submit their programming code and receive automated feedback on whether their solution is correct based on predefined test cases.
+
+Key Features:
+
+- Code Submission \
+    Students can submit their source code through the web interface.
+- Automated Judging \
+    The server automatically compiles and runs the submitted code against various test cases.
+- Detailed Results \
+    Users can view the results for each test case, including the program's output and the expected output.
+- Output Comparison \
+    For incorrect answers, a diff viewer helps users easily see the differences between their output and the expected output.
+- User Authentication \
+    A system is in place to manage user accounts and access.
+
 ## Demo
 
 <https://github.com/user-attachments/assets/a9f28957-b03c-4ebf-a9c8-72648cf16f9d>
