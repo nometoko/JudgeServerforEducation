@@ -1,7 +1,34 @@
 # Judge Server For Education
 
 ## Demo
-https://github.com/user-attachments/assets/a9f28957-b03c-4ebf-a9c8-72648cf16f9d
+
+<https://github.com/user-attachments/assets/a9f28957-b03c-4ebf-a9c8-72648cf16f9d>
+
+## Tech Stack
+
+### Frontend
+
+- Language: TypeScript
+- Framework: React
+- UI Library: Chakra UI
+
+### Backend
+
+- Language: Python
+- Web Framework: FastAPI
+- ASGI Server: Uvicorn
+- Database Interaction: SQLAlchemy
+- User Authentication: JWT
+
+### Database
+
+- Database: PostgreSQL
+
+### Infrastructure & Deployment
+
+- Containerization: Docker
+- Deployment Automation: Terraform
+- Cloud Platform: Google Cloud Platform (GCP)
 
 ## Requirements
 
